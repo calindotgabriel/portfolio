@@ -1,45 +1,79 @@
 ---
-import ProjectLayout from '../../components/ProjectLayout.astro';
-import { projects } from '../../data/projects.js';
+import ProjectLayout from "../../components/ProjectLayout.astro";
+import { projects } from "../../data/projects.js";
 ---
 
 <ProjectLayout
-	title="All Projects"
-	description="Complete portfolio of development projects"
+  title="All Projects"
+  description="Complete portfolio of development projects"
 >
-	<div class="projects-listing" style="padding: 48px 0 64px; background: #f8fafc;">
-		<section class="projects-hero" style="text-align: center; margin-bottom: 3rem;">
-			<h1 style="margin-bottom: 1rem;">All Projects</h1>
-			<p style="color: var(--gray); font-size: 1.25rem;">A comprehensive look at my development work</p>
-		</section>
+  <div
+    class="projects-listing"
+    style="padding: 48px 0 64px; background: #f8fafc;"
+  >
+    <section
+      class="projects-hero"
+      style="text-align: center; margin-bottom: 3rem;"
+    >
+      <h1 style="margin-bottom: 1rem;">All Projects</h1>
+      <p style="color: var(--gray); font-size: 1.25rem;">
+        A comprehensive look at my development work
+      </p>
+    </section>
 
-		<section class="projects-grid-section">
-			<div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 24px;">
-				<div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem;">
-					{
-						projects.map((project) => (
-							<a
-								href={`/projects/${project.id}`}
-								class="project-card-link animate-fade-in"
-								style="text-decoration: none; color: inherit;"
-							>
-								<div class="project-card" style="padding: 2.5rem 2rem; border-radius: 20px; box-shadow: var(--shadow-lg); background: var(--gradient-card); border: 1px solid rgba(99,102,241,0.08); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; min-height: 220px; display: flex; flex-direction: column; gap: 1.25rem;">
-									<div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-										<h3 style="font-size: 1.35rem; font-weight: 700; margin: 0;">{project.title}</h3>
-										<span class={`project-badge badge-${project.status.toLowerCase()}`} style="padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: white; background: ${project.status === 'LIVE' ? '#10b981' : 'var(--primary)'};">{project.status}</span>
-									</div>
-									<p style="font-size: 1.05rem; color: var(--gray); margin-bottom: 0.5rem;">{project.shortDescription}</p>
-									<div class="tech-pills" style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;">
-										{project.tech.map((tech) => (
-											<span class="tech-pill" style="padding: 0.5rem 1.25rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 500; font-size: 0.875rem; border: 1px solid rgba(99,102,241,0.2); transition: all 0.2s ease;">{tech}</span>
-										))}
-									</div>
-								</div>
-							</a>
-						))
-					}
-				</div>
-			</div>
-		</section>
-	</div>
+    <section class="projects-grid-section">
+      <div
+        class="container"
+        style="max-width: 1100px; margin: 0 auto; padding: 0 24px;"
+      >
+        <div
+          class="projects-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem;"
+        >
+          {
+            projects.map((project) => (
+              <a
+                href={`/projects/${project.id}`}
+                class="project-card-link animate-fade-in"
+                style="text-decoration: none; color: inherit;"
+              >
+                <div
+                  class="project-card"
+                  style="padding: 2.5rem 2rem; border-radius: 20px; box-shadow: var(--shadow-lg); background: var(--gradient-card); border: 1px solid rgba(99,102,241,0.08); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; min-height: 220px; display: flex; flex-direction: column; gap: 1.25rem;"
+                >
+                  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                    <h3 style="font-size: 1.35rem; font-weight: 700; margin: 0;">
+                      {project.title}
+                    </h3>
+                    <span
+                      class={`project-badge badge-${project.status.toLowerCase()}`}
+                      style="padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: white; background: ${project.status === 'LIVE' ? '#10b981' : 'var(--primary)'};"
+                    >
+                      {project.status}
+                    </span>
+                  </div>
+                  <p style="font-size: 1.05rem; color: var(--gray); margin-bottom: 0.5rem;">
+                    {project.shortDescription}
+                  </p>
+                  <div
+                    class="tech-pills"
+                    style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: auto;"
+                  >
+                    {project.tech.map((tech) => (
+                      <span
+                        class="tech-pill"
+                        style="padding: 0.5rem 1.25rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 500; font-size: 0.875rem; border: 1px solid rgba(99,102,241,0.2); transition: all 0.2s ease;"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
 </ProjectLayout>
