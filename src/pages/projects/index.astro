@@ -1,0 +1,48 @@
+---
+import ProjectLayout from '../../components/ProjectLayout.astro';
+import { projects } from '../../data/projects.js';
+---
+
+<ProjectLayout
+	title="All Projects"
+	description="Complete portfolio of development projects"
+>
+	<div class="projects-listing">
+		<section class="projects-hero">
+			<h1>All Projects</h1>
+			<p>A comprehensive look at my development work</p>
+		</section>
+
+		<section class="projects-grid-section">
+			<div class="container">
+				<div class="projects-grid">
+					{
+						projects.map((project) => (
+							<a
+								href={`/projects/${project.id}`}
+								class="project-card-link"
+							>
+								<div class="project-card">
+									<h3>{project.title}</h3>
+									<p>{project.shortDescription}</p>
+									<div class="tech-pills">
+										{project.tech.map((tech) => (
+											<span class="tech-pill">
+												{tech}
+											</span>
+										))}
+									</div>
+									<span
+										class={`project-badge badge-${project.status.toLowerCase()}`}
+									>
+										{project.status}
+									</span>
+								</div>
+							</a>
+						))
+					}
+				</div>
+			</div>
+		</section>
+	</div>
+</ProjectLayout>

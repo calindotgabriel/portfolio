@@ -1,0 +1,209 @@
+---
+import ProjectLayout from '../../components/ProjectLayout.astro';
+import { projects } from '../../data/projects.js';
+
+const project = projects.find(p => p.id === 'immobile-search');
+---
+
+{project ? (
+  <ProjectLayout title={project.title} description={project.shortDescription}>
+) : (
+  <div class="error-message">Project not found.</div>
+)}
+  <div class="project-detail">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="project-hero-content">
+        <div class="project-breadcrumb">
+          <a href="/">Home</a> / <a href="/projects">Projects</a> / {project.title}
+        </div>
+        
+        <h1 class="project-hero-title">{project.title}</h1>
+        <p class="project-hero-description">{project.shortDescription}</p>
+        
+        <div class="project-hero-meta">
+          <span class={`project-badge badge-${project.status.toLowerCase()}`}>
+            {project.status}
+          </span>
+          <a href={project.github} target="_blank" class="btn-secondary">
+            <span>💻</span> View Code
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-overview">
+      <div class="container">
+        <div class="project-grid">
+          <!-- Main Content -->
+          <div class="project-main">
+            <h2>Project Overview</h2>
+            <p class="project-full-description">{project.fullDescription}</p>
+            
+            <h3>Key Features</h3>
+            <ul class="feature-list">
+              {project.features?.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+
+            <h3>Technical Implementation</h3>
+            <div class="tech-details">
+              <p>Built using modern web technologies with focus on scalability and performance:</p>
+              <ul>
+                <li><strong>Frontend:</strong> React with responsive design</li>
+                <li><strong>Backend:</strong> Node.js with RESTful APIs</li>
+                <li><strong>Database:</strong> PostgreSQL for reliable data storage</li>
+                <li><strong>Infrastructure:</strong> AWS for cloud deployment</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="project-sidebar">
+            <div class="project-info-card">
+              <h3>Technologies Used</h3>
+              <div class="tech-grid">
+                {project.tech.map(tech => (
+                  <span class="tech-pill">{tech}</span>
+                ))}
+              </div>
+            </div>
+
+            <div class="project-info-card">
+              <h3>Key Results</h3>
+              <ul class="results-list">
+                {project.results.map(result => (
+                  <li>• {result}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="project-info-card">
+              <h3>Project Links</h3>
+              <a href={project.github} target="_blank" class="project-link">
+                <span>💻</span> GitHub Repository
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ProjectLayout>
+
+<style>
+.project-detail {
+  min-height: 100vh;
+}
+
+.project-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 0 60px;
+}
+
+.project-hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.project-breadcrumb {
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.project-breadcrumb a {
+  color: white;
+  text-decoration: none;
+}
+
+.project-hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.project-hero-description {
+  font-size: 20px;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.project-hero-meta {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.project-overview {
+  padding: 80px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+}
+
+.project-main h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.project-main h3 {
+  font-size: 24px;
+  margin: 40px 0 20px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  padding: 8px 0;
+  border-left: 3px solid #667eea;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.project-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.project-info-card {
+  background: #f8f9fa;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .project-hero-title {
+    font-size: 32px;
+  }
+}
+</style>
