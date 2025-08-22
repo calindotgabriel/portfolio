@@ -7,91 +7,91 @@ const project = projects.find(p => p.id === 'immobile-search');
 
 {project ? (
   <ProjectLayout title={project.title} description={project.shortDescription}>
-) : (
-  <div class="error-message">Project not found.</div>
-)}
-  <div class="project-detail">
-    <!-- Hero Section -->
-    <section class="project-hero">
-      <div class="project-hero-content">
-        <div class="project-breadcrumb">
-          <a href="/">Home</a> / <a href="/projects">Projects</a> / {project.title}
-        </div>
-        
-        <h1 class="project-hero-title">{project.title}</h1>
-        <p class="project-hero-description">{project.shortDescription}</p>
-        
-        <div class="project-hero-meta">
-          <span class={`project-badge badge-${project.status.toLowerCase()}`}>
-            {project.status}
-          </span>
-          <a href={project.github} target="_blank" class="btn-secondary">
-            <span>💻</span> View Code
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Project Overview -->
-    <section class="project-overview">
-      <div class="container">
-        <div class="project-grid">
-          <!-- Main Content -->
-          <div class="project-main">
-            <h2>Project Overview</h2>
-            <p class="project-full-description">{project.fullDescription}</p>
-            
-            <h3>Key Features</h3>
-            <ul class="feature-list">
-              {project.features?.map(feature => (
-                <li>{feature}</li>
-              ))}
-            </ul>
-
-            <h3>Technical Implementation</h3>
-            <div class="tech-details">
-              <p>Built using modern web technologies with focus on scalability and performance:</p>
-              <ul>
-                <li><strong>Frontend:</strong> React with responsive design</li>
-                <li><strong>Backend:</strong> Node.js with RESTful APIs</li>
-                <li><strong>Database:</strong> PostgreSQL for reliable data storage</li>
-                <li><strong>Infrastructure:</strong> AWS for cloud deployment</li>
-              </ul>
-            </div>
+    <div class="project-detail">
+      <!-- Hero Section -->
+      <section class="project-hero">
+        <div class="project-hero-content">
+          <div class="project-breadcrumb">
+            <a href="/">Home</a> / <a href="/projects">Projects</a> / {project.title}
           </div>
+          
+          <h1 class="project-hero-title">{project.title}</h1>
+          <p class="project-hero-description">{project.shortDescription}</p>
+          
+          <div class="project-hero-meta">
+            <span class={`project-badge badge-${project.status.toLowerCase()}`}>
+              {project.status}
+            </span>
+            <a href={project.github} target="_blank" class="btn-secondary">
+              <span>💻</span> View Code
+            </a>
+          </div>
+        </div>
+      </section>
 
-          <!-- Sidebar -->
-          <div class="project-sidebar">
-            <div class="project-info-card">
-              <h3>Technologies Used</h3>
-              <div class="tech-grid">
-                {project.tech.map(tech => (
-                  <span class="tech-pill">{tech}</span>
+      <!-- Project Overview -->
+      <section class="project-overview">
+        <div class="container">
+          <div class="project-grid">
+            <!-- Main Content -->
+            <div class="project-main">
+              <h2>Project Overview</h2>
+              <p class="project-full-description">{project.fullDescription}</p>
+              
+              <h3>Key Features</h3>
+              <ul class="feature-list">
+                {project.features?.map(feature => (
+                  <li>{feature}</li>
                 ))}
+              </ul>
+
+              <h3>Technical Implementation</h3>
+              <div class="tech-details">
+                <p>Built using modern web technologies with focus on scalability and performance:</p>
+                <ul>
+                  <li><strong>Frontend:</strong> React with responsive design</li>
+                  <li><strong>Backend:</strong> Node.js with RESTful APIs</li>
+                  <li><strong>Database:</strong> PostgreSQL for reliable data storage</li>
+                  <li><strong>Infrastructure:</strong> AWS for cloud deployment</li>
+                </ul>
               </div>
             </div>
 
-            <div class="project-info-card">
-              <h3>Key Results</h3>
-              <ul class="results-list">
-                {project.results.map(result => (
-                  <li>• {result}</li>
-                ))}
-              </ul>
-            </div>
+            <!-- Sidebar -->
+            <div class="project-sidebar">
+              <div class="project-info-card">
+                <h3>Technologies Used</h3>
+                <div class="tech-grid">
+                  {project.tech.map(tech => (
+                    <span class="tech-pill">{tech}</span>
+                  ))}
+                </div>
+              </div>
 
-            <div class="project-info-card">
-              <h3>Project Links</h3>
-              <a href={project.github} target="_blank" class="project-link">
-                <span>💻</span> GitHub Repository
-              </a>
+              <div class="project-info-card">
+                <h3>Key Results</h3>
+                <ul class="results-list">
+                  {project.results.map(result => (
+                    <li>• {result}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="project-info-card">
+                <h3>Project Links</h3>
+                <a href={project.github} target="_blank" class="project-link">
+                  <span>💻</span> GitHub Repository
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-</ProjectLayout>
+      </section>
+    </div>
+  </ProjectLayout>
+) : (
+  <div class="error-message">Project not found.</div>
+)}
 
 <style>
 .project-detail {
