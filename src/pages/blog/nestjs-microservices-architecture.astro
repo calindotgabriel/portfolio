@@ -1,0 +1,421 @@
+---
+import ProjectLayout from "../../components/ProjectLayout.astro";
+
+const postData = {
+  title: "Building Scalable Microservices with NestJS and MongoDB",
+  description: "How we migrated a legacy monolith to NestJS microservices, reducing response times by 70%",
+  publishDate: new Date("2024-08-23"),
+  tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
+  author: "Călin Gabriel"
+};
+---
+
+<ProjectLayout title={postData.title} description={postData.description}>
+  <article class="blog-post">
+    <header class="blog-header">
+      <h1 class="blog-title">
+        {postData.title}
+      </h1>
+      <p class="blog-description">
+        {postData.description}
+      </p>
+      <div class="blog-meta">
+        <time>{postData.publishDate.toLocaleDateString()}</time>
+        <span class="author">by {postData.author}</span>
+      </div>
+      <div class="blog-tags">
+        {
+          postData.tags.map((tag: string) => (
+            <span class="blog-tag">{tag}</span>
+          ))
+        }
+      </div>
+    </header>
+
+    <div class="blog-content">
+      <div class="prose">
+        <h1>Building Scalable Microservices with NestJS and MongoDB</h1>
+        <p>At RWE Energy, we faced a critical challenge: our legacy Java monolith was struggling with 15,000+ daily queries. The system was showing its age, and we needed a modern solution that could handle our growing user base while providing the flexibility to scale individual components independently.</p>
+        
+        <h2>The Challenge</h2>
+        <p>Our legacy system had several pain points that were becoming increasingly problematic:</p>
+        <ul>
+          <li><strong>45+ minute export times</strong> for large datasets, making it impossible for users to get timely reports</li>
+          <li><strong>Memory issues during peak loads</strong>, causing system crashes during critical business hours</li>
+          <li><strong>Difficult to scale individual components</strong>, requiring full system deployments for minor updates</li>
+          <li><strong>Limited testing capabilities</strong>, making it risky to implement new features or bug fixes</li>
+        </ul>
+        
+        <h2>Why We Chose NestJS</h2>
+        <p>I had significant leverage in selecting NestJS for our microservices architecture. After evaluating several frameworks, NestJS emerged as the clear winner for our enterprise needs. Here's why it was the perfect choice:</p>
+        
+        <h3>1. TypeScript-First Architecture</h3>
+        <p>NestJS provides excellent TypeScript support out of the box, which was crucial for our large-scale enterprise application. The strong typing helped us catch errors early in development and significantly improved our development velocity. Coming from a Java background, the team appreciated the familiar object-oriented patterns.</p>
+        
+        <h3>2. Modular Design</h3>
+        <p>The framework's modular architecture aligned perfectly with our microservices goals. Each module could be developed, tested, and deployed independently, allowing different teams to work on separate services without stepping on each other's toes.</p>
+        
+        <h3>3. Built-in Dependency Injection</h3>
+        <p>NestJS's dependency injection system made our code more testable and maintainable, which was crucial for enterprise-grade applications. This feature allowed us to easily mock dependencies during testing and swap implementations as needed.</p>
+        
+        <h2>Implementation Strategy</h2>
+        
+        <h3>Database Migration</h3>
+        <p>We migrated from a traditional relational database to MongoDB for several compelling reasons:</p>
+        <ul>
+          <li><strong>Flexibility</strong>: Schema-less design allowed for rapid iterations without complex database migrations</li>
+          <li><strong>Performance</strong>: Better handling of large datasets and complex queries, especially for our reporting features</li>
+          <li><strong>Scalability</strong>: Horizontal scaling capabilities that would support our future growth plans</li>
+          <li><strong>Developer Experience</strong>: JSON-like documents made it easier for our frontend developers to work with the data</li>
+        </ul>
+        
+        <h3>Microservices Architecture</h3>
+        <p>We broke down the monolith into several focused services, each with a specific responsibility:</p>
+        <ul>
+          <li><strong>User Service</strong>: Authentication, authorization, and user profile management</li>
+          <li><strong>Data Processing Service</strong>: Heavy computational tasks and data transformations</li>
+          <li><strong>Reporting Service</strong>: Report generation, exports, and data visualization</li>
+          <li><strong>API Gateway</strong>: Request routing, rate limiting, and service orchestration</li>
+          <li><strong>Notification Service</strong>: Email, SMS, and in-app notifications</li>
+        </ul>
+        
+        <h2>Results</h2>
+        <p>The migration delivered impressive improvements across all key metrics:</p>
+        
+        <h3>Performance Gains</h3>
+        <ul>
+          <li><strong>65% faster API responses</strong>: Average response time dropped from ~800ms to ~280ms</li>
+          <li><strong>Export time reduction</strong>: Large dataset exports dropped from 45+ minutes to just 12 minutes</li>
+          <li><strong>Improved throughput</strong>: Now handling 15,000+ daily queries with room to scale to 50,000+</li>
+          <li><strong>99.9% uptime</strong>: Eliminated the crashes that plagued our legacy system</li>
+        </ul>
+        
+        <h3>Development Benefits</h3>
+        <ul>
+          <li><strong>Better testing</strong>: Unit test coverage increased from 30% to 85%</li>
+          <li><strong>Faster deployments</strong>: Independent service deployments reduced deployment time by 60%</li>
+          <li><strong>Developer experience</strong>: Hot reloading and better debugging tools improved productivity by 40%</li>
+          <li><strong>Code quality</strong>: TypeScript and NestJS patterns reduced bugs by 50%</li>
+        </ul>
+        
+        <h3>Business Impact</h3>
+        <ul>
+          <li><strong>User satisfaction</strong>: Customer complaints about slow reports dropped by 80%</li>
+          <li><strong>Team velocity</strong>: Feature delivery speed increased by 45%</li>
+          <li><strong>Operational costs</strong>: Reduced server costs by 30% through better resource utilization</li>
+        </ul>
+        
+        <h2>Key Learnings</h2>
+        
+        <h3>1. Gradual Migration is Key</h3>
+        <p>We didn't migrate everything at once. Starting with the most performance-critical components allowed us to prove the concept and gain stakeholder buy-in. This approach also minimized risk and allowed us to learn from each service migration.</p>
+        
+        <h3>2. Monitoring is Essential</h3>
+        <p>Implementing comprehensive monitoring from day one helped us identify bottlenecks and optimize performance continuously. We used tools like Prometheus, Grafana, and custom dashboards to track everything from response times to business metrics.</p>
+        
+        <h3>3. Team Training Matters</h3>
+        <p>Investing time in training the development team on NestJS patterns and microservices best practices paid dividends in code quality and maintainability. We conducted workshops, code reviews, and pair programming sessions to ensure everyone was aligned.</p>
+        
+        <h3>4. API Design First</h3>
+        <p>Designing APIs before implementation helped us create consistent interfaces across services. This approach made integration easier and reduced the need for breaking changes later.</p>
+        
+        <h2>Technical Deep Dive</h2>
+        
+        <h3>Service Communication</h3>
+        <p>We implemented a hybrid communication pattern:</p>
+        <ul>
+          <li><strong>Synchronous</strong>: REST APIs for user-facing operations</li>
+          <li><strong>Asynchronous</strong>: Message queues (Redis) for background processing</li>
+          <li><strong>Event-driven</strong>: Domain events for loosely coupled services</li>
+        </ul>
+        
+        <h3>Data Consistency</h3>
+        <p>Moving from ACID transactions to eventual consistency required careful planning. We implemented the Saga pattern for complex business transactions and used event sourcing for critical audit trails.</p>
+        
+        <h3>Error Handling</h3>
+        <p>NestJS's built-in exception handling made it easy to create consistent error responses across all services. We implemented global exception filters and custom error classes for better debugging.</p>
+        
+        <h2>Challenges and Solutions</h2>
+        
+        <h3>Service Discovery</h3>
+        <p><strong>Challenge</strong>: Services needed to find and communicate with each other dynamically.</p>
+        <p><strong>Solution</strong>: Implemented service registry with health checks and load balancing.</p>
+        
+        <h3>Data Synchronization</h3>
+        <p><strong>Challenge</strong>: Keeping data consistent across multiple services and databases.</p>
+        <p><strong>Solution</strong>: Event-driven architecture with compensating transactions for rollbacks.</p>
+        
+        <h3>Testing Complexity</h3>
+        <p><strong>Challenge</strong>: Testing interactions between multiple services became complex.</p>
+        <p><strong>Solution</strong>: Contract testing with Pact and comprehensive integration test suites.</p>
+        
+        <h2>Conclusion</h2>
+        <p>The migration to NestJS and MongoDB transformed our application's performance and our team's development experience. The framework's enterprise-ready features, combined with MongoDB's flexibility, provided the foundation for a scalable, maintainable system.</p>
+        
+        <p>The results speak for themselves: <strong>65% faster APIs</strong>, <strong>73% reduction in export times</strong>, and <strong>99.9% uptime</strong>. But beyond the metrics, we gained something invaluable: a system that can evolve with our business needs.</p>
+        
+        <p>If you're considering a similar migration, I'd recommend starting with a pilot service to validate the approach in your specific context. The investment in modern architecture pays off quickly in improved performance and developer productivity.</p>
+        
+        <p><strong>Want to discuss your own microservices migration?</strong> I help European companies modernize their systems and achieve similar results. Let's talk about how NestJS could transform your application.</p>
+      </div>
+    </div>
+  </article>
+</ProjectLayout>
+
+<style>
+  /* Blog Post Styles */
+  .blog-post {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 64px;
+  }
+
+  .blog-header {
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 20px;
+    padding: 64px 40px 48px 40px;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .blog-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: white;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    line-height: 1.1;
+  }
+
+  .blog-description {
+    font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 1.5rem 0;
+    max-width: none;
+    line-height: 1.4;
+  }
+
+  .blog-meta {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .author {
+    margin-left: 1rem;
+  }
+
+  .blog-tags {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-tag {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .blog-content {
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-xl);
+    padding: 4rem 3rem;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    border: 1px solid rgba(99, 102, 241, 0.08);
+  }
+
+  /* Blog Content Typography */
+  .prose h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .prose h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 3rem 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid var(--primary);
+    position: relative;
+  }
+
+  .prose h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+  }
+
+  .prose h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin: 2.5rem 0 1.25rem 0;
+    position: relative;
+  }
+
+  .prose h3::before {
+    content: '▶';
+    color: var(--primary);
+    font-size: 0.8em;
+    margin-right: 0.5rem;
+  }
+
+  .prose p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--gray);
+    margin: 0 0 1.75rem 0;
+    max-width: none;
+  }
+
+  .prose ul {
+    margin: 2rem 0;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .prose li {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin: 1rem 0;
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .prose li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  .prose strong {
+    font-weight: 700;
+    color: var(--dark);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .prose code {
+    background: var(--light-gray);
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 600;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .blog-post {
+      padding: 0 16px 48px;
+    }
+
+    .blog-header {
+      padding: 48px 24px 32px 24px;
+      margin-bottom: 2rem;
+    }
+
+    .blog-title {
+      font-size: 2.25rem;
+    }
+
+    .blog-description {
+      font-size: 1.125rem;
+    }
+
+    .blog-content {
+      padding: 2.5rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .prose h1 {
+      font-size: 2rem;
+    }
+
+    .prose h2 {
+      font-size: 1.75rem;
+    }
+
+    .prose h3 {
+      font-size: 1.35rem;
+    }
+
+    .prose p,
+    .prose li {
+      font-size: 1rem;
+    }
+
+    .author {
+      display: block;
+      margin-left: 0;
+      margin-top: 0.25rem;
+    }
+
+    .blog-tags {
+      gap: 0.5rem;
+    }
+
+    .blog-tag {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+
+  /* Smooth animations */
+  .blog-header,
+  .blog-content {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .blog-content {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

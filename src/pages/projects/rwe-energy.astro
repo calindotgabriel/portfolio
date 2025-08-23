@@ -27,18 +27,55 @@ const project = {
 ---
 
 <ProjectLayout title={project.title} description={project.shortDescription}>
-  <div class="project-detail" style="padding: 48px 0 64px; background: #f8fafc;">
+  <div
+    class="project-detail"
+    style="padding: 48px 0 64px; background: #f8fafc;"
+  >
     <!-- Hero Section -->
-    <section class="project-hero" style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 80px 0 60px; margin-bottom: 2.5rem;">
-      <div class="project-hero-content" style="max-width: 800px; margin: 0 auto; padding: 0 24px;">
-        <div class="project-breadcrumb" style="font-size: 14px; margin-bottom: 20px; opacity: 0.9;">
-          <a href="/" style="color: white; text-decoration: none;">Home</a> / <a href="/projects" style="color: white; text-decoration: none;">Projects</a> / {project.title}
+    <section
+      class="project-hero"
+      style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 80px 0 60px; margin-bottom: 2.5rem;"
+    >
+      <div
+        class="project-hero-content"
+        style="max-width: 800px; margin: 0 auto; padding: 0 24px;"
+      >
+        <div
+          class="project-breadcrumb"
+          style="font-size: 14px; margin-bottom: 20px; opacity: 0.9;"
+        >
+          <a href="/" style="color: white; text-decoration: none;">Home</a> / <a
+            href="/projects"
+            style="color: white; text-decoration: none;">Projects</a
+          > / {project.title}
         </div>
-        <h1 class="project-hero-title" style="font-size: 48px; font-weight: 800; margin-bottom: 20px;">{project.title}</h1>
-        <p class="project-hero-description" style="font-size: 20px; margin-bottom: 30px; opacity: 0.9;">{project.shortDescription}</p>
-        <div class="project-hero-meta" style="display: flex; gap: 20px; align-items: center;">
-          <span class={`project-badge badge-${project.status.toLowerCase()}`} style="padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: white; background: var(--primary);">{project.status}</span>
-          <a href={project.github} target="_blank" class="btn-secondary cta-button" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">
+        <h1
+          class="project-hero-title"
+          style="font-size: 48px; font-weight: 800; margin-bottom: 20px;"
+        >
+          {project.title}
+        </h1>
+        <p
+          class="project-hero-description"
+          style="font-size: 20px; margin-bottom: 30px; opacity: 0.9;"
+        >
+          {project.shortDescription}
+        </p>
+        <div
+          class="project-hero-meta"
+          style="display: flex; gap: 20px; align-items: center;"
+        >
+          <span
+            class={`project-badge badge-${project.status.toLowerCase()}`}
+            style="padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: white; background: var(--primary);"
+            >{project.status}</span
+          >
+          <a
+            href={project.github}
+            target="_blank"
+            class="btn-secondary cta-button"
+            style="background: transparent; border: 2px solid var(--primary); color: var(--primary);"
+          >
             <span>💻</span> View Code
           </a>
         </div>
@@ -47,45 +84,119 @@ const project = {
 
     <!-- Project Overview -->
     <section class="project-overview">
-      <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 24px;">
-        <div class="project-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;">
+      <div
+        class="container"
+        style="max-width: 1100px; margin: 0 auto; padding: 0 24px;"
+      >
+        <div
+          class="project-grid"
+          style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;"
+        >
           <!-- Main Content -->
           <div class="project-main">
-            <h2 style="font-size: 32px; margin-bottom: 20px;">Project Overview</h2>
-            <p class="project-full-description" style="font-size: 1.15rem; color: var(--gray); margin-bottom: 2rem;">{project.fullDescription}</p>
+            <h2 style="font-size: 32px; margin-bottom: 20px;">
+              Project Overview
+            </h2>
+            <p
+              class="project-full-description"
+              style="font-size: 1.15rem; color: var(--gray); margin-bottom: 2rem;"
+            >
+              {project.fullDescription}
+            </p>
             <h3 style="font-size: 24px; margin: 40px 0 20px;">Key Features</h3>
             <ul class="feature-list" style="list-style: none; padding: 0;">
-              {project.features.map((feature) => <li style="padding: 8px 0; border-left: 3px solid #667eea; padding-left: 20px; margin-bottom: 10px;">{feature}</li>)}
+              {
+                project.features.map((feature) => (
+                  <li style="padding: 8px 0; border-left: 3px solid #667eea; padding-left: 20px; margin-bottom: 10px;">
+                    {feature}
+                  </li>
+                ))
+              }
             </ul>
-            <h3 style="font-size: 24px; margin: 40px 0 20px;">Technical Implementation</h3>
+            <h3 style="font-size: 24px; margin: 40px 0 20px;">
+              Technical Implementation
+            </h3>
             <div class="tech-details">
-              <p>Built using modern web technologies with focus on scalability and performance:</p>
+              <p>
+                Built using modern web technologies with focus on scalability
+                and performance:
+              </p>
               <ul>
                 <li><strong>Backend:</strong> Node.js, NestJS microservices</li>
-                <li><strong>Database:</strong> MongoDB for flexible data storage</li>
-                <li><strong>Infrastructure:</strong> Docker, cloud deployment</li>
+                <li>
+                  <strong>Database:</strong> MongoDB for flexible data storage
+                </li>
+                <li>
+                  <strong>Infrastructure:</strong> Docker, cloud deployment
+                </li>
               </ul>
             </div>
           </div>
           <!-- Sidebar -->
-          <div class="project-sidebar" style="display: flex; flex-direction: column; gap: 30px;">
-            <div class="project-info-card" style="background: #f8f9fa; padding: 30px; border-radius: 12px;">
-              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Technologies Used</h3>
-              <div class="tech-grid" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                {project.tech.map((tech) => (
-                  <span class="tech-pill" style="padding: 0.5rem 1.25rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 500; font-size: 0.875rem; border: 1px solid rgba(99,102,241,0.2); transition: all 0.2s ease;">{tech}</span>
-                ))}
+          <div
+            class="project-sidebar"
+            style="display: flex; flex-direction: column; gap: 30px;"
+          >
+            <div
+              class="project-info-card"
+              style="background: #f8f9fa; padding: 30px; border-radius: 12px;"
+            >
+              <h3
+                style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;"
+              >
+                Technologies Used
+              </h3>
+              <div
+                class="tech-grid"
+                style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;"
+              >
+                {
+                  project.tech.map((tech) => (
+                    <span
+                      class="tech-pill"
+                      style="padding: 0.5rem 1.25rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 500; font-size: 0.875rem; border: 1px solid rgba(99,102,241,0.2); transition: all 0.2s ease;"
+                    >
+                      {tech}
+                    </span>
+                  ))
+                }
               </div>
             </div>
-            <div class="project-info-card" style="background: #f8f9fa; padding: 30px; border-radius: 12px;">
-              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Key Results</h3>
-              <ul class="results-list" style="list-style: none; padding: 0; font-size: 0.95rem; color: var(--gray);">
-                {project.results.map((result) => <li style="margin-bottom: 0.25rem;">• {result}</li>)}
+            <div
+              class="project-info-card"
+              style="background: #f8f9fa; padding: 30px; border-radius: 12px;"
+            >
+              <h3
+                style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;"
+              >
+                Key Results
+              </h3>
+              <ul
+                class="results-list"
+                style="list-style: none; padding: 0; font-size: 0.95rem; color: var(--gray);"
+              >
+                {
+                  project.results.map((result) => (
+                    <li style="margin-bottom: 0.25rem;">• {result}</li>
+                  ))
+                }
               </ul>
             </div>
-            <div class="project-info-card" style="background: #f8f9fa; padding: 30px; border-radius: 12px;">
-              <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Project Links</h3>
-              <a href={project.github} target="_blank" class="project-link" style="color: var(--primary); text-decoration: none; font-weight: 600;">
+            <div
+              class="project-info-card"
+              style="background: #f8f9fa; padding: 30px; border-radius: 12px;"
+            >
+              <h3
+                style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;"
+              >
+                Project Links
+              </h3>
+              <a
+                href={project.github}
+                target="_blank"
+                class="project-link"
+                style="color: var(--primary); text-decoration: none; font-weight: 600;"
+              >
                 <span>💻</span> GitHub Repository
               </a>
             </div>

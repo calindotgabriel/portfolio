@@ -1,0 +1,147 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+// Get blog posts from content collection
+const blogPosts = await getCollection("blog");
+
+// Manual entry for the direct .astro file
+const astroPosts = [
+  {
+    slug: "nestjs-microservices-architecture",
+    data: {
+      title: "Building Scalable Microservices with NestJS and MongoDB",
+      description: "How we migrated a legacy monolith to NestJS microservices, reducing response times by 70%",
+      publishDate: new Date("2024-08-23"),
+      tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
+      author: "Călin Gabriel"
+    }
+  }
+];
+
+// Combine all posts
+const allPosts = [...blogPosts, ...astroPosts];
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+---
+
+<Layout title="Technical Blog - Călin Gabriel">
+  <main>
+    <section
+      class="blog-hero"
+      style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 64px 0 48px; margin-bottom: 2.5rem; text-align: center;"
+    >
+      <h1
+        style="font-size: 3rem; font-weight: 800; margin-bottom: 1rem; letter-spacing: -0.02em;"
+      >
+        Technical Blog
+      </h1>
+      <p
+        style="font-size: 1.25rem; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto;"
+      >
+        Insights from building scalable systems for European enterprises
+      </p>
+    </section>
+
+    <section
+      class="blog-posts"
+      style="max-width: 900px; margin: 0 auto; padding: 0 24px;"
+    >
+      <div
+        class="blog-grid"
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem;"
+      >
+        {
+          sortedPosts.map((post) => (
+            <a
+              href={`/blog/${post.slug}`}
+              style="text-decoration: none; color: inherit;"
+            >
+              <article
+                class="blog-card animate-fade-in"
+                style="background: var(--gradient-card); border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid rgba(99,102,241,0.08); padding: 2.5rem 2rem; min-height: 180px; display: flex; flex-direction: column; gap: 1.25rem; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);"
+              >
+                <h2 style="font-size: 1.35rem; font-weight: 700; margin: 0 0 0.5rem 0;">
+                  {post.data.title}
+                </h2>
+                <p style="font-size: 1.05rem; color: var(--gray); margin-bottom: 0.5rem;">
+                  {post.data.description}
+                </p>
+                <div
+                  class="meta"
+                  style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: auto; font-size: 0.95rem; color: var(--gray);"
+                >
+                  <time>{post.data.publishDate.toLocaleDateString()}</time>
+                  <div
+                    class="tags"
+                    style="display: flex; flex-wrap: wrap; gap: 0.5rem;"
+                  >
+                    {post.data.tags.map((tag: string) => (
+                      <span
+                        class="tag"
+                        style="background: rgba(99,102,241,0.1); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.85rem; font-weight: 500;"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .blog-hero {
+    text-align: center;
+    padding: 4rem 0;
+  }
+
+  .blog-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-card h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #718096;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: #e2e8f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+</style>
