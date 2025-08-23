@@ -1,0 +1,75 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Senior Full Stack Developer specializat în React, Node.js, MongoDB",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+        <a href="/cv.pdf" target="_blank">CV</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <slot />
+
+    <footer>
+      <p>&copy; 2024 Călin Gabriel. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  html {
+    font-family: system-ui, sans-serif;
+  }
+
+  header {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #2d3748;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: #3182ce;
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    color: #718096;
+  }
+</style>

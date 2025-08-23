@@ -1,5 +1,12 @@
 ---
 import "../styles/global.css";
+
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 3); // Ultimele 3 articole
 ---
 
 <!doctype html>
@@ -216,6 +223,86 @@ import "../styles/global.css";
         </div>
       </div>
     </section>
+
+    <!-- BLOG SECTION -->
+    <section id="blog" class="blog-preview-section" style="margin: 48px 0;">
+      <div
+        class="container"
+        style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;"
+      >
+        <h2 style="text-align: center; margin-bottom: 24px;">
+          Latest Technical Insights
+        </h2>
+        <p style="text-align: center; margin-bottom: 32px; color: #718096;">
+          Deep dives into modern web development, microservices, and system
+          architecture
+        </p>
+
+        <div
+          class="blog-preview-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;"
+        >
+          <!-- PREVIEW CARDS - sau fetch din content collections -->
+          <article
+            class="blog-card"
+            style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem;"
+          >
+            <h3 style="margin-bottom: 0.5rem;">
+              <a
+                href="/blog/nestjs-microservices-architecture"
+                style="text-decoration: none; color: #2d3748;"
+              >
+                Building Scalable Microservices with NestJS
+              </a>
+            </h3>
+            <p style="color: #718096; margin-bottom: 1rem;">
+              How we migrated a legacy monolith to NestJS microservices,
+              reducing response times by 70%
+            </p>
+            <div style="display: flex; gap: 0.5rem;">
+              <span
+                class="tag"
+                style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;"
+                >NestJS</span
+              >
+              <span
+                class="tag"
+                style="background: #e2e8f0; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem;"
+                >MongoDB</span
+              >
+            </div>
+          </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a
+            href="/blog"
+            class="cta-button"
+            style="display: inline-block; padding: 12px 24px; background: #3182ce; color: white; text-decoration: none; border-radius: 6px;"
+          >
+            View All Articles →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="blog-preview-grid">
+      {
+        latestPosts.map((post) => (
+          <article class="blog-card">
+            <h3>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h3>
+            <p>{post.data.description}</p>
+            <div class="tags">
+              {post.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
 
     <!-- FOOTER CONTACT -->
     <footer class="footer-section">
