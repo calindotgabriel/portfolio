@@ -3,11 +3,10 @@ import ProjectLayout from "../../components/ProjectLayout.astro";
 
 const postData = {
   title: "Building Scalable Microservices with NestJS and MongoDB",
-  description:
-    "How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
+  description: "How we migrated a legacy monolith to NestJS microservices, reducing response times by 70%",
   publishDate: new Date("2024-08-23"),
   tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
-  author: "Călin Gabriel",
+  author: "Călin Gabriel"
 };
 ---
 
@@ -36,61 +35,43 @@ const postData = {
     <div class="blog-content">
       <div class="prose">
         <h2>Business Challenge</h2>
-        <p>
-          <strong>At RWE Energy</strong>, our legacy Java monolith was
-          struggling with 5,000+ daily queries. Critical issues included:
-        </p>
+        <p><strong>At RWE Energy</strong>, our legacy Java monolith was struggling with 15,000+ daily queries. Critical issues included:</p>
         <ul>
-          <li>
-            <strong>45+ minute export times</strong> - users waiting too long for
-            large exports
-          </li>
-          <li>
-            <strong>Memory crashes during peak loads</strong> - system unavailable
-            during critical hours
-          </li>
-          <li>
-            <strong>Monolithic deployment</strong> - minor updates required full
-            system redeployment
-          </li>
+          <li><strong>45+ minute export times</strong> - unacceptable for business operations</li>
+          <li><strong>Memory crashes during peak loads</strong> - system unavailable during critical hours</li>
+          <li><strong>Monolithic deployment</strong> - minor updates required full system redeployment</li>
         </ul>
 
         <h2>Technical Solution: NestJS Microservices</h2>
-        <p>
-          <strong>Why NestJS:</strong> Enterprise-grade TypeScript framework with
-          built-in dependency injection, decorators, and excellent MongoDB integration.
-        </p>
+        <p><strong>Why NestJS:</strong> Enterprise-grade TypeScript framework with built-in dependency injection, decorators, and excellent MongoDB integration.</p>
 
         <h3>Architecture Overview</h3>
         <ul>
-          <li>
-            <strong>API Gateway</strong> - Request routing and authentication (JWT)
-          </li>
-          <li>
-            <strong>User Service</strong> - Authentication, profiles, permissions
-          </li>
-          <li>
-            <strong>Data Processing Service</strong> - Heavy computations and exports
-          </li>
-          <li>
-            <strong>Notification Service</strong> - Email, SMS, push notifications
-          </li>
+          <li><strong>API Gateway</strong> - Request routing and authentication (JWT)</li>
+          <li><strong>User Service</strong> - Authentication, profiles, permissions</li>
+          <li><strong>Data Processing Service</strong> - Heavy computations and exports</li>
+          <li><strong>Notification Service</strong> - Email, SMS, push notifications</li>
         </ul>
 
         <h3>Key Technical Implementation</h3>
-        <p>
-          <strong>MongoDB Integration:</strong> Connection pooling with 10 concurrent
-          connections, optimized for high-performance queries with proper indexing
-          strategies.
-        </p>
-        <p>
-          <strong>Caching Strategy:</strong> 10-minute cache on frequently accessed
-          reports, reducing database load by 60% during peak hours.
-        </p>
-        <p>
-          <strong>Microservices Pattern:</strong> Each service independently deployable
-          with Docker containers, enabling zero-downtime updates.
-        </p>
+        <pre><code>// MongoDB connection with connection pooling
+@Module({
+  imports: [
+    MongooseModule.forRoot(process.env.MONGODB_URI, {
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+    }),
+  ],
+})
+
+// Service with caching
+@Injectable()
+export class DataService {
+  @Cacheable(600) // 10 minutes cache
+  async getReports(): Promise&lt;Report[]&gt; {
+    return this.reportModel.find().lean();
+  }
+}</code></pre>
 
         <h2>Business Results</h2>
         <div class="results-grid">
@@ -109,42 +90,27 @@ const postData = {
         </div>
 
         <h3>Azure Deployment</h3>
-        <p>
-          <strong>Production Setup:</strong> Azure Container Instances with Application
-          Gateway for load balancing. MongoDB Atlas for managed database with automatic
-          failover.
-        </p>
-        <p>
-          <strong>Docker Strategy:</strong> Lightweight Alpine Linux containers with
-          Node.js 18, optimized build process with production-only dependencies for
-          faster startup times.
-        </p>
+        <p><strong>Production Setup:</strong> Azure Container Instances with Application Gateway for load balancing. MongoDB Atlas for managed database with automatic failover.</p>
+
+        <pre><code>// Docker deployment
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY dist ./dist
+EXPOSE 3000
+CMD ["node", "dist/main"]</code></pre>
 
         <h2>Key Takeaways</h2>
         <ul>
-          <li>
-            <strong>Microservices aren't always the answer</strong> - evaluate complexity
-            vs. benefits
-          </li>
-          <li>
-            <strong>Database design matters</strong> - proper indexing reduced query
-            times by 60%
-          </li>
-          <li>
-            <strong>Monitoring is crucial</strong> - implemented comprehensive logging
-            with Azure Application Insights
-          </li>
-          <li>
-            <strong>Team adoption</strong> - TypeScript made transition smoother
-            for Java developers
-          </li>
+          <li><strong>Microservices aren't always the answer</strong> - evaluate complexity vs. benefits</li>
+          <li><strong>Database design matters</strong> - proper indexing reduced query times by 60%</li>
+          <li><strong>Monitoring is crucial</strong> - implemented comprehensive logging with Azure Application Insights</li>
+          <li><strong>Team adoption</strong> - TypeScript made transition smoother for Java developers</li>
         </ul>
 
         <div class="cta-section">
-          <p>
-            <strong>Need help with a similar migration?</strong> I specialize in
-            modernizing legacy systems with proven results. Let's discuss your project.
-          </p>
+          <p><strong>Need help with a similar migration?</strong> I specialize in modernizing legacy systems with proven results. Let's discuss your project.</p>
         </div>
       </div>
     </div>
@@ -236,7 +202,7 @@ const postData = {
   }
 
   .prose h2:after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: -8px;
     left: 0;
@@ -286,7 +252,7 @@ const postData = {
 
   .prose code {
     color: var(--code-text);
-    font-family: "Fira Code", "Menlo", "Monaco", monospace;
+    font-family: 'Fira Code', 'Menlo', 'Monaco', monospace;
   }
 
   .results-grid {

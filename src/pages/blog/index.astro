@@ -1,27 +1,35 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
-// Get blog posts from content collection
-const blogPosts = await getCollection("blog");
-
-// Manual entry for the direct .astro file
+// Direct .astro blog posts
 const astroPosts = [
   {
     slug: "nestjs-microservices-architecture",
     data: {
       title: "Building Scalable Microservices with NestJS and MongoDB",
-      description: "How we migrated a legacy monolith to NestJS microservices, reducing response times by 70%",
+      description:
+        "How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
       publishDate: new Date("2024-08-23"),
       tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
-      author: "Călin Gabriel"
-    }
-  }
+      author: "Călin Gabriel",
+    },
+  },
+  {
+    slug: "immobile-search-platform",
+    data: {
+      title:
+        "Building a Scalable Real Estate Search Platform with React and Hapi Microservices",
+      description:
+        "How we built a multi-tenant property search engine with geolocation filtering for a real estate startup - handling complex user roles and map-based searches",
+      publishDate: new Date("2024-07-15"),
+      tags: ["React", "Hapi", "AWS", "MongoDB", "Microservices"],
+      author: "Călin Gabriel",
+    },
+  },
 ];
 
-// Combine all posts
-const allPosts = [...blogPosts, ...astroPosts];
-const sortedPosts = allPosts.sort(
+// Sort posts by date (newest first)
+const sortedPosts = astroPosts.sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
 );
 ---
