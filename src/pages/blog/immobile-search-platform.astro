@@ -2,7 +2,8 @@
 import ProjectLayout from "../../components/ProjectLayout.astro";
 
 const postData = {
-  title: "Building a Scalable Real Estate Search Platform with React and Hapi Microservices",
+  title:
+    "Building a Scalable Real Estate Search Platform with React and Hapi Microservices",
   description:
     "How we built a multi-tenant property search engine with geolocation filtering for a real estate startup - handling complex user roles and map-based searches",
   publishDate: new Date("2024-07-15"),
@@ -61,7 +62,8 @@ const postData = {
 
         <h2>Technical Solution: React + Hapi Microservices</h2>
         <p>
-          <strong>Modern Stack Choice:</strong> React for dynamic UI, Hapi.js microservices for API, MongoDB for flexible data storage, AWS Lambda for scalable processing.
+          <strong>Modern Stack Choice:</strong> React for dynamic UI, Hapi.js microservices
+          for API, MongoDB for flexible data storage, AWS Lambda for scalable processing.
         </p>
 
         <h3>Architecture Overview</h3>
@@ -74,73 +76,93 @@ const postData = {
             <strong>Backend</strong> - Hapi.js microservices with dedicated SSO authentication
           </li>
           <li>
-            <strong>Database</strong> - MongoDB with geospatial indexing for location queries
+            <strong>Database</strong> - MongoDB with geospatial indexing for location
+            queries
           </li>
           <li>
-            <strong>Infrastructure</strong> - AWS Lambda workers, SQS queues, S3 for file storage
+            <strong>Infrastructure</strong> - AWS Lambda workers, SQS queues, S3
+            for file storage
           </li>
           <li>
             <strong>Integrations</strong> - Salesforce CRM integration via microservices
           </li>
         </ul>
-          </li>
-        </ul>
-
-        <h3>Key Technical Implementation</h3>
-        <p><strong>Dedicated SSO Microservice:</strong> Centralized authentication service built with Hapi.js, handling JWT tokens and multi-role authorization for agents, buyers, and landlords.</p>
-        <p><strong>MongoDB Geospatial Search:</strong> 2dsphere indexes for radius-based property queries, calculating distances and ordering by proximity with sub-second response times.</p>
-        <p><strong>Salesforce Integration:</strong> Dedicated microservices with SQS queues and Lambda workers for syncing leads, contacts, and property data between platforms.</p>
-        <p><strong>Scalable Queue Architecture:</strong> AWS SQS for reliable message processing and Lambda functions for background data synchronization tasks.</p>
-
-        <h2>Business Results</h2>
-        <div class="results-grid">
-          <div class="metric">
-            <span class="number">20%</span>
-            <span class="label">Higher User Engagement</span>
-          </div>
-          <div class="metric">
-            <span class="number">3x</span>
-            <span class="label">Faster Property Search</span>
-          </div>
-          <div class="metric">
-            <span class="number">50k+</span>
-            <span class="label">Properties Indexed</span>
-          </div>
-        </div>
-
-        <h3>AWS Infrastructure</h3>
-        <p>
-          <strong>Production Setup:</strong> Lambda functions for microservices, SQS queues for message processing, MongoDB Atlas for managed database, S3 for property images with CloudFront CDN.
-        </p>
-        <p><strong>Serverless Architecture:</strong> Hapi.js microservices deployed as Lambda functions with API Gateway routing and automatic scaling based on demand.</p>
-
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>
-            <strong>MongoDB geospatial indexes are powerful</strong> - 2dsphere indexes
-            dramatically improved location-based search performance
-          </li>
-          <li>
-            <strong>Dedicated SSO microservice</strong> - centralized authentication
-            simplified multi-tenant user management
-          </li>
-          <li>
-            <strong>Lambda + SQS architecture</strong> - serverless processing with queues
-            provided excellent scalability for Salesforce sync
-          </li>
-          <li>
-            <strong>Hapi.js for microservices</strong> - excellent plugin ecosystem and
-            built-in validation made development faster
-          </li>
-        </ul>
-
-        <div class="cta-section">
-          <p>
-            <strong>Building a real estate or location-based platform?</strong> I
-            have deep experience with MongoDB geospatial queries, Hapi.js microservices, SSO architecture, and Salesforce integrations. Let's discuss your project.
-          </p>
-        </div>
       </div>
+    </div>
+
+    <h3>Key Technical Implementation</h3>
+    <p>
+      <strong>Dedicated SSO Microservice:</strong> Centralized authentication service
+      built with Hapi.js, handling JWT tokens and multi-role authorization for agents,
+      buyers, and landlords.
+    </p>
+    <p>
+      <strong>MongoDB Geospatial Search:</strong> 2dsphere indexes for radius-based
+      property queries, calculating distances and ordering by proximity with sub-second
+      response times.
+    </p>
+    <p>
+      <strong>Salesforce Integration:</strong> Dedicated microservices with SQS queues
+      and Lambda workers for syncing leads, contacts, and property data between platforms.
+    </p>
+    <p>
+      <strong>Scalable Queue Architecture:</strong> AWS SQS for reliable message
+      processing and Lambda functions for background data synchronization tasks.
+    </p>
+
+    <h2>Business Results</h2>
+    <div class="results-grid">
+      <div class="metric">
+        <span class="number">20%</span>
+        <span class="label">Higher User Engagement</span>
+      </div>
+      <div class="metric">
+        <span class="number">3x</span>
+        <span class="label">Faster Property Search</span>
+      </div>
+      <div class="metric">
+        <span class="number">50k+</span>
+        <span class="label">Properties Indexed</span>
+      </div>
+    </div>
+
+    <h3>AWS Infrastructure</h3>
+    <p>
+      <strong>Production Setup:</strong> Lambda functions for microservices, SQS
+      queues for message processing, MongoDB Atlas for managed database, S3 for property
+      images with CloudFront CDN.
+    </p>
+    <p>
+      <strong>Serverless Architecture:</strong> Hapi.js microservices deployed as
+      Lambda functions with API Gateway routing and automatic scaling based on demand.
+    </p>
+
+    <h2>Key Takeaways</h2>
+    <ul>
+      <li>
+        <strong>MongoDB geospatial indexes are powerful</strong> - 2dsphere indexes
+        dramatically improved location-based search performance
+      </li>
+      <li>
+        <strong>Dedicated SSO microservice</strong> - centralized authentication
+        simplified multi-tenant user management
+      </li>
+      <li>
+        <strong>Lambda + SQS architecture</strong> - serverless processing with queues
+        provided excellent scalability for Salesforce sync
+      </li>
+      <li>
+        <strong>Hapi.js for microservices</strong> - excellent plugin ecosystem and
+        built-in validation made development faster
+      </li>
+    </ul>
+
+    <div class="cta-section">
+      <p>
+        <strong>Building a real estate or location-based platform?</strong> I have
+        deep experience with MongoDB geospatial queries, Hapi.js microservices, SSO
+        architecture, and Salesforce integrations. Let's discuss your project.
+      </p>
     </div>
   </article>
 </ProjectLayout>
@@ -375,623 +397,6 @@ const postData = {
 
     .metric .number {
       font-size: 1.75rem;
-    }
-
-    .author {
-      display: block;
-      margin-left: 0;
-      margin-top: 0.25rem;
-    }
-
-    .blog-tags {
-      gap: 0.5rem;
-    }
-
-    .blog-tag {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.8rem;
-    }
-  }
-
-  /* Smooth animations */
-  .blog-header,
-  .blog-content {
-    animation: fadeInUp 0.6s ease forwards;
-  }
-
-  .blog-content {
-    animation-delay: 0.2s;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-<ul>
-  <li>
-    <strong>RESTful API design</strong>: Clean, predictable endpoints for all
-    operations
-  </li>
-  <li>
-    <strong>JWT authentication</strong>: Secure, stateless authentication with
-    role-based access
-  </li>
-  <li>
-    <strong>Database optimization</strong>: Efficient PostgreSQL queries with
-    proper indexing
-  </li>
-  <li>
-    <strong>Caching layer</strong>: Redis for frequently accessed data and
-    search results
-  </li>
-</ul>
-
-<h3>Infrastructure: AWS for Scalability</h3>
-<p>We leveraged AWS services for a robust, scalable infrastructure:</p>
-<ul>
-  <li>
-    <strong>EC2 instances</strong>: Auto-scaling groups for handling traffic
-    spikes
-  </li>
-  <li>
-    <strong>RDS PostgreSQL</strong>: Managed database with automated backups and
-    scaling
-  </li>
-  <li>
-    <strong>S3 + CloudFront</strong>: Fast, globally distributed image and asset
-    delivery
-  </li>
-  <li>
-    <strong>Application Load Balancer</strong>: High availability and traffic
-    distribution
-  </li>
-</ul>
-
-<h2>Key Features Implementation</h2>
-
-<h3>Advanced Geolocation Search</h3>
-<p>
-  The geolocation feature was central to our platform's success. Here's how we
-  implemented it:
-</p>
-
-<p>
-  <strong>Interactive Map Integration</strong>: We integrated Mapbox for
-  beautiful, fast maps that users could interact with directly. Users could draw
-  search areas, adjust radius filters, and see properties plotted in real-time.
-</p>
-
-<p>
-  <strong>Smart Location Detection</strong>: The platform automatically detects
-  user location while respecting privacy preferences. Users can search by
-  address, neighborhood, or just click on the map.
-</p>
-
-<p>
-  <strong>Radius-based Filtering</strong>: Advanced PostgreSQL queries using
-  PostGIS extensions allowed us to perform efficient radius searches on millions
-  of property records.
-</p>
-
-<h3>Multi-tenant Authentication System</h3>
-<p>Our authentication system needed to handle three distinct user types:</p>
-
-<p>
-  <strong>Real Estate Agents</strong>: Full property management capabilities,
-  client management, and advanced analytics dashboards.
-</p>
-
-<p>
-  <strong>Property Buyers</strong>: Saved searches, favorites lists, viewing
-  history, and personalized recommendations.
-</p>
-
-<p>
-  <strong>Landlords</strong>: Property listing management, tenant screening
-  tools, and rental analytics.
-</p>
-
-<p>
-  Each role had carefully designed permissions and UI elements tailored to their
-  specific workflows.
-</p>
-
-<h3>Real-time Property Updates</h3>
-<p>
-  We implemented WebSocket connections to ensure users always saw the latest
-  property information:
-</p>
-<ul>
-  <li>
-    <strong>Live price updates</strong>: Price changes reflected immediately
-    across all users
-  </li>
-  <li>
-    <strong>Status notifications</strong>: "Just listed" and "Price reduced"
-    badges appeared in real-time
-  </li>
-  <li>
-    <strong>Availability tracking</strong>: Properties marked as "Under
-    Contract" updated instantly
-  </li>
-</ul>
-
-<h2>Performance Optimizations</h2>
-
-<h3>Database Performance</h3>
-<p>With millions of property records, database performance was critical:</p>
-<ul>
-  <li>
-    <strong>Strategic indexing</strong>: Composite indexes on location, price,
-    and property type
-  </li>
-  <li>
-    <strong>Query optimization</strong>: Carefully tuned PostgreSQL queries with
-    EXPLAIN analysis
-  </li>
-  <li>
-    <strong>Connection pooling</strong>: Efficient database connection
-    management
-  </li>
-  <li>
-    <strong>Read replicas</strong>: Separate read-only instances for search
-    queries
-  </li>
-</ul>
-
-<h3>Frontend Performance</h3>
-<p>Mobile-first performance was non-negotiable:</p>
-<ul>
-  <li>
-    <strong>Code splitting</strong>: Route-based lazy loading reduced initial
-    bundle size
-  </li>
-  <li>
-    <strong>Image optimization</strong>: WebP format with lazy loading and
-    responsive images
-  </li>
-  <li>
-    <strong>Virtual scrolling</strong>: Smooth performance with large property
-    lists
-  </li>
-  <li>
-    <strong>Service worker</strong>: Offline capability and background sync
-  </li>
-</ul>
-
-<h2>Results and Impact</h2>
-
-<h3>User Engagement Metrics</h3>
-<ul>
-  <li>
-    <strong>20% higher user engagement</strong>: Users spent more time on the
-    platform compared to competitors
-  </li>
-  <li>
-    <strong>35% increase in saved searches</strong>: The improved UX led to
-    higher user retention
-  </li>
-  <li>
-    <strong>50% reduction in bounce rate</strong>: Fast loading and intuitive
-    design kept users engaged
-  </li>
-  <li>
-    <strong>4.8/5 user satisfaction score</strong>: Consistently high ratings in
-    user feedback
-  </li>
-</ul>
-
-<h3>Technical Performance</h3>
-<ul>
-  <li>
-    <strong>Sub-second search results</strong>: Even complex geolocation queries
-    returned in under 800ms
-  </li>
-  <li>
-    <strong>99.9% uptime</strong>: AWS infrastructure provided exceptional
-    reliability
-  </li>
-  <li>
-    <strong>Mobile Lighthouse score of 95+</strong>: Excellent mobile
-    performance metrics
-  </li>
-  <li>
-    <strong>Zero data breaches</strong>: Robust security implementation
-    protected user data
-  </li>
-</ul>
-
-<h3>Business Outcomes</h3>
-<ul>
-  <li>
-    <strong>300% increase in property listings</strong>: Agents loved the
-    easy-to-use management interface
-  </li>
-  <li>
-    <strong>150% growth in active users</strong>: Word-of-mouth driven by
-    exceptional user experience
-  </li>
-  <li>
-    <strong>40% faster property sales</strong>: Better matching led to quicker
-    transactions
-  </li>
-</ul>
-
-<h2>Technical Challenges and Solutions</h2>
-
-<h3>Handling Complex Search Filters</h3>
-<p>
-  <strong>Challenge</strong>: Users wanted to combine multiple filters
-  (location, price, property type, amenities) in complex ways.
-</p>
-<p>
-  <strong>Solution</strong>: Implemented a dynamic query builder that constructs
-  optimized SQL queries based on active filters. Used PostgreSQL's full-text
-  search for amenity descriptions.
-</p>
-
-<h3>Mobile Map Performance</h3>
-<p>
-  <strong>Challenge</strong>: Interactive maps with hundreds of property markers
-  performed poorly on mobile devices.
-</p>
-<p>
-  <strong>Solution</strong>: Implemented marker clustering, viewport-based
-  loading, and canvas-rendered markers for smooth mobile performance.
-</p>
-
-<h3>Real-time Data Consistency</h3>
-<p>
-  <strong>Challenge</strong>: Ensuring all users see consistent property data
-  when multiple updates happen simultaneously.
-</p>
-<p>
-  <strong>Solution</strong>: Event-driven architecture with message queues
-  ensuring ordered updates and eventual consistency across all clients.
-</p>
-
-<h2>Security Implementation</h2>
-
-<h3>Data Protection</h3>
-<p>
-  Real estate data is sensitive, so we implemented comprehensive security
-  measures:
-</p>
-<ul>
-  <li>
-    <strong>End-to-end encryption</strong>: All sensitive data encrypted at rest
-    and in transit
-  </li>
-  <li>
-    <strong>Role-based access control</strong>: Granular permissions for
-    different user types
-  </li>
-  <li>
-    <strong>Input validation</strong>: Comprehensive sanitization to prevent SQL
-    injection and XSS
-  </li>
-  <li>
-    <strong>Rate limiting</strong>: Protection against abuse and scraping
-    attempts
-  </li>
-</ul>
-
-<h3>Privacy Compliance</h3>
-<p>We ensured full GDPR compliance for European users:</p>
-<ul>
-  <li>
-    <strong>Explicit consent</strong>: Clear opt-ins for all data collection
-  </li>
-  <li><strong>Data portability</strong>: Users can export all their data</li>
-  <li>
-    <strong>Right to erasure</strong>: Complete data deletion on user request
-  </li>
-  <li>
-    <strong>Privacy by design</strong>: Minimal data collection with purpose
-    limitation
-  </li>
-</ul>
-
-<h2>Future Enhancements</h2>
-
-<h3>AI-Powered Recommendations</h3>
-<p>
-  We're implementing machine learning algorithms to provide personalized
-  property recommendations based on user behavior, search patterns, and
-  preferences.
-</p>
-
-<h3>Virtual Property Tours</h3>
-<p>
-  Integration with 360° cameras and VR technology will allow users to tour
-  properties remotely, reducing unnecessary site visits.
-</p>
-
-<h3>Predictive Analytics</h3>
-<p>
-  Market trend analysis and price prediction models will help both buyers and
-  sellers make informed decisions.
-</p>
-
-<h2>Key Takeaways</h2>
-
-<h3>1. User Experience Drives Success</h3>
-<p>
-  The 20% increase in user engagement came primarily from focusing on intuitive
-  design and fast performance. Every technical decision was evaluated through
-  the lens of user experience.
-</p>
-
-<h3>2. Scalable Architecture from Day One</h3>
-<p>
-  Building with AWS and proper database design allowed us to handle growth
-  without major refactoring. Planning for scale early pays dividends later.
-</p>
-
-<h3>3. Mobile-First is Non-Negotiable</h3>
-<p>
-  With 70% of users on mobile devices, mobile performance couldn't be an
-  afterthought. Our mobile-first approach drove higher engagement across all
-  devices.
-</p>
-
-<h3>4. Security and Performance Can Coexist</h3>
-<p>
-  Robust security measures don't have to compromise performance. Proper
-  implementation can actually improve user trust and engagement.
-</p>
-
-<h2>Conclusion</h2>
-<p>
-  Building the Immobile Search platform taught us that success in modern web
-  applications comes from balancing technical excellence with user-focused
-  design. The combination of React's flexibility, AWS's scalability, and careful
-  attention to user experience resulted in a platform that not only met but
-  exceeded our performance and engagement goals.
-</p>
-
-<p>
-  The <strong>20% increase in user engagement</strong> and <strong
-    >99.9% uptime</strong
-  > demonstrate that investing in proper architecture and user experience pays off
-  in measurable business results.
-</p>
-
-<p>
-  <strong>Building a similar real estate platform?</strong> I'd be happy to share
-  insights from this project and help you avoid the pitfalls we encountered. Let's
-  discuss how modern web technologies can transform your real estate business.
-</p>
-
-<style>
-  /* Blog Post Styles */
-  .blog-post {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 24px 64px;
-  }
-
-  .blog-header {
-    background: var(--gradient-primary);
-    color: white;
-    border-radius: 20px;
-    padding: 64px 40px 48px 40px;
-    text-align: center;
-    margin-bottom: 3rem;
-    box-shadow: var(--shadow-xl);
-  }
-
-  .blog-title {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-    color: white;
-    background: none;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: unset;
-    background-clip: unset;
-    line-height: 1.1;
-  }
-
-  .blog-description {
-    font-size: 1.35rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 1.5rem 0;
-    max-width: none;
-    line-height: 1.4;
-  }
-
-  .blog-meta {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-
-  .author {
-    margin-left: 1rem;
-  }
-
-  .blog-tags {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .blog-tag {
-    background: rgba(255, 255, 255, 0.25);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .blog-content {
-    background: var(--white);
-    border-radius: 20px;
-    box-shadow: var(--shadow-xl);
-    padding: 4rem 3rem;
-    margin-bottom: 3rem;
-    line-height: 1.8;
-    border: 1px solid rgba(99, 102, 241, 0.08);
-  }
-
-  /* Blog Content Typography */
-  .prose h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--dark);
-    margin: 0 0 2rem 0;
-    line-height: 1.2;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .prose h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--dark);
-    margin: 3rem 0 1.5rem 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 3px solid var(--primary);
-    position: relative;
-  }
-
-  .prose h2::after {
-    content: "";
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: var(--secondary);
-    border-radius: 2px;
-  }
-
-  .prose h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--dark);
-    margin: 2.5rem 0 1.25rem 0;
-    position: relative;
-  }
-
-  .prose h3::before {
-    content: "▶";
-    color: var(--primary);
-    font-size: 0.8em;
-    margin-right: 0.5rem;
-  }
-
-  .prose p {
-    font-size: 1.125rem;
-    line-height: 1.8;
-    color: var(--gray);
-    margin: 0 0 1.75rem 0;
-    max-width: none;
-  }
-
-  .prose ul {
-    margin: 2rem 0;
-    padding-left: 0;
-    list-style: none;
-  }
-
-  .prose li {
-    font-size: 1.125rem;
-    line-height: 1.7;
-    color: var(--gray);
-    margin: 1rem 0;
-    padding-left: 2rem;
-    position: relative;
-  }
-
-  .prose li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: var(--primary);
-    font-weight: bold;
-    font-size: 1.1em;
-  }
-
-  .prose strong {
-    font-weight: 700;
-    color: var(--dark);
-    background: linear-gradient(
-      135deg,
-      var(--primary) 0%,
-      var(--secondary) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .prose code {
-    background: var(--light-gray);
-    padding: 0.4rem 0.6rem;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    color: var(--primary);
-    font-weight: 600;
-    border: 1px solid rgba(99, 102, 241, 0.2);
-  }
-
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .blog-post {
-      padding: 0 16px 48px;
-    }
-
-    .blog-header {
-      padding: 48px 24px 32px 24px;
-      margin-bottom: 2rem;
-    }
-
-    .blog-title {
-      font-size: 2.25rem;
-    }
-
-    .blog-description {
-      font-size: 1.125rem;
-    }
-
-    .blog-content {
-      padding: 2.5rem 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .prose h1 {
-      font-size: 2rem;
-    }
-
-    .prose h2 {
-      font-size: 1.75rem;
-    }
-
-    .prose h3 {
-      font-size: 1.35rem;
-    }
-
-    .prose p,
-    .prose li {
-      font-size: 1rem;
     }
 
     .author {
