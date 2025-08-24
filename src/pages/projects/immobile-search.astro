@@ -1,209 +1,269 @@
 ---
-import ProjectLayout from '../../components/ProjectLayout.astro';
-import { projects } from '../../data/projects.js';
-
-const project = projects.find(p => p.id === 'immobile-search');
+import ProjectLayout from "../../components/ProjectLayout.astro";
 ---
 
-{project ? (
-  <ProjectLayout title={project.title} description={project.shortDescription}>
-    <div class="project-detail">
-      <!-- Hero Section -->
-      <section class="project-hero">
-        <div class="project-hero-content">
-          <div class="project-breadcrumb">
-            <a href="/">Home</a> / <a href="/projects">Projects</a> / {project.title}
+<ProjectLayout
+  title="Immobile Real Estate Search Platform"
+  description="Enterprise real estate platform with Hapi.js microservices and MongoDB"
+>
+  <main>
+    <section
+      class="project-hero"
+      style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 64px 0 48px; margin-bottom: 3rem; text-align: center; margin-top: 3rem;"
+    >
+      <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+        <h1
+          style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.3); background: none !important; -webkit-text-fill-color: white !important;"
+        >
+          Immobile Search Platform
+        </h1>
+        <p
+          style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
+        >
+          Advanced real estate search platform with SSO microservices and
+          Salesforce integration
+        </p>
+        <div
+          style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
+        >
+          <span
+            style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.15); border-radius: 50px; font-weight: 600; backdrop-filter: blur(10px);"
+          >
+            LIVE
+          </span>
+          <a
+            href="https://github.com/calindotgabriel/immobile-search"
+            style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.9); color: #6366f1; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;"
+          >
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+        >
+          Project Overview
+        </h2>
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 2rem;"
+        >
+          Comprehensive real estate search platform built with modern
+          microservices architecture. Features advanced property filtering,
+          geospatial search capabilities, and enterprise-grade SSO integration.
+          The platform connects seamlessly with Salesforce CRM and provides
+          real-time property analytics for estate agents and buyers.
+        </p>
+
+        <div
+          class="metrics-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
+        >
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              10K+
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">
+              Properties Indexed
+            </div>
           </div>
-          
-          <h1 class="project-hero-title">{project.title}</h1>
-          <p class="project-hero-description">{project.shortDescription}</p>
-          
-          <div class="project-hero-meta">
-            <span class={`project-badge badge-${project.status.toLowerCase()}`}>
-              {project.status}
-            </span>
-            <a href={project.github} target="_blank" class="btn-secondary">
-              <span>💻</span> View Code
-            </a>
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              &lt;1s
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">
+              Search Response Time
+            </div>
+          </div>
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              99.9%
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">Uptime</div>
           </div>
         </div>
       </section>
 
-      <!-- Project Overview -->
-      <section class="project-overview">
-        <div class="container">
-          <div class="project-grid">
-            <!-- Main Content -->
-            <div class="project-main">
-              <h2>Project Overview</h2>
-              <p class="project-full-description">{project.fullDescription}</p>
-              
-              <h3>Key Features</h3>
-              <ul class="feature-list">
-                {project.features?.map(feature => (
-                  <li>{feature}</li>
-                ))}
-              </ul>
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+        >
+          Technical Architecture
+        </h2>
 
-              <h3>Technical Implementation</h3>
-              <div class="tech-details">
-                <p>Built using modern web technologies with focus on scalability and performance:</p>
-                <ul>
-                  <li><strong>Frontend:</strong> React with responsive design</li>
-                  <li><strong>Backend:</strong> Node.js with RESTful APIs</li>
-                  <li><strong>Database:</strong> PostgreSQL for reliable data storage</li>
-                  <li><strong>Infrastructure:</strong> AWS for cloud deployment</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="project-sidebar">
-              <div class="project-info-card">
-                <h3>Technologies Used</h3>
-                <div class="tech-grid">
-                  {project.tech.map(tech => (
-                    <span class="tech-pill">{tech}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div class="project-info-card">
-                <h3>Key Results</h3>
-                <ul class="results-list">
-                  {project.results.map(result => (
-                    <li>• {result}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div class="project-info-card">
-                <h3>Project Links</h3>
-                <a href={project.github} target="_blank" class="project-link">
-                  <span>💻</span> GitHub Repository
-                </a>
-              </div>
-            </div>
+        <div
+          class="features-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
+        >
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              Hapi.js Microservices
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Robust microservices architecture with Hapi.js framework providing
+              scalable API endpoints and comprehensive request validation.
+            </p>
+          </div>
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              MongoDB Geospatial
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Advanced geospatial queries with MongoDB for location-based
+              property search, radius filtering, and proximity calculations.
+            </p>
+          </div>
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              SSO Authentication
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Enterprise SSO microservices with JWT tokens, role-based access
+              control, and seamless integration with existing authentication
+              systems.
+            </p>
+          </div>
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              Salesforce Integration
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Real-time synchronization with Salesforce CRM using Lambda
+              functions and SQS for reliable lead management and property
+              tracking.
+            </p>
           </div>
         </div>
       </section>
-    </div>
-  </ProjectLayout>
-) : (
-  <div class="error-message">Project not found.</div>
-)}
+
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+        >
+          Technology Stack
+        </h2>
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1.5rem;"
+        >
+          {
+            [
+              "Hapi.js",
+              "MongoDB",
+              "React",
+              "AWS Lambda",
+              "SQS",
+              "Salesforce API",
+              "SSO",
+              "JWT",
+            ].map((tech) => (
+              <div style="padding: 1rem 1.5rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 600; text-align: center; border: 1px solid rgba(99,102,241,0.2); transition: all 0.3s ease;">
+                {tech}
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </article>
+  </main>
+</ProjectLayout>
 
 <style>
-.project-detail {
-  min-height: 100vh;
-}
-
-.project-hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 80px 0 60px;
-}
-
-.project-hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.project-breadcrumb {
-  font-size: 14px;
-  margin-bottom: 20px;
-  opacity: 0.9;
-}
-
-.project-breadcrumb a {
-  color: white;
-  text-decoration: none;
-}
-
-.project-hero-title {
-  font-size: 48px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
-
-.project-hero-description {
-  font-size: 20px;
-  margin-bottom: 30px;
-  opacity: 0.9;
-}
-
-.project-hero-meta {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.project-overview {
-  padding: 80px 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.project-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 60px;
-}
-
-.project-main h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
-
-.project-main h3 {
-  font-size: 24px;
-  margin: 40px 0 20px;
-}
-
-.feature-list {
-  list-style: none;
-  padding: 0;
-}
-
-.feature-list li {
-  padding: 8px 0;
-  border-left: 3px solid #667eea;
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-.project-sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.project-info-card {
-  background: #f8f9fa;
-  padding: 30px;
-  border-radius: 12px;
-}
-
-.tech-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-@media (max-width: 768px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  /* Fix header contrast in hero sections */
+  .project-hero h1 {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+    background-clip: initial !important;
   }
-  
-  .project-hero-title {
-    font-size: 32px;
+
+  /* Smooth animations */
+  .content-section {
+    animation: fadeInUp 0.6s ease forwards;
   }
-}
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hover effects */
+  .features-grid > div:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .project-hero {
+      padding: 48px 0 32px;
+    }
+
+    .project-hero h1 {
+      font-size: 2.25rem;
+    }
+
+    .project-hero p {
+      font-size: 1.1rem;
+    }
+
+    .content-section {
+      padding: 2rem 1.5rem;
+    }
+
+    .metrics-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

@@ -1,208 +1,268 @@
 ---
 import ProjectLayout from "../../components/ProjectLayout.astro";
-
-const project = {
-  id: "rwe-energy",
-  title: "RWE Energy Platform",
-  shortDescription:
-    "Migrated legacy Java monolith to Node.js microservices for Germany’s largest energy company. Built high-performance data filtering with parallel processing.",
-  fullDescription:
-    "RWE Energy Platform is a digital transformation project for Germany’s largest energy provider. The migration from a Java monolith to scalable Node.js microservices enabled rapid data processing, improved reliability, and reduced operational costs. The platform supports complex data filtering, real-time analytics, and secure enterprise integrations.",
-  status: "ENTERPRISE",
-  tech: ["NestJS", "MongoDB", "Docker", "Microservices"],
-  features: [
-    "Java monolith migration to Node.js",
-    "Microservices architecture",
-    "High-performance parallel data filtering",
-    "Enterprise-grade security and reliability",
-    "Real-time analytics and reporting",
-  ],
-  results: [
-    "65% faster APIs",
-    "45min → 12min exports",
-    "15,000+ daily queries",
-  ],
-  github: "https://github.com/calindotgabriel/energy-reporter",
-};
 ---
 
-<ProjectLayout title={project.title} description={project.shortDescription}>
-  <div
-    class="project-detail"
-    style="padding: 48px 0 64px; background: #f8fafc;"
-  >
-    <!-- Hero Section -->
+<ProjectLayout
+  title="RWE Energy Services Platform"
+  description="MongoDB migration for enterprise energy management platform"
+>
+  <main>
     <section
       class="project-hero"
-      style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 80px 0 60px; margin-bottom: 2.5rem;"
+      style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 64px 0 48px; margin-bottom: 3rem; text-align: center; margin-top: 3rem;"
     >
-      <div
-        class="project-hero-content"
-        style="max-width: 800px; margin: 0 auto; padding: 0 24px;"
-      >
-        <div
-          class="project-breadcrumb"
-          style="font-size: 14px; margin-bottom: 20px; opacity: 0.9;"
-        >
-          <a href="/" style="color: white; text-decoration: none;">Home</a> / <a
-            href="/projects"
-            style="color: white; text-decoration: none;">Projects</a
-          > / {project.title}
-        </div>
+      <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
         <h1
-          class="project-hero-title"
-          style="font-size: 48px; font-weight: 800; margin-bottom: 20px;"
+          style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.3); background: none !important; -webkit-text-fill-color: white !important;"
         >
-          {project.title}
+          RWE Energy Services Platform
         </h1>
         <p
-          class="project-hero-description"
-          style="font-size: 20px; margin-bottom: 30px; opacity: 0.9;"
+          style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
         >
-          {project.shortDescription}
+          Enterprise-scale MongoDB migration powering 15,000+ daily queries for
+          energy management
         </p>
         <div
-          class="project-hero-meta"
-          style="display: flex; gap: 20px; align-items: center;"
+          style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
         >
           <span
-            class={`project-badge badge-${project.status.toLowerCase()}`}
-            style="padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; color: white; background: var(--primary);"
-            >{project.status}</span
+            style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.15); border-radius: 50px; font-weight: 600; backdrop-filter: blur(10px);"
           >
+            ENTERPRISE
+          </span>
           <a
-            href={project.github}
-            target="_blank"
-            class="btn-secondary cta-button"
-            style="background: transparent; border: 2px solid var(--primary); color: var(--primary);"
+            href="https://github.com/calindotgabriel/energy-reporter"
+            style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.9); color: #6366f1; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;"
           >
-            <span>💻</span> View Code
+            View on GitHub
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Project Overview -->
-    <section class="project-overview">
-      <div
-        class="container"
-        style="max-width: 1100px; margin: 0 auto; padding: 0 24px;"
+    <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
-        <div
-          class="project-grid"
-          style="display: grid; grid-template-columns: 2fr 1fr; gap: 60px;"
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
         >
-          <!-- Main Content -->
-          <div class="project-main">
-            <h2 style="font-size: 32px; margin-bottom: 20px;">
-              Project Overview
-            </h2>
-            <p
-              class="project-full-description"
-              style="font-size: 1.15rem; color: var(--gray); margin-bottom: 2rem;"
-            >
-              {project.fullDescription}
-            </p>
-            <h3 style="font-size: 24px; margin: 40px 0 20px;">Key Features</h3>
-            <ul class="feature-list" style="list-style: none; padding: 0;">
-              {
-                project.features.map((feature) => (
-                  <li style="padding: 8px 0; border-left: 3px solid #667eea; padding-left: 20px; margin-bottom: 10px;">
-                    {feature}
-                  </li>
-                ))
-              }
-            </ul>
-            <h3 style="font-size: 24px; margin: 40px 0 20px;">
-              Technical Implementation
-            </h3>
-            <div class="tech-details">
-              <p>
-                Built using modern web technologies with focus on scalability
-                and performance:
-              </p>
-              <ul>
-                <li><strong>Backend:</strong> Node.js, NestJS microservices</li>
-                <li>
-                  <strong>Database:</strong> MongoDB for flexible data storage
-                </li>
-                <li>
-                  <strong>Infrastructure:</strong> Docker, cloud deployment
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- Sidebar -->
+          Project Overview
+        </h2>
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 2rem;"
+        >
+          Led the architectural migration of RWE Energy's service platform from
+          a legacy Java monolith to modern Node.js microservices. This
+          enterprise transformation enabled rapid data processing, improved
+          reliability, and reduced operational costs. The platform now handles
+          over 15,000 daily queries with enhanced performance and scalability.
+        </p>
+
+        <div
+          class="metrics-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
+        >
           <div
-            class="project-sidebar"
-            style="display: flex; flex-direction: column; gap: 30px;"
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
           >
             <div
-              class="project-info-card"
-              style="background: #f8f9fa; padding: 30px; border-radius: 12px;"
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
-              <h3
-                style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;"
-              >
-                Technologies Used
-              </h3>
-              <div
-                class="tech-grid"
-                style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;"
-              >
-                {
-                  project.tech.map((tech) => (
-                    <span
-                      class="tech-pill"
-                      style="padding: 0.5rem 1.25rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 500; font-size: 0.875rem; border: 1px solid rgba(99,102,241,0.2); transition: all 0.2s ease;"
-                    >
-                      {tech}
-                    </span>
-                  ))
-                }
-              </div>
+              15K+
             </div>
-            <div
-              class="project-info-card"
-              style="background: #f8f9fa; padding: 30px; border-radius: 12px;"
-            >
-              <h3
-                style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;"
-              >
-                Key Results
-              </h3>
-              <ul
-                class="results-list"
-                style="list-style: none; padding: 0; font-size: 0.95rem; color: var(--gray);"
-              >
-                {
-                  project.results.map((result) => (
-                    <li style="margin-bottom: 0.25rem;">• {result}</li>
-                  ))
-                }
-              </ul>
+            <div style="color: var(--gray); font-weight: 500;">
+              Daily Queries
             </div>
+          </div>
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
             <div
-              class="project-info-card"
-              style="background: #f8f9fa; padding: 30px; border-radius: 12px;"
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
-              <h3
-                style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;"
-              >
-                Project Links
-              </h3>
-              <a
-                href={project.github}
-                target="_blank"
-                class="project-link"
-                style="color: var(--primary); text-decoration: none; font-weight: 600;"
-              >
-                <span>💻</span> GitHub Repository
-              </a>
+              65%
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">Faster APIs</div>
+          </div>
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              12min
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">
+              Export Time (was 45min)
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+        >
+          Technical Implementation
+        </h2>
+
+        <div
+          class="features-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
+        >
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              Monolith Migration
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Successfully migrated legacy Java monolith to scalable Node.js
+              microservices architecture with zero downtime deployment.
+            </p>
+          </div>
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              NestJS Architecture
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Implemented modular microservices with TypeScript, dependency
+              injection, and comprehensive API documentation for enterprise
+              reliability.
+            </p>
+          </div>
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              Parallel Processing
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Built high-performance data filtering with parallel processing
+              capabilities, reducing export times from 45 minutes to 12 minutes.
+            </p>
+          </div>
+          <div
+            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+          >
+            <h3
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+            >
+              Real-time Analytics
+            </h3>
+            <p style="color: var(--gray); line-height: 1.6;">
+              Implemented real-time analytics and reporting systems with secure
+              enterprise integrations and comprehensive monitoring.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+        >
+          Technology Stack
+        </h2>
+        <div
+          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1.5rem;"
+        >
+          {
+            [
+              "NestJS",
+              "MongoDB",
+              "TypeScript",
+              "Docker",
+              "Microservices",
+              "Node.js",
+              "Enterprise Security",
+              "Real-time Analytics",
+            ].map((tech) => (
+              <div style="padding: 1rem 1.5rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 50px; font-weight: 600; text-align: center; border: 1px solid rgba(99,102,241,0.2); transition: all 0.3s ease;">
+                {tech}
+              </div>
+            ))
+          }
+        </div>
+      </section>
+    </article>
+  </main>
 </ProjectLayout>
+
+<style>
+  /* Fix header contrast in hero sections */
+  .project-hero h1 {
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background: none !important;
+    -webkit-text-fill-color: white !important;
+    background-clip: initial !important;
+  }
+
+  /* Smooth animations */
+  .content-section {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Hover effects */
+  .features-grid > div:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .project-hero {
+      padding: 48px 0 32px;
+    }
+
+    .project-hero h1 {
+      font-size: 2.25rem;
+    }
+
+    .project-hero p {
+      font-size: 1.1rem;
+    }
+
+    .content-section {
+      padding: 2rem 1.5rem;
+    }
+
+    .metrics-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
