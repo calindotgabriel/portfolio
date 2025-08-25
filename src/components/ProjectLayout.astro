@@ -6,127 +6,113 @@ export interface Props {
 
 const { title, description } = Astro.props;
 
+import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} - Calin Gabriel</title>
-    <meta name="description" content={description} />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/assets/index.css" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <header
-      class="main-header"
-      style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 32px 0 24px;"
+<BaseLayout title={title} description={description}>
+  <!-- Navigation -->
+  <header
+    class="main-header"
+    style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; padding: 32px 0 24px;"
+  >
+    <div
+      class="header-content"
+      style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 0 24px;"
     >
+      <a
+        href="/"
+        class="nav-logo"
+        style="font-size: 2rem; font-weight: 800; text-decoration: none; color: white; letter-spacing: -0.02em;"
+        >Calin Gabriel</a
+      >
+      <nav class="nav-links" style="display: flex; gap: 2rem;">
+        <a
+          href="/projects"
+          class="nav-link"
+          style="color: white; text-decoration: none; font-weight: 600;"
+          >Projects</a
+        >
+        <a
+          href="/blog"
+          class="nav-link"
+          style="color: white; text-decoration: none; font-weight: 600;">Blog</a
+        >
+        <a
+          href="https://github.com/calindotgabriel"
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+          style="color: white; text-decoration: none; font-weight: 600;"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/calingabriel-ts-dev/"
+          target="_blank"
+          rel="noopener"
+          class="nav-link"
+          style="color: white; text-decoration: none; font-weight: 600;"
+          >LinkedIn</a
+        >
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      <h3 class="footer-title">Ready to start your project?</h3>
+      <p class="footer-subtitle">Available for long-term contracts</p>
+      <div class="footer-cta-container">
+        <a
+          href="mailto:calindotgabriel18@gmail.com?subject=Project Inquiry&body=Hi Calin, I'm interested in discussing a project..."
+          class="cta-button"
+        >
+          <span style="font-size: 18px;">✉️</span>
+          contact@calingabriel.com
+        </a>
+        <a href="tel:+40759407066" class="btn-secondary cta-button">
+          <span style="font-size: 18px;">📱</span>
+          +40 759 407 066
+        </a>
+      </div>
       <div
-        class="header-content"
-        style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 0 24px;"
+        class="footer-social-container"
+        style="display: flex; gap: 2rem; justify-content: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);"
       >
         <a
+          href="https://www.linkedin.com/in/calingabriel-ts-dev/"
+          target="_blank"
+          rel="noopener"
+          class="footer-social-link"
+          style="color: rgba(255,255,255,0.7); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"
+        >
+          <span style="font-size: 16px;">💼</span>
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/calindotgabriel"
+          target="_blank"
+          rel="noopener"
+          class="footer-social-link"
+          style="color: rgba(255,255,255,0.7); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"
+        >
+          <span style="font-size: 16px;">💻</span>
+          GitHub
+        </a>
+        <a
           href="/"
-          class="nav-logo"
-          style="font-size: 2rem; font-weight: 800; text-decoration: none; color: white; letter-spacing: -0.02em;"
-          >Calin Gabriel</a
+          class="footer-social-link"
+          style="color: rgba(255,255,255,0.7); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"
         >
-        <nav class="nav-links" style="display: flex; gap: 2rem;">
-          <a
-            href="/projects"
-            class="nav-link"
-            style="color: white; text-decoration: none; font-weight: 600;"
-            >Projects</a
-          >
-          <a
-            href="/blog"
-            class="nav-link"
-            style="color: white; text-decoration: none; font-weight: 600;"
-            >Blog</a
-          >
-          <a
-            href="https://github.com/calindotgabriel"
-            target="_blank"
-            rel="noopener"
-            class="nav-link"
-            style="color: white; text-decoration: none; font-weight: 600;"
-            >GitHub</a
-          >
-          <a
-            href="https://www.linkedin.com/in/calingabriel-ts-dev/"
-            target="_blank"
-            rel="noopener"
-            class="nav-link"
-            style="color: white; text-decoration: none; font-weight: 600;"
-            >LinkedIn</a
-          >
-        </nav>
+          <span style="font-size: 16px;">🔗</span>
+          Portfolio
+        </a>
       </div>
-    </header>
-
-    <main>
-      <slot />
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer-section">
-      <div class="footer-container">
-        <h3 class="footer-title">Ready to start your project?</h3>
-        <p class="footer-subtitle">Available for long-term contracts</p>
-        <div class="footer-cta-container">
-          <a
-            href="mailto:calindotgabriel18@gmail.com?subject=Project Inquiry&body=Hi Calin, I'm interested in discussing a project..."
-            class="cta-button"
-          >
-            <span style="font-size: 18px;">✉️</span>
-            contact@calingabriel.com
-          </a>
-          <a href="tel:+40759407066" class="btn-secondary cta-button">
-            <span style="font-size: 18px;">📱</span>
-            +40 759 407 066
-          </a>
-        </div>
-        <div
-          class="footer-social-container"
-          style="display: flex; gap: 2rem; justify-content: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);"
-        >
-          <a
-            href="https://www.linkedin.com/in/calingabriel-ts-dev/"
-            target="_blank"
-            rel="noopener"
-            class="footer-social-link"
-            style="color: rgba(255,255,255,0.7); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"
-          >
-            <span style="font-size: 16px;">💼</span>
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/calindotgabriel"
-            target="_blank"
-            rel="noopener"
-            class="footer-social-link"
-            style="color: rgba(255,255,255,0.7); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"
-          >
-            <span style="font-size: 16px;">💻</span>
-            GitHub
-          </a>
-          <a
-            href="/"
-            class="footer-social-link"
-            style="color: rgba(255,255,255,0.7); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;"
-          >
-            <span style="font-size: 16px;">🔗</span>
-            Portfolio
-          </a>
-        </div>
-      </div>
-    </footer>
-  </body>
-</html>
+    </div>
+  </footer>
+</BaseLayout>
