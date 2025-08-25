@@ -48,61 +48,115 @@ const latestPosts = blogPosts
     />
   </head>
   <body>
-    <!-- HERO + CONTACT MERGED -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Calin Gabriel</h1>
-        <p class="hero-description">
-          Senior Full Stack Developer crafting scalable web experiences
+    <!-- HERO SECTION WITH GENERATIVE DESIGN -->
+    <section class="hero-generative">
+      <!-- Animated Background Elements -->
+      <div class="hero-bg-elements">
+        <!-- Code Symbols -->
+        <div class="floating-symbol symbol-1">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(99,102,241,0.1)">
+            <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+          </svg>
+        </div>
+        <div class="floating-symbol symbol-2">
+          <svg width="35" height="35" viewBox="0 0 24 24" fill="rgba(236,72,153,0.08)">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <div class="floating-symbol symbol-3">
+          <svg width="45" height="45" viewBox="0 0 24 24" fill="rgba(16,185,129,0.1)">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          </svg>
+        </div>
+        <div class="floating-symbol symbol-4">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="rgba(245,101,101,0.08)">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+        </div>
+        <div class="floating-symbol symbol-5">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="rgba(139,92,246,0.09)">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/>
+          </svg>
+        </div>
+        <div class="floating-symbol symbol-6">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="rgba(59,130,246,0.07)">
+            <path d="M3 3v18h18v-2H5V3H3zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </div>
+
+        <!-- Geometric Shapes -->
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        
+        <!-- Gradient Orbs -->
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="hero-content-enhanced">
+        <div class="hero-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          Available for Projects
+        </div>
+        
+        <h1 class="hero-title-enhanced">
+          <span class="gradient-text">Calin Gabriel</span>
+        </h1>
+        
+        <p class="hero-description-enhanced">
+          Senior Full Stack Developer crafting <span class="highlight">scalable web experiences</span> 
+          with modern technologies and <span class="highlight">enterprise-grade architecture</span>
         </p>
-        <!-- <p class="hero-subtitle">6+ years • React/Node.js • AWS</p> -->
 
-        <!-- Contact Direct în Hero -->
-        <!-- <div class="hero-cta-container">
-          <a
-            href="mailto:calindotgabriel18@gmail.com?subject=Project Inquiry"
-            class="cta-button"
-          >
-            <span style="font-size: 18px;">✉️</span>
-            Start a Project
-          </a>
-          <a href="tel:+40759407066" class="btn-secondary cta-button">
-            <span style="font-size: 18px;">📱</span>
-            +40 759 407 066
-          </a>
-        </div> -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">6+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+        </div>
 
-        <div class="hero-info-grid">
-          <a href="#projects" class="hero-scroll-link btn-secondary cta-button">
-            Recent Work
+        <div class="hero-cta-enhanced">
+          <a href="#projects" class="cta-primary-enhanced">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3 3v18h18v-2H5V3H3zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+            View Recent Work
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+            </svg>
           </a>
-          <a href="#cv" class="hero-scroll-link btn-secondary cta-button">
-            CV as PDF
+          <a href="/cv.pdf" class="cta-secondary-enhanced">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+            Download CV
           </a>
         </div>
       </div>
-    </section>
-    <!-- CV / EXPERIENCE SECTION -->
-    <section id="cv" class="cv-section" style="margin: 48px 0;">
-      <div
-        class="cv-container"
-        style="max-width: 700px; margin: 0 auto; text-align: center;"
-      >
-        <h2 style="margin-bottom: 12px;">CV & Experience</h2>
-        <p style="margin-bottom: 20px;">
-          Download my full PDF CV for a detailed overview of my experience,
-          skills, and project history.
-        </p>
-        <a
-          href="/cv.pdf"
-          target="_blank"
-          rel="noopener"
-          class="cta-button"
-          style="font-size: 18px; padding: 12px 32px; display: inline-block;"
-        >
-          <span style="font-size: 20px; vertical-align: middle;">📄</span>
-          &nbsp;View PDF CV
-        </a>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-text">Scroll to explore</div>
+        <div class="scroll-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -176,8 +230,7 @@ const latestPosts = blogPosts
               <div>
                 <div class="project-header">
                   <h3 class="project-title">RWE Energy Platform</h3>
-                  <span class="prossect-badge badge-enterprise">ENTERPRISE</span
-                  >
+                  <span class="project-badge badge-enterprise">ENTERPRISE</span>
                 </div>
                 <p class="project-description">
                   Migrated legacy Java monolith to Node.js microservices for
@@ -218,9 +271,25 @@ const latestPosts = blogPosts
       </div>
     </section>
 
-    <!-- BLOG SECTION -->
-    <section id="blog" class="blog-preview-section" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 60px 0;">
-      <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 2rem;">
+    <!-- BLOG SECTION WITH ENHANCED VISUALS -->
+    <section id="blog" class="blog-preview-section-enhanced">
+      <!-- Subtle background elements for blog -->
+      <div class="blog-bg-elements">
+        <div class="blog-gradient-orb blog-orb-1"></div>
+        <div class="blog-gradient-orb blog-orb-2"></div>
+        <div class="floating-blog-symbol blog-symbol-1">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(16,185,129,0.04)">
+            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </div>
+        <div class="floating-blog-symbol blog-symbol-2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(139,92,246,0.04)">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2;">
         <div style="text-align: center; margin-bottom: 3rem;">
           <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
             Latest Technical Insights
@@ -409,6 +478,442 @@ const latestPosts = blogPosts
     </footer>
 
     <style>
+      /* HERO GENERATIVE SECTION */
+      .hero-generative {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, 
+          #667eea 0%, 
+          #764ba2 25%, 
+          #f093fb 50%, 
+          #f5576c 75%, 
+          #4facfe 100%
+        );
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      /* Animated gradient background */
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Background texture overlay */
+      .hero-generative::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%),
+          url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.03"><circle cx="30" cy="30" r="4"/></g></svg>');
+        pointer-events: none;
+      }
+
+      /* Floating Background Elements */
+      .hero-bg-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Floating Symbols */
+      .floating-symbol {
+        position: absolute;
+        animation-duration: 20s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+
+      .symbol-1 { 
+        top: 15%; 
+        left: 10%; 
+        animation: float1 18s ease-in-out infinite;
+      }
+      .symbol-2 { 
+        top: 25%; 
+        right: 15%; 
+        animation: float2 22s ease-in-out infinite;
+      }
+      .symbol-3 { 
+        bottom: 30%; 
+        left: 20%; 
+        animation: float3 16s ease-in-out infinite;
+      }
+      .symbol-4 { 
+        top: 40%; 
+        right: 25%; 
+        animation: float4 20s ease-in-out infinite;
+      }
+      .symbol-5 { 
+        bottom: 20%; 
+        right: 10%; 
+        animation: float5 24s ease-in-out infinite;
+      }
+      .symbol-6 { 
+        top: 60%; 
+        left: 15%; 
+        animation: float6 19s ease-in-out infinite;
+      }
+
+      /* Floating Geometric Shapes */
+      .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+
+      .shape-1 {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.05);
+        top: 20%;
+        left: 70%;
+        animation: rotate-float 25s linear infinite;
+      }
+
+      .shape-2 {
+        width: 60px;
+        height: 60px;
+        background: rgba(99, 102, 241, 0.08);
+        bottom: 40%;
+        left: 5%;
+        animation: rotate-float-reverse 30s linear infinite;
+      }
+
+      .shape-3 {
+        width: 100px;
+        height: 100px;
+        background: rgba(236, 72, 153, 0.06);
+        top: 70%;
+        right: 30%;
+        border-radius: 20%;
+        animation: rotate-float 35s linear infinite;
+      }
+
+      /* Gradient Orbs */
+      .gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: pulse-orb 8s ease-in-out infinite;
+      }
+
+      .orb-1 {
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+        top: 10%;
+        right: 20%;
+        animation-delay: 0s;
+      }
+
+      .orb-2 {
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+        bottom: 20%;
+        left: 30%;
+        animation-delay: 2s;
+      }
+
+      .orb-3 {
+        width: 180px;
+        height: 180px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+        top: 50%;
+        left: 10%;
+        animation-delay: 4s;
+      }
+
+      /* Animation Keyframes */
+      @keyframes float1 {
+        0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+        25% { transform: translateY(-20px) translateX(10px) rotate(90deg); }
+        50% { transform: translateY(-10px) translateX(-15px) rotate(180deg); }
+        75% { transform: translateY(-30px) translateX(5px) rotate(270deg); }
+      }
+
+      @keyframes float2 {
+        0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+        33% { transform: translateY(-15px) translateX(-20px) rotate(120deg); }
+        66% { transform: translateY(-25px) translateX(10px) rotate(240deg); }
+      }
+
+      @keyframes float3 {
+        0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+        50% { transform: translateY(-20px) translateX(15px) scale(1.1); }
+      }
+
+      @keyframes float4 {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        25% { transform: translateY(-10px) rotate(90deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+        75% { transform: translateY(-5px) rotate(270deg); }
+      }
+
+      @keyframes float5 {
+        0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+        33% { transform: translateX(-10px) translateY(-15px) rotate(120deg); }
+        66% { transform: translateX(20px) translateY(-10px) rotate(240deg); }
+      }
+
+      @keyframes float6 {
+        0%, 100% { transform: translateY(0px) scale(1) rotate(0deg); }
+        50% { transform: translateY(-15px) scale(1.05) rotate(180deg); }
+      }
+
+      @keyframes rotate-float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+        100% { transform: translateY(0px) rotate(360deg); }
+      }
+
+      @keyframes rotate-float-reverse {
+        0% { transform: translateY(0px) rotate(360deg); }
+        50% { transform: translateY(-15px) rotate(180deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+      }
+
+      @keyframes pulse-orb {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.1); }
+      }
+
+      /* Main Content Styling */
+      .hero-content-enhanced {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        color: white;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        animation: fadeInUp 1s ease 0.2s both;
+      }
+
+      .hero-title-enhanced {
+        font-size: 4.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        animation: fadeInUp 1s ease 0.4s both;
+      }
+
+      .gradient-text {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-description-enhanced {
+        font-size: 1.4rem;
+        line-height: 1.6;
+        margin-bottom: 3rem;
+        color: rgba(255, 255, 255, 0.9);
+        animation: fadeInUp 1s ease 0.6s both;
+      }
+
+      .highlight {
+        color: #fbbf24;
+        font-weight: 600;
+      }
+
+      /* Stats Section */
+      .hero-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        animation: fadeInUp 1s ease 0.8s both;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #fbbf24;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        margin-top: 0.5rem;
+      }
+
+      .stat-divider {
+        width: 1px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* CTA Buttons */
+      .hero-cta-enhanced {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 1s ease 1s both;
+      }
+
+      .cta-primary-enhanced {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-primary-enhanced:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta-secondary-enhanced {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .cta-secondary-enhanced:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        animation: bounce 2s infinite;
+        z-index: 10;
+      }
+
+      .scroll-text {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .scroll-arrow {
+        animation: bounce-arrow 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+        40% { transform: translateX(-50%) translateY(-10px); }
+        60% { transform: translateX(-50%) translateY(-5px); }
+      }
+
+      @keyframes bounce-arrow {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-5px); }
+        60% { transform: translateY(-3px); }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title-enhanced {
+          font-size: 3rem;
+        }
+
+        .hero-description-enhanced {
+          font-size: 1.2rem;
+        }
+
+        .hero-stats {
+          gap: 1rem;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+
+        .hero-cta-enhanced {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .cta-primary-enhanced,
+        .cta-secondary-enhanced {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+
+        /* Hide some floating elements on mobile */
+        .symbol-4, .symbol-5, .symbol-6,
+        .shape-2, .shape-3,
+        .orb-2, .orb-3 {
+          display: none;
+        }
+      }
+
       /* Featured article enhancements */
       .featured-article {
         animation: fadeInUp 0.8s ease forwards;
@@ -556,6 +1061,208 @@ const latestPosts = blogPosts
         }
         50% {
           transform: scale(1.05);
+        }
+      }
+
+      /* PROJECTS SECTION ENHANCED STYLES */
+      .projects-section-enhanced {
+        position: relative;
+        padding: 80px 0;
+        background: linear-gradient(135deg, #fafbff 0%, #f0f4ff 100%);
+        overflow: hidden;
+      }
+
+      .projects-bg-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .projects-gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        animation: pulse-subtle 12s ease-in-out infinite;
+      }
+
+      .projects-orb-1 {
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+        top: 20%;
+        right: 15%;
+        animation-delay: 0s;
+      }
+
+      .projects-orb-2 {
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle, rgba(236, 72, 153, 0.06) 0%, transparent 70%);
+        bottom: 30%;
+        left: 10%;
+        animation-delay: 4s;
+      }
+
+      .floating-tech-symbol {
+        position: absolute;
+        animation: float-gentle 25s ease-in-out infinite;
+      }
+
+      .tech-symbol-1 {
+        top: 25%;
+        left: 12%;
+        animation-delay: 0s;
+      }
+
+      .tech-symbol-2 {
+        bottom: 25%;
+        right: 18%;
+        animation-delay: 8s;
+      }
+
+      @keyframes pulse-subtle {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.05); }
+      }
+
+      @keyframes float-gentle {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-8px) rotate(120deg); }
+        66% { transform: translateY(-4px) rotate(240deg); }
+      }
+
+      .projects-header-enhanced {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .project-card-enhanced {
+        transition: all 0.4s ease;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      }
+
+      .project-card-enhanced:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .badge-enhanced {
+        padding: 0.5rem 1rem !important;
+        border-radius: 20px !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        border: 2px solid rgba(245, 101, 101, 0.3) !important;
+        background: rgba(245, 101, 101, 0.1) !important;
+        color: #f56565 !important;
+      }
+
+      /* BLOG SECTION ENHANCED STYLES */
+      .blog-preview-section-enhanced {
+        position: relative;
+        padding: 80px 0;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+        overflow: hidden;
+      }
+
+      .blog-bg-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .blog-gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(50px);
+        animation: pulse-blog 15s ease-in-out infinite;
+      }
+
+      .blog-orb-1 {
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(16, 185, 129, 0.06) 0%, transparent 70%);
+        top: 15%;
+        left: 20%;
+        animation-delay: 2s;
+      }
+
+      .blog-orb-2 {
+        width: 130px;
+        height: 130px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+        bottom: 20%;
+        right: 25%;
+        animation-delay: 6s;
+      }
+
+      .floating-blog-symbol {
+        position: absolute;
+        animation: float-blog 30s ease-in-out infinite;
+      }
+
+      .blog-symbol-1 {
+        top: 30%;
+        right: 12%;
+        animation-delay: 3s;
+      }
+
+      .blog-symbol-2 {
+        bottom: 35%;
+        left: 15%;
+        animation-delay: 10s;
+      }
+
+      @keyframes pulse-blog {
+        0%, 100% { opacity: 0.2; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.08); }
+      }
+
+      @keyframes float-blog {
+        0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+        25% { transform: translateY(-5px) translateX(3px) rotate(90deg); }
+        50% { transform: translateY(-8px) translateX(-2px) rotate(180deg); }
+        75% { transform: translateY(-3px) translateX(4px) rotate(270deg); }
+      }
+
+      /* Enhanced blog cards */
+      .featured-article {
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      }
+
+      .blog-card-mini {
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      }
+
+      .blog-card-mini:hover {
+        background: rgba(255, 255, 255, 0.95) !important;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .projects-section-enhanced,
+        .blog-preview-section-enhanced {
+          padding: 60px 0;
+        }
+
+        .tech-symbol-2, 
+        .blog-symbol-2,
+        .projects-orb-2,
+        .blog-orb-2 {
+          display: none;
         }
       }
     </style>
