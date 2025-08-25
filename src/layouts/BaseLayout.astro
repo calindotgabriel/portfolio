@@ -8,6 +8,7 @@ export interface Props {
 const { title, description, bodyClass } = Astro.props;
 
 import Analytics from "../components/Analytics.astro";
+import Favicons from "../components/Favicons.astro";
 import "../styles/global.css";
 ---
 
@@ -26,7 +27,7 @@ import "../styles/global.css";
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/index.css" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <Favicons />
     <Analytics />
   </head>
   <body class={bodyClass}>
