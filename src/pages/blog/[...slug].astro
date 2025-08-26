@@ -1,0 +1,237 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  // Define the available blog posts with their content
+  const posts = [
+    {
+      params: { slug: "nestjs-microservices-architecture" },
+      props: {
+        title: "Building Scalable Microservices with NestJS and MongoDB",
+        description: "How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
+        publishDate: new Date("2024-08-23"),
+        tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
+        author: "Călin Gabriel",
+      }
+    },
+    {
+      params: { slug: "nestjs-microservices-architecture-new" },
+      props: {
+        title: "Building Scalable Microservices with NestJS and MongoDB - Updated",
+        description: "Updated version: How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
+        publishDate: new Date("2024-08-25"),
+        tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
+        author: "Călin Gabriel",
+      }
+    },
+    {
+      params: { slug: "nestjs-microservices-clean" },
+      props: {
+        title: "Clean Architecture with NestJS Microservices",
+        description: "Implementing clean architecture patterns in NestJS microservices for better maintainability and testability",
+        publishDate: new Date("2024-08-20"),
+        tags: ["NestJS", "Clean Architecture", "Microservices", "TypeScript"],
+        author: "Călin Gabriel",
+      }
+    },
+    {
+      params: { slug: "immobile-search-platform" },
+      props: {
+        title: "Building a Scalable Real Estate Search Platform with React and Hapi Microservices",
+        description: "How we built a multi-tenant property search engine with geolocation filtering for a real estate startup - handling complex user roles and map-based searches",
+        publishDate: new Date("2024-07-15"),
+        tags: ["React", "Hapi", "AWS", "MongoDB", "Microservices"],
+        author: "Călin Gabriel",
+      }
+    }
+  ];
+
+  return posts;
+}
+
+const { title, description, publishDate, tags, author } = Astro.props;
+const { slug } = Astro.params;
+---
+
+<Layout title={title}>
+  <main>
+    <article class="blog-article">
+      <header class="blog-header">
+        <div class="blog-container">
+          <div class="blog-meta">
+            <span class="blog-date">
+              {publishDate.toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+            <span class="blog-author">By {author}</span>
+          </div>
+          
+          <h1 class="blog-title">{title}</h1>
+          
+          <p class="blog-description">{description}</p>
+          
+          <div class="blog-tags">
+            {tags.map((tag) => (
+              <span class="blog-tag">{tag}</span>
+            ))}
+          </div>
+        </div>
+      </header>
+
+      <section class="blog-content">
+        <div class="blog-container">
+          <div class="blog-body">
+            <p>This is a placeholder for the blog post content. The actual content for "<strong>{title}</strong>" will be implemented here.</p>
+            
+            <p>This blog post covers the following topics:</p>
+            <ul>
+              {tags.map((tag) => (
+                <li>Advanced concepts in {tag}</li>
+              ))}
+            </ul>
+            
+            <p>Stay tuned for the full content implementation!</p>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <style>
+      .blog-article {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #fafbff 0%,
+          #f0f4ff 50%,
+          #f8fafc 100%
+        );
+      }
+
+      .blog-header {
+        padding: 6rem 0 4rem;
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 25%,
+          #6366f1 50%,
+          #ec4899 75%,
+          #f093fb 100%
+        );
+        color: white;
+        text-align: center;
+      }
+
+      .blog-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .blog-meta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+
+      .blog-title {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f8fafc 50%,
+          #e2e8f0 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .blog-description {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .blog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .blog-tag {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .blog-content {
+        padding: 4rem 0;
+      }
+
+      .blog-body {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        line-height: 1.7;
+        font-size: 1.1rem;
+        color: var(--gray);
+      }
+
+      .blog-body strong {
+        color: var(--dark);
+      }
+
+      .blog-body ul {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+
+      .blog-body li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .blog-header {
+          padding: 4rem 0 3rem;
+        }
+
+        .blog-title {
+          font-size: 2rem;
+        }
+
+        .blog-description {
+          font-size: 1.1rem;
+        }
+
+        .blog-meta {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .blog-body {
+          padding: 2rem;
+        }
+      }
+    </style>
+  </main>
+</Layout>
