@@ -8,42 +8,48 @@ export async function getStaticPaths() {
       params: { slug: "nestjs-microservices-architecture" },
       props: {
         title: "Building Scalable Microservices with NestJS and MongoDB",
-        description: "How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
+        description:
+          "How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
         publishDate: new Date("2024-08-23"),
         tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
         author: "Călin Gabriel",
-      }
+      },
     },
     {
       params: { slug: "nestjs-microservices-architecture-new" },
       props: {
-        title: "Building Scalable Microservices with NestJS and MongoDB - Updated",
-        description: "Updated version: How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
+        title:
+          "Building Scalable Microservices with NestJS and MongoDB - Updated",
+        description:
+          "Updated version: How we migrated a legacy monolith to NestJS microservices for RWE Energy - handling 5k+ daily queries with users waiting too long for large exports",
         publishDate: new Date("2024-08-25"),
         tags: ["NestJS", "Microservices", "MongoDB", "Azure"],
         author: "Călin Gabriel",
-      }
+      },
     },
     {
       params: { slug: "nestjs-microservices-clean" },
       props: {
         title: "Clean Architecture with NestJS Microservices",
-        description: "Implementing clean architecture patterns in NestJS microservices for better maintainability and testability",
+        description:
+          "Implementing clean architecture patterns in NestJS microservices for better maintainability and testability",
         publishDate: new Date("2024-08-20"),
         tags: ["NestJS", "Clean Architecture", "Microservices", "TypeScript"],
         author: "Călin Gabriel",
-      }
+      },
     },
     {
       params: { slug: "immobile-search-platform" },
       props: {
-        title: "Building a Scalable Real Estate Search Platform with React and Hapi Microservices",
-        description: "How we built a multi-tenant property search engine with geolocation filtering for a real estate startup - handling complex user roles and map-based searches",
+        title:
+          "Building a Scalable Real Estate Search Platform with React and Hapi Microservices",
+        description:
+          "How we built a multi-tenant property search engine with geolocation filtering for a real estate startup - handling complex user roles and map-based searches",
         publishDate: new Date("2024-07-15"),
         tags: ["React", "Hapi", "AWS", "MongoDB", "Microservices"],
         author: "Călin Gabriel",
-      }
-    }
+      },
+    },
   ];
 
   return posts;
@@ -60,23 +66,23 @@ const { slug } = Astro.params;
         <div class="blog-container">
           <div class="blog-meta">
             <span class="blog-date">
-              {publishDate.toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
+              {
+                publishDate.toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                  year: "numeric",
+                })
+              }
             </span>
             <span class="blog-author">By {author}</span>
           </div>
-          
+
           <h1 class="blog-title">{title}</h1>
-          
+
           <p class="blog-description">{description}</p>
-          
+
           <div class="blog-tags">
-            {tags.map((tag) => (
-              <span class="blog-tag">{tag}</span>
-            ))}
+            {tags.map((tag) => <span class="blog-tag">{tag}</span>)}
           </div>
         </div>
       </header>
@@ -84,15 +90,16 @@ const { slug } = Astro.params;
       <section class="blog-content">
         <div class="blog-container">
           <div class="blog-body">
-            <p>This is a placeholder for the blog post content. The actual content for "<strong>{title}</strong>" will be implemented here.</p>
-            
+            <p>
+              This is a placeholder for the blog post content. The actual
+              content for "<strong>{title}</strong>" will be implemented here.
+            </p>
+
             <p>This blog post covers the following topics:</p>
             <ul>
-              {tags.map((tag) => (
-                <li>Advanced concepts in {tag}</li>
-              ))}
+              {tags.map((tag) => <li>Advanced concepts in {tag}</li>)}
             </ul>
-            
+
             <p>Stay tuned for the full content implementation!</p>
           </div>
         </div>
