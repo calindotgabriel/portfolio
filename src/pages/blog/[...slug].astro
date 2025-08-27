@@ -83,7 +83,14 @@ const { slug } = Astro.params;
           <p class="blog-description">{description}</p>
 
           <div class="blog-tags">
-            {tags.map((tag) => <span class="blog-tag"><TechIcon technology={tag} size={12} />{tag}</span>)}
+            {
+              tags.map((tag) => (
+                <span class="blog-tag">
+                  <TechIcon technology={tag} size={12} />
+                  {tag}
+                </span>
+              ))
+            }
           </div>
         </div>
       </header>
