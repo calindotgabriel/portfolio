@@ -10,6 +10,8 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "@iconify/json": "^2.2.378",
+    "@iconify/tools": "^4.1.2",
     "astro": "^5.13.2",
     "lucide": "^0.540.0"
   },

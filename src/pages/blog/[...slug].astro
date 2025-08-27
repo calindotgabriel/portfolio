@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import TechIcon from "../../components/TechIcon.astro";
 
 export async function getStaticPaths() {
   // Define the available blog posts with their content
@@ -82,7 +83,7 @@ const { slug } = Astro.params;
           <p class="blog-description">{description}</p>
 
           <div class="blog-tags">
-            {tags.map((tag) => <span class="blog-tag">{tag}</span>)}
+            {tags.map((tag) => <span class="blog-tag"><TechIcon technology={tag} size={12} />{tag}</span>)}
           </div>
         </div>
       </header>

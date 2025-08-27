@@ -1,5 +1,6 @@
 ---
 import ProjectLayout from "../../components/ProjectLayout.astro";
+import TechIcon from "../../components/TechIcon.astro";
 ---
 
 <ProjectLayout
@@ -187,19 +188,17 @@ import ProjectLayout from "../../components/ProjectLayout.astro";
         >
           {
             [
-              { name: "Hapi.js", icon: "⚡" },
-              { name: "MongoDB", icon: "🍃" },
-              { name: "React", icon: "⚛️" },
-              { name: "AWS Lambda", icon: "🏗️" },
-              { name: "SQS", icon: "📨" },
-              { name: "Salesforce API", icon: "☁️" },
-              { name: "SSO", icon: "🔐" },
-              { name: "JWT", icon: "🎫" },
-            ].map((tech) => (
+              { name: "Hapi", tech: "Hapi" },
+              { name: "MongoDB", tech: "MongoDB" },
+              { name: "React", tech: "React" },
+              { name: "AWS", tech: "AWS" },
+              { name: "Node.js", tech: "Node.js" },
+              { name: "JavaScript", tech: "JavaScript" },
+            ].map((item) => (
               <div style="padding: 1.25rem 1rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(99,102,241,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
-                <span style="font-size: 2rem;">{tech.icon}</span>
+                <TechIcon technology={item.tech} size={32} />
                 <span style="font-size: 0.9rem; line-height: 1.2;">
-                  {tech.name}
+                  {item.name}
                 </span>
               </div>
             ))

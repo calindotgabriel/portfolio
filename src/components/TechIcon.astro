@@ -1,0 +1,57 @@
+---
+interface Props {
+  technology: string;
+  size?: number;
+}
+
+const { technology, size = 16 } = Astro.props;
+
+// Tech icon mapping to original brand logos using Iconify
+const techIconMap: Record<string, string> = {
+  'React': 'logos:react',
+  'Hapi': 'logos:hapijs', 
+  'AWS': 'logos:aws',
+  'Azure': 'logos:microsoft-azure',
+  'MongoDB': 'logos:mongodb-icon',
+  'Microservices': 'carbon:microservices-1',
+  'NestJS': 'logos:nestjs',
+  'TypeScript': 'logos:typescript-icon',
+  'Clean Architecture': 'carbon:architecture',
+  'Node.js': 'logos:nodejs-icon',
+  'JavaScript': 'logos:javascript',
+  'Docker': 'logos:docker-icon',
+  'Kubernetes': 'logos:kubernetes',
+  'Next.js': 'logos:nextjs-icon',
+  'Vue.js': 'logos:vue',
+  'Angular': 'logos:angular-icon',
+  'Express': 'logos:express',
+  'Python': 'logos:python',
+  'Java': 'logos:java',
+  'Spring': 'logos:spring-icon',
+  'PostgreSQL': 'logos:postgresql',
+  'MySQL': 'logos:mysql-icon',
+  'Redis': 'logos:redis',
+  'GraphQL': 'logos:graphql'
+};
+
+// Get the appropriate icon ID for the technology
+const iconId = techIconMap[technology] || 'carbon:code';
+---
+
+<iconify-icon icon={iconId} width={size} height={size}></iconify-icon>
+
+<script>
+  // Load Iconify if not already loaded
+  if (!customElements.get('iconify-icon')) {
+    const script = document.createElement('script');
+    script.src = 'https://code.iconify.design/iconify-icon/2.0.0/iconify-icon.min.js';
+    document.head.appendChild(script);
+  }
+</script>
+
+<style>
+  iconify-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>
