@@ -35,8 +35,43 @@ const latestPosts = blogPosts
   title="Calin Gabriel - Senior Full Stack Developer"
   description="Senior Full Stack Developer specializat în React, Node.js, AI. Experiență 5+ ani, clienți europeni premium."
 >
+  <!-- HEADER NAVIGATION -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="#hero">
+          <span class="logo-text">Calin Gabriel</span>
+          <span class="logo-subtitle">Full Stack Developer</span>
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <nav class="nav-mobile" id="nav-mobile">
+      <a href="#hero" class="nav-mobile-link">Home</a>
+      <a href="#projects" class="nav-mobile-link">Projects</a>
+      <a href="#blog" class="nav-mobile-link">Blog</a>
+      <a href="#contact" class="nav-mobile-link">Contact</a>
+    </nav>
+  </header>
+
   <!-- HERO SECTION WITH GENERATIVE DESIGN -->
-    <section class="hero-generative">
+    <section id="hero" class="hero-generative">
       <!-- Animated Background Elements -->
       <div class="hero-bg-elements">
         <!-- Code Symbols -->
@@ -100,6 +135,22 @@ const latestPosts = blogPosts
           with modern technologies and <span class="highlight">enterprise-grade architecture</span>
         </p>
 
+        <!-- Contact Information for Recruiters -->
+        <div class="contact-info-hero">
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <a href="mailto:contact@calingabriel.com">contact@calingabriel.com</a>
+          </div>
+          <div class="contact-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <a href="tel:+40759407066">+40 759 407 066</a>
+          </div>
+        </div>
+
         <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-number">6+</div>
@@ -151,8 +202,8 @@ const latestPosts = blogPosts
     <section id="projects" class="projects-section">
       <div class="projects-container">
         <div class="projects-header">
-          <h2>Recent Projects</h2>
-          <p>Real solutions for major European companies</p>
+          <h2>Solutions for leading EU companies </h2>
+          <p>Click any project to learn more!</p>
         </div>
 
         <div class="projects-grid">
@@ -279,7 +330,7 @@ const latestPosts = blogPosts
       <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2;">
         <div style="text-align: center; margin-bottom: 3rem;">
           <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            Latest Technical Insights
+            Case Studies & Articles
           </h2>
           <p style="font-size: 1.2rem; color: var(--gray); max-width: 600px; margin: 0 auto; line-height: 1.6;">
             Deep dives into modern web development, microservices, and system architecture from real-world enterprise projects
@@ -390,7 +441,7 @@ const latestPosts = blogPosts
         <div style="text-align: center;">
           <a href="/blog" class="blog-cta-button" style="display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2.5rem; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; box-shadow: 0 8px 25px rgba(99,102,241,0.3); transition: all 0.3s ease;">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg>
-            Explore All Technical Articles
+            Explore All Case Studies
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
           </a>
         </div>
@@ -398,23 +449,25 @@ const latestPosts = blogPosts
     </section>
 
     <!-- FOOTER CONTACT -->
-    <footer class="footer-section">
+    <footer id="contact" class="footer-section">
       <div class="footer-container">
         <h3 class="footer-title">Ready to start your project?</h3>
         <p class="footer-subtitle">Available for long-term contracts</p>
 
-        <div class="footer-cta-container">
-          <a
-            href="mailto:calindotgabriel18@gmail.com?subject=Project Inquiry&body=Hi Calin, I'm interested in discussing a project..."
-            class="cta-button"
-          >
-            <span style="font-size: 18px;">✉️</span>
-            contact@calingabriel.com
-          </a>
-          <a href="tel:+40759407066" class="btn-secondary cta-button">
-            <span style="font-size: 18px;">📱</span>
-            +40 759 407 066
-          </a>
+        <!-- Contact Information -->
+        <div class="footer-contact-info">
+          <div class="footer-contact-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <a href="mailto:contact@calingabriel.com">contact@calingabriel.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <a href="tel:+40759407066">+40 759 407 066</a>
+          </div>
         </div>
 
         <div class="footer-social-container">
@@ -445,6 +498,189 @@ const latestPosts = blogPosts
     </footer>
 
     <style>
+      /* HEADER NAVIGATION */
+      .header-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+      }
+
+      .nav-logo a {
+        text-decoration: none;
+        color: var(--dark);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .logo-text {
+        font-size: 1.3rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .logo-subtitle {
+        font-size: 0.75rem;
+        color: var(--gray);
+        font-weight: 500;
+      }
+
+      .nav-desktop {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger-line {
+        width: 25px;
+        height: 2px;
+        background: var(--dark);
+        transition: all 0.3s ease;
+        transform-origin: center;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .hamburger.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      /* Mobile Navigation */
+      .nav-mobile {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        display: none;
+        flex-direction: column;
+        gap: 1.5rem;
+        animation: slideDown 0.3s ease;
+      }
+
+      .nav-mobile.active {
+        display: flex;
+      }
+
+      .nav-mobile-link {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .nav-mobile-link:hover {
+        color: var(--primary);
+        transform: translateX(10px);
+      }
+
+      .nav-mobile-link:last-child {
+        border-bottom: none;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-desktop {
+          display: none;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-container {
+          padding: 0 1rem;
+        }
+      }
+
+      /* Add padding to body to account for fixed header */
+      body {
+        padding-top: 70px;
+      }
+
       /* HERO GENERATIVE SECTION */
       .hero-generative {
         min-height: 100vh;
@@ -715,6 +951,47 @@ const latestPosts = blogPosts
         font-weight: 600;
       }
 
+      /* Contact Information in Hero */
+      .contact-info-hero {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        margin: 2.5rem 0;
+        animation: fadeInUp 1s ease 0.7s both;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 1.5rem 2rem;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      .contact-item svg {
+        color: #fbbf24;
+        flex-shrink: 0;
+      }
+
+      .contact-item a {
+        color: rgba(255, 255, 255, 0.95);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .contact-item a:hover {
+        color: #fbbf24;
+        transform: translateY(-1px);
+      }
+
       /* Stats Section */
       .hero-stats {
         display: flex;
@@ -870,6 +1147,19 @@ const latestPosts = blogPosts
         .cta-secondary-enhanced {
           width: 100%;
           max-width: 280px;
+          justify-content: center;
+        }
+
+        .contact-info-hero {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1.25rem 1.5rem;
+          margin: 2rem auto;
+          max-width: 280px;
+        }
+
+        .contact-item {
+          font-size: 1rem;
           justify-content: center;
         }
 
@@ -1211,6 +1501,20 @@ const latestPosts = blogPosts
         color: #f56565 !important;
       }
 
+      /* Disable hover effects for project cards without links */
+      .project-card-compact.project-card {
+        cursor: default;
+      }
+
+      .project-card-compact.project-card:hover {
+        transform: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      }
+
+      .project-card-compact.project-card::before {
+        display: none;
+      }
+
       /* BLOG SECTION ENHANCED STYLES */
       .blog-preview-section-enhanced {
         position: relative;
@@ -1312,5 +1616,161 @@ const latestPosts = blogPosts
           display: none;
         }
       }
+
+      /* Footer Contact Information */
+      .footer-title {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .footer-subtitle {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+      }
+
+      .footer-contact-info {
+        display: flex;
+        gap: 2.5rem;
+        justify-content: center;
+        align-items: center;
+        margin: 2.5rem 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 1.5rem 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      .footer-contact-item svg {
+        color: #fbbf24;
+        flex-shrink: 0;
+      }
+
+      .footer-contact-item a {
+        color: rgba(255, 255, 255, 0.95);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .footer-contact-item a:hover {
+        color: #fbbf24;
+        transform: translateY(-1px);
+      }
+
+      /* Mobile responsive for footer contact */
+      @media (max-width: 768px) {
+        .footer-contact-info {
+          flex-direction: column;
+          gap: 1.5rem;
+          padding: 1.5rem 2rem;
+          margin: 2rem auto;
+          max-width: 320px;
+        }
+
+        .footer-contact-item {
+          font-size: 1rem;
+          justify-content: center;
+        }
+
+        .footer-title {
+          font-size: 1.5rem;
+        }
+
+        .footer-subtitle {
+          font-size: 1rem;
+        }
+      }
     </style>
+
+    <script>
+      // Hamburger menu functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const navMobile = document.getElementById('nav-mobile');
+        const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+        const allNavLinks = document.querySelectorAll('.nav-link, .nav-mobile-link');
+        const header = document.querySelector('.header-nav') as HTMLElement;
+
+        if (!hamburger || !navMobile || !header) return;
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', function() {
+          hamburger.classList.toggle('active');
+          navMobile.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+          });
+        });
+
+        // Smooth scroll to sections
+        allNavLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = (e.target as HTMLAnchorElement).getAttribute('href');
+            if (!href) return;
+            
+            const targetSection = document.querySelector(href);
+            
+            if (targetSection) {
+              const headerHeight = 70;
+              const offsetTop = (targetSection as HTMLElement).offsetTop - headerHeight;
+              
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+
+        // Header background on scroll
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', function() {
+          const currentScrollY = window.scrollY;
+          
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+          } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+          }
+          
+          lastScrollY = currentScrollY;
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+          const target = e.target as Node;
+          if (!header.contains(target) && navMobile.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+          }
+        });
+      });
+    </script>
 </BaseLayout>
