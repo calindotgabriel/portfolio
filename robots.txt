@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://calingabriel.com/sitemap.xml
+
+# SEO recommendations
+# Allow all main pages and projects
+# Disallow sensitive or admin paths if any (none present)
