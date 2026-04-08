@@ -4,8 +4,8 @@ import TechIcon from "../../components/TechIcon.astro";
 ---
 
 <ProjectLayout
-  title="Immobile Real Estate Search Platform"
-  description="Enterprise real estate platform with Hapi.js microservices and MongoDB"
+  title="ImmoScout24 Austria — Search Platform"
+  description="Case study: contributing to Austria's top 3 real estate search platform with fully tested distributed microservices"
 >
   <main>
     <section
@@ -16,13 +16,13 @@ import TechIcon from "../../components/TechIcon.astro";
         <h1
           style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.3); background: none !important; -webkit-text-fill-color: white !important;"
         >
-          Immobile Search Platform
+          ImmoScout24 Austria
         </h1>
         <p
           style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
         >
-          Advanced real estate search platform with SSO microservices and
-          Salesforce integration
+          Contributing to a top 3 real estate search platform in Austria —
+          with enterprise-grade SSO, fully tested distributed services, and marketing automation
         </p>
         <div
           style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
@@ -43,6 +43,8 @@ import TechIcon from "../../components/TechIcon.astro";
     </section>
 
     <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+
+      <!-- THE PROBLEM -->
       <section
         class="content-section"
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
@@ -50,59 +52,56 @@ import TechIcon from "../../components/TechIcon.astro";
         <h2
           style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
         >
-          Project Overview
+          The Problem
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 2rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
         >
-          Comprehensive real estate search platform built with modern
-          microservices architecture. Features advanced property filtering,
-          geospatial search capabilities, and enterprise-grade SSO integration.
-          The platform connects seamlessly with Salesforce CRM and provides
-          real-time property analytics for estate agents and buyers.
+          ImmoScout24 is one of the top 3 most-searched real estate platforms in Austria,
+          part of the Scout24 group headquartered in Germany. The Austrian branch needed to
+          keep pace with the parent organization's engineering standards while evolving its
+          own product — improving user experience, driving organic traffic, and adding marketing
+          automation capabilities.
         </p>
-
-        <div
-          class="metrics-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
         >
-          <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              10K+
-            </div>
-            <div style="color: var(--gray); font-weight: 500;">
-              Properties Indexed
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              &lt;1s
-            </div>
-            <div style="color: var(--gray); font-weight: 500;">
-              Search Response Time
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              99.9%
-            </div>
-            <div style="color: var(--gray); font-weight: 500;">Uptime</div>
-          </div>
-        </div>
+          The existing system was a highly qualitative distributed architecture with
+          comprehensive e2e, unit, and integration test coverage. The bar was high:
+          every change had to pass through rigorous testing pipelines. Any new feature
+          or optimization needed to work within this quality-first culture — not around it.
+        </p>
       </section>
 
+      <!-- THE CHALLENGE -->
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+        >
+          My Biggest Challenge
+        </h2>
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+        >
+          Adapting to the quality expectations of a DAX-listed organization was the steepest
+          learning curve. The codebase was fully tested at every layer — e2e, integration,
+          and unit — across distributed microservices with SSO federated from Scout24's
+          main German organization. Nothing shipped without full coverage.
+        </p>
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+        >
+          I had to level up my testing discipline fast, learn to communicate more precisely
+          with senior engineers, and develop the habit of syncing with my mentor at the
+          moments that actually counted — not too early (wasting their time) and not too
+          late (blocking my own progress). That calibration was as valuable as any technical skill.
+        </p>
+      </section>
+
+      <!-- WHAT I DELIVERED -->
       <section
         class="content-section"
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
@@ -110,7 +109,7 @@ import TechIcon from "../../components/TechIcon.astro";
         <h2
           style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
         >
-          Technical Architecture
+          What I Delivered
         </h2>
 
         <div
@@ -123,11 +122,12 @@ import TechIcon from "../../components/TechIcon.astro";
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
-              Hapi.js Microservices
+              UX Improvements
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              Robust microservices architecture with Hapi.js framework providing
-              scalable API endpoints and comprehensive request validation.
+              Drove user experience improvements across the search and listing flows,
+              making the platform faster to navigate and easier to convert on — directly
+              contributing to higher engagement metrics.
             </p>
           </div>
           <div
@@ -136,11 +136,12 @@ import TechIcon from "../../components/TechIcon.astro";
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
-              MongoDB Geospatial
+              SEO to All-Time High
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              Advanced geospatial queries with MongoDB for location-based
-              property search, radius filtering, and proximity calculations.
+              Implemented technical SEO optimizations that pushed organic search
+              performance to its highest levels in the platform's history — more
+              visibility means more listings, more agents, more revenue.
             </p>
           </div>
           <div
@@ -149,12 +150,12 @@ import TechIcon from "../../components/TechIcon.astro";
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
-              SSO Authentication
+              Marketing Automation (Iterable)
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              Enterprise SSO microservices with JWT tokens, role-based access
-              control, and seamless integration with existing authentication
-              systems.
+              Integrated Iterable for marketing automation, enabling the business
+              to run targeted campaigns, automate lead nurturing, and re-engage
+              users — turning traffic into measurable pipeline.
             </p>
           </div>
           <div
@@ -163,17 +164,108 @@ import TechIcon from "../../components/TechIcon.astro";
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
-              Salesforce Integration
+              Enricher Task Upgrades
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              Real-time synchronization with Salesforce CRM using Lambda
-              functions and SQS for reliable lead management and property
-              tracking.
+              Upgraded the functional programming-style enricher tasks that
+              process and transform property data — improving reliability
+              and maintainability of the data pipeline.
             </p>
           </div>
         </div>
       </section>
 
+      <!-- BUSINESS IMPACT -->
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+        >
+          Business Impact
+        </h2>
+
+        <div
+          class="metrics-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
+        >
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              Top 3
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">
+              Most-Used Listing Platform in AT
+            </div>
+          </div>
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              ATH
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">
+              SEO Performance — All-Time High
+            </div>
+          </div>
+          <div
+            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+          >
+            <div
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
+            >
+              20%
+            </div>
+            <div style="color: var(--gray); font-weight: 500;">
+              Higher User Engagement
+            </div>
+          </div>
+        </div>
+
+        <p
+          style="font-size: 1.05rem; line-height: 1.7; color: var(--gray); margin-top: 1.5rem;"
+        >
+          These weren't isolated technical wins. Higher SEO meant more organic traffic, which
+          meant more listings and agents on the platform. Better UX meant users stayed longer
+          and converted more. Iterable meant the business could nurture leads without engineering
+          involvement. Every improvement compounded into platform growth.
+        </p>
+      </section>
+
+      <!-- WHAT I LEARNED -->
+      <section
+        class="content-section"
+        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
+      >
+        <h2
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+        >
+          What I Took Away
+        </h2>
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+        >
+          This project fundamentally shaped how I work. I learned that quality isn't a
+          phase — it's the speed. A fully tested distributed system doesn't slow you down,
+          it gives you the confidence to move fast without breaking things. That mindset
+          stayed with me in every project since.
+        </p>
+        <p
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+        >
+          On the human side, I learned when to reach out to a mentor and when to push
+          through on my own. That calibration — knowing when to sync and when to execute —
+          is something I now consider a core part of how I operate in any team.
+        </p>
+      </section>
+
+      <!-- TECH STACK -->
       <section
         class="content-section"
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
@@ -188,12 +280,12 @@ import TechIcon from "../../components/TechIcon.astro";
         >
           {
             [
-              { name: "Hapi", tech: "Hapi" },
-              { name: "MongoDB", tech: "MongoDB" },
               { name: "React", tech: "React" },
-              { name: "AWS", tech: "AWS" },
+              { name: "Hapi.js", tech: "Hapi" },
               { name: "Node.js", tech: "Node.js" },
-              { name: "JavaScript", tech: "JavaScript" },
+              { name: "MongoDB", tech: "MongoDB" },
+              { name: "AWS", tech: "AWS" },
+              { name: "Iterable", tech: "JavaScript" },
             ].map((item) => (
               <div style="padding: 1.25rem 1rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(99,102,241,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
                 <TechIcon technology={item.tech} size={32} />
@@ -210,7 +302,6 @@ import TechIcon from "../../components/TechIcon.astro";
 </ProjectLayout>
 
 <style>
-  /* Fix header contrast in hero sections */
   .project-hero h1 {
     color: white !important;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -219,7 +310,6 @@ import TechIcon from "../../components/TechIcon.astro";
     background-clip: initial !important;
   }
 
-  /* Smooth animations */
   .content-section {
     animation: fadeInUp 0.6s ease forwards;
   }
@@ -235,19 +325,16 @@ import TechIcon from "../../components/TechIcon.astro";
     }
   }
 
-  /* Hover effects */
   .features-grid > div:hover {
     transform: translateY(-2px);
     transition: transform 0.3s ease;
   }
 
-  /* Technology stack hover effects */
   .content-section div[style*="min-height: 100px"]:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
   }
 
-  /* Responsive Design */
   @media (max-width: 768px) {
     .project-hero {
       padding: 48px 0 32px;
@@ -274,7 +361,6 @@ import TechIcon from "../../components/TechIcon.astro";
       grid-template-columns: 1fr;
     }
 
-    /* Technology stack mobile */
     .content-section div[style*="repeat(auto-fill, minmax(140px, 1fr))"] {
       grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
       gap: 1rem !important;

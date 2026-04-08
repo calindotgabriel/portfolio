@@ -4,8 +4,8 @@ import TechIcon from "../../components/TechIcon.astro";
 ---
 
 <ProjectLayout
-  title="RWE Energy — Platform Migration"
-  description="Case study: migrating a legacy Java monolith to Node.js microservices for Germany's largest energy company"
+  title="Endava — Enterprise Consulting"
+  description="Case study: 3 years of full-stack JS across Deutsche Telekom, NETS Scandinavia, and eLife Sciences"
 >
   <main>
     <section
@@ -16,13 +16,13 @@ import TechIcon from "../../components/TechIcon.astro";
         <h1
           style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em; color: white !important; text-shadow: 0 2px 4px rgba(0,0,0,0.3); background: none !important; -webkit-text-fill-color: white !important;"
         >
-          RWE Energy Platform
+          Endava — Enterprise Clients
         </h1>
         <p
           style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
         >
-          Migrating a slow Java monolith to a modern Node.js stack for one of
-          Germany's largest energy companies
+          Nearly 3 years of full-stack JavaScript across Deutsche Telekom,
+          NETS Scandinavia, and eLife Sciences — the foundation for everything after
         </p>
         <div
           style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
@@ -30,21 +30,15 @@ import TechIcon from "../../components/TechIcon.astro";
           <span
             style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.15); border-radius: 50px; font-weight: 600; backdrop-filter: blur(10px);"
           >
-            ENTERPRISE
+            AGENCY
           </span>
-          <a
-            href="https://github.com/calindotgabriel/energy-reporter"
-            style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.9); color: #6366f1; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease;"
-          >
-            View on GitHub
-          </a>
         </div>
       </div>
     </section>
 
     <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
 
-      <!-- THE PROBLEM -->
+      <!-- THE CONTEXT -->
       <section
         class="content-section"
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
@@ -52,66 +46,27 @@ import TechIcon from "../../components/TechIcon.astro";
         <h2
           style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
         >
-          The Problem
+          The Context
         </h2>
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
         >
-          RWE's energy services platform was running on a legacy Java monolith that was
-          slow and poorly implemented. Energy market data needed to be queried, filtered,
-          and exported daily — but the system couldn't keep up. Large dataset exports
-          took 45 minutes. API responses were sluggish. The monolith was hard to maintain
-          and even harder to extend.
+          Endava is a global technology consultancy that places engineers with major
+          enterprise clients. Over nearly 3 years there, I rotated across projects for
+          Deutsche Telekom, NETS (Scandinavian payments infrastructure), and eLife Sciences
+          (UK academic publishing) — all full-stack JavaScript.
         </p>
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
         >
-          The business needed a system that could handle thousands of daily energy market
-          queries with fast, reliable responses — and a codebase that a small team could
-          actually evolve without fear.
+          This was the period that raised my bar. Working across telecoms, payments, and
+          academic publishing forced me to adapt fast, learn new domains quickly, and deliver
+          consistently regardless of the business context. It set the standard for the
+          freelance and enterprise work I did afterward.
         </p>
       </section>
 
-      <!-- THE APPROACH -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
-        >
-          How I Approached It
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
-        >
-          We migrated to Node.js with NestJS and MongoDB — a stack that gave us the
-          modularity and performance the monolith lacked. Energy projects have dynamic
-          properties, so the filtering system needed to generate columns on the fly based
-          on each project's characteristics. I built this with MongoDB aggregations
-          optimized through profiling, not guesswork.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
-        >
-          The biggest technical challenge was that heavy data processing was killing the
-          main thread. I implemented <strong>Worker Pools</strong> to offload large dataset
-          operations to parallel threads — this is what brought export times from 45 minutes
-          down to 12. I used the Node.js profiler to find the actual bottlenecks rather than
-          optimizing blind.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
-        >
-          One thing I did without being asked: I introduced <strong>TDD from the start</strong>
-          for every feature I built. On a migration project — where you're replacing a running
-          system people depend on — you need the confidence that tests give you. I made that
-          call early, and it paid off immediately. This discipline later became second nature
-          when I moved to Scout24, where full test coverage was already the norm.
-        </p>
-      </section>
-
-      <!-- WHAT I DELIVERED -->
+      <!-- THE WORK -->
       <section
         class="content-section"
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
@@ -119,7 +74,7 @@ import TechIcon from "../../components/TechIcon.astro";
         <h2
           style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
         >
-          Key Technical Decisions
+          What I Built
         </h2>
 
         <div
@@ -130,57 +85,32 @@ import TechIcon from "../../components/TechIcon.astro";
             style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
           >
             <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary);"
             >
-              Worker Pools for Exports
+              Scientific Paper Processing
             </h3>
+            <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">eLife Sciences (UK)</p>
             <p style="color: var(--gray); line-height: 1.6;">
-              Large dataset operations were blocking the event loop. Worker Pools
-              moved heavy processing to parallel threads, keeping the API responsive
-              while exports ran in the background. 45min became 12min.
+              Built a document conversion system with Node.js, AWS S3, and Lambda
+              that processed 2,000+ scientific papers daily. The React frontend handled
+              paper submission, tracking, and collaborative workflows — optimized for
+              rendering large document collections without choking the browser.
             </p>
           </div>
           <div
             style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
           >
             <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
+              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary);"
             >
-              Profiler-Driven Optimization
+              E-Commerce Checkout System
             </h3>
+            <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">NETS Scandinavia</p>
             <p style="color: var(--gray); line-height: 1.6;">
-              Instead of guessing at bottlenecks, I used the Node.js profiler to
-              identify exactly where time was spent in the column filtering pipeline —
-              then optimized the specific MongoDB aggregations that mattered.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              Dynamic Column Generation
-            </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
-              Energy projects have variable properties. The filtering system generates
-              columns dynamically based on project characteristics — flexible enough
-              for any project shape, fast enough for daily use.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              TDD from Day One
-            </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
-              On a migration project, you're replacing a system people depend on.
-              I introduced test-driven development for every feature — not because
-              it was required, but because the risk of shipping broken replacements
-              was too high.
+              Created a checkout system with React and TypeScript supporting multiple
+              payment methods including Klarna and traditional cards. In payments,
+              reliability isn't a nice-to-have — every edge case in the flow is someone's
+              money. This is where my attention to payment-critical code started.
             </p>
           </div>
         </div>
@@ -194,7 +124,7 @@ import TechIcon from "../../components/TechIcon.astro";
         <h2
           style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
         >
-          Business Impact
+          Impact Across Clients
         </h2>
 
         <div
@@ -207,10 +137,10 @@ import TechIcon from "../../components/TechIcon.astro";
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
-              65%
+              2K+
             </div>
             <div style="color: var(--gray); font-weight: 500;">
-              Faster API Responses
+              Papers Processed Daily
             </div>
           </div>
           <div
@@ -219,10 +149,10 @@ import TechIcon from "../../components/TechIcon.astro";
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
-              73%
+              3
             </div>
             <div style="color: var(--gray); font-weight: 500;">
-              Faster Exports (45min → 12min)
+              Enterprise Domains (Telecom, Payments, Academic)
             </div>
           </div>
           <div
@@ -231,23 +161,13 @@ import TechIcon from "../../components/TechIcon.astro";
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
-              15K+
+              2
             </div>
             <div style="color: var(--gray); font-weight: 500;">
-              Daily Queries Handled
+              Junior Devs Mentored
             </div>
           </div>
         </div>
-
-        <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--gray); margin-top: 1.5rem;"
-        >
-          The 65% API improvement meant energy traders could query market data and get
-          answers fast enough to act on them. The export time reduction meant analysts
-          stopped scheduling exports overnight — they could run them during the workday
-          and iterate. The new architecture gave a 4-person team the ability to ship
-          features that the old monolith made impossible.
-        </p>
       </section>
 
       <!-- WHAT I LEARNED -->
@@ -263,18 +183,18 @@ import TechIcon from "../../components/TechIcon.astro";
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
         >
-          This project taught me the value of <strong>consistency in delivery</strong>.
-          On a small team replacing a production system, there's no room for erratic output.
-          Every week needed to move the migration forward predictably. I learned to scope
-          work tightly, ship reliably, and communicate progress clearly.
+          Agency work forces you to get productive fast in unfamiliar codebases and
+          domains. After rotating through telecoms, payments, and academic publishing in
+          under 3 years, I stopped being intimidated by new contexts. The pattern is
+          always the same: understand the domain, find the real constraints, ship.
         </p>
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
         >
-          Technically, it deepened my conviction that performance optimization starts with
-          measurement. The profiler-first approach — finding the real bottleneck before
-          writing a single optimization — saved weeks of wasted effort and became a
-          permanent part of how I work.
+          This is also where I started mentoring — guiding 2 junior developers through
+          React best practices and Node.js architecture. Teaching others forced me to
+          articulate what I knew and identify gaps in my own understanding. It made me
+          a better engineer, not just a more senior one.
         </p>
       </section>
 
@@ -293,12 +213,12 @@ import TechIcon from "../../components/TechIcon.astro";
         >
           {
             [
-              { name: "NestJS", tech: "NestJS" },
-              { name: "MongoDB", tech: "MongoDB" },
+              { name: "React", tech: "React" },
               { name: "TypeScript", tech: "TypeScript" },
-              { name: "Docker", tech: "Docker" },
               { name: "Node.js", tech: "Node.js" },
-              { name: "Worker Threads", tech: "Microservices" },
+              { name: "AWS Lambda", tech: "AWS" },
+              { name: "AWS S3", tech: "AWS" },
+              { name: "Klarna", tech: "JavaScript" },
             ].map((item) => (
               <div style="padding: 1.25rem 1rem; background: rgba(99,102,241,0.1); color: var(--primary); border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(99,102,241,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
                 <TechIcon technology={item.tech} size={32} />
