@@ -1,0 +1,117 @@
+---
+import ResumeLayout from "../layouts/ResumeLayout.astro";
+import { resume } from "../data/resume";
+import "../styles/resume.css";
+---
+
+<ResumeLayout title={`${resume.name} - ${resume.title}`}>
+  <div class="resume-actions">
+    <a href="/cv.pdf" download="Calin_Gabriel_CV.pdf" class="download-btn" id="download-pdf">Download PDF</a>
+  </div>
+  <script>
+    const btn = document.getElementById('download-pdf');
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        // If PDF doesn't exist (dev mode), fall back to print
+        fetch('/cv.pdf', { method: 'HEAD' }).then(r => {
+          if (!r.ok) window.print();
+        }).catch(() => window.print());
+        // In dev, prevent the broken download
+        if (location.port === '4321') {
+          e.preventDefault();
+          window.print();
+        }
+      });
+    }
+  </script>
+  <div class="resume">
+    <!-- HEADER -->
+    <header class="resume-header">
+      <div>
+        <div class="resume-name">{resume.name}</div>
+        <div class="resume-title">{resume.title}</div>
+      </div>
+      <div class="resume-contact">
+        <div><a href={`mailto:${resume.email}`}>{resume.email}</a></div>
+        <div><a href={resume.website}>{resume.website}</a></div>
+      </div>
+    </header>
+
+    <!-- BODY: main + sidebar -->
+    <div class="resume-body">
+      <!-- MAIN COLUMN -->
+      <div class="resume-main">
+        <!-- SUMMARY -->
+        <section class="summary-section">
+          <h2>Summary</h2>
+          {resume.summary.map((line) => (
+            <p class="summary-text">{line}</p>
+          ))}
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="experience-section">
+          <h2>Experience</h2>
+          {resume.experience.map((job) => (
+            <div class="experience-entry">
+              <div class="experience-header">
+                <div>
+                  <span class="company-name">{job.company}</span>
+                  <span class="company-location"> {job.location}</span>
+                </div>
+                <span class="experience-period">{job.period}</span>
+              </div>
+              <ul class="experience-highlights">
+                {job.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="resume-sidebar">
+        <!-- Availability -->
+        <div class="sidebar-section">
+          <h3>At a glance</h3>
+          <ul class="availability-list">
+            {resume.availability.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Skills -->
+        {resume.skills.map((group) => (
+          <div class="sidebar-section">
+            <h3>{group.category}</h3>
+            <ul class="sidebar-list">
+              {group.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+
+        <!-- Education & Languages -->
+        <div class="sidebar-section">
+          <h3>Education</h3>
+          {resume.education.map((edu) => (
+            <div class="education-item">
+              <div style="font-weight: 600;">{edu.degree}, {edu.period}</div>
+              <div>{edu.institution}</div>
+              <div style="color: #64748b;">{edu.location}</div>
+            </div>
+          ))}
+          <div class="languages-inline">
+            {resume.languages.map((lang) => (
+              <span class="language-tag">{lang.language}: {lang.level}</span>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</ResumeLayout>

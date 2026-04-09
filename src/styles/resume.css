@@ -1,0 +1,330 @@
+/* Resume — print-optimized, A4-friendly */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #1a1a1a;
+  background: #e5e7eb;
+  line-height: 1.5;
+  font-size: 10pt;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reset global.css overrides */
+.resume h1,
+.resume h2,
+.resume h3 {
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: normal;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+.resume p {
+  font-size: inherit;
+  color: inherit;
+  max-width: none;
+}
+
+/* ---- DOWNLOAD BUTTON ---- */
+.resume-actions {
+  width: 210mm;
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  background: #6366f1;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 9.5pt;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.download-btn:hover {
+  background: #4f46e5;
+}
+
+/* ---- A4 CONTAINER ---- */
+.resume {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  background: #fff;
+  padding: 14mm 16mm;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- HEADER ---- */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5mm;
+  padding-bottom: 4mm;
+  border-bottom: 2.5px solid #6366f1;
+}
+
+.resume-name {
+  font-size: 26pt;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.resume-title {
+  font-size: 11pt;
+  font-weight: 500;
+  color: #6366f1;
+  margin-top: 3px;
+  letter-spacing: 0.3px;
+}
+
+.resume-contact {
+  text-align: right;
+  font-size: 8.5pt;
+  color: #475569;
+  line-height: 1.9;
+}
+
+.resume-contact a:hover {
+  color: #6366f1;
+}
+
+/* ---- TWO COLUMN BODY ---- */
+.resume-body {
+  display: grid;
+  grid-template-columns: 1fr 145px;
+  gap: 0;
+}
+
+/* ---- MAIN CONTENT ---- */
+.resume-main {
+  order: 1;
+  padding-right: 6mm;
+  border-right: 1px solid #e2e8f0;
+}
+
+/* ---- SIDEBAR ---- */
+.resume-sidebar {
+  order: 2;
+  padding-left: 5mm;
+}
+
+.sidebar-section {
+  margin-bottom: 4.5mm;
+}
+
+.sidebar-section h3 {
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #6366f1;
+  margin-bottom: 2mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.sidebar-list {
+  list-style: none;
+  font-size: 8.5pt;
+  color: #334155;
+  line-height: 1.9;
+}
+
+.sidebar-list li {
+  position: relative;
+  padding-left: 9px;
+}
+
+.sidebar-list li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: #6366f1;
+  font-size: 8pt;
+}
+
+.availability-list {
+  list-style: none;
+  font-size: 8.5pt;
+  color: #334155;
+  line-height: 1.9;
+}
+
+.availability-list li {
+  position: relative;
+  padding-left: 9px;
+}
+
+.availability-list li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: #6366f1;
+  font-size: 8pt;
+}
+
+.education-item {
+  font-size: 8.5pt;
+  color: #334155;
+  line-height: 1.5;
+  margin-bottom: 1.5mm;
+}
+
+.languages-inline {
+  margin-top: 3mm;
+  padding-top: 2mm;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+}
+
+.language-tag {
+  font-size: 8pt;
+  color: #475569;
+}
+
+/* ---- SUMMARY ---- */
+.summary-section {
+  margin-bottom: 4mm;
+}
+
+.summary-section h2 {
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #6366f1;
+  margin-bottom: 2mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.summary-text {
+  font-size: 9pt;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* ---- EXPERIENCE ---- */
+.experience-section h2 {
+  font-size: 10pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #6366f1;
+  margin-bottom: 3mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.experience-entry {
+  margin-bottom: 3.5mm;
+  break-inside: avoid;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.5mm;
+}
+
+.company-name {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.company-location {
+  font-weight: 400;
+  color: #94a3b8;
+  font-size: 9pt;
+  margin-left: 2px;
+}
+
+.experience-period {
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.experience-highlights {
+  list-style: none;
+  padding: 0;
+}
+
+.experience-highlights li {
+  position: relative;
+  padding-left: 11px;
+  margin-bottom: 1.2mm;
+  font-size: 8.5pt;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.experience-highlights li::before {
+  content: '\2022';
+  position: absolute;
+  left: 0;
+  color: #94a3b8;
+  font-size: 9pt;
+  line-height: 1.5;
+}
+
+/* ---- PRINT STYLES ---- */
+@media print {
+  body {
+    background: none;
+    font-size: 10pt;
+  }
+
+  .resume-actions {
+    display: none;
+  }
+
+  .resume {
+    width: auto;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  .experience-entry {
+    break-inside: avoid;
+  }
+
+  a {
+    color: inherit;
+  }
+}
