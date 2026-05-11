@@ -4,6 +4,8 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+const siteUrl = "https://calingabriel.com";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -12,6 +14,19 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <meta
+      name="description"
+      content="Calin Gabriel - Senior Full Stack Developer CV, with 15 years in software and 9+ years of professional delivery."
+    />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Senior Full Stack Developer CV across Node.js, React, payments, energy, and real estate."
+    />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"

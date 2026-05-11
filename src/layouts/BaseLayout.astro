@@ -6,6 +6,12 @@ export interface Props {
 }
 
 const { title, description, bodyClass } = Astro.props;
+const siteUrl = "https://calingabriel.com";
+const pageTitle = title.includes("Calin Gabriel") ? title : `${title} - Calin Gabriel`;
+const metaDescription =
+  description ||
+  "Calin Gabriel - Senior Full Stack Developer with 15 years in software and 9+ years of professional delivery.";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 
 import Analytics from "../components/Analytics.astro";
 import Favicons from "../components/Favicons.astro";
@@ -17,11 +23,20 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} - Calin Gabriel</title>
+    <title>{pageTitle}</title>
     <meta
       name="description"
-      content={description || "Calin Gabriel - Full Stack Developer"}
+      content={metaDescription}
     />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Calin Gabriel" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDescription} />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"

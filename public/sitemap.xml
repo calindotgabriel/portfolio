@@ -5,7 +5,9 @@
   </url>
   <url>
     <loc>https://calingabriel.com/cv.pdf</loc>
-    <lastmod>2024-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://calingabriel.com/resume</loc>
   </url>
   <url>
     <loc>https://calingabriel.com/projects</loc>
@@ -15,5 +17,8 @@
   </url>
   <url>
     <loc>https://calingabriel.com/projects/rwe-energy</loc>
+  </url>
+  <url>
+    <loc>https://calingabriel.com/projects/endava</loc>
   </url>
 </urlset>

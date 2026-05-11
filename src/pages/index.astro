@@ -1,21 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TechIcon from "../components/TechIcon.astro";
+import { projects } from "../data/projects";
+
 ---
 
 <BaseLayout 
   title="Calin Gabriel - Senior Full Stack Developer"
-  description="Senior Full Stack Developer building scalable distributed systems with Node.js, React, and cloud infrastructure. 6+ years delivering for enterprise clients across Europe."
+  description="Senior Full Stack Developer with 15 years in software and 9+ years of professional delivery across Node.js, React, payments, energy, and real estate platforms."
 >
+  <!-- HEADER NAVIGATION -->
   <header class="header-nav">
     <div class="nav-container">
       <div class="nav-logo">
         <a href="#hero">
           <span class="logo-text">Calin Gabriel</span>
-          <span class="logo-subtitle">Senior Software Engineer</span>
+          <span class="logo-subtitle">Senior Full Stack Developer</span>
         </a>
       </div>
       
+      <!-- Desktop Navigation -->
       <nav class="nav-desktop">
         <a href="#hero" class="nav-link">Home</a>
         <a href="#about" class="nav-link">About</a>
@@ -23,6 +27,7 @@ import TechIcon from "../components/TechIcon.astro";
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
       
+      <!-- Mobile Hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -30,6 +35,7 @@ import TechIcon from "../components/TechIcon.astro";
       </button>
     </div>
     
+    <!-- Mobile Navigation -->
     <nav class="nav-mobile" id="nav-mobile">
       <a href="#hero" class="nav-mobile-link">Home</a>
       <a href="#about" class="nav-mobile-link">About</a>
@@ -38,71 +44,86 @@ import TechIcon from "../components/TechIcon.astro";
     </nav>
   </header>
 
-  <section id="hero" class="hero-section">
+  <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
       <div class="hero-content">
         <span class="hero-badge">Open to Opportunities</span>
 
         <h1 class="hero-title">Calin Gabriel</h1>
 
         <p class="hero-tagline">
-          I architect and build robust distributed systems for enterprise clients like
+          I build and improve production systems in payments, energy,
+          and real estate for companies like
           <strong>Scout24</strong>, <strong>RWE</strong>, and <strong>NETS</strong>.
         </p>
 
         <p class="hero-sub">
-          6+ years of shipping scalable, test-driven backend solutions across Europe, specializing in performant APIs, complex domains, and cloud infrastructure.
+          I started working in software at 16. Today I bring 15 years in the field
+          and 9+ years of professional delivery across European product and enterprise teams.
         </p>
 
         <div class="hero-cta">
-          <a href="#about" class="cta-primary">Professional Journey</a>
+          <a href="#about" class="cta-primary">Read My Story</a>
           <a href="#projects" class="cta-secondary">See Case Studies</a>
           <a href="/resume" class="cta-secondary">View CV</a>
         </div>
       </div>
     </section>
 
+    <!-- ABOUT SECTION -->
     <section id="about" class="about-section">
       <div class="about-container">
-        <h2 class="about-heading">Engineering Background</h2>
+        <h2 class="about-heading">The Story Behind the Code</h2>
 
         <div class="about-timeline">
+          <!-- Past -->
           <div class="about-phase">
             <div class="phase-marker">
               <div class="phase-dot"></div>
               <div class="phase-line"></div>
             </div>
             <div class="phase-content">
-              <span class="phase-label">The Foundation</span>
-              <h3 class="phase-title">Bridging Theory and Practice</h3>
+              <span class="phase-label">Where I started</span>
+              <h3 class="phase-title">Started early, learned by shipping</h3>
               <p class="phase-text">
-                I started out in web development early, gaining hands-on experience with Linux servers and core web infrastructure. I later formalized this practical instinct with a Computer Science degree from Babes-Bolyai University in Cluj-Napoca, ensuring my architectural decisions are backed by strong theoretical fundamentals.
+                At 16 I won an internship contest in Galati and turned it into my first
+                software job. I learned Linux and web development on real work before moving
+                to Cluj-Napoca for Computer Science at Babes-Bolyai University, where I put
+                formal structure around the practical habits I had already started building.
               </p>
             </div>
           </div>
 
+          <!-- Present -->
           <div class="about-phase">
             <div class="phase-marker">
               <div class="phase-dot phase-dot-active"></div>
               <div class="phase-line"></div>
             </div>
             <div class="phase-content">
-              <span class="phase-label">Current Focus</span>
-              <h3 class="phase-title">Scaling Enterprise Systems</h3>
+              <span class="phase-label">Where I am now</span>
+              <h3 class="phase-title">Senior full-stack delivery across product domains</h3>
               <p class="phase-text">
-                Working with DAX-listed enterprises and major EU players, my specialty is engineering <strong>performant, reliable distributed systems</strong>. I focus on optimizing database queries, building resilient microservices, and maintaining strict test-driven workflows to ensure code quality. Currently tackling domain complexity in payment services, with a proven track record across the energy and e-commerce sectors.
+                I have worked across payments, energy, real estate, e-commerce, and publishing,
+                including DAX-listed companies and major European platforms. My strongest work
+                is in backend-heavy full-stack systems: Node.js, React, databases, testing,
+                integration work, and performance improvements that are measured rather than guessed.
               </p>
             </div>
           </div>
 
+          <!-- Future -->
           <div class="about-phase">
             <div class="phase-marker">
               <div class="phase-dot phase-dot-future"></div>
             </div>
             <div class="phase-content">
-              <span class="phase-label">Next Steps</span>
-              <h3 class="phase-title">Engineering for Impact</h3>
+              <span class="phase-label">Where I'm heading</span>
+              <h3 class="phase-title">Looking for high-context engineering teams</h3>
               <p class="phase-text">
-                I'm looking to tackle high-complexity domain problems alongside inspiring engineering teams. I thrive in environments across Europe where code quality is non-negotiable, deployments are automated, and the architecture serves clear, measurable business goals.
+                I am looking for teams across Europe where engineers own outcomes, communicate
+                clearly, and care about long-term maintainability. The best fit is a product
+                or platform team with enough domain complexity to reward careful engineering.
               </p>
             </div>
           </div>
@@ -110,102 +131,89 @@ import TechIcon from "../components/TechIcon.astro";
       </div>
     </section>
 
+    <!-- PROJECTS COMPACT -->
     <section id="projects" class="projects-section">
       <div class="projects-container">
         <div class="projects-header">
           <h2>Case Studies</h2>
-          <p>Real problems, deliberate architecture, measurable outcomes.</p>
+          <p>Real problems, real decisions, real outcomes.</p>
         </div>
 
         <div class="projects-grid">
-          <a href="/projects/immobile-search" class="project-link">
-            <div class="project-card project-card-large">
-              <div>
-                <div class="project-header">
-                  <h3 class="project-title">ImmoScout24 Austria</h3>
-                  <span class="project-badge badge-live">LIVE</span>
-                </div>
-                <p class="project-description">
-                  Top 3 real estate platform in Austria. Maintained and scaled a fully tested distributed system, optimizing critical path APIs, improving data throughput, and ensuring seamless third-party service integrations.
-                </p>
-                <div class="project-tech-container">
-                  <span class="tech-pill"><TechIcon technology="React" size={16} />React</span>
-                  <span class="tech-pill"><TechIcon technology="Node.js" size={16} />Node.js</span>
-                  <span class="tech-pill"><TechIcon technology="AWS" size={16} />AWS</span>
-                  <span class="tech-pill"><TechIcon technology="MongoDB" size={16} />MongoDB</span>
-                </div>
-              </div>
-              <div class="project-results">
-                <div class="results-header">
-                  <span class="results-title">System Impact</span>
-                </div>
-                <ul class="results-list">
-                  <li>Optimized data pipelines</li>
-                  <li>High-availability API endpoints</li>
-                  <li>Strict TDD & CI/CD workflows</li>
-                </ul>
-              </div>
-            </div>
-          </a>
+          {projects.map((project, index) => (
+            <a href={`/projects/${project.id}`} class="project-link">
+              <div
+                class:list={[
+                  "project-card",
+                  index < 2 ? "project-card-large" : "project-card-compact",
+                  index === 1 ? "project-card-reverse" : "",
+                ]}
+              >
+                {index === 1 && (
+                  <div class="project-results">
+                    <div class="results-header">
+                      <span class="results-title">Impact</span>
+                    </div>
+                    <ul class="results-list">
+                      {project.results.map((result) => <li>{result}</li>)}
+                    </ul>
+                  </div>
+                )}
 
-          <a href="/projects/rwe-energy" class="project-link">
-            <div class="project-card project-card-large project-card-reverse">
-              <div class="project-results">
-                <div class="results-header">
-                  <span class="results-title">Impact</span>
+                <div class={index === 2 ? "project-compact-content" : ""}>
+                  <div class={index === 2 ? "project-compact-info" : ""}>
+                    <div class="project-header">
+                      <h3 class={index === 2 ? "project-compact-title" : "project-title"}>
+                        {project.homeTitle}
+                      </h3>
+                      <span
+                        class:list={[
+                          "project-badge",
+                          {
+                            "badge-live": project.status === "LIVE",
+                            "badge-enterprise": project.status === "ENTERPRISE",
+                            "badge-agency": project.status === "AGENCY",
+                          },
+                        ]}
+                      >
+                        {project.status}
+                      </span>
+                    </div>
+                    <p class={index === 2 ? "project-compact-description" : "project-description"}>
+                      {project.caseStudySummary}
+                    </p>
+                  </div>
+                  <div class={index === 2 ? "project-compact-tech" : "project-tech-container"}>
+                    {project.tech.map((tech) => (
+                      <span class="tech-pill"><TechIcon technology={tech} size={16} />{tech}</span>
+                    ))}
+                  </div>
                 </div>
-                <ul class="results-list">
-                  <li>65% faster APIs</li>
-                  <li>Exports: 45min to 12min</li>
-                  <li>TDD from day one</li>
-                </ul>
-              </div>
-              <div>
-                <div class="project-header">
-                  <h3 class="project-title">RWE Energy Platform</h3>
-                  <span class="project-badge badge-enterprise">ENTERPRISE</span>
-                </div>
-                <p class="project-description">
-                  Modernized legacy infrastructure by migrating a monolithic architecture to NestJS microservices. Addressed underlying database bottlenecks and utilized profiler-driven optimization to dramatically reduce heavy data export times.
-                </p>
-                <div class="project-tech-container">
-                  <span class="tech-pill"><TechIcon technology="NestJS" size={16} />NestJS</span>
-                  <span class="tech-pill"><TechIcon technology="MongoDB" size={16} />MongoDB</span>
-                  <span class="tech-pill"><TechIcon technology="Docker" size={16} />Docker</span>
-                  <span class="tech-pill"><TechIcon technology="TypeScript" size={16} />TypeScript</span>
-                </div>
-              </div>
-            </div>
-          </a>
 
-          <a href="/projects/endava" class="project-link">
-            <div class="project-card project-card-compact">
-              <div class="project-compact-content">
-                <div class="project-compact-info">
-                  <h3 class="project-compact-title">
-                    Endava — Deutsche Telekom, NETS, eLife Sciences
-                  </h3>
-                  <p class="project-compact-description">
-                    Nearly 3 years engineering high-availability backends across telecoms, payments, and academic publishing. This period established my core standards for building reliable, secure distributed architecture.
-                  </p>
-                </div>
-                <div class="project-compact-tech">
-                  <span class="tech-pill"><TechIcon technology="React" size={16} />React & Node</span>
-                  <span class="tech-pill"><TechIcon technology="AWS" size={16} />AWS Lambda</span>
-                  <span class="tech-pill"><TechIcon technology="TypeScript" size={16} />TypeScript</span>
-                </div>
+                {index !== 1 && index < 2 && (
+                  <div class="project-results">
+                    <div class="results-header">
+                      <span class="results-title">Impact</span>
+                    </div>
+                    <ul class="results-list">
+                      {project.results.map((result) => <li>{result}</li>)}
+                    </ul>
+                  </div>
+                )}
               </div>
-            </div>
-          </a>
+            </a>
+          ))}
         </div>
       </div>
     </section>
 
+    <!-- FOOTER CONTACT -->
     <footer id="contact" class="footer-section">
       <div class="footer-container">
-        <h3 class="footer-title">Let's discuss your next engineering challenge</h3>
-        <p class="footer-subtitle">Available for senior engineering roles and long-term engagements across Europe</p>
+        <h3 class="footer-title">Let's build something that scales</h3>
+        <p class="footer-subtitle">Open to engineering roles and long-term engagements across Europe</p>
 
+        <!-- Contact Information -->
         <div class="footer-contact-info">
           <div class="footer-contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -515,4 +523,475 @@ import TechIcon from "../components/TechIcon.astro";
         text-decoration: none;
         padding: 0.85rem 1.75rem;
         border-radius: 8px;
-        font
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+      }
+
+      .cta-secondary {
+        display: inline-block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        padding: 0.85rem 1.75rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+      }
+
+      .cta-secondary:hover {
+        color: white;
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .project-link {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .projects-section {
+        padding: 100px 0;
+        background: #f8fafc;
+      }
+
+      .projects-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .projects-header {
+        margin-bottom: 2.5rem;
+      }
+
+      .projects-header h2 {
+        font-size: 2.5rem;
+        color: var(--dark);
+        margin-bottom: 0.75rem;
+      }
+
+      .projects-header p {
+        color: var(--gray);
+      }
+
+      .projects-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .project-card-large {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .project-card-reverse {
+        grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.5fr);
+      }
+
+      .project-card-compact {
+        padding: 2rem;
+      }
+
+      .project-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+
+      .project-title,
+      .project-compact-title {
+        color: var(--dark);
+        margin: 0;
+      }
+
+      .project-description,
+      .project-compact-description {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--gray);
+        margin-bottom: 1.25rem;
+      }
+
+      .project-tech-container,
+      .project-compact-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .project-compact-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .project-results {
+        background: rgba(15, 23, 42, 0.04);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 8px;
+        padding: 1.25rem;
+      }
+
+      .results-title {
+        display: inline-block;
+        color: var(--dark);
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      .results-list {
+        list-style: none;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .results-list li {
+        color: var(--gray);
+        font-size: 0.95rem;
+      }
+
+      .project-badge {
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        color: white;
+        font-size: 0.72rem;
+        font-weight: 700;
+      }
+
+      .badge-live { background: #0f766e; }
+      .badge-enterprise { background: var(--primary-dark); }
+      .badge-agency { background: #475569; }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.75rem;
+        }
+
+        .hero-tagline {
+          font-size: 1.1rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+          text-align: center;
+        }
+
+        .projects-section {
+          padding: 72px 0;
+        }
+
+        .project-card-large,
+        .project-card-reverse,
+        .project-compact-content {
+          grid-template-columns: 1fr;
+        }
+      }      /* ABOUT SECTION */
+      .about-section {
+        padding: 100px 0;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      }
+
+      .about-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .about-heading {
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 4rem;
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .about-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .about-phase {
+        display: flex;
+        gap: 2rem;
+        padding-bottom: 3rem;
+      }
+
+      .about-phase:last-child {
+        padding-bottom: 0;
+      }
+
+      .phase-marker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-shrink: 0;
+        width: 20px;
+      }
+
+      .phase-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        border: 3px solid #e2e8f0;
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .phase-dot-active {
+        background: var(--primary);
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+      }
+
+      .phase-dot-future {
+        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        border-color: rgba(236, 72, 153, 0.3);
+      }
+
+      .phase-line {
+        width: 2px;
+        flex-grow: 1;
+        background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+        margin-top: 0.5rem;
+      }
+
+      .phase-content {
+        padding-top: 0;
+      }
+
+      .phase-label {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+      }
+
+      .phase-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+
+      .phase-text {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--gray);
+      }
+
+      .phase-text strong {
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .about-heading {
+          font-size: 2rem;
+        }
+
+        .about-phase {
+          gap: 1.25rem;
+        }
+
+        .phase-title {
+          font-size: 1.2rem;
+        }
+
+        .phase-text {
+          font-size: 1rem;
+        }
+      }
+
+      /* Footer Contact Information */
+      .footer-title {
+        color: white;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .footer-subtitle {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+        text-align: center;
+      }
+
+      .footer-contact-info {
+        display: flex;
+        gap: 2.5rem;
+        justify-content: center;
+        align-items: center;
+        margin: 2.5rem 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 1.5rem 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1.1rem;
+        font-weight: 500;
+      }
+
+      .footer-contact-item svg {
+        color: #fbbf24;
+        flex-shrink: 0;
+      }
+
+      .footer-contact-item a {
+        color: rgba(255, 255, 255, 0.95);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .footer-contact-item a:hover {
+        color: #fbbf24;
+        transform: translateY(-1px);
+      }
+
+      /* Mobile responsive for footer contact */
+      @media (max-width: 768px) {
+        .footer-contact-info {
+          flex-direction: column;
+          gap: 1.5rem;
+          padding: 1.5rem 2rem;
+          margin: 2rem auto;
+          max-width: 320px;
+        }
+
+        .footer-contact-item {
+          font-size: 1rem;
+          justify-content: center;
+        }
+
+        .footer-title {
+          font-size: 1.5rem;
+        }
+
+        .footer-subtitle {
+          font-size: 1rem;
+        }
+      }
+    </style>
+
+    <script>
+      // Hamburger menu functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const navMobile = document.getElementById('nav-mobile');
+        const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+        const allNavLinks = document.querySelectorAll('.nav-link, .nav-mobile-link');
+        const header = document.querySelector('.header-nav') as HTMLElement;
+
+        if (!hamburger || !navMobile || !header) return;
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', function() {
+          hamburger.classList.toggle('active');
+          navMobile.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+          });
+        });
+
+        // Smooth scroll to sections
+        allNavLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = (e.target as HTMLAnchorElement).getAttribute('href');
+            if (!href) return;
+            
+            const targetSection = document.querySelector(href);
+            
+            if (targetSection) {
+              const headerHeight = 70;
+              const offsetTop = (targetSection as HTMLElement).offsetTop - headerHeight;
+              
+              window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+
+        // Header background on scroll
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', function() {
+          const currentScrollY = window.scrollY;
+          
+          if (currentScrollY > 50) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+          } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+          }
+          
+          lastScrollY = currentScrollY;
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+          const target = e.target as Node;
+          if (!header.contains(target) && navMobile.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMobile.classList.remove('active');
+          }
+        });
+      });
+    </script>
+</BaseLayout>

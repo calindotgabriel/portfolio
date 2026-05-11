@@ -21,8 +21,8 @@ import TechIcon from "../../components/TechIcon.astro";
         <p
           style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
         >
-          Migrating a slow Java monolith to a modern Node.js stack for one of
-          Germany's largest energy companies
+          Migration and performance work on an energy-market data platform for
+          one of Germany's largest energy companies
         </p>
         <div
           style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
@@ -36,7 +36,7 @@ import TechIcon from "../../components/TechIcon.astro";
             href="https://github.com/calindotgabriel/energy-reporter"
             style="padding: 0.5rem 1.25rem; background: white; color: var(--dark); border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
           >
-            View on GitHub
+            Demo repo
           </a>
         </div>
       </div>
@@ -57,18 +57,17 @@ import TechIcon from "../../components/TechIcon.astro";
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
         >
-          RWE's energy services platform was running on a legacy Java monolith that was
-          slow and poorly implemented. Energy market data needed to be queried, filtered,
-          and exported daily — but the system couldn't keep up. Large dataset exports
-          took 45 minutes. API responses were sluggish. The monolith was hard to maintain
-          and even harder to extend.
+          RWE's energy services platform depended on legacy Java components that were
+          difficult for the team to extend. Energy market data had to be queried,
+          filtered, and exported daily. Large dataset exports took 45 minutes, and
+          response times were slow enough to affect day-to-day analyst workflows.
         </p>
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
         >
-          The business needed a system that could handle thousands of daily energy market
-          queries with fast, reliable responses — and a codebase that a small team could
-          actually evolve without fear.
+          The business needed faster data access and a codebase a small team could
+          evolve safely. My work focused on the Node.js/NestJS replacement path, the
+          data filtering pipeline, and the tests needed to keep migration work controlled.
         </p>
       </section>
 
@@ -85,29 +84,26 @@ import TechIcon from "../../components/TechIcon.astro";
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
         >
-          We migrated to Node.js with NestJS and MongoDB — a stack that gave us the
-          modularity and performance the monolith lacked. Energy projects have dynamic
-          properties, so the filtering system needed to generate columns on the fly based
-          on each project's characteristics. I built this with MongoDB aggregations
-          optimized through profiling, not guesswork.
+          We moved replacement work into Node.js with NestJS and MongoDB. Energy projects
+          have dynamic properties, so the filtering system needed to generate columns
+          from each project's characteristics. I built and tuned this path with MongoDB
+          aggregations, using profiling to find the expensive parts before changing them.
         </p>
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
         >
-          The biggest technical challenge was that heavy data processing was killing the
-          main thread. I implemented <strong>Worker Pools</strong> to offload large dataset
-          operations to parallel threads — this is what brought export times from 45 minutes
-          down to 12. I used the Node.js profiler to find the actual bottlenecks rather than
-          optimizing blind.
+          The biggest technical constraint was heavy processing on the main thread. I
+          implemented <strong>Worker Pools</strong> to move large dataset operations into
+          parallel work, which brought export time from 45 minutes down to 12. The profiler
+          helped separate real bottlenecks from guesses.
         </p>
         <p
           style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
         >
-          One thing I did without being asked: I introduced <strong>TDD from the start</strong>
-          for every feature I built. On a migration project — where you're replacing a running
-          system people depend on — you need the confidence that tests give you. I made that
-          call early, and it paid off immediately. This discipline later became second nature
-          when I moved to Scout24, where full test coverage was already the norm.
+          I also introduced <strong>TDD early</strong> for the features I owned. On a
+          migration project, tests are not ceremony; they are how you avoid replacing known
+          behavior with subtle regressions. That discipline became a useful bridge into
+          later teams where high coverage was already expected.
         </p>
       </section>
 
@@ -135,9 +131,9 @@ import TechIcon from "../../components/TechIcon.astro";
               Worker Pools for Exports
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              Large dataset operations were blocking the event loop. Worker Pools
-              moved heavy processing to parallel threads, keeping the API responsive
-              while exports ran in the background. 45min became 12min.
+              Large dataset operations were blocking the event loop. Worker Pools moved
+              heavy processing to parallel threads, keeping API work responsive while
+              exports ran separately. 45min became 12min.
             </p>
           </div>
           <div
@@ -149,9 +145,9 @@ import TechIcon from "../../components/TechIcon.astro";
               Profiler-Driven Optimization
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              Instead of guessing at bottlenecks, I used the Node.js profiler to
-              identify exactly where time was spent in the column filtering pipeline —
-              then optimized the specific MongoDB aggregations that mattered.
+              I used the Node.js profiler to identify where time was spent in the column
+              filtering pipeline, then optimized the MongoDB aggregations that were actually
+              responsible for the slowdown.
             </p>
           </div>
           <div
@@ -177,10 +173,9 @@ import TechIcon from "../../components/TechIcon.astro";
               TDD from Day One
             </h3>
             <p style="color: var(--gray); line-height: 1.6;">
-              On a migration project, you're replacing a system people depend on.
-              I introduced test-driven development for every feature — not because
-              it was required, but because the risk of shipping broken replacements
-              was too high.
+              On a migration project, replacing working behavior is the risk. I used
+              test-driven development for the features I owned so changes could be reviewed
+              against expected behavior instead of intent alone.
             </p>
           </div>
         </div>
@@ -242,11 +237,10 @@ import TechIcon from "../../components/TechIcon.astro";
         <p
           style="font-size: 1.05rem; line-height: 1.7; color: var(--gray); margin-top: 1.5rem;"
         >
-          The 65% API improvement meant energy traders could query market data and get
-          answers fast enough to act on them. The export time reduction meant analysts
-          stopped scheduling exports overnight — they could run them during the workday
-          and iterate. The new architecture gave a 4-person team the ability to ship
-          features that the old monolith made impossible.
+          The 65% API improvement made market-data workflows faster for users who queried
+          the system daily. The export-time reduction changed exports from an overnight-style
+          task into something analysts could run during the workday. The NestJS structure
+          also gave the 4-person team a clearer path for follow-up work.
         </p>
       </section>
 

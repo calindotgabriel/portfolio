@@ -1,7 +1,7 @@
 ---
 import ProjectLayout from "../../components/ProjectLayout.astro";
 import TechIcon from "../../components/TechIcon.astro";
-import { projects } from "../../data/projects.js";
+import { projects } from "../../data/projects";
 ---
 
 <ProjectLayout
@@ -39,9 +39,9 @@ import { projects } from "../../data/projects.js";
                   {project.tech.map((tech: string) => (
                     <span class="tech-pill">
                       <TechIcon technology={tech} size={16} />
-                      {tech}
-                    </span>
-                  ))}
+                    {tech}
+                  </span>
+                ))}
                 </div>
               </article>
             </a>

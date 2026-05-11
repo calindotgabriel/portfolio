@@ -41,7 +41,7 @@ export interface ResumeData {
 
 export const resume: ResumeData = {
   name: "Calin Gabriel",
-  title: "Full Stack Web Developer",
+  title: "Senior Full Stack Developer",
   email: "contact@calingabriel.com",
   website: "https://calingabriel.com",
   phone: "+40 759 407 066",
@@ -49,8 +49,8 @@ export const resume: ResumeData = {
   github: "https://github.com/calindotgabriel",
 
   summary: [
-    "Proven track record of 40%+ cost reductions and 99.5% uptime in mission-critical systems serving 15K+ daily users.",
-    "9+ years delivering scalable web applications for Fortune 500 companies across Real Estate & Energy sectors.",
+    "Senior full-stack developer with 15 years in software and 9+ years of professional delivery across payments, real estate, energy, and publishing systems.",
+    "Backend-heavy React and Node.js experience, with measured work on API performance, exports, testing discipline, integrations, and production stability.",
   ],
 
   availability: [
@@ -68,10 +68,10 @@ export const resume: ResumeData = {
       role: "Full Stack Developer",
       period: "Aug 2024 - Jun 2025",
       highlights: [
-        "Built property search engine with geolocation filtering for Austria's leading real estate platform, handling 5,000+ daily searches with improved response times",
-        "Developed multi-tenant authentication system supporting different user roles (agents, buyers, landlords) with secure access controls",
-        "Optimized AWS microservices architecture and database queries, significantly reducing search response times and improving user experience",
-        "Contributed to platform stability during peak traffic periods, maintaining 99.5% uptime for critical search functionality",
+        "Contributed to search and listing flows for one of Austria's leading real-estate platforms, working inside a fully tested distributed system",
+        "Integrated Iterable marketing automation and supported SEO-focused changes in collaboration with product and platform teams",
+        "Worked across React, Node.js, AWS, and MongoDB services while matching Scout24's test coverage and review expectations",
+        "Contributed to platform stability and user-facing improvements during active product delivery",
       ],
     },
     {
@@ -80,9 +80,9 @@ export const resume: ResumeData = {
       role: "Full Stack Developer",
       period: "Sep 2022 - Jul 2024",
       highlights: [
-        "Led architectural decisions for energy trading platform, proposing and implementing NestJS framework adoption to replace legacy Java components. The dependency injection patterns and modular architecture improved code maintainability and reduced integration complexity across the microservices ecosystem.",
-        "Built high-performance data filtering system using MongoDB and NestJS, processing 15,000+ daily energy market queries with optimized response times",
-        "Pioneered comprehensive testing strategy from ground zero, establishing e2e testing protocols that achieved strong code coverage and reduced production incidents.",
+        "Helped migrate legacy Java components toward NestJS services for an energy-market data platform, improving maintainability for a small delivery team",
+        "Built and optimized MongoDB-backed data filtering for 15,000+ daily energy market queries",
+        "Introduced e2e testing practices early in the migration so replacement work could be shipped with confidence",
         "Implemented parallel processing with Worker Pools for large dataset operations, reducing data export time from 45 minutes to 12 minutes",
         "Improved API response times by 65% through microservices architecture, enabling faster energy trading operations and better user experience",
         "Collaborated with 4-person development team and provided technical guidance on Node.js architecture decisions",
