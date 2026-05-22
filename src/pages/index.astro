@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 import TechIcon from "../components/TechIcon.astro";
 import { projects } from "../data/projects";
 
 ---
 
 <BaseLayout 
-  title="Calin Gabriel - Senior Full Stack Developer"
-  description="Senior Full Stack Developer with 15 years in software and 9+ years of professional delivery across Node.js, React, payments, energy, and real estate platforms."
+  title="Calin Gabriel - Senior Node.js / TypeScript Engineer"
+  description="Senior Node.js/TypeScript engineer for backend-heavy product systems, remote EU B2B contracts, migrations, APIs, testing, and performance."
 >
   <!-- HEADER NAVIGATION -->
   <header class="header-nav">
@@ -15,7 +16,7 @@ import { projects } from "../data/projects";
       <div class="nav-logo">
         <a href="#hero">
           <span class="logo-text">Calin Gabriel</span>
-          <span class="logo-subtitle">Senior Full Stack Developer</span>
+          <span class="logo-subtitle">Senior Node.js / TypeScript Engineer</span>
         </a>
       </div>
       
@@ -26,6 +27,10 @@ import { projects } from "../data/projects";
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
+
+      <div class="nav-actions">
+        <ThemeToggle />
+      </div>
       
       <!-- Mobile Hamburger -->
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -47,25 +52,90 @@ import { projects } from "../data/projects";
   <!-- HERO SECTION -->
     <section id="hero" class="hero-section">
       <div class="hero-content">
-        <span class="hero-badge">Open to Opportunities</span>
+        <span class="hero-badge">Remote EU B2B contracts / available immediately</span>
 
-        <h1 class="hero-title">Calin Gabriel</h1>
+        <h1 class="hero-title">Senior Node.js / TypeScript engineer for backend-heavy product systems</h1>
 
         <p class="hero-tagline">
-          I build and improve production systems in payments, energy,
-          and real estate for companies like
+          I help teams reduce delivery risk in migrations, data-heavy APIs,
+          integrations, and tested React/Node systems for companies like
           <strong>Scout24</strong>, <strong>RWE</strong>, and <strong>NETS</strong>.
         </p>
 
         <p class="hero-sub">
-          I started working in software at 16. Today I bring 15 years in the field
-          and 9+ years of professional delivery across European product and enterprise teams.
+          Best fit: long-term remote EU B2B contracts where production quality,
+          measured performance, and clear senior communication matter more than
+          another generic full-stack profile.
         </p>
 
+        <div class="proof-strip" aria-label="Contract proof points">
+          <div class="proof-item">
+            <span class="proof-value">45min -> 12min</span>
+            <span class="proof-label">RWE export pipeline</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-value">65% faster</span>
+            <span class="proof-label">API responses</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-value">Scout24</span>
+            <span class="proof-label">tested distributed platform</span>
+          </div>
+          <div class="proof-item">
+            <span class="proof-value">Payments / energy / search</span>
+            <span class="proof-label">production domains</span>
+          </div>
+        </div>
+
         <div class="hero-cta">
-          <a href="#about" class="cta-primary">Read My Story</a>
-          <a href="#projects" class="cta-secondary">See Case Studies</a>
+          <a href="mailto:contact@calingabriel.com?subject=Senior%20Node.js%20%2F%20TypeScript%20contract" class="cta-primary">Book a 20-minute fit call</a>
+          <a href="#hire-me-for" class="cta-secondary">What I can take on</a>
           <a href="/resume" class="cta-secondary">View CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTRACT OFFERS -->
+    <section id="hire-me-for" class="offers-section">
+      <div class="offers-container">
+        <div class="offers-header">
+          <span class="section-kicker">Hire me for</span>
+          <h2>Senior delivery where the risk is in the backend, data, and production edges.</h2>
+          <p>
+            I am not positioning as a cheap task executor. The strongest fit is a team that
+            needs a senior engineer who can enter an existing system, understand the domain,
+            and move important work without adding chaos.
+          </p>
+        </div>
+
+        <div class="offers-grid">
+          <article class="offer-card">
+            <span class="offer-number">01</span>
+            <h3>Legacy-to-Node / NestJS migration</h3>
+            <p>
+              Replace risky legacy paths with maintainable TypeScript services, using tests
+              and narrow migration slices so the team keeps shipping while the system changes.
+            </p>
+            <strong>Proof: RWE Java-to-NestJS migration work.</strong>
+          </article>
+          <article class="offer-card">
+            <span class="offer-number">02</span>
+            <h3>API, data, and backend reliability</h3>
+            <p>
+              Profile slow flows, separate bottlenecks from guesses, improve data access,
+              and keep production workflows responsive under real usage.
+            </p>
+            <strong>Proof: 65% faster APIs and exports cut from 45 minutes to 12.</strong>
+          </article>
+          <article class="offer-card">
+            <span class="offer-number">03</span>
+            <h3>Tested React / Node product delivery</h3>
+            <p>
+              Ship product changes in mature systems where SEO, integrations, reviews,
+              and coverage all matter to release confidence.
+            </p>
+            <strong>Proof: ImmoScout24 search, listing, SEO, and Iterable work.</strong>
+          </article>
         </div>
       </div>
     </section>
@@ -73,7 +143,7 @@ import { projects } from "../data/projects";
     <!-- ABOUT SECTION -->
     <section id="about" class="about-section">
       <div class="about-container">
-        <h2 class="about-heading">The Story Behind the Code</h2>
+        <h2 class="about-heading">Why this profile fits contract delivery</h2>
 
         <div class="about-timeline">
           <!-- Past -->
@@ -83,8 +153,8 @@ import { projects } from "../data/projects";
               <div class="phase-line"></div>
             </div>
             <div class="phase-content">
-              <span class="phase-label">Where I started</span>
-              <h3 class="phase-title">Started early, learned by shipping</h3>
+              <span class="phase-label">Delivery baseline</span>
+              <h3 class="phase-title">Started early, learned by shipping production work</h3>
               <p class="phase-text">
                 At 16 I won an internship contest in Galati and turned it into my first
                 software job. I learned Linux and web development on real work before moving
@@ -101,8 +171,8 @@ import { projects } from "../data/projects";
               <div class="phase-line"></div>
             </div>
             <div class="phase-content">
-              <span class="phase-label">Where I am now</span>
-              <h3 class="phase-title">Senior full-stack delivery across product domains</h3>
+              <span class="phase-label">Current fit</span>
+              <h3 class="phase-title">Senior Node.js / TypeScript delivery across product domains</h3>
               <p class="phase-text">
                 I have worked across payments, energy, real estate, e-commerce, and publishing,
                 including DAX-listed companies and major European platforms. My strongest work
@@ -118,12 +188,12 @@ import { projects } from "../data/projects";
               <div class="phase-dot phase-dot-future"></div>
             </div>
             <div class="phase-content">
-              <span class="phase-label">Where I'm heading</span>
-              <h3 class="phase-title">Looking for high-context engineering teams</h3>
+              <span class="phase-label">Contract preference</span>
+              <h3 class="phase-title">Looking for high-context teams with real system risk</h3>
               <p class="phase-text">
-                I am looking for teams across Europe where engineers own outcomes, communicate
-                clearly, and care about long-term maintainability. The best fit is a product
-                or platform team with enough domain complexity to reward careful engineering.
+                I am looking for long-term remote EU B2B contracts where engineers own outcomes,
+                communicate clearly, and care about maintainability. The best fit is a product
+                or platform team with enough domain complexity to reward careful senior work.
               </p>
             </div>
           </div>
@@ -257,9 +327,9 @@ import { projects } from "../data/projects";
         top: 0;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.95);
+        background: var(--nav-bg);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border);
         z-index: 1000;
         transition: all 0.3s ease;
       }
@@ -276,7 +346,7 @@ import { projects } from "../data/projects";
 
       .nav-logo a {
         text-decoration: none;
-        color: var(--dark);
+        color: var(--text);
         display: flex;
         flex-direction: column;
         line-height: 1.1;
@@ -293,7 +363,7 @@ import { projects } from "../data/projects";
 
       .logo-subtitle {
         font-size: 0.75rem;
-        color: var(--gray);
+        color: var(--text-muted);
         font-weight: 500;
       }
 
@@ -305,12 +375,18 @@ import { projects } from "../data/projects";
 
       .nav-link {
         text-decoration: none;
-        color: var(--dark);
+        color: var(--text);
         font-weight: 500;
         font-size: 0.95rem;
         transition: all 0.3s ease;
         position: relative;
         padding: 0.5rem 0;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        margin-left: 0.5rem;
       }
 
       .nav-link::after {
@@ -347,7 +423,7 @@ import { projects } from "../data/projects";
       .hamburger-line {
         width: 25px;
         height: 2px;
-        background: var(--dark);
+        background: var(--text);
         transition: all 0.3s ease;
         transform-origin: center;
       }
@@ -370,9 +446,9 @@ import { projects } from "../data/projects";
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.98);
+        background: var(--nav-bg-solid);
         backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border);
         padding: 2rem;
         display: none;
         flex-direction: column;
@@ -386,11 +462,11 @@ import { projects } from "../data/projects";
 
       .nav-mobile-link {
         text-decoration: none;
-        color: var(--dark);
+        color: var(--text);
         font-weight: 500;
         font-size: 1.1rem;
         padding: 1rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid var(--border);
         transition: all 0.3s ease;
       }
 
@@ -441,7 +517,7 @@ import { projects } from "../data/projects";
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--dark);
+        background: var(--hero-bg);
         position: relative;
       }
 
@@ -461,7 +537,7 @@ import { projects } from "../data/projects";
       .hero-content {
         position: relative;
         z-index: 10;
-        max-width: 750px;
+        max-width: 980px;
         margin: 0 auto;
         padding: 2rem;
         color: white;
@@ -480,7 +556,7 @@ import { projects } from "../data/projects";
       }
 
       .hero-title {
-        font-size: 4rem;
+        font-size: 3.65rem;
         font-weight: 800;
         margin-bottom: 1.5rem;
         line-height: 1.1;
@@ -505,8 +581,40 @@ import { projects } from "../data/projects";
         font-size: 1.05rem;
         line-height: 1.6;
         color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 2.5rem;
+        margin-bottom: 1.5rem;
         animation: fadeInUp 0.8s ease 0.45s both;
+      }
+
+      .proof-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin: 2rem 0 2.25rem;
+        animation: fadeInUp 0.8s ease 0.52s both;
+      }
+
+      .proof-item {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 8px;
+        padding: 1rem;
+        min-height: 104px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .proof-value {
+        color: white;
+        font-weight: 800;
+        font-size: 1.02rem;
+        line-height: 1.25;
+      }
+
+      .proof-label {
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 0.82rem;
+        line-height: 1.35;
       }
 
       .hero-cta {
@@ -514,6 +622,87 @@ import { projects } from "../data/projects";
         gap: 1rem;
         flex-wrap: wrap;
         animation: fadeInUp 0.8s ease 0.6s both;
+      }
+
+      .offers-section {
+        padding: 96px 0;
+        background: var(--surface);
+      }
+
+      .offers-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .offers-header {
+        max-width: 780px;
+        margin-bottom: 2.25rem;
+      }
+
+      .section-kicker {
+        display: inline-block;
+        color: var(--primary);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.85rem;
+      }
+
+      .offers-header h2 {
+        color: var(--text);
+        font-size: 2.4rem;
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .offers-header p {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .offers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .offer-card {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        background: var(--card-bg);
+      }
+
+      .offer-number {
+        display: inline-block;
+        color: var(--text-subtle);
+        font-weight: 800;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+      }
+
+      .offer-card h3 {
+        color: var(--text);
+        font-size: 1.2rem;
+        line-height: 1.25;
+        margin-bottom: 0.9rem;
+      }
+
+      .offer-card p {
+        color: var(--text-muted);
+        font-size: 0.96rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+
+      .offer-card strong {
+        display: block;
+        color: var(--text);
+        font-size: 0.9rem;
+        line-height: 1.45;
       }
 
       .cta-primary {
@@ -557,7 +746,7 @@ import { projects } from "../data/projects";
 
       .projects-section {
         padding: 100px 0;
-        background: #f8fafc;
+        background: var(--surface-soft);
       }
 
       .projects-container {
@@ -572,12 +761,12 @@ import { projects } from "../data/projects";
 
       .projects-header h2 {
         font-size: 2.5rem;
-        color: var(--dark);
+        color: var(--text);
         margin-bottom: 0.75rem;
       }
 
       .projects-header p {
-        color: var(--gray);
+        color: var(--text-muted);
       }
 
       .projects-grid {
@@ -610,7 +799,7 @@ import { projects } from "../data/projects";
 
       .project-title,
       .project-compact-title {
-        color: var(--dark);
+        color: var(--text);
         margin: 0;
       }
 
@@ -618,7 +807,7 @@ import { projects } from "../data/projects";
       .project-compact-description {
         font-size: 1rem;
         line-height: 1.7;
-        color: var(--gray);
+        color: var(--text-muted);
         margin-bottom: 1.25rem;
       }
 
@@ -637,15 +826,15 @@ import { projects } from "../data/projects";
       }
 
       .project-results {
-        background: rgba(15, 23, 42, 0.04);
-        border: 1px solid rgba(15, 23, 42, 0.08);
+        background: var(--card-soft-bg);
+        border: 1px solid var(--border);
         border-radius: 8px;
         padding: 1.25rem;
       }
 
       .results-title {
         display: inline-block;
-        color: var(--dark);
+        color: var(--text);
         font-weight: 700;
         margin-bottom: 0.75rem;
       }
@@ -657,7 +846,7 @@ import { projects } from "../data/projects";
       }
 
       .results-list li {
-        color: var(--gray);
+        color: var(--text-muted);
         font-size: 0.95rem;
       }
 
@@ -686,11 +875,29 @@ import { projects } from "../data/projects";
 
       @media (max-width: 768px) {
         .hero-title {
-          font-size: 2.75rem;
+          font-size: 2.25rem;
         }
 
         .hero-tagline {
           font-size: 1.1rem;
+        }
+
+        .proof-strip,
+        .offers-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .proof-item {
+          min-height: auto;
+          gap: 0.5rem;
+        }
+
+        .offers-section {
+          padding: 72px 0;
+        }
+
+        .offers-header h2 {
+          font-size: 2rem;
         }
 
         .hero-cta {
@@ -714,7 +921,7 @@ import { projects } from "../data/projects";
       }      /* ABOUT SECTION */
       .about-section {
         padding: 100px 0;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
       }
 
       .about-container {
@@ -762,8 +969,8 @@ import { projects } from "../data/projects";
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        background: #cbd5e1;
-        border: 3px solid #e2e8f0;
+        background: var(--text-subtle);
+        border: 3px solid var(--border-strong);
         flex-shrink: 0;
         position: relative;
         z-index: 2;
@@ -783,7 +990,7 @@ import { projects } from "../data/projects";
       .phase-line {
         width: 2px;
         flex-grow: 1;
-        background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+        background: linear-gradient(180deg, var(--border-strong) 0%, var(--border) 100%);
         margin-top: 0.5rem;
       }
 
@@ -804,7 +1011,7 @@ import { projects } from "../data/projects";
       .phase-title {
         font-size: 1.4rem;
         font-weight: 700;
-        color: var(--dark);
+        color: var(--text);
         margin-bottom: 0.75rem;
         line-height: 1.3;
       }
@@ -812,11 +1019,11 @@ import { projects } from "../data/projects";
       .phase-text {
         font-size: 1.05rem;
         line-height: 1.75;
-        color: var(--gray);
+        color: var(--text-muted);
       }
 
       .phase-text strong {
-        color: var(--dark);
+        color: var(--text);
         font-weight: 600;
       }
 
@@ -974,10 +1181,10 @@ import { projects } from "../data/projects";
           const currentScrollY = window.scrollY;
           
           if (currentScrollY > 50) {
-            header.style.background = 'rgba(255, 255, 255, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            header.style.background = 'var(--nav-bg-solid)';
+            header.style.boxShadow = 'var(--nav-shadow)';
           } else {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.background = 'var(--nav-bg)';
             header.style.boxShadow = 'none';
           }
           

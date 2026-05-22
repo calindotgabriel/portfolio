@@ -41,7 +41,7 @@ export interface ResumeData {
 
 export const resume: ResumeData = {
   name: "Calin Gabriel",
-  title: "Senior Full Stack Developer",
+  title: "Senior Node.js / TypeScript Engineer",
   email: "contact@calingabriel.com",
   website: "https://calingabriel.com",
   phone: "+40 759 407 066",
@@ -49,14 +49,16 @@ export const resume: ResumeData = {
   github: "https://github.com/calindotgabriel",
 
   summary: [
-    "Senior full-stack developer with 15 years in software and 9+ years of professional delivery across payments, real estate, energy, and publishing systems.",
-    "Backend-heavy React and Node.js experience, with measured work on API performance, exports, testing discipline, integrations, and production stability.",
+    "Senior Node.js/TypeScript engineer for backend-heavy product systems, available for remote EU B2B contracts and long-term product engagements.",
+    "I help teams reduce delivery risk in migrations, data-heavy APIs, integrations, and tested React/Node systems, with measured work across energy, real estate, payments, and publishing platforms.",
+    "Recent proof includes cutting RWE exports from 45 minutes to 12, improving API response times by 65%, and shipping inside ImmoScout24's fully tested distributed platform.",
   ],
 
   availability: [
-    "Senior Full Stack Developer",
-    "Remote EU",
+    "Long-term B2B / contract",
+    "Remote EU / Romania",
     "Available: Immediate",
+    "Europe/Bucharest timezone",
     "EU Citizen",
     "Fluent English (C1)",
   ],
@@ -137,19 +139,27 @@ export const resume: ResumeData = {
   skills: [
     {
       category: "Frontend",
-      items: ["React", "Redux", "Tailwind"],
+      items: ["React", "TypeScript", "Redux", "Tailwind", "SEO-sensitive UI"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "NestJS", "Hapi.js"],
+      items: ["Node.js", "TypeScript", "NestJS", "Hapi.js", "API design"],
     },
     {
       category: "Databases",
-      items: ["MongoDB", "MySQL", "PostgreSQL", "Redis"],
+      items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "Query profiling"],
     },
     {
       category: "Cloud & DevOps",
-      items: ["Azure", "AWS", "CI/CD"],
+      items: ["AWS", "Azure", "Docker", "CI/CD", "GitHub Actions"],
+    },
+    {
+      category: "Testing & Quality",
+      items: ["E2E testing", "Integration tests", "TDD", "Code review", "Production safety"],
+    },
+    {
+      category: "Performance",
+      items: ["Node profiling", "Worker threads", "Worker pools", "Export pipelines", "API latency"],
     },
   ],
 

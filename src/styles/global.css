@@ -1,5 +1,7 @@
 /* styles/global.css */
 :root {
+  color-scheme: light;
+
   /* WeTransfer-inspired colors */
   --primary: #6366f1;
   --primary-dark: #4f46e5;
@@ -9,10 +11,31 @@
   --gray: #64748b;
   --light-gray: #f1f5f9;
   --white: #ffffff;
+  --theme-color: #f8fafc;
+
+  /* Theme tokens */
+  --page-bg: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --surface-raised: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --border: rgba(15, 23, 42, 0.09);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --hero-bg: #0f172a;
+  --hero-bg-elevated: #111827;
+  --card-bg: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  --card-soft-bg: rgba(99, 102, 241, 0.06);
+  --pill-bg: rgba(99, 102, 241, 0.1);
+  --pill-border: rgba(99, 102, 241, 0.2);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-bg-solid: rgba(255, 255, 255, 0.98);
+  --nav-shadow: 0 2px 20px rgba(15, 23, 42, 0.1);
   
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-card: var(--card-bg);
   --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   
   /* Shadows */
@@ -20,6 +43,39 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --secondary: #f472b6;
+  --accent: #22d3ee;
+  --gray: #a8b3c7;
+  --light-gray: #162033;
+  --theme-color: #070b14;
+  --page-bg: #070b14;
+  --surface: #0c1220;
+  --surface-soft: #101827;
+  --surface-raised: #121c2e;
+  --text: #eef2ff;
+  --text-muted: #a8b3c7;
+  --text-subtle: #78869d;
+  --border: rgba(226, 232, 240, 0.11);
+  --border-strong: rgba(226, 232, 240, 0.18);
+  --hero-bg: #050816;
+  --hero-bg-elevated: #0b1120;
+  --card-bg: linear-gradient(145deg, #101827 0%, #0b1220 100%);
+  --card-soft-bg: rgba(129, 140, 248, 0.12);
+  --pill-bg: rgba(129, 140, 248, 0.14);
+  --pill-border: rgba(129, 140, 248, 0.28);
+  --nav-bg: rgba(7, 11, 20, 0.82);
+  --nav-bg-solid: rgba(7, 11, 20, 0.94);
+  --nav-shadow: 0 2px 24px rgba(0, 0, 0, 0.32);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.24);
+  --shadow-md: 0 10px 24px -14px rgb(0 0 0 / 0.7);
+  --shadow-lg: 0 18px 38px -22px rgb(0 0 0 / 0.78);
+  --shadow-xl: 0 28px 58px -28px rgb(0 0 0 / 0.86);
 }
 
 * {
@@ -31,8 +87,9 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
-  color: var(--dark);
-  background: var(--white);
+  color: var(--text);
+  background: var(--page-bg);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* Bold, impactful headings */
@@ -62,7 +119,7 @@ h3 {
 
 p {
   font-size: 1.125rem;
-  color: var(--gray);
+  color: var(--text-muted);
   max-width: 65ch;
 }
 
@@ -111,12 +168,12 @@ p {
 
 
 .project-card {
-  background: var(--gradient-card);
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 2.5rem;
   box-shadow: var(--shadow-lg);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border);
   position: relative;
   overflow: hidden;
 }
@@ -190,6 +247,76 @@ p {
   color: white;
 }
 
+.theme-toggle {
+  width: 48px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--primary) 28%, transparent);
+  outline-offset: 3px;
+}
+
+.theme-toggle-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: block;
+  border-radius: inherit;
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 0.78rem;
+  line-height: 1;
+  transition: transform 0.22s ease;
+}
+
+[data-theme="dark"] .theme-toggle-thumb {
+  transform: translateX(18px);
+}
+
+.theme-toggle-icon {
+  grid-area: 1 / 1;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.theme-toggle-icon-moon,
+[data-theme="dark"] .theme-toggle-icon-sun {
+  opacity: 0;
+  transform: scale(0.6) rotate(-30deg);
+}
+
+[data-theme="dark"] .theme-toggle-icon-moon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
 .tech-grid {
   display: flex;
   flex-wrap: wrap;
@@ -199,12 +326,12 @@ p {
 
 .tech-pill {
   padding: 0.5rem 1.25rem;
-  background: rgba(99, 102, 241, 0.1);
+  background: var(--pill-bg);
   color: var(--primary);
   border-radius: 50px;
   font-weight: 500;
   font-size: 0.875rem;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid var(--pill-border);
   transition: all 0.2s ease;
 }
 
@@ -311,7 +438,7 @@ html {
 /* Projects section */
 .projects-section {
   padding: 4rem 2rem;
-  background: #f8fafc;
+  background: var(--surface-soft);
 }
 
 .projects-container {
@@ -325,7 +452,7 @@ html {
 }
 
 .projects-header p {
-  color: var(--gray);
+  color: var(--text-muted);
   max-width: 500px;
   margin: 0 auto;
 }
@@ -386,7 +513,8 @@ html {
 }
 
 .project-results {
-  background: rgba(99, 102, 241, 0.05);
+  background: var(--card-soft-bg);
+  border: 1px solid var(--border);
   padding: 1.5rem;
   border-radius: 12px;
 }
@@ -407,7 +535,7 @@ html {
   list-style: none;
   padding: 0;
   font-size: 0.875rem;
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .results-list li {
@@ -442,7 +570,7 @@ html {
 
 .project-compact-description {
   margin: 0;
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .project-compact-tech {
@@ -453,7 +581,7 @@ html {
 
 /* Footer styles */
 .footer-section {
-  background: var(--dark);
+  background: var(--hero-bg);
   padding: 3rem 2rem;
   text-align: center;
 }

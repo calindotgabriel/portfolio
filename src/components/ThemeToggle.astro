@@ -1,0 +1,79 @@
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  aria-label="Switch to dark theme"
+  aria-pressed="false"
+>
+  <span class="theme-toggle-track" aria-hidden="true">
+    <span class="theme-toggle-thumb">
+      <span class="theme-toggle-icon theme-toggle-icon-sun">☀</span>
+      <span class="theme-toggle-icon theme-toggle-icon-moon">☾</span>
+    </span>
+  </span>
+</button>
+
+<script>
+  const storageKey = "cgdev-theme";
+  const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const toggles = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
+  const themeMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+
+  const getStoredTheme = () => {
+    try {
+      const stored = window.localStorage.getItem(storageKey);
+      return stored === "dark" || stored === "light" ? stored : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const setStoredTheme = (theme: "dark" | "light") => {
+    try {
+      window.localStorage.setItem(storageKey, theme);
+    } catch {
+      // Storage can be unavailable in privacy modes; the live theme still applies.
+    }
+  };
+
+  const getTheme = () => getStoredTheme() ?? (darkQuery.matches ? "dark" : "light");
+
+  const syncToggleState = (theme: "dark" | "light") => {
+    const isDark = theme === "dark";
+    toggles.forEach((toggle) => {
+      toggle.setAttribute("aria-pressed", String(isDark));
+      toggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} theme`);
+    });
+  };
+
+  const applyTheme = (theme: "dark" | "light") => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    if (themeMeta) {
+      themeMeta.content = theme === "dark" ? "#070b14" : "#f8fafc";
+    }
+    syncToggleState(theme);
+  };
+
+  applyTheme(getTheme());
+
+  toggles.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+      setStoredTheme(nextTheme);
+      applyTheme(nextTheme);
+    });
+  });
+
+  const syncSystemTheme = () => {
+    if (!getStoredTheme()) {
+      applyTheme(darkQuery.matches ? "dark" : "light");
+    }
+  };
+
+  if ("addEventListener" in darkQuery) {
+    darkQuery.addEventListener("change", syncSystemTheme);
+  } else {
+    darkQuery.addListener(syncSystemTheme);
+  }
+</script>

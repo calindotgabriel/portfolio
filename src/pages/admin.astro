@@ -1,0 +1,2002 @@
+---
+import { seedJobLeads, jobStatuses } from "../data/jobTracker";
+import { outreachTemplates } from "../data/outreachTemplates";
+import { projects } from "../data/projects";
+import { resume } from "../data/resume";
+
+const payload = JSON.stringify({
+  seedJobLeads,
+  jobStatuses,
+  outreachTemplates,
+  projects,
+  resume,
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Local Job Outreach Admin</title>
+    <script is:inline>
+      document.documentElement.setAttribute(
+        "data-theme",
+        localStorage.getItem("cgdev-job-tracker-theme") ||
+          (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light"),
+      );
+    </script>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Local-only admin</p>
+          <h1>Job outreach workbench</h1>
+          <p class="lede">
+            Pick the next three leads, tailor the proof, and draft before applying.
+          </p>
+        </div>
+        <div class="topbar-actions">
+          <a href="/" class="ghost-link">Portfolio</a>
+          <a href="/resume" class="ghost-link">CV</a>
+          <button id="themeBtn" type="button" aria-label="Toggle theme">Dark</button>
+        </div>
+      </header>
+
+      <section class="next-panel" aria-labelledby="next-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Ranked by fit + unsent</p>
+            <h2 id="next-title">Next 3 to apply or reach out</h2>
+          </div>
+          <button id="copyAllBtn" type="button" class="primary">Copy all drafts</button>
+        </div>
+        <div id="nextThree" class="next-grid"></div>
+      </section>
+
+      <section class="tracker-panel" aria-labelledby="tracker-title">
+        <div class="section-head tracker-head">
+          <div>
+            <p class="eyebrow">Browser-local tracker</p>
+            <h2 id="tracker-title">Pipeline</h2>
+          </div>
+          <div class="stats" id="stats"></div>
+        </div>
+
+        <div class="toolbar">
+          <input type="search" id="search" placeholder="Search company, domain, notes, contact..." />
+          <select id="statusFilter">
+            <option value="">All statuses</option>
+          </select>
+          <button class="primary" id="addBtn" type="button">Add company</button>
+          <button id="exportBtn" type="button">Export CSV</button>
+          <button id="importBtn" type="button">Import CSV</button>
+          <input type="file" id="importFile" accept=".csv" hidden />
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="company">Company<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="domain">Domain<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="funding">Funding<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="status">Status<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="outreach">Outreach<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="ask">Ask<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="stackFit">Stack fit<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="contact">Contact<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th aria-sort="none"><button class="sort-btn" type="button" data-sort="updatedAt">Updated<span class="sort-indicator" aria-hidden="true"></span></button></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="outreach-panel" aria-labelledby="outreach-title">
+        <div class="section-head outreach-head">
+          <div>
+            <p class="eyebrow">Draft editor</p>
+            <h2 id="outreach-title">Saved outreach module</h2>
+          </div>
+          <p class="section-note">
+            Edits are saved separately under <code>cgdev-outreach</code>.
+          </p>
+        </div>
+
+        <div class="outreach-layout">
+          <aside class="outreach-controls">
+            <label for="outreachSelect">Outreach email</label>
+            <select id="outreachSelect"></select>
+            <a class="primary control-action" id="outreachGmail" target="_blank" rel="noopener">Open in Gmail</a>
+            <button id="outreachCopy" type="button">Copy email</button>
+            <a class="control-action" id="outreachMailto">Open in mail app</a>
+            <button id="outreachCopyLi" type="button">Copy LinkedIn note</button>
+            <button id="outreachMarkSent" type="button">Mark tracker sent</button>
+            <button id="outreachReset" type="button">Reset to original</button>
+          </aside>
+
+          <div class="outreach-editor">
+            <div class="notice" id="outreachNote"></div>
+            <div class="field">
+              <label for="outreachTo">To</label>
+              <input id="outreachTo" type="email" placeholder="recipient@company.com" />
+            </div>
+            <div class="field">
+              <label for="outreachSubject">Subject</label>
+              <input id="outreachSubject" type="text" />
+            </div>
+            <div class="field">
+              <label for="outreachBody">Body</label>
+              <textarea id="outreachBody" class="email-body"></textarea>
+            </div>
+            <div class="field">
+              <label for="outreachLinkedin">LinkedIn connection note <span id="linkedinCount"></span></label>
+              <textarea id="outreachLinkedin" class="linkedin-body"></textarea>
+            </div>
+            <div class="saved" id="outreachSaved"></div>
+          </div>
+        </div>
+      </section>
+
+      <p class="privacy-note">
+        Data lives in this browser's localStorage under <code>cgdev-job-tracker</code>.
+        Export CSV when you want a backup.
+      </p>
+    </div>
+
+    <div class="overlay" id="overlay">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h2 id="modalTitle">Add company</h2>
+        <input type="hidden" id="f_id" />
+        <div class="field"><label>Company *</label><input id="f_company" /></div>
+        <div class="field"><label>Domain</label><input id="f_domain" placeholder="Fintech, Proptech, Energy..." /></div>
+        <div class="field"><label>Funding</label><input id="f_funding" /></div>
+        <div class="field"><label>Salary / rate ask</label><input id="f_ask" placeholder="EUR95k, EUR500/day..." /></div>
+        <div class="field">
+          <label>Engagement</label>
+          <select id="f_engagement">
+            <option value="">Not set</option>
+            <option value="B2B">B2B / contract</option>
+            <option value="Permanent">Permanent</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field"><label>Apply URL</label><input id="f_applyUrl" placeholder="careers.example.com" /></div>
+        <div class="field"><label>Status</label><select id="f_status"></select></div>
+        <div class="field"><label>Source</label><input id="f_source" placeholder="Company board, recruiter, direct outreach..." /></div>
+        <div class="field"><label>Fit score</label><input id="f_fitScore" type="number" min="0" max="100" placeholder="70" /></div>
+        <div class="field">
+          <label>Outreach</label>
+          <select id="f_outreach">
+            <option value="">None</option>
+            <option value="Drafted">Drafted</option>
+            <option value="Sent">Sent</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Reply status</label>
+          <select id="f_replyStatus">
+            <option value="">Not set</option>
+            <option value="No reply">No reply</option>
+            <option value="Replied">Replied</option>
+            <option value="Interview booked">Interview booked</option>
+            <option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Rejection reason</label>
+          <select id="f_rejectionReason">
+            <option value="">Not set</option>
+            <option value="Stack mismatch">Stack mismatch</option>
+            <option value="Location">Location</option>
+            <option value="Rate">Rate</option>
+            <option value="Seniority">Seniority</option>
+            <option value="Timing">Timing</option>
+            <option value="Unclear">Unclear</option>
+          </select>
+        </div>
+        <div class="field"><label>Stack fit</label><input id="f_stackFit" /></div>
+        <div class="field"><label>Contact approach</label><input id="f_contactApproach" /></div>
+        <div class="field"><label>Contact (person / email)</label><input id="f_contact" /></div>
+        <div class="field"><label>Next action</label><input id="f_nextAction" /></div>
+        <div class="field"><label>Notes</label><textarea id="f_notes"></textarea></div>
+        <div class="modal-actions">
+          <button id="cancelBtn" type="button">Cancel</button>
+          <button class="primary" id="saveBtn" type="button">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <script id="admin-data" type="application/json" set:html={payload}></script>
+
+    <script is:inline>
+      "use strict";
+
+      const ADMIN = JSON.parse(document.getElementById("admin-data").textContent);
+      const KEY = "cgdev-job-tracker";
+      const OUTREACH_KEY = "cgdev-outreach";
+      const THEME_KEY = "cgdev-job-tracker-theme";
+      const FOLLOWUP_DAYS = 5;
+      const LINKEDIN_LIMIT = 300;
+      const OUTREACH_NEXT = { "": "Drafted", Drafted: "Sent", Sent: "" };
+      const OUTREACH_VALUES = ["", "Drafted", "Sent"];
+      const ENGAGEMENTS = ["", "B2B", "Permanent", "Other"];
+      const STATUSES = ADMIN.jobStatuses;
+      const OUTREACH_TEMPLATES = ADMIN.outreachTemplates;
+      const PROJECTS = ADMIN.projects;
+      const RESUME = ADMIN.resume;
+
+      let data = load();
+      let filterStatus = "";
+      let searchQuery = "";
+      let sortState = { key: "", direction: "asc" };
+
+      function uid() {
+        return crypto.randomUUID ? crypto.randomUUID() : "id" + Date.now() + Math.random();
+      }
+
+      function todayISO() {
+        return new Date().toISOString().slice(0, 10);
+      }
+
+      function seedData() {
+        return ADMIN.seedJobLeads.map((lead) => ({
+          ...lead,
+          id: lead.id || uid(),
+          updatedAt: lead.updatedAt || todayISO(),
+        }));
+      }
+
+      function migrateLoadedData(loadedData) {
+        let changed = false;
+        const migrated = loadedData.map((lead) => {
+          if (lead.id === "finom" && lead.status !== "Stack Mismatch") {
+            changed = true;
+            return {
+              ...lead,
+              applyUrl: "jobs.eu.lever.co/pnlfin/10646541-be27-4002-be84-9b1e383db6fb",
+              stackFit: "Mismatch - requires deep .NET/C#",
+              contactApproach: "Skip this role; revisit only for TypeScript/full-stack openings",
+              status: "Stack Mismatch",
+              notes:
+                "Disqualified for this role: posting requires deep .NET/C# backend expertise. Finom remains worth revisiting for TypeScript/full-stack roles.",
+              updatedAt: todayISO(),
+            };
+          }
+          if (lead.id === "payrails" && lead.status !== "Stack Mismatch") {
+            changed = true;
+            return {
+              ...lead,
+              stackFit: "Mismatch - Golang-heavy architect profile",
+              contactApproach: "Reject this role; hybrid Cairo is not remote-compatible",
+              status: "Stack Mismatch",
+              notes:
+                "Rejected for this role: hybrid office in Cairo, plus vast production systems experience ideally using Golang and architecture-heavy requirements.",
+              updatedAt: todayISO(),
+            };
+          }
+          if (lead.id === "arbio" && lead.status !== "Office Only") {
+            changed = true;
+            return {
+              ...lead,
+              stackFit: "Mismatch - Berlin onsite only",
+              contactApproach: "Reject for now; revisit only if remote EU roles open",
+              status: "Office Only",
+              notes:
+                "Rejected for now: current engineering roles are Office HQ - Berlin, Germany - onsite.",
+              updatedAt: todayISO(),
+            };
+          }
+          if (lead.id === "buena" && lead.status !== "Office Only") {
+            changed = true;
+            return {
+              ...lead,
+              stackFit: "Mismatch - office-only roles",
+              contactApproach: "Reject for now; revisit only if remote EU roles open",
+              status: "Office Only",
+              notes:
+                "Rejected for now: current roles are office-only / not compatible with remote EU work.",
+              updatedAt: todayISO(),
+            };
+          }
+          if ((lead.id === "n8n" || lead.id === "checkly") && lead.status === "Sent") {
+            changed = true;
+            return {
+              ...lead,
+              status: "Cold Sent",
+              outreach: "Sent",
+              outreachDate: lead.outreachDate || todayISO(),
+              updatedAt: todayISO(),
+            };
+          }
+          return lead;
+        });
+        return { data: migrated, changed };
+      }
+
+      function load() {
+        try {
+          const raw = localStorage.getItem(KEY);
+          if (raw) {
+            const migrated = migrateLoadedData(JSON.parse(raw));
+            if (migrated.changed) save(migrated.data);
+            return migrated.data;
+          }
+        } catch (error) {
+          console.warn("Job tracker load failed", error);
+        }
+        const seeded = seedData();
+        save(seeded);
+        return seeded;
+      }
+
+      function save(nextData) {
+        localStorage.setItem(KEY, JSON.stringify(nextData || data));
+      }
+
+      function esc(value) {
+        return String(value == null ? "" : value).replace(/[&<>"]/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+        })[char]);
+      }
+
+      function fullUrl(url) {
+        if (!url) return "";
+        return /^https?:\/\//i.test(url) ? url : "https://" + url;
+      }
+
+      function statusColor(status) {
+        return (STATUSES.find((item) => item.name === status) || STATUSES[0]).color;
+      }
+
+      function engagementColor(engagement) {
+        if (engagement === "B2B") return "#7c3aed";
+        if (engagement === "Permanent") return "#0ea5e9";
+        return "#64748b";
+      }
+
+      function askCell(lead) {
+        const ask = lead.ask || "";
+        const engagement = lead.engagement || "";
+        if (!ask && !engagement) return '<span class="muted">-</span>';
+        return (
+          (ask ? esc(ask) : "") +
+          (engagement
+            ? '<span class="sub" style="color:' + engagementColor(engagement) + '">' + esc(engagement) + "</span>"
+            : "")
+        );
+      }
+
+      function askSortValue(lead) {
+        return [lead.ask, lead.engagement].filter(Boolean).join(" ");
+      }
+
+      function outreachSortValue(lead) {
+        return outreachView(lead).label;
+      }
+
+      function contactSortValue(lead) {
+        return lead.contact || lead.contactApproach || "";
+      }
+
+      function sortText(value) {
+        return String(value || "").trim().toLocaleLowerCase();
+      }
+
+      function dateSortValue(value) {
+        if (!value) return null;
+        const time = new Date(value).getTime();
+        return Number.isNaN(time) ? null : time;
+      }
+
+      function sortValue(lead, key) {
+        if (key === "ask") return askSortValue(lead);
+        if (key === "contact") return contactSortValue(lead);
+        if (key === "outreach") return outreachSortValue(lead);
+        return lead[key] || "";
+      }
+
+      function compareRows(a, b) {
+        const key = sortState.key;
+        const direction = sortState.direction === "desc" ? -1 : 1;
+        let result = 0;
+
+        if (key === "updatedAt") {
+          const aDate = dateSortValue(a.updatedAt);
+          const bDate = dateSortValue(b.updatedAt);
+          if (aDate == null && bDate == null) result = 0;
+          else if (aDate == null) return 1;
+          else if (bDate == null) return -1;
+          else result = aDate - bDate;
+        } else {
+          result = sortText(sortValue(a, key)).localeCompare(
+            sortText(sortValue(b, key)),
+            undefined,
+            { numeric: true, sensitivity: "base" },
+          );
+        }
+
+        if (result === 0) {
+          result = sortText(a.company).localeCompare(sortText(b.company), undefined, {
+            numeric: true,
+            sensitivity: "base",
+          });
+        }
+        return result === 0 ? 0 : result * direction;
+      }
+
+      function visibleRows() {
+        const query = searchQuery.trim().toLowerCase();
+        const rows = data.filter((lead) => {
+          if (filterStatus && lead.status !== filterStatus) return false;
+          if (!query) return true;
+          const haystack = [
+            lead.company,
+            lead.domain,
+            lead.funding,
+            lead.notes,
+            lead.contact,
+            lead.contactApproach,
+            lead.stackFit,
+          ].join(" ").toLowerCase();
+          return haystack.includes(query);
+        });
+        return sortState.key ? rows.slice().sort(compareRows) : rows;
+      }
+
+      function setSort(key) {
+        sortState = {
+          key,
+          direction: sortState.key === key && sortState.direction === "asc" ? "desc" : "asc",
+        };
+        renderTable();
+      }
+
+      function updateSortHeaders() {
+        document.querySelectorAll("[data-sort]").forEach((button) => {
+          const active = button.dataset.sort === sortState.key;
+          const direction = active ? sortState.direction : "";
+          const th = button.closest("th");
+          if (th) th.setAttribute("aria-sort", active ? (direction === "asc" ? "ascending" : "descending") : "none");
+          button.dataset.direction = direction;
+          button.setAttribute(
+            "aria-label",
+            button.textContent.trim() + (active ? ", sorted " + direction + ". Click to reverse." : ", click to sort ascending."),
+          );
+        });
+      }
+
+      function daysSince(iso) {
+        if (!iso) return 0;
+        const date = new Date(iso);
+        if (Number.isNaN(date.getTime())) return 0;
+        return Math.floor((Date.now() - date.getTime()) / 86400000);
+      }
+
+      function outreachView(lead) {
+        const outreach = lead.outreach || "";
+        if (outreach === "Drafted") {
+          return { label: "Drafted", bg: "#6366f1", cls: "", title: "Draft prepared" };
+        }
+        if (outreach === "Sent") {
+          const age = daysSince(lead.outreachDate);
+          if (["Sent", "Cold Sent"].includes(lead.status) && age >= FOLLOWUP_DAYS) {
+            return {
+              label: "Follow up",
+              bg: "#f59e0b",
+              cls: "",
+              title: "Sent " + age + " days ago. Time to follow up.",
+            };
+          }
+          return {
+            label: "Sent",
+            bg: "#16a34a",
+            cls: "",
+            title: lead.outreachDate ? "Sent " + lead.outreachDate : "Sent",
+          };
+        }
+        return { label: "-", bg: "", cls: "none", title: "No outreach yet" };
+      }
+
+      function stackScore(stackFit) {
+        const fit = String(stackFit || "").toLowerCase();
+        if (fit.includes("very high")) return 4;
+        if (fit.includes("medium-high")) return 2;
+        if (fit.includes("high")) return 3;
+        if (fit.includes("medium")) return 1;
+        return 0;
+      }
+
+      function isActiveUnsent(lead) {
+        const score = Number(lead.fitScore || 0);
+        return (
+          ["Lead", "Researching"].includes(lead.status) &&
+          lead.outreach !== "Sent" &&
+          (score >= 70 || stackScore(lead.stackFit) >= 3) &&
+          Boolean(lead.applyUrl || lead.contactApproach || lead.contact)
+        );
+      }
+
+      function rankedLeads() {
+        return data
+          .filter(isActiveUnsent)
+          .slice()
+          .sort((a, b) => {
+            const fit = stackScore(b.stackFit) - stackScore(a.stackFit);
+            if (fit !== 0) return fit;
+            const bDate = new Date(b.updatedAt || 0).getTime() || 0;
+            const aDate = new Date(a.updatedAt || 0).getTime() || 0;
+            if (bDate !== aDate) return bDate - aDate;
+            return a.company.localeCompare(b.company);
+          })
+          .slice(0, 3);
+      }
+
+      function projectForLead(lead) {
+        const text = [lead.domain, lead.notes, lead.stackFit, lead.contactApproach]
+          .join(" ")
+          .toLowerCase();
+        if (/proptech|real.?estate|property|seo|search|listing|rental/.test(text)) {
+          return PROJECTS.find((project) => project.id === "immobile-search") || PROJECTS[0];
+        }
+        if (/energy|building|smart.?building|heating|market/.test(text)) {
+          return PROJECTS.find((project) => project.id === "rwe-energy") || PROJECTS[0];
+        }
+        if (/payment|checkout|klarna|publishing|paper|telecom|enterprise/.test(text)) {
+          return PROJECTS.find((project) => project.id === "endava") || PROJECTS[0];
+        }
+        if (/node|typescript|testing|observability|workflow/.test(text)) {
+          return PROJECTS.find((project) => project.id === "endava") || PROJECTS[0];
+        }
+        return PROJECTS[0];
+      }
+
+      function proofBullets(lead) {
+        const project = projectForLead(lead);
+        const results = (project.results || []).slice(0, 2);
+        return [
+          RESUME.title + " - " + RESUME.availability.join(", "),
+          "Relevant case study: " + project.homeTitle + " - " + project.caseStudySummary,
+          "Proof points: " + results.join("; "),
+          "Stack overlap: " + (lead.stackFit || "React, Node.js, TypeScript, MongoDB/AWS experience"),
+        ];
+      }
+
+      function outreachDraft(lead) {
+        const project = projectForLead(lead);
+        const bullets = proofBullets(lead).map((line) => "- " + line).join("\n");
+        return [
+          "Subject: Senior Node.js/TypeScript contractor for " + lead.company,
+          "",
+          "Hi " + contactName(lead) + ",",
+          "",
+          "I am Calin Gabriel, a senior Node.js/TypeScript engineer focused on backend-heavy product systems: migrations, APIs, integrations, testing, and performance.",
+          "",
+          "I am interested in " + lead.company + " because " + companyReason(lead) + ". The closest portfolio match is " + project.homeTitle + ", and the main risk I would help reduce is senior delivery risk in an existing production system.",
+          "",
+          bullets,
+          "",
+          "I am available immediately for remote EU work and prefer long-term B2B/contract engagements.",
+          "",
+          "Worth a 20-minute fit call?",
+          "",
+          "Portfolio: " + RESUME.website,
+          "CV: " + RESUME.website + "/resume",
+          "LinkedIn: " + RESUME.linkedin,
+          "",
+          "Best,",
+          RESUME.name,
+          RESUME.email,
+        ].join("\n");
+      }
+
+      function companyReason(lead) {
+        const notes = (lead.notes || "").replace(/\s+/g, " ").trim();
+        if (notes) return notes.split(".")[0].toLowerCase();
+        if (lead.domain) return "your work sits close to my " + lead.domain.toLowerCase() + " experience";
+        return "the role looks aligned with my production delivery background";
+      }
+
+      function contactName(lead) {
+        const contact = (lead.contact || "").trim();
+        if (!contact) return "there";
+        const beforeEmail = contact.split(/[<,;]/)[0].trim();
+        if (!beforeEmail || beforeEmail.includes("@")) return "there";
+        return beforeEmail.split(/\s+/)[0];
+      }
+
+      function contactEmail(lead) {
+        const match = String(lead.contact || "").match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+        return match ? match[0] : "";
+      }
+
+      async function copyText(text, button) {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          textarea.remove();
+        }
+        if (button) {
+          const original = button.textContent;
+          button.textContent = "Copied";
+          setTimeout(() => {
+            button.textContent = original;
+          }, 1100);
+        }
+      }
+
+      function mailtoHref(lead) {
+        const email = contactEmail(lead);
+        if (!email) return "";
+        const draft = outreachDraft(lead);
+        const [subjectLine, ...bodyLines] = draft.split("\n");
+        const subject = subjectLine.replace(/^Subject:\s*/i, "");
+        return "mailto:" + encodeURIComponent(email) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyLines.join("\n").trim());
+      }
+
+      function renderNextThree() {
+        const container = document.getElementById("nextThree");
+        const leads = rankedLeads();
+        if (!leads.length) {
+          container.innerHTML = '<div class="empty-card">No active unsent leads match the ranking rules.</div>';
+          return;
+        }
+
+        container.innerHTML = leads
+          .map((lead, index) => {
+            const project = projectForLead(lead);
+            const emailHref = mailtoHref(lead);
+            return (
+              '<article class="next-card" data-id="' + esc(lead.id) + '">' +
+                '<div class="rank">#' + (index + 1) + "</div>" +
+                '<div class="next-card-main">' +
+                  '<div class="next-card-head">' +
+                    '<h3>' + esc(lead.company) + "</h3>" +
+                    '<span>' + esc(lead.domain || "No domain") + "</span>" +
+                  "</div>" +
+                  '<p class="fit-line">' + esc(lead.stackFit || "Fit not set") + "</p>" +
+                  '<p class="proof-line">Use: ' + esc(project.homeTitle) + "</p>" +
+                  '<p class="note-line">' + esc(lead.notes || lead.contactApproach || "No notes yet.") + "</p>" +
+                  '<div class="next-actions">' +
+                    (lead.applyUrl ? '<a class="small-action" href="' + esc(fullUrl(lead.applyUrl)) + '" target="_blank" rel="noopener">Open role</a>' : "") +
+                    '<button class="small-action" type="button" data-copy-draft="' + esc(lead.id) + '">Copy draft</button>' +
+                    '<button class="small-action" type="button" data-copy-bullets="' + esc(lead.id) + '">Copy bullets</button>' +
+                    (emailHref ? '<a class="small-action" href="' + esc(emailHref) + '">Email</a>' : "") +
+                    '<button class="small-action" type="button" data-mark-drafted="' + esc(lead.id) + '">Mark drafted</button>' +
+                  "</div>" +
+                "</div>" +
+              "</article>"
+            );
+          })
+          .join("");
+
+        container.querySelectorAll("[data-copy-draft]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const lead = data.find((item) => item.id === button.dataset.copyDraft);
+            if (lead) copyText(outreachDraft(lead), button);
+          });
+        });
+        container.querySelectorAll("[data-copy-bullets]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const lead = data.find((item) => item.id === button.dataset.copyBullets);
+            if (lead) copyText(proofBullets(lead).join("\n"), button);
+          });
+        });
+        container.querySelectorAll("[data-mark-drafted]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const lead = data.find((item) => item.id === button.dataset.markDrafted);
+            if (!lead) return;
+            lead.outreach = "Drafted";
+            lead.outreachDate = todayISO();
+            lead.updatedAt = todayISO();
+            save();
+            render();
+          });
+        });
+      }
+
+      function renderStats() {
+        const container = document.getElementById("stats");
+        const chip = (label, count, color, value, active) => (
+          '<button class="chip' + (active ? " active" : "") + '" type="button" data-filter="' + esc(value) + '">' +
+            (color ? '<span class="dot" style="background:' + color + '"></span>' : "") +
+            '<span class="n">' + count + '</span><span class="l">' + esc(label) + "</span>" +
+          "</button>"
+        );
+
+        container.innerHTML =
+          chip("Total", data.length, "", "", filterStatus === "") +
+          STATUSES.map((status) => {
+            const count = data.filter((lead) => lead.status === status.name).length;
+            return chip(status.name, count, status.color, status.name, filterStatus === status.name);
+          }).join("");
+
+        container.querySelectorAll("[data-filter]").forEach((button) => {
+          button.addEventListener("click", () => {
+            filterStatus = filterStatus === button.dataset.filter ? "" : button.dataset.filter;
+            document.getElementById("statusFilter").value = filterStatus;
+            render();
+          });
+        });
+      }
+
+      function renderTable() {
+        const body = document.getElementById("rows");
+        const rows = visibleRows();
+        updateSortHeaders();
+        if (!rows.length) {
+          body.innerHTML = '<tr><td colspan="10" class="empty">No companies match.</td></tr>';
+          return;
+        }
+
+        body.innerHTML = rows
+          .map((lead) => {
+            const opts = STATUSES.map((status) =>
+              '<option value="' + status.name + '"' + (status.name === lead.status ? " selected" : "") + ">" + status.name + "</option>"
+            ).join("");
+            const outreach = outreachView(lead);
+            return (
+              '<tr data-row="' + esc(lead.id) + '">' +
+                '<td class="company">' +
+                  (lead.applyUrl
+                    ? '<a href="' + esc(fullUrl(lead.applyUrl)) + '" target="_blank" rel="noopener" data-stop>' + esc(lead.company) + "</a>"
+                    : esc(lead.company)) +
+                  (lead.notes ? '<span class="sub">' + esc(lead.notes.slice(0, 90)) + (lead.notes.length > 90 ? "..." : "") + "</span>" : "") +
+                "</td>" +
+                "<td>" + esc(lead.domain) + "</td>" +
+                "<td>" + esc(lead.funding) + "</td>" +
+                '<td><select class="status-select" data-stop data-status="' + esc(lead.id) + '" style="background:' + statusColor(lead.status) + '">' + opts + "</select></td>" +
+                '<td><button class="outreach-pill ' + outreach.cls + '" data-stop data-outreach="' + esc(lead.id) + '"' +
+                  (outreach.bg ? ' style="background:' + outreach.bg + '"' : "") +
+                  ' title="' + esc(outreach.title) + '">' + outreach.label + "</button></td>" +
+                "<td>" + askCell(lead) + "</td>" +
+                "<td>" + esc(lead.stackFit) + "</td>" +
+                "<td>" + esc(lead.contact || lead.contactApproach) + "</td>" +
+                "<td>" + esc(lead.updatedAt) + "</td>" +
+                '<td><div class="row-actions">' +
+                  '<button class="icon-btn" type="button" data-stop data-edit="' + esc(lead.id) + '">Edit</button>' +
+                  '<button class="icon-btn danger" type="button" data-stop data-del="' + esc(lead.id) + '">Delete</button>' +
+                "</div></td>" +
+              "</tr>"
+            );
+          })
+          .join("");
+
+        body.querySelectorAll("[data-row]").forEach((row) => {
+          row.addEventListener("click", () => openModal(row.dataset.row));
+        });
+        body.querySelectorAll("[data-stop]").forEach((element) => {
+          element.addEventListener("click", (event) => event.stopPropagation());
+        });
+        body.querySelectorAll("[data-status]").forEach((select) => {
+          select.addEventListener("change", (event) => setStatus(select.dataset.status, event.target.value));
+        });
+        body.querySelectorAll("[data-outreach]").forEach((button) => {
+          button.addEventListener("click", () => advanceOutreach(button.dataset.outreach));
+        });
+        body.querySelectorAll("[data-edit]").forEach((button) => {
+          button.addEventListener("click", () => openModal(button.dataset.edit));
+        });
+        body.querySelectorAll("[data-del]").forEach((button) => {
+          button.addEventListener("click", () => removeCompany(button.dataset.del));
+        });
+      }
+
+      function render() {
+        renderNextThree();
+        renderStats();
+        renderTable();
+      }
+
+      function setStatus(id, status) {
+        const lead = data.find((item) => item.id === id);
+        if (!lead) return;
+        lead.status = status;
+        lead.updatedAt = todayISO();
+        save();
+        render();
+      }
+
+      function advanceOutreach(id) {
+        const lead = data.find((item) => item.id === id);
+        if (!lead) return;
+        lead.outreach = OUTREACH_NEXT[lead.outreach || ""];
+        lead.outreachDate = lead.outreach ? todayISO() : "";
+        lead.updatedAt = todayISO();
+        save();
+        render();
+      }
+
+      function removeCompany(id) {
+        const lead = data.find((item) => item.id === id);
+        if (!lead || !confirm('Delete "' + lead.company + '"?')) return;
+        data = data.filter((item) => item.id !== id);
+        save();
+        render();
+      }
+
+      const overlay = document.getElementById("overlay");
+
+      function openModal(id) {
+        const lead = data.find((item) => item.id === id);
+        document.getElementById("modalTitle").textContent = lead ? "Edit company" : "Add company";
+        document.getElementById("f_id").value = lead ? lead.id : "";
+        const get = (key) => (lead ? lead[key] || "" : "");
+        document.getElementById("f_company").value = get("company");
+        document.getElementById("f_domain").value = get("domain");
+        document.getElementById("f_funding").value = get("funding");
+        document.getElementById("f_ask").value = get("ask");
+        document.getElementById("f_engagement").value = get("engagement");
+        document.getElementById("f_applyUrl").value = get("applyUrl");
+        document.getElementById("f_status").value = lead ? lead.status : "Lead";
+        document.getElementById("f_source").value = get("source");
+        document.getElementById("f_fitScore").value = get("fitScore");
+        document.getElementById("f_outreach").value = get("outreach");
+        document.getElementById("f_replyStatus").value = get("replyStatus");
+        document.getElementById("f_rejectionReason").value = get("rejectionReason");
+        document.getElementById("f_stackFit").value = get("stackFit");
+        document.getElementById("f_contactApproach").value = get("contactApproach");
+        document.getElementById("f_contact").value = get("contact");
+        document.getElementById("f_nextAction").value = get("nextAction");
+        document.getElementById("f_notes").value = get("notes");
+        overlay.classList.add("open");
+        document.getElementById("f_company").focus();
+      }
+
+      function closeModal() {
+        overlay.classList.remove("open");
+      }
+
+      function saveModal() {
+        const company = document.getElementById("f_company").value.trim();
+        if (!company) {
+          alert("Company name is required.");
+          return;
+        }
+        const id = document.getElementById("f_id").value;
+        const fields = {
+          company,
+          domain: document.getElementById("f_domain").value.trim(),
+          funding: document.getElementById("f_funding").value.trim(),
+          ask: document.getElementById("f_ask").value.trim(),
+          engagement: document.getElementById("f_engagement").value,
+          applyUrl: document.getElementById("f_applyUrl").value.trim(),
+          status: document.getElementById("f_status").value,
+          source: document.getElementById("f_source").value.trim(),
+          fitScore: Number(document.getElementById("f_fitScore").value) || 0,
+          stackFit: document.getElementById("f_stackFit").value.trim(),
+          contactApproach: document.getElementById("f_contactApproach").value.trim(),
+          contact: document.getElementById("f_contact").value.trim(),
+          replyStatus: document.getElementById("f_replyStatus").value,
+          rejectionReason: document.getElementById("f_rejectionReason").value,
+          nextAction: document.getElementById("f_nextAction").value.trim(),
+          notes: document.getElementById("f_notes").value.trim(),
+          outreach: document.getElementById("f_outreach").value,
+        };
+        if (id) {
+          const lead = data.find((item) => item.id === id);
+          Object.assign(lead, fields, { updatedAt: todayISO() });
+          lead.outreachDate = lead.outreach ? lead.outreachDate || todayISO() : "";
+        } else {
+          const lead = { id: uid(), updatedAt: todayISO(), outreachDate: "", ...fields };
+          lead.outreachDate = lead.outreach ? todayISO() : "";
+          data.unshift(lead);
+        }
+        save();
+        render();
+        closeModal();
+      }
+
+      function csvCell(value) {
+        const text = String(value == null ? "" : value);
+        return /[",\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+      }
+
+      function exportCSV() {
+        const cols = ["Company", "Domain", "Funding", "Apply URL", "Stack fit", "Fit score", "Source", "Contact approach", "Status", "Notes", "Contact", "Updated", "Outreach", "Outreach date", "Reply status", "Rejection reason", "Next action", "Ask", "Engagement"];
+        const keys = ["company", "domain", "funding", "applyUrl", "stackFit", "fitScore", "source", "contactApproach", "status", "notes", "contact", "updatedAt", "outreach", "outreachDate", "replyStatus", "rejectionReason", "nextAction", "ask", "engagement"];
+        const lines = [cols.join(",")];
+        data.forEach((lead) => lines.push(keys.map((key) => csvCell(lead[key])).join(",")));
+        const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "companies.csv";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
+
+      function parseCSV(text) {
+        const rows = [];
+        let row = [];
+        let current = "";
+        let inQuotes = false;
+        for (let i = 0; i < text.length; i += 1) {
+          const char = text[i];
+          if (inQuotes) {
+            if (char === '"') {
+              if (text[i + 1] === '"') {
+                current += '"';
+                i += 1;
+              } else {
+                inQuotes = false;
+              }
+            } else {
+              current += char;
+            }
+          } else if (char === '"') {
+            inQuotes = true;
+          } else if (char === ",") {
+            row.push(current);
+            current = "";
+          } else if (char === "\n") {
+            row.push(current);
+            rows.push(row);
+            row = [];
+            current = "";
+          } else if (char !== "\r") {
+            current += char;
+          }
+        }
+        if (current !== "" || row.length) {
+          row.push(current);
+          rows.push(row);
+        }
+        return rows.filter((item) => item.some((cell) => cell.trim() !== ""));
+      }
+
+      function importCSV(text) {
+        const rows = parseCSV(text);
+        if (rows.length < 2) {
+          alert("CSV has no data rows.");
+          return;
+        }
+        const header = rows[0].map((cell) => cell.trim().toLowerCase());
+        const idx = (names) => {
+          for (const name of names) {
+            const index = header.indexOf(name);
+            if (index !== -1) return index;
+          }
+          return -1;
+        };
+        const map = {
+          company: idx(["company"]),
+          domain: idx(["domain"]),
+          funding: idx(["funding"]),
+          applyUrl: idx(["apply url", "apply url (not linkedin)", "applyurl", "url"]),
+          stackFit: idx(["stack fit", "stackfit"]),
+          fitScore: idx(["fit score", "fitscore"]),
+          source: idx(["source"]),
+          contactApproach: idx(["contact approach", "contactapproach"]),
+          status: idx(["status"]),
+          notes: idx(["notes"]),
+          contact: idx(["contact"]),
+          updatedAt: idx(["updated", "updatedat", "last updated"]),
+          outreach: idx(["outreach"]),
+          outreachDate: idx(["outreach date", "outreachdate"]),
+          replyStatus: idx(["reply status", "replystatus"]),
+          rejectionReason: idx(["rejection reason", "rejectionreason"]),
+          nextAction: idx(["next action", "nextaction"]),
+          ask: idx(["ask", "salary ask", "salary / rate ask", "rate ask"]),
+          engagement: idx(["engagement", "engagement type", "type"]),
+        };
+        if (map.company === -1) {
+          alert("CSV needs a Company column.");
+          return;
+        }
+        const validStatuses = STATUSES.map((status) => status.name);
+        const get = (row, key) => (map[key] !== -1 && row[map[key]] != null ? row[map[key]].trim() : "");
+        const imported = rows
+          .slice(1)
+          .map((row) => {
+            let status = get(row, "status");
+            if (!validStatuses.includes(status)) status = "Lead";
+            let outreach = get(row, "outreach");
+            if (!OUTREACH_VALUES.includes(outreach)) outreach = "";
+            const engagement = get(row, "engagement");
+            return {
+              id: uid(),
+              company: get(row, "company"),
+              domain: get(row, "domain"),
+              funding: get(row, "funding"),
+              applyUrl: get(row, "applyUrl"),
+              stackFit: get(row, "stackFit"),
+              fitScore: Number(get(row, "fitScore")) || 0,
+              source: get(row, "source"),
+              contactApproach: get(row, "contactApproach"),
+              contact: get(row, "contact"),
+              status,
+              notes: get(row, "notes"),
+              updatedAt: get(row, "updatedAt") || todayISO(),
+              outreach,
+              outreachDate: outreach ? get(row, "outreachDate") || todayISO() : "",
+              replyStatus: get(row, "replyStatus"),
+              rejectionReason: get(row, "rejectionReason"),
+              nextAction: get(row, "nextAction"),
+              ask: get(row, "ask"),
+              engagement: ENGAGEMENTS.includes(engagement) ? engagement : "",
+            };
+          })
+          .filter((lead) => lead.company);
+        if (!imported.length) {
+          alert("No valid rows found.");
+          return;
+        }
+        if (!confirm("Replace all " + data.length + " current entries with " + imported.length + " imported rows?")) return;
+        data = imported;
+        save();
+        render();
+      }
+
+      function loadOutreachEdits() {
+        try {
+          return JSON.parse(localStorage.getItem(OUTREACH_KEY)) || {};
+        } catch {
+          return {};
+        }
+      }
+
+      function saveOutreachEdits(edits) {
+        localStorage.setItem(OUTREACH_KEY, JSON.stringify(edits));
+      }
+
+      function selectedOutreachTemplate() {
+        const id = document.getElementById("outreachSelect").value;
+        return OUTREACH_TEMPLATES.find((item) => item.id === id) || OUTREACH_TEMPLATES[0];
+      }
+
+      function outreachFields() {
+        return {
+          to: document.getElementById("outreachTo").value,
+          subject: document.getElementById("outreachSubject").value,
+          body: document.getElementById("outreachBody").value,
+          linkedinNote: document.getElementById("outreachLinkedin").value,
+        };
+      }
+
+      function updateLinkedinCount() {
+        const count = document.getElementById("outreachLinkedin").value.length;
+        const counter = document.getElementById("linkedinCount");
+        counter.textContent = count + " / " + LINKEDIN_LIMIT;
+        counter.classList.toggle("over", count > LINKEDIN_LIMIT);
+      }
+
+      function outreachGmailUrl() {
+        const fields = outreachFields();
+        return (
+          "https://mail.google.com/mail/?view=cm&fs=1" +
+          "&to=" + encodeURIComponent(fields.to) +
+          "&su=" + encodeURIComponent(fields.subject) +
+          "&body=" + encodeURIComponent(fields.body)
+        );
+      }
+
+      function outreachMailtoUrl() {
+        const fields = outreachFields();
+        return (
+          "mailto:" + encodeURIComponent(fields.to) +
+          "?subject=" + encodeURIComponent(fields.subject) +
+          "&body=" + encodeURIComponent(fields.body)
+        );
+      }
+
+      function refreshOutreachLinks() {
+        document.getElementById("outreachGmail").href = outreachGmailUrl();
+        document.getElementById("outreachMailto").href = outreachMailtoUrl();
+      }
+
+      function loadOutreachTemplate(entry) {
+        const edits = loadOutreachEdits()[entry.id];
+        document.getElementById("outreachTo").value = edits ? edits.to : entry.to;
+        document.getElementById("outreachSubject").value = edits ? edits.subject : entry.subject;
+        document.getElementById("outreachBody").value = edits ? edits.body : entry.body;
+        document.getElementById("outreachLinkedin").value =
+          edits && edits.linkedinNote != null ? edits.linkedinNote : entry.linkedinNote;
+
+        const note = document.getElementById("outreachNote");
+        note.textContent = entry.note || "";
+        note.classList.toggle("hidden", !entry.note);
+        document.getElementById("outreachSaved").textContent = edits
+          ? "Showing your saved edits."
+          : "Showing the original draft.";
+        updateLinkedinCount();
+        refreshOutreachLinks();
+      }
+
+      function persistOutreach() {
+        const entry = selectedOutreachTemplate();
+        const edits = loadOutreachEdits();
+        edits[entry.id] = outreachFields();
+        saveOutreachEdits(edits);
+        document.getElementById("outreachSaved").textContent = "Saved.";
+        updateLinkedinCount();
+        refreshOutreachLinks();
+      }
+
+      function markSelectedOutreachSent(button) {
+        const entry = selectedOutreachTemplate();
+        const lead = data.find((item) => item.id === entry.companyId);
+        if (!lead) {
+          document.getElementById("outreachSaved").textContent = "No matching tracker row found.";
+          return;
+        }
+        lead.status = "Cold Sent";
+        lead.outreach = "Sent";
+        lead.outreachDate = todayISO();
+        lead.updatedAt = todayISO();
+        save();
+        render();
+        if (button) {
+          const original = button.textContent;
+          button.textContent = "Marked sent";
+          setTimeout(() => {
+            button.textContent = original;
+          }, 1200);
+        }
+      }
+
+      function initControls() {
+        const statusFilter = document.getElementById("statusFilter");
+        const modalStatus = document.getElementById("f_status");
+        STATUSES.forEach((status) => {
+          const filterOption = document.createElement("option");
+          filterOption.value = status.name;
+          filterOption.textContent = status.name;
+          statusFilter.appendChild(filterOption);
+
+          const modalOption = document.createElement("option");
+          modalOption.value = status.name;
+          modalOption.textContent = status.name;
+          modalStatus.appendChild(modalOption);
+        });
+
+        statusFilter.addEventListener("change", (event) => {
+          filterStatus = event.target.value;
+          render();
+        });
+        document.getElementById("search").addEventListener("input", (event) => {
+          searchQuery = event.target.value;
+          renderTable();
+        });
+        document.querySelectorAll("[data-sort]").forEach((button) => {
+          button.addEventListener("click", () => setSort(button.dataset.sort));
+        });
+        document.getElementById("addBtn").addEventListener("click", () => openModal(null));
+        document.getElementById("cancelBtn").addEventListener("click", closeModal);
+        document.getElementById("saveBtn").addEventListener("click", saveModal);
+        document.getElementById("exportBtn").addEventListener("click", exportCSV);
+        document.getElementById("importBtn").addEventListener("click", () => document.getElementById("importFile").click());
+        document.getElementById("importFile").addEventListener("change", (event) => {
+          const file = event.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = () => importCSV(String(reader.result));
+          reader.readAsText(file);
+          event.target.value = "";
+        });
+        document.getElementById("copyAllBtn").addEventListener("click", (event) => {
+          const drafts = rankedLeads().map(outreachDraft).join("\n\n---\n\n");
+          copyText(drafts, event.target);
+        });
+        const outreachSelect = document.getElementById("outreachSelect");
+        OUTREACH_TEMPLATES.forEach((entry) => {
+          const option = document.createElement("option");
+          option.value = entry.id;
+          option.textContent = entry.label;
+          outreachSelect.appendChild(option);
+        });
+        outreachSelect.addEventListener("change", () => loadOutreachTemplate(selectedOutreachTemplate()));
+        ["outreachTo", "outreachSubject", "outreachBody", "outreachLinkedin"].forEach((id) => {
+          document.getElementById(id).addEventListener("input", persistOutreach);
+        });
+        document.getElementById("outreachCopy").addEventListener("click", (event) => {
+          const fields = outreachFields();
+          copyText("Subject: " + fields.subject + "\n\n" + fields.body, event.target);
+          document.getElementById("outreachSaved").textContent = "Copied subject + body.";
+        });
+        document.getElementById("outreachCopyLi").addEventListener("click", (event) => {
+          copyText(document.getElementById("outreachLinkedin").value, event.target);
+          document.getElementById("outreachSaved").textContent = "Copied LinkedIn connection note.";
+        });
+        document.getElementById("outreachMarkSent").addEventListener("click", (event) => {
+          markSelectedOutreachSent(event.target);
+        });
+        document.getElementById("outreachReset").addEventListener("click", () => {
+          const entry = selectedOutreachTemplate();
+          const edits = loadOutreachEdits();
+          delete edits[entry.id];
+          saveOutreachEdits(edits);
+          loadOutreachTemplate(entry);
+        });
+        overlay.addEventListener("click", (event) => {
+          if (event.target === overlay) closeModal();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeModal();
+        });
+      }
+
+      function initTheme() {
+        const themeBtn = document.getElementById("themeBtn");
+        let theme = document.documentElement.getAttribute("data-theme") || "light";
+        const applyTheme = (nextTheme) => {
+          document.documentElement.setAttribute("data-theme", nextTheme);
+          themeBtn.textContent = nextTheme === "dark" ? "Light" : "Dark";
+        };
+        themeBtn.addEventListener("click", () => {
+          theme = theme === "dark" ? "light" : "dark";
+          localStorage.setItem(THEME_KEY, theme);
+          applyTheme(theme);
+        });
+        applyTheme(theme);
+      }
+
+      initControls();
+      initTheme();
+      loadOutreachTemplate(selectedOutreachTemplate());
+      render();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #eef2f7;
+    --panel: #ffffff;
+    --panel-strong: #f8fafc;
+    --ink: #111827;
+    --muted: #64748b;
+    --line: #d9e2ec;
+    --accent: #0f766e;
+    --accent-dark: #115e59;
+    --focus: rgba(15, 118, 110, 0.18);
+    --danger: #dc2626;
+    --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    color-scheme: light;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0b1120;
+    --panel: #111827;
+    --panel-strong: #172033;
+    --ink: #e5e7eb;
+    --muted: #94a3b8;
+    --line: #2b3850;
+    --accent: #2dd4bf;
+    --accent-dark: #14b8a6;
+    --focus: rgba(45, 212, 191, 0.16);
+    --danger: #f87171;
+    --shadow: 0 18px 45px rgba(0, 0, 0, 0.26);
+    color-scheme: dark;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(135deg, rgba(15, 118, 110, 0.08), transparent 34rem),
+      radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 24rem),
+      var(--bg);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    color: var(--ink);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.58rem 0.82rem;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  }
+
+  button:hover,
+  .ghost-link:hover,
+  .small-action:hover {
+    border-color: var(--accent);
+  }
+
+  button:active,
+  .small-action:active {
+    transform: translateY(1px);
+  }
+
+  .primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+  }
+
+  .primary:hover {
+    background: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+
+  .shell {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px;
+  }
+
+  .topbar,
+  .section-head,
+  .toolbar,
+  .next-card,
+  .tracker-panel,
+  .next-panel,
+  .outreach-panel {
+    border: 1px solid var(--line);
+    background: color-mix(in srgb, var(--panel) 94%, transparent);
+    box-shadow: var(--shadow);
+  }
+
+  .topbar {
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 18px;
+  }
+
+  .topbar h1,
+  .section-head h2 {
+    margin: 0;
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  .topbar h1 {
+    font-size: clamp(2rem, 4vw, 4rem);
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.3rem, 2vw, 2rem);
+  }
+
+  .eyebrow {
+    margin: 0 0 0.35rem;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lede {
+    color: var(--muted);
+    margin: 0.65rem 0 0;
+    max-width: 58ch;
+  }
+
+  .topbar-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .ghost-link,
+  .small-action {
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 38px;
+    padding: 0.52rem 0.75rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .next-panel,
+  .tracker-panel,
+  .outreach-panel {
+    border-radius: 16px;
+    margin-top: 18px;
+    overflow: hidden;
+  }
+
+  .section-head {
+    border-width: 0 0 1px;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .next-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .outreach-layout {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 280px minmax(0, 1fr);
+    padding: 18px;
+  }
+
+  .outreach-controls,
+  .outreach-editor {
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+
+  .outreach-controls {
+    align-self: start;
+    display: grid;
+    gap: 0.62rem;
+    padding: 16px;
+    position: sticky;
+    top: 18px;
+  }
+
+  .outreach-controls label {
+    color: var(--muted);
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .outreach-controls button,
+  .control-action {
+    width: 100%;
+  }
+
+  .control-action {
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    display: inline-flex;
+    font-weight: 800;
+    justify-content: center;
+    min-height: 39px;
+    padding: 0.58rem 0.82rem;
+    text-decoration: none;
+  }
+
+  .control-action.primary {
+    color: #ffffff;
+  }
+
+  .outreach-editor {
+    padding: 18px;
+  }
+
+  .outreach-editor .field {
+    margin-bottom: 0.85rem;
+  }
+
+  .email-body {
+    min-height: 340px;
+    line-height: 1.55;
+  }
+
+  .linkedin-body {
+    min-height: 96px;
+  }
+
+  .section-note,
+  .saved {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin: 0;
+  }
+
+  .saved {
+    min-height: 1.2rem;
+  }
+
+  .notice {
+    background: color-mix(in srgb, #f59e0b 13%, var(--panel));
+    border: 1px solid color-mix(in srgb, #f59e0b 45%, var(--line));
+    border-radius: 8px;
+    color: color-mix(in srgb, #92400e 80%, var(--ink));
+    font-size: 0.84rem;
+    line-height: 1.5;
+    margin-bottom: 0.9rem;
+    padding: 0.72rem 0.82rem;
+  }
+
+  .notice.hidden {
+    display: none;
+  }
+
+  #linkedinCount {
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  #linkedinCount.over {
+    color: var(--danger);
+  }
+
+  .next-card {
+    border-radius: 12px;
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .rank {
+    align-items: center;
+    background: var(--accent);
+    border-radius: 999px;
+    color: #ffffff;
+    display: flex;
+    font-size: 0.82rem;
+    font-weight: 900;
+    height: 36px;
+    justify-content: center;
+    width: 36px;
+  }
+
+  .next-card h3 {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .next-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .next-card-head span,
+  .fit-line,
+  .proof-line,
+  .note-line,
+  .privacy-note,
+  .sub,
+  .muted {
+    color: var(--muted);
+  }
+
+  .fit-line,
+  .proof-line,
+  .note-line {
+    font-size: 0.88rem;
+    margin: 0.45rem 0 0;
+  }
+
+  .proof-line {
+    color: var(--ink);
+    font-weight: 750;
+  }
+
+  .note-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .next-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .small-action {
+    background: var(--panel-strong);
+    font-size: 0.76rem;
+    min-height: 32px;
+    padding: 0.38rem 0.55rem;
+  }
+
+  .tracker-head {
+    align-items: flex-start;
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    justify-content: flex-end;
+  }
+
+  .chip {
+    align-items: center;
+    box-shadow: none;
+    display: inline-flex;
+    gap: 0.38rem;
+    min-height: 34px;
+    padding: 0.38rem 0.58rem;
+  }
+
+  .chip.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--focus);
+  }
+
+  .chip .n {
+    font-weight: 900;
+  }
+
+  .chip .l {
+    color: var(--muted);
+    font-size: 0.68rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    border-radius: 999px;
+    height: 8px;
+    width: 8px;
+  }
+
+  .toolbar {
+    border-width: 0 0 1px;
+    box-shadow: none;
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 180px repeat(3, auto);
+    gap: 0.6rem;
+    padding: 14px 18px;
+  }
+
+  input,
+  select,
+  textarea {
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--ink);
+    min-height: 39px;
+    padding: 0.56rem 0.68rem;
+    width: 100%;
+  }
+
+  textarea {
+    min-height: 84px;
+    resize: vertical;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus-visible,
+  a:focus-visible {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--focus);
+    outline: none;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    border-collapse: collapse;
+    min-width: 1120px;
+    width: 100%;
+  }
+
+  thead th {
+    background: var(--panel-strong);
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 0.72rem 0.82rem;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .sort-btn {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    gap: 0.28rem;
+    justify-content: flex-start;
+    letter-spacing: inherit;
+    min-height: 24px;
+    padding: 0.12rem 0.18rem;
+    text-align: left;
+    text-transform: inherit;
+    width: 100%;
+  }
+
+  .sort-btn:hover {
+    color: var(--ink);
+  }
+
+  .sort-indicator {
+    color: var(--accent);
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 900;
+    line-height: 1;
+    min-width: 0.6rem;
+  }
+
+  .sort-btn[data-direction="asc"] .sort-indicator::before {
+    content: "^";
+  }
+
+  .sort-btn[data-direction="desc"] .sort-indicator::before {
+    content: "v";
+  }
+
+  tbody td {
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+    padding: 0.72rem 0.82rem;
+    vertical-align: top;
+  }
+
+  tbody tr {
+    cursor: pointer;
+  }
+
+  tbody tr:hover {
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+  }
+
+  td.company {
+    font-weight: 850;
+    min-width: 210px;
+  }
+
+  td.company a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .sub {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    margin-top: 0.16rem;
+  }
+
+  .status-select {
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 900;
+    min-height: 28px;
+    padding: 0.25rem 0.62rem;
+  }
+
+  .outreach-pill {
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 0.76rem;
+    min-height: 28px;
+    padding: 0.25rem 0.62rem;
+  }
+
+  .outreach-pill.none {
+    background: transparent;
+    border-style: dashed;
+    color: var(--muted);
+  }
+
+  .row-actions {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .icon-btn {
+    font-size: 0.72rem;
+    min-height: 30px;
+    padding: 0.28rem 0.5rem;
+  }
+
+  .danger {
+    color: var(--danger);
+  }
+
+  .empty,
+  .empty-card {
+    color: var(--muted);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .empty-card {
+    border: 1px dashed var(--line);
+    border-radius: 12px;
+    grid-column: 1 / -1;
+  }
+
+  .privacy-note {
+    font-size: 0.82rem;
+    margin: 14px 4px 0;
+    text-align: center;
+  }
+
+  code {
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--ink);
+    padding: 0.1rem 0.28rem;
+  }
+
+  .overlay {
+    align-items: center;
+    background: rgba(15, 23, 42, 0.58);
+    display: none;
+    inset: 0;
+    justify-content: center;
+    padding: 20px;
+    position: fixed;
+    z-index: 50;
+  }
+
+  .overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    max-height: 90vh;
+    max-width: 560px;
+    overflow-y: auto;
+    padding: 22px;
+    width: 100%;
+  }
+
+  .modal h2 {
+    margin: 0 0 1rem;
+  }
+
+  .field {
+    margin-bottom: 0.72rem;
+  }
+
+  .field label {
+    color: var(--muted);
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 1050px) {
+    .topbar,
+    .section-head,
+    .tracker-head {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .topbar-actions,
+    .stats {
+      justify-content: flex-start;
+    }
+
+    .next-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .toolbar {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .outreach-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .outreach-controls {
+      position: static;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .shell {
+      padding: 14px;
+    }
+
+    .topbar,
+    .section-head,
+    .next-grid,
+    .toolbar,
+    .outreach-layout,
+    .outreach-editor,
+    .outreach-controls {
+      padding: 14px;
+    }
+
+    .toolbar {
+      grid-template-columns: 1fr;
+    }
+
+    .next-card {
+      grid-template-columns: 1fr;
+    }
+
+    .rank {
+      height: 30px;
+      width: 44px;
+    }
+
+    .topbar-actions,
+    .next-actions,
+    .modal-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .ghost-link,
+    .small-action,
+    .topbar-actions button,
+    .modal-actions button {
+      width: 100%;
+    }
+  }
+</style>

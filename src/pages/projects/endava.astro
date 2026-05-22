@@ -10,7 +10,7 @@ import TechIcon from "../../components/TechIcon.astro";
   <main>
     <section
       class="project-hero"
-      style="background: var(--dark); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
+      style="background: var(--hero-bg); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
     >
       <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
         <h1
@@ -44,12 +44,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           The Context
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           Endava is a global technology consultancy that places engineers with major
           enterprise clients. Over nearly 3 years there, I rotated across projects for
@@ -57,7 +57,7 @@ import TechIcon from "../../components/TechIcon.astro";
           (UK academic publishing) — all full-stack JavaScript.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           This period built my delivery baseline. Working across telecoms, payments, and
           academic publishing forced me to adapt quickly, understand unfamiliar domains,
@@ -71,7 +71,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
         >
           What I Built
         </h2>
@@ -81,15 +81,15 @@ import TechIcon from "../../components/TechIcon.astro";
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
         >
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary);"
             >
               Scientific Paper Processing
             </h3>
-            <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">eLife Sciences (UK)</p>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">eLife Sciences (UK)</p>
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Built a document conversion system with Node.js, AWS S3, and Lambda
               that processed 2,000+ scientific papers daily. The React frontend handled
               paper submission, tracking, and collaborative workflows — optimized for
@@ -97,15 +97,15 @@ import TechIcon from "../../components/TechIcon.astro";
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary);"
             >
               E-Commerce Checkout System
             </h3>
-            <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">NETS Scandinavia</p>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">NETS Scandinavia</p>
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Created a checkout system with React and TypeScript supporting multiple
               payment methods including Klarna and traditional cards. In payments,
               reliability was the core requirement. Every checkout edge case affects money,
@@ -114,6 +114,13 @@ import TechIcon from "../../components/TechIcon.astro";
             </p>
           </div>
         </div>
+        <p
+          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem;"
+        >
+          For a contract buyer, this case study is the adaptability proof: I have already
+          been the engineer dropped into unfamiliar enterprise domains and expected to
+          become useful quickly without needing a long runway.
+        </p>
       </section>
 
       <!-- BUSINESS IMPACT -->
@@ -122,7 +129,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           Impact Across Clients
         </h2>
@@ -132,38 +139,38 @@ import TechIcon from "../../components/TechIcon.astro";
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
         >
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               2K+
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Papers Processed Daily
             </div>
           </div>
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               3
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Enterprise Domains (Telecom, Payments, Academic)
             </div>
           </div>
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               2
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Junior Devs Mentored
             </div>
           </div>
@@ -176,12 +183,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           What I Took Away
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           Agency work forces you to get productive in unfamiliar codebases and domains.
           After rotating through telecoms, payments, and academic publishing, I learned to
@@ -189,7 +196,7 @@ import TechIcon from "../../components/TechIcon.astro";
           actually needed shipped.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           This is also where I started mentoring — guiding 2 junior developers through
           React best practices and Node.js architecture. Teaching others forced me to
@@ -204,7 +211,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
         >
           Technology Stack
         </h2>
@@ -220,7 +227,7 @@ import TechIcon from "../../components/TechIcon.astro";
               { name: "AWS S3", tech: "AWS" },
               { name: "Klarna", tech: "JavaScript" },
             ].map((item) => (
-              <div style="padding: 1.25rem 1rem; background: var(--dark); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
+              <div style="padding: 1.25rem 1rem; background: var(--hero-bg); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
                 <TechIcon technology={item.tech} size={32} />
                 <span style="font-size: 0.9rem; line-height: 1.2;">
                   {item.name}

@@ -10,7 +10,7 @@ import TechIcon from "../../components/TechIcon.astro";
   <main>
     <section
       class="project-hero"
-      style="background: var(--dark); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
+      style="background: var(--hero-bg); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
     >
       <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
         <h1
@@ -34,7 +34,7 @@ import TechIcon from "../../components/TechIcon.astro";
           </span>
           <a
             href="https://github.com/calindotgabriel/immobile-search"
-            style="padding: 0.5rem 1.25rem; background: white; color: var(--dark); border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
+            style="padding: 0.5rem 1.25rem; background: white; color: #0f172a; border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
           >
             Demo repo
           </a>
@@ -50,12 +50,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           The Problem
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           ImmoScout24 is one of the most-used real-estate platforms in Austria and part
           of the wider Scout24 group. The work sat inside a mature distributed system:
@@ -63,7 +63,7 @@ import TechIcon from "../../components/TechIcon.astro";
           integration points that had to keep working under normal product delivery pressure.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           The existing system already had strong unit, integration, and e2e coverage.
           My contribution was not a rewrite. It was the work of getting productive in
@@ -78,12 +78,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           My Biggest Challenge
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           The steepest learning curve was adapting to the quality expectations of a
           DAX-listed engineering organization. The codebase was tested at every layer
@@ -91,7 +91,7 @@ import TechIcon from "../../components/TechIcon.astro";
           Small changes still required clear reasoning, good test coverage, and careful review.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           I had to level up my testing discipline, communicate more precisely with senior
           engineers, and learn when to sync with my mentor. That calibration mattered:
@@ -105,7 +105,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
         >
           What I Delivered
         </h2>
@@ -115,56 +115,56 @@ import TechIcon from "../../components/TechIcon.astro";
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
         >
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               UX Improvements
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Shipped focused improvements in search and listing flows, with changes
               reviewed against an existing product and testing culture rather than a
               greenfield codebase.
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               SEO-Sensitive Delivery
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Worked on technical SEO changes where page structure, rendering behavior,
               and release quality had direct product impact. The team tracked organic
               visibility closely, so regressions had to be avoided.
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               Marketing Automation (Iterable)
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Integrated Iterable so marketing teams could run targeted campaigns and
               automate lifecycle messaging without depending on engineering for every
               campaign change.
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               Enricher Task Upgrades
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Upgraded the functional programming-style enricher tasks that
               process and transform property data — improving reliability
               and maintainability of the data pipeline.
@@ -179,7 +179,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           Business Impact
         </h2>
@@ -189,50 +189,58 @@ import TechIcon from "../../components/TechIcon.astro";
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
         >
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               Top 3
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Most-Used Listing Platform in AT
             </div>
           </div>
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               ATH
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               SEO Performance Improved
             </div>
           </div>
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               20%
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Higher User Engagement
             </div>
           </div>
         </div>
 
         <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--gray); margin-top: 1.5rem;"
+          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem;"
         >
           The impact was practical: SEO changes supported organic visibility, UX work
           contributed to engagement, and Iterable reduced the amount of engineering effort
-          needed for marketing campaigns. The strongest signal for me was learning to make
-          these changes without lowering the quality bar of the platform.
+          needed for marketing campaigns. Some exact business metrics are not mine to
+          disclose in detail, so I keep the public proof focused on the work I owned and
+          the production context it shipped into.
+        </p>
+        <p
+          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1rem;"
+        >
+          For a contract buyer, the useful signal is not a greenfield demo. It is evidence
+          that I can enter a mature system, respect the quality bar, and ship targeted
+          product/integration changes without increasing release risk.
         </p>
       </section>
 
@@ -242,19 +250,19 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           What I Took Away
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           This project changed my default expectations for test coverage and review quality.
           A fully tested distributed system does not remove the need for judgment; it gives
           good engineers the confidence to make smaller, better-scoped changes.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           On the human side, I learned when to reach out to a mentor and when to push
           through on my own. That calibration — knowing when to sync and when to execute —
@@ -268,7 +276,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
         >
           Technology Stack
         </h2>
@@ -284,7 +292,7 @@ import TechIcon from "../../components/TechIcon.astro";
               { name: "AWS", tech: "AWS" },
               { name: "Iterable", tech: "JavaScript" },
             ].map((item) => (
-              <div style="padding: 1.25rem 1rem; background: var(--dark); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
+              <div style="padding: 1.25rem 1rem; background: var(--hero-bg); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
                 <TechIcon technology={item.tech} size={32} />
                 <span style="font-size: 0.9rem; line-height: 1.2;">
                   {item.name}

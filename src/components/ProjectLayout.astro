@@ -7,6 +7,7 @@ export interface Props {
 const { title, description } = Astro.props;
 
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 import "../styles/global.css";
 ---
 
@@ -29,6 +30,7 @@ import "../styles/global.css";
           rel="noopener"
           class="project-nav-link">LinkedIn</a>
       </nav>
+      <ThemeToggle />
     </div>
   </header>
 
@@ -39,8 +41,8 @@ import "../styles/global.css";
   <!-- Footer -->
   <footer class="project-footer">
     <div class="project-footer-container">
-      <h3 class="project-footer-title">Let's build something that scales</h3>
-      <p class="project-footer-subtitle">Open to engineering roles and long-term engagements across Europe</p>
+      <h3 class="project-footer-title">Need a senior Node.js / TypeScript contractor?</h3>
+      <p class="project-footer-subtitle">Available immediately for remote EU B2B work on migrations, APIs, integrations, testing, and performance</p>
       <div class="project-footer-cta">
         <a href="mailto:contact@calingabriel.com" class="project-footer-link">
           contact@calingabriel.com
@@ -59,7 +61,7 @@ import "../styles/global.css";
 
 <style>
   .project-header {
-    background: var(--dark);
+    background: var(--hero-bg);
     color: white;
     padding: 1.25rem 0;
     position: sticky;
@@ -89,6 +91,7 @@ import "../styles/global.css";
   .project-nav-links {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
   }
 
   .project-nav-link {
@@ -104,7 +107,7 @@ import "../styles/global.css";
   }
 
   .project-footer {
-    background: var(--dark);
+    background: var(--hero-bg);
     color: white;
     padding: 4rem 0;
     text-align: center;
@@ -167,8 +170,16 @@ import "../styles/global.css";
   }
 
   @media (max-width: 768px) {
+    .project-header-content {
+      justify-content: center;
+    }
+
     .project-nav-links {
       gap: 1rem;
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .project-nav-link {

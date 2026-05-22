@@ -54,7 +54,7 @@ import { projects } from "../../data/projects";
 
 <style>
   .projects-hero {
-    background: var(--dark);
+    background: var(--hero-bg);
     color: white;
     padding: 5rem 0 3.5rem;
     text-align: center;
@@ -110,10 +110,10 @@ import { projects } from "../../data/projects";
   }
 
   .project-card {
-    background: var(--gradient-card);
+    background: var(--card-bg);
     border-radius: 16px;
     box-shadow: var(--shadow-md);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border);
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@ import { projects } from "../../data/projects";
   .project-card-header h2 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--text);
     margin: 0;
   }
 
@@ -155,7 +155,7 @@ import { projects } from "../../data/projects";
 
   .project-card-desc {
     font-size: 1rem;
-    color: var(--gray);
+    color: var(--text-muted);
     line-height: 1.6;
     flex-grow: 1;
   }
@@ -169,12 +169,12 @@ import { projects } from "../../data/projects";
 
   .tech-pill {
     padding: 0.35rem 0.75rem;
-    background: rgba(99, 102, 241, 0.08);
+    background: var(--pill-bg);
     color: var(--primary);
     border-radius: 50px;
     font-weight: 500;
     font-size: 0.8rem;
-    border: 1px solid rgba(99, 102, 241, 0.15);
+    border: 1px solid var(--pill-border);
     display: flex;
     align-items: center;
     gap: 0.4rem;

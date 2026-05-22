@@ -19,14 +19,14 @@ export const projects: Project[] = [
     shortDescription:
       "Search and listing work inside a tested distributed real-estate platform.",
     caseStudySummary:
-      "Worked in a fully tested distributed system, shipped search/listing improvements, supported SEO work, and integrated Iterable marketing automation.",
+      "Shipped search/listing, SEO, and Iterable integration work inside a fully tested distributed platform where release quality and production safety mattered.",
     tech: ["React", "Node.js", "AWS", "MongoDB"],
     status: "LIVE",
     github: "https://github.com/calindotgabriel/immobile-search",
     githubLabel: "Demo repo",
     results: [
-      "SEO performance improved",
-      "20% higher engagement",
+      "Contributed to improved SEO performance",
+      "Supported engagement gains in listing flows",
       "Iterable integration shipped",
     ],
   },
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     shortDescription:
       "Migration work from a Java monolith toward NestJS services for energy-market data.",
     caseStudySummary:
-      "Helped replace slow legacy components with NestJS services, profiled MongoDB-heavy data flows, and moved export processing into worker pools.",
+      "Reduced delivery risk in a Java-to-NestJS migration, profiled MongoDB-heavy data flows, and moved export processing into worker pools.",
     tech: ["NestJS", "MongoDB", "Docker", "TypeScript"],
     status: "ENTERPRISE",
     github: "https://github.com/calindotgabriel/energy-reporter",
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     shortDescription:
       "Full-stack JavaScript delivery across telecom, payments, and academic publishing.",
     caseStudySummary:
-      "Rotated across enterprise domains, shipping React and Node.js systems while building the delivery habits that carried into later senior work.",
+      "Rotated across enterprise domains, shipping React and Node.js systems for payments, telecom, and publishing clients with fast ramp-up and clear delivery habits.",
     tech: ["React", "AWS", "TypeScript"],
     status: "AGENCY",
     results: [

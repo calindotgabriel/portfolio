@@ -10,7 +10,7 @@ import TechIcon from "../../components/TechIcon.astro";
   <main>
     <section
       class="project-hero"
-      style="background: var(--dark); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
+      style="background: var(--hero-bg); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
     >
       <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
         <h1
@@ -34,7 +34,7 @@ import TechIcon from "../../components/TechIcon.astro";
           </span>
           <a
             href="https://github.com/calindotgabriel/energy-reporter"
-            style="padding: 0.5rem 1.25rem; background: white; color: var(--dark); border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
+            style="padding: 0.5rem 1.25rem; background: white; color: #0f172a; border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
           >
             Demo repo
           </a>
@@ -50,12 +50,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           The Problem
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           RWE's energy services platform depended on legacy Java components that were
           difficult for the team to extend. Energy market data had to be queried,
@@ -63,7 +63,7 @@ import TechIcon from "../../components/TechIcon.astro";
           response times were slow enough to affect day-to-day analyst workflows.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           The business needed faster data access and a codebase a small team could
           evolve safely. My work focused on the Node.js/NestJS replacement path, the
@@ -77,12 +77,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           How I Approached It
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           We moved replacement work into Node.js with NestJS and MongoDB. Energy projects
           have dynamic properties, so the filtering system needed to generate columns
@@ -90,7 +90,7 @@ import TechIcon from "../../components/TechIcon.astro";
           aggregations, using profiling to find the expensive parts before changing them.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           The biggest technical constraint was heavy processing on the main thread. I
           implemented <strong>Worker Pools</strong> to move large dataset operations into
@@ -98,7 +98,7 @@ import TechIcon from "../../components/TechIcon.astro";
           helped separate real bottlenecks from guesses.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           I also introduced <strong>TDD early</strong> for the features I owned. On a
           migration project, tests are not ceremony; they are how you avoid replacing known
@@ -113,7 +113,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
         >
           Key Technical Decisions
         </h2>
@@ -123,56 +123,56 @@ import TechIcon from "../../components/TechIcon.astro";
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
         >
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               Worker Pools for Exports
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Large dataset operations were blocking the event loop. Worker Pools moved
               heavy processing to parallel threads, keeping API work responsive while
               exports ran separately. 45min became 12min.
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               Profiler-Driven Optimization
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               I used the Node.js profiler to identify where time was spent in the column
               filtering pipeline, then optimized the MongoDB aggregations that were actually
               responsible for the slowdown.
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               Dynamic Column Generation
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               Energy projects have variable properties. The filtering system generates
               columns dynamically based on project characteristics — flexible enough
               for any project shape, fast enough for daily use.
             </p>
           </div>
           <div
-            style="padding: 2rem; background: rgba(99,102,241,0.03); border-radius: 16px; border: 1px solid rgba(99,102,241,0.08);"
+            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <h3
               style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
             >
               TDD from Day One
             </h3>
-            <p style="color: var(--gray); line-height: 1.6;">
+            <p style="color: var(--text-muted); line-height: 1.6;">
               On a migration project, replacing working behavior is the risk. I used
               test-driven development for the features I owned so changes could be reviewed
               against expected behavior instead of intent alone.
@@ -187,7 +187,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           Business Impact
         </h2>
@@ -197,50 +197,57 @@ import TechIcon from "../../components/TechIcon.astro";
           style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
         >
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               65%
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Faster API Responses
             </div>
           </div>
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               73%
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Faster Exports (45min → 12min)
             </div>
           </div>
           <div
-            style="text-align: center; padding: 1.5rem; background: rgba(99,102,241,0.05); border-radius: 16px; border: 1px solid rgba(99,102,241,0.1);"
+            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
           >
             <div
               style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
             >
               15K+
             </div>
-            <div style="color: var(--gray); font-weight: 500;">
+            <div style="color: var(--text-muted); font-weight: 500;">
               Daily Queries Handled
             </div>
           </div>
         </div>
 
         <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--gray); margin-top: 1.5rem;"
+          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem;"
         >
           The 65% API improvement made market-data workflows faster for users who queried
           the system daily. The export-time reduction changed exports from an overnight-style
           task into something analysts could run during the workday. The NestJS structure
           also gave the 4-person team a clearer path for follow-up work.
+        </p>
+        <p
+          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1rem;"
+        >
+          For a contract buyer, the relevance is direct: this is the kind of messy,
+          high-context backend work where a senior engineer needs to improve the system
+          without stopping day-to-day delivery.
         </p>
       </section>
 
@@ -250,12 +257,12 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
         >
           What I Took Away
         </h2>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray); margin-bottom: 1.5rem;"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
         >
           This project taught me the value of <strong>consistency in delivery</strong>.
           On a small team replacing a production system, there's no room for erratic output.
@@ -263,7 +270,7 @@ import TechIcon from "../../components/TechIcon.astro";
           work tightly, ship reliably, and communicate progress clearly.
         </p>
         <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--gray);"
+          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
         >
           Technically, it deepened my conviction that performance optimization starts with
           measurement. The profiler-first approach — finding the real bottleneck before
@@ -278,7 +285,7 @@ import TechIcon from "../../components/TechIcon.astro";
         style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
       >
         <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--dark);"
+          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
         >
           Technology Stack
         </h2>
@@ -294,7 +301,7 @@ import TechIcon from "../../components/TechIcon.astro";
               { name: "Node.js", tech: "Node.js" },
               { name: "Worker Threads", tech: "Microservices" },
             ].map((item) => (
-              <div style="padding: 1.25rem 1rem; background: var(--dark); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
+              <div style="padding: 1.25rem 1rem; background: var(--hero-bg); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
                 <TechIcon technology={item.tech} size={32} />
                 <span style="font-size: 0.9rem; line-height: 1.2;">
                   {item.name}
