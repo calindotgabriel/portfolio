@@ -39,7 +39,7 @@ export interface JobLead {
 export const jobStatuses: Array<{ name: JobStatus; color: string }> = [
   { name: "Lead", color: "#64748b" },
   { name: "Researching", color: "#0ea5e9" },
-  { name: "Sent", color: "#6366f1" },
+  { name: "Sent", color: "#9a3412" },
   { name: "Cold Sent", color: "#2563eb" },
   { name: "Interviewing", color: "#f59e0b" },
   { name: "Offer", color: "#16a34a" },

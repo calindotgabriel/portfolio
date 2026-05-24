@@ -9,7 +9,7 @@
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: #1a1a1a;
-  background: #e5e7eb;
+  background: #fdfbf7;
   line-height: 1.5;
   font-size: 10pt;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@ a {
 .download-btn {
   display: inline-block;
   padding: 8px 20px;
-  background: #6366f1;
+  background: #0f172a;
   color: #fff;
   border-radius: 6px;
   font-size: 9.5pt;
@@ -62,7 +62,7 @@ a {
 }
 
 .download-btn:hover {
-  background: #4f46e5;
+  background: #1e293b;
 }
 
 /* ---- A4 CONTAINER ---- */
@@ -72,7 +72,7 @@ a {
   margin: 20px auto;
   background: #fff;
   padding: 14mm 16mm;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
 }
 
 /* ---- HEADER ---- */
@@ -82,7 +82,7 @@ a {
   align-items: flex-start;
   margin-bottom: 5mm;
   padding-bottom: 4mm;
-  border-bottom: 2.5px solid #6366f1;
+  border-bottom: 2.5px solid #0f172a;
 }
 
 .resume-name {
@@ -95,7 +95,7 @@ a {
 .resume-title {
   font-size: 11pt;
   font-weight: 500;
-  color: #6366f1;
+  color: #9a3412;
   margin-top: 3px;
   letter-spacing: 0.3px;
 }
@@ -108,7 +108,7 @@ a {
 }
 
 .resume-contact a:hover {
-  color: #6366f1;
+  color: #9a3412;
 }
 
 /* ---- TWO COLUMN BODY ---- */
@@ -140,7 +140,7 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: #6366f1;
+  color: #9a3412;
   margin-bottom: 2mm;
   padding-bottom: 1.5mm;
   border-bottom: 1.5px solid #e2e8f0;
@@ -162,7 +162,7 @@ a {
   content: '\2022';
   position: absolute;
   left: 0;
-  color: #6366f1;
+  color: #9a3412;
   font-size: 8pt;
 }
 
@@ -182,7 +182,7 @@ a {
   content: '\2022';
   position: absolute;
   left: 0;
-  color: #6366f1;
+  color: #9a3412;
   font-size: 8pt;
 }
 
@@ -217,7 +217,7 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: #6366f1;
+  color: #9a3412;
   margin-bottom: 2mm;
   padding-bottom: 1.5mm;
   border-bottom: 1.5px solid #e2e8f0;
@@ -235,7 +235,7 @@ a {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  color: #6366f1;
+  color: #9a3412;
   margin-bottom: 3mm;
   padding-bottom: 1.5mm;
   border-bottom: 1.5px solid #e2e8f0;

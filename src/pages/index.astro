@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import ContactFooter from "../components/ContactFooter.astro";
 import TechIcon from "../components/TechIcon.astro";
 import { projects } from "../data/projects";
 
@@ -277,48 +278,7 @@ import { projects } from "../data/projects";
       </div>
     </section>
 
-    <!-- FOOTER CONTACT -->
-    <footer id="contact" class="footer-section">
-      <div class="footer-container">
-        <h3 class="footer-title">Let's build something that scales</h3>
-        <p class="footer-subtitle">Open to engineering roles and long-term engagements across Europe</p>
-
-        <!-- Contact Information -->
-        <div class="footer-contact-info">
-          <div class="footer-contact-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-            <a href="mailto:contact@calingabriel.com">contact@calingabriel.com</a>
-          </div>
-          <div class="footer-contact-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-            </svg>
-            <a href="tel:+40759407066">+40 759 407 066</a>
-          </div>
-        </div>
-
-        <div class="footer-social-container">
-          <a
-            href="https://www.linkedin.com/in/calingabriel-ts-dev/"
-            target="_blank"
-            rel="noopener"
-            class="footer-social-link"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/calindotgabriel"
-            target="_blank"
-            rel="noopener"
-            class="footer-social-link"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
-    </footer>
+    <ContactFooter />
 
     <style>
       /* HEADER NAVIGATION */
@@ -355,7 +315,7 @@ import { projects } from "../data/projects";
       .logo-text {
         font-size: 1.3rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        background: linear-gradient(135deg, #0f172a 0%, #9a3412 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -396,7 +356,7 @@ import { projects } from "../data/projects";
         left: 0;
         width: 0;
         height: 2px;
-        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+        background: var(--secondary);
         transition: width 0.3s ease;
       }
 
@@ -529,8 +489,8 @@ import { projects } from "../data/projects";
         right: 0;
         bottom: 0;
         background:
-          radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+          radial-gradient(ellipse at 20% 50%, rgba(15, 23, 42, 0.4) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 50%, rgba(154, 52, 18, 0.1) 0%, transparent 50%);
         pointer-events: none;
       }
 
@@ -935,10 +895,7 @@ import { projects } from "../data/projects";
         font-weight: 800;
         text-align: center;
         margin-bottom: 4rem;
-        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--text);
       }
 
       .about-timeline {
@@ -977,14 +934,14 @@ import { projects } from "../data/projects";
       }
 
       .phase-dot-active {
-        background: var(--primary);
-        border-color: rgba(99, 102, 241, 0.3);
-        box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+        background: var(--secondary);
+        border-color: rgba(154, 52, 18, 0.3);
+        box-shadow: 0 0 12px rgba(154, 52, 18, 0.4);
       }
 
       .phase-dot-future {
-        background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-        border-color: rgba(236, 72, 153, 0.3);
+        background: var(--primary);
+        border-color: var(--border-strong);
       }
 
       .phase-line {
@@ -1045,87 +1002,6 @@ import { projects } from "../data/projects";
         }
       }
 
-      /* Footer Contact Information */
-      .footer-title {
-        color: white;
-        font-size: 2rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        text-align: center;
-      }
-
-      .footer-subtitle {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 1.1rem;
-        margin-bottom: 2.5rem;
-        text-align: center;
-      }
-
-      .footer-contact-info {
-        display: flex;
-        gap: 2.5rem;
-        justify-content: center;
-        align-items: center;
-        margin: 2.5rem 0;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50px;
-        padding: 1.5rem 2.5rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: rgba(255, 255, 255, 0.95);
-        font-size: 1.1rem;
-        font-weight: 500;
-      }
-
-      .footer-contact-item svg {
-        color: #fbbf24;
-        flex-shrink: 0;
-      }
-
-      .footer-contact-item a {
-        color: rgba(255, 255, 255, 0.95);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-weight: 500;
-      }
-
-      .footer-contact-item a:hover {
-        color: #fbbf24;
-        transform: translateY(-1px);
-      }
-
-      /* Mobile responsive for footer contact */
-      @media (max-width: 768px) {
-        .footer-contact-info {
-          flex-direction: column;
-          gap: 1.5rem;
-          padding: 1.5rem 2rem;
-          margin: 2rem auto;
-          max-width: 320px;
-        }
-
-        .footer-contact-item {
-          font-size: 1rem;
-          justify-content: center;
-        }
-
-        .footer-title {
-          font-size: 1.5rem;
-        }
-
-        .footer-subtitle {
-          font-size: 1rem;
-        }
-      }
     </style>
 
     <script>

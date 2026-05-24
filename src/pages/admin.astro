@@ -1,6 +1,7 @@
 ---
 import { seedJobLeads, jobStatuses } from "../data/jobTracker";
 import { outreachTemplates } from "../data/outreachTemplates";
+import { applicationSources } from "../data/applicationSources";
 import { projects } from "../data/projects";
 import { resume } from "../data/resume";
 
@@ -8,6 +9,7 @@ const payload = JSON.stringify({
   seedJobLeads,
   jobStatuses,
   outreachTemplates,
+  applicationSources,
   projects,
   resume,
 });
@@ -56,6 +58,22 @@ const payload = JSON.stringify({
           <button id="copyAllBtn" type="button" class="primary">Copy all drafts</button>
         </div>
         <div id="nextThree" class="next-grid"></div>
+      </section>
+
+      <section class="source-panel" aria-labelledby="source-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Source engine</p>
+            <h2 id="source-title">Top 3 remote EU B2B channels</h2>
+          </div>
+          <div class="source-actions">
+            <button id="copyStrategyBtn" type="button" class="primary">Copy weekly strategy</button>
+            <button id="resetSourceWeekBtn" type="button">Reset week</button>
+          </div>
+        </div>
+
+        <div class="source-summary" id="sourceSummary"></div>
+        <div class="source-grid" id="sourceGrid"></div>
       </section>
 
       <section class="tracker-panel" aria-labelledby="tracker-title">
@@ -222,6 +240,7 @@ const payload = JSON.stringify({
       const ADMIN = JSON.parse(document.getElementById("admin-data").textContent);
       const KEY = "cgdev-job-tracker";
       const OUTREACH_KEY = "cgdev-outreach";
+      const SOURCE_KEY = "cgdev-source-engine";
       const THEME_KEY = "cgdev-job-tracker-theme";
       const FOLLOWUP_DAYS = 5;
       const LINKEDIN_LIMIT = 300;
@@ -230,10 +249,12 @@ const payload = JSON.stringify({
       const ENGAGEMENTS = ["", "B2B", "Permanent", "Other"];
       const STATUSES = ADMIN.jobStatuses;
       const OUTREACH_TEMPLATES = ADMIN.outreachTemplates;
+      const SOURCES = ADMIN.applicationSources;
       const PROJECTS = ADMIN.projects;
       const RESUME = ADMIN.resume;
 
       let data = load();
+      let sourceState = loadSourceState();
       let filterStatus = "";
       let searchQuery = "";
       let sortState = { key: "", direction: "asc" };
@@ -339,6 +360,48 @@ const payload = JSON.stringify({
 
       function save(nextData) {
         localStorage.setItem(KEY, JSON.stringify(nextData || data));
+      }
+
+      function startOfWeekISO(date = new Date()) {
+        const copy = new Date(date);
+        const day = copy.getDay() || 7;
+        copy.setDate(copy.getDate() - day + 1);
+        return copy.toISOString().slice(0, 10);
+      }
+
+      function defaultSourceState() {
+        return {
+          weekStart: startOfWeekISO(),
+          sources: Object.fromEntries(
+            SOURCES.map((source) => [
+              source.id,
+              { scannedAt: "", copiedAt: "", applied: 0, saved: 0 },
+            ]),
+          ),
+        };
+      }
+
+      function loadSourceState() {
+        const fallback = defaultSourceState();
+        try {
+          const parsed = JSON.parse(localStorage.getItem(SOURCE_KEY)) || fallback;
+          if (parsed.weekStart !== fallback.weekStart) return fallback;
+          return {
+            weekStart: parsed.weekStart,
+            sources: Object.fromEntries(
+              SOURCES.map((source) => [
+                source.id,
+                { ...fallback.sources[source.id], ...(parsed.sources && parsed.sources[source.id]) },
+              ]),
+            ),
+          };
+        } catch {
+          return fallback;
+        }
+      }
+
+      function saveSourceState() {
+        localStorage.setItem(SOURCE_KEY, JSON.stringify(sourceState));
       }
 
       function esc(value) {
@@ -486,7 +549,7 @@ const payload = JSON.stringify({
       function outreachView(lead) {
         const outreach = lead.outreach || "";
         if (outreach === "Drafted") {
-          return { label: "Drafted", bg: "#6366f1", cls: "", title: "Draft prepared" };
+          return { label: "Drafted", bg: "#0f172a", cls: "", title: "Draft prepared" };
         }
         if (outreach === "Sent") {
           const age = daysSince(lead.outreachDate);
@@ -652,6 +715,147 @@ const payload = JSON.stringify({
         return "mailto:" + encodeURIComponent(email) + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(bodyLines.join("\n").trim());
       }
 
+      function sourceForLead(lead) {
+        const text = [lead.source, lead.applyUrl, lead.contactApproach, lead.notes]
+          .join(" ")
+          .toLowerCase();
+        if (/just\s?join|justjoin/.test(text)) return "justjoinit";
+        if (/malt/.test(text)) return "malt";
+        if (/recruit|signify|optiveum|emagine|hays|sthree|dcv|b2bnetwork/.test(text)) return "contract-recruiters";
+        return "";
+      }
+
+      function sourceLeadCount(sourceId) {
+        return data.filter((lead) => sourceForLead(lead) === sourceId).length;
+      }
+
+      function sourceSentCount(sourceId) {
+        return data.filter((lead) => sourceForLead(lead) === sourceId && ["Sent", "Cold Sent", "Interviewing", "Offer"].includes(lead.status)).length;
+      }
+
+      function sourcePacket(source) {
+        return [
+          source.name + " weekly process",
+          "Cadence: " + source.cadence,
+          "Fit rule: " + source.fitRule,
+          "Search: " + source.searchQuery,
+          "Proof angle: " + source.proofAngle,
+          "Next action: " + source.nextAction,
+          "",
+          "Copy packet:",
+          ...source.copyPacket.map((line) => "- " + line),
+        ].join("\n");
+      }
+
+      function weeklyStrategyText() {
+        const totals = SOURCES.reduce(
+          (acc, source) => {
+            acc.leads += source.weeklyLeadTarget;
+            acc.applies += source.weeklyApplyTarget;
+            return acc;
+          },
+          { leads: 0, applies: 0 },
+        );
+        return [
+          "Remote EU B2B application sprint",
+          "Goal: " + totals.leads + " qualified leads, " + totals.applies + " applications/direct notes, 5 replies, 3 interviews.",
+          "Qualification rule: only save 70%+ fit roles: remote EU, senior, B2B/contract, Node.js/TypeScript core, backend/product/platform scope.",
+          "",
+          ...SOURCES.map(sourcePacket),
+        ].join("\n\n---\n\n");
+      }
+
+      function renderSourceEngine() {
+        const summary = document.getElementById("sourceSummary");
+        const grid = document.getElementById("sourceGrid");
+        const weeklyLeadTarget = SOURCES.reduce((sum, source) => sum + source.weeklyLeadTarget, 0);
+        const weeklyApplyTarget = SOURCES.reduce((sum, source) => sum + source.weeklyApplyTarget, 0);
+        const totalTracked = SOURCES.reduce((sum, source) => sum + sourceLeadCount(source.id), 0);
+        const totalSent = SOURCES.reduce((sum, source) => sum + sourceSentCount(source.id), 0);
+        const activeQualified = data.filter((lead) => {
+          const score = Number(lead.fitScore || 0);
+          return score >= 70 && !["Stack Mismatch", "Office Only", "Closed"].includes(lead.status);
+        }).length;
+
+        summary.innerHTML =
+          '<div class="source-stat"><span>' + totalTracked + " / " + weeklyLeadTarget + '</span><strong>tracked source leads</strong></div>' +
+          '<div class="source-stat"><span>' + totalSent + " / " + weeklyApplyTarget + '</span><strong>sent/apply target</strong></div>' +
+          '<div class="source-stat"><span>' + activeQualified + '</span><strong>70%+ fit active leads</strong></div>' +
+          '<div class="source-stat"><span>' + esc(sourceState.weekStart) + '</span><strong>week starts</strong></div>';
+
+        grid.innerHTML = SOURCES.map((source) => {
+          const state = sourceState.sources[source.id] || {};
+          const tracked = sourceLeadCount(source.id);
+          const sent = sourceSentCount(source.id);
+          return (
+            '<article class="source-card" data-source="' + esc(source.id) + '">' +
+              '<div class="source-card-head">' +
+                '<div><h3>' + esc(source.name) + '</h3><p>' + esc(source.role) + '</p></div>' +
+                '<a class="small-action source-open" href="' + esc(source.url) + '" target="_blank" rel="noopener">Open</a>' +
+              '</div>' +
+              '<div class="source-progress">' +
+                '<span>Leads ' + tracked + ' / ' + source.weeklyLeadTarget + '</span>' +
+                '<span>Sent ' + sent + ' / ' + source.weeklyApplyTarget + '</span>' +
+              '</div>' +
+              '<p class="source-rule"><strong>Fit rule:</strong> ' + esc(source.fitRule) + '</p>' +
+              '<p class="source-rule"><strong>Search:</strong> ' + esc(source.searchQuery) + '</p>' +
+              '<p class="source-rule"><strong>Proof angle:</strong> ' + esc(source.proofAngle) + '</p>' +
+              '<p class="source-next">' + esc(source.nextAction) + '</p>' +
+              '<div class="source-meta">' +
+                '<span>Scanned: ' + esc(state.scannedAt || "not yet") + '</span>' +
+                '<span>Packet copied: ' + esc(state.copiedAt || "not yet") + '</span>' +
+              '</div>' +
+              '<div class="next-actions">' +
+                '<button class="small-action" type="button" data-source-scan="' + esc(source.id) + '">Mark scan done</button>' +
+                '<button class="small-action" type="button" data-source-copy="' + esc(source.id) + '">Copy packet</button>' +
+                '<button class="small-action" type="button" data-source-lead="' + esc(source.id) + '">Add lead shell</button>' +
+              '</div>' +
+            '</article>'
+          );
+        }).join("");
+
+        grid.querySelectorAll("[data-source-scan]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const state = sourceState.sources[button.dataset.sourceScan];
+            if (!state) return;
+            state.scannedAt = todayISO();
+            saveSourceState();
+            renderSourceEngine();
+          });
+        });
+        grid.querySelectorAll("[data-source-copy]").forEach((button) => {
+          button.addEventListener("click", () => {
+            const source = SOURCES.find((item) => item.id === button.dataset.sourceCopy);
+            if (!source) return;
+            const state = sourceState.sources[source.id];
+            state.copiedAt = todayISO();
+            saveSourceState();
+            copyText(sourcePacket(source), button);
+            renderSourceEngine();
+          });
+        });
+        grid.querySelectorAll("[data-source-lead]").forEach((button) => {
+          button.addEventListener("click", () => openSourceLead(button.dataset.sourceLead));
+        });
+      }
+
+      function openSourceLead(sourceId) {
+        const source = SOURCES.find((item) => item.id === sourceId);
+        openModal(null);
+        if (!source) return;
+        document.getElementById("f_company").value = "";
+        document.getElementById("f_domain").value = source.id === "malt" ? "Marketplace" : source.id === "justjoinit" ? "Job board" : "Recruiter";
+        document.getElementById("f_applyUrl").value = source.url;
+        document.getElementById("f_status").value = "Researching";
+        document.getElementById("f_source").value = source.name;
+        document.getElementById("f_fitScore").value = "70";
+        document.getElementById("f_engagement").value = "B2B";
+        document.getElementById("f_stackFit").value = "70%+ target: Node.js/TypeScript, remote EU, senior, B2B/contract";
+        document.getElementById("f_contactApproach").value = source.nextAction;
+        document.getElementById("f_nextAction").value = "Qualify against source fit rule, then copy tailored draft and apply within 24h";
+        document.getElementById("f_notes").value = source.fitRule + " " + source.proofAngle;
+      }
+
       function renderNextThree() {
         const container = document.getElementById("nextThree");
         const leads = rankedLeads();
@@ -801,6 +1005,7 @@ const payload = JSON.stringify({
       }
 
       function render() {
+        renderSourceEngine();
         renderNextThree();
         renderStats();
         renderTable();
@@ -1195,6 +1400,15 @@ const payload = JSON.stringify({
           const drafts = rankedLeads().map(outreachDraft).join("\n\n---\n\n");
           copyText(drafts, event.target);
         });
+        document.getElementById("copyStrategyBtn").addEventListener("click", (event) => {
+          copyText(weeklyStrategyText(), event.target);
+        });
+        document.getElementById("resetSourceWeekBtn").addEventListener("click", () => {
+          if (!confirm("Reset source scan/copy counters for this week?")) return;
+          sourceState = defaultSourceState();
+          saveSourceState();
+          renderSourceEngine();
+        });
         const outreachSelect = document.getElementById("outreachSelect");
         OUTREACH_TEMPLATES.forEach((entry) => {
           const option = document.createElement("option");
@@ -1360,6 +1574,7 @@ const payload = JSON.stringify({
   .next-card,
   .tracker-panel,
   .next-panel,
+  .source-panel,
   .outreach-panel {
     border: 1px solid var(--line);
     background: color-mix(in srgb, var(--panel) 94%, transparent);
@@ -1430,6 +1645,7 @@ const payload = JSON.stringify({
 
   .next-panel,
   .tracker-panel,
+  .source-panel,
   .outreach-panel {
     border-radius: 16px;
     margin-top: 18px;
@@ -1451,6 +1667,124 @@ const payload = JSON.stringify({
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
     padding: 18px;
+  }
+
+  .source-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: flex-end;
+  }
+
+  .source-summary {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 18px 18px 0;
+  }
+
+  .source-stat {
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .source-stat span {
+    color: var(--ink);
+    display: block;
+    font-size: 1.45rem;
+    font-weight: 950;
+    line-height: 1.1;
+  }
+
+  .source-stat strong {
+    color: var(--muted);
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
+    margin-top: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .source-grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 18px;
+  }
+
+  .source-card {
+    background: var(--panel-strong);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .source-card-head {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+  }
+
+  .source-card h3 {
+    font-size: 1.15rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .source-card p {
+    margin: 0;
+  }
+
+  .source-card-head p,
+  .source-rule,
+  .source-next,
+  .source-meta {
+    color: var(--muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .source-progress {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+
+  .source-progress span {
+    background: color-mix(in srgb, var(--accent) 12%, var(--panel));
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--line));
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 900;
+    padding: 0.28rem 0.52rem;
+  }
+
+  .source-rule {
+    margin-top: 0.6rem;
+  }
+
+  .source-rule strong {
+    color: var(--ink);
+  }
+
+  .source-next {
+    border-left: 3px solid var(--accent);
+    margin-top: 0.8rem;
+    padding-left: 0.75rem;
+  }
+
+  .source-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+  }
+
+  .source-open {
+    flex: 0 0 auto;
   }
 
   .outreach-layout {
@@ -1944,6 +2278,11 @@ const payload = JSON.stringify({
       grid-template-columns: 1fr;
     }
 
+    .source-summary,
+    .source-grid {
+      grid-template-columns: 1fr;
+    }
+
     .toolbar {
       grid-template-columns: 1fr 1fr;
     }
@@ -1986,6 +2325,7 @@ const payload = JSON.stringify({
     }
 
     .topbar-actions,
+    .source-actions,
     .next-actions,
     .modal-actions {
       align-items: stretch;
