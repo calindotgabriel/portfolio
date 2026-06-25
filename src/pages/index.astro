@@ -437,9 +437,10 @@ const statusLabel = {
     /* Above-the-fold: CSS load animation (never depends on JS) */
     .rise { opacity: 0; animation: riseIn 0.85s cubic-bezier(0.2,0.7,0.2,1) both; animation-delay: var(--d, 0s); }
     @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-    /* Below-the-fold: scroll-triggered */
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
-    .reveal.in-view { opacity: 1; transform: none; }
+    /* Below-the-fold: scroll-triggered. Hidden state is gated on the `js`
+       class so the content is NEVER invisible if the script fails to run. */
+    :global(html.js) .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+    :global(html.js) .reveal.in-view { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       .rise, .reveal { opacity: 1; transform: none; transition: none; animation: none; }
       .status-dot { animation: none; }
@@ -468,40 +469,53 @@ const statusLabel = {
   </style>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Smooth scroll for in-page anchors
-      document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener("click", (e) => {
-          const href = link.getAttribute("href");
-          if (!href || href === "#") return;
-          const target = document.querySelector(href);
-          if (!target) return;
-          e.preventDefault();
-          const top = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 64;
-          window.scrollTo({ top, behavior: "smooth" });
-        });
-      });
+    (() => {
+      // Mark JS as available so the reveal "hidden" state can apply.
+      // Astro bundles this as a deferred module, so the DOM is already parsed
+      // and DOMContentLoaded may have fired — run init directly in that case.
+      document.documentElement.classList.add("js");
 
-      // Staggered reveal on scroll
-      const reveals = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) {
-        reveals.forEach((el) => el.classList.add("in-view"));
-        return;
-      }
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-              const el = entry.target as HTMLElement;
-              el.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
-              el.classList.add("in-view");
-              io.unobserve(el);
-            }
+      const init = () => {
+        // Smooth scroll for in-page anchors
+        document.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (!href || href === "#") return;
+            const target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            const top = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 64;
+            window.scrollTo({ top, behavior: "smooth" });
           });
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-      );
-      reveals.forEach((el) => io.observe(el));
-    });
+        });
+
+        // Staggered reveal on scroll
+        const reveals = document.querySelectorAll(".reveal");
+        if (!("IntersectionObserver" in window)) {
+          reveals.forEach((el) => el.classList.add("in-view"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry, i) => {
+              if (entry.isIntersecting) {
+                const el = entry.target as HTMLElement;
+                el.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
+                el.classList.add("in-view");
+                io.unobserve(el);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        reveals.forEach((el) => io.observe(el));
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+      } else {
+        init();
+      }
+    })();
   </script>
 </BaseLayout>
