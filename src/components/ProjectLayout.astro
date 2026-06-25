@@ -13,26 +13,24 @@ import "../styles/global.css";
 ---
 
 <BaseLayout title={title} description={description}>
-  <!-- Navigation -->
-  <header class="project-header">
-    <div class="project-header-content">
-      <a href="/" class="project-nav-logo">Calin Gabriel</a>
-      <nav class="project-nav-links">
-        <a href="/" class="project-nav-link">Home</a>
-        <a href="/projects" class="project-nav-link">Projects</a>
-        <a
-          href="https://github.com/calindotgabriel"
-          target="_blank"
-          rel="noopener"
-          class="project-nav-link">GitHub</a>
-        <a
-          href="https://www.linkedin.com/in/calingabriel-ts-dev/"
-          target="_blank"
-          rel="noopener"
-          class="project-nav-link">LinkedIn</a>
+  <header class="masthead">
+    <div class="masthead-rule"></div>
+    <div class="masthead-inner">
+      <a class="mast-id" href="/">
+        <span class="mast-name">Calin Gabriel</span>
+        <span class="mast-role">Senior Backend Engineer · Node.js / TypeScript</span>
+      </a>
+      <nav class="mast-nav" aria-label="Sections">
+        <a href="/">Home</a>
+        <a href="/projects">Case files</a>
+        <a href="https://github.com/calindotgabriel" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/calingabriel-ts-dev/" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
-      <ThemeToggle />
+      <div class="mast-actions">
+        <ThemeToggle />
+      </div>
     </div>
+    <div class="masthead-rule thin"></div>
   </header>
 
   <main>
@@ -43,135 +41,40 @@ import "../styles/global.css";
 </BaseLayout>
 
 <style>
-  .project-header {
-    background: var(--hero-bg);
-    color: white;
-    padding: 1.25rem 0;
+  :global(body) { padding-top: 0; }
+
+  .masthead {
     position: sticky;
     top: 0;
-    z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 50;
+    background: color-mix(in srgb, var(--page-bg) 88%, transparent);
+    backdrop-filter: blur(8px) saturate(1.1);
   }
-
-  .project-header-content {
-    max-width: 900px;
+  .masthead-rule { height: 2px; background: var(--text); }
+  .masthead-rule.thin { height: 1px; background: var(--border-strong); }
+  .masthead-inner {
+    max-width: 940px;
     margin: 0 auto;
+    padding: 0.7rem clamp(1.25rem, 5vw, 3rem);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 0 24px;
-  }
-
-  .project-nav-logo {
-    font-size: 1.3rem;
-    font-weight: 700;
-    text-decoration: none;
-    color: white;
-  }
-
-  .project-nav-links {
-    display: flex;
     gap: 1.5rem;
-    align-items: center;
   }
+  .mast-id { text-decoration: none; color: var(--text); display: flex; flex-direction: column; line-height: 1.15; }
+  .mast-name { font-family: var(--font-display); font-weight: 600; font-size: 1.18rem; letter-spacing: -0.01em; }
+  .mast-role { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
 
-  .project-nav-link {
-    color: rgba(255, 255, 255, 0.6);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: color 0.2s ease;
-  }
+  .mast-nav { display: flex; gap: 1.5rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; }
+  .mast-nav a { text-decoration: none; color: var(--text-muted); text-transform: uppercase; position: relative; padding-bottom: 2px; transition: color 0.2s ease; }
+  .mast-nav a:hover { color: var(--text); }
+  .mast-nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0; background: var(--secondary); transition: width 0.25s ease; }
+  .mast-nav a:hover::after { width: 100%; }
 
-  .project-nav-link:hover {
-    color: white;
-  }
+  .mast-actions { display: flex; align-items: center; }
 
-  .project-footer {
-    background: var(--hero-bg);
-    color: white;
-    padding: 4rem 0;
-    text-align: center;
-  }
-
-  .project-footer-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .project-footer-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-footer-subtitle {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .project-footer-cta {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-  }
-
-  .project-footer-link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  .project-footer-link:hover {
-    color: white;
-  }
-
-  .project-footer-social {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .project-footer-social-link {
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s ease;
-  }
-
-  .project-footer-social-link:hover {
-    color: white;
-  }
-
-  @media (max-width: 768px) {
-    .project-header-content {
-      justify-content: center;
-    }
-
-    .project-nav-links {
-      gap: 1rem;
-      order: 3;
-      width: 100%;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .project-nav-link {
-      font-size: 0.85rem;
-    }
-
-    .project-footer-cta {
-      flex-direction: column;
-      align-items: center;
-    }
+  @media (max-width: 720px) {
+    .mast-nav { display: none; }
+    .mast-role { display: none; }
   }
 </style>

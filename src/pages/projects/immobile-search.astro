@@ -1,384 +1,127 @@
 ---
 import ProjectLayout from "../../components/ProjectLayout.astro";
-import TechIcon from "../../components/TechIcon.astro";
+
+const sections = [
+  {
+    no: "§ 01",
+    title: "The problem",
+    body: [
+      "ImmoScout24 is one of the most-used real-estate platforms in Austria and part of the wider Scout24 group. The work sat inside a mature distributed system: search and listing flows, SEO-sensitive pages, marketing automation, and integration points that had to keep working under normal product-delivery pressure.",
+      "The existing system already had strong unit, integration, and e2e coverage. My contribution was not a rewrite — it was getting productive in that environment, making targeted changes, and matching the team's expectations for testing, review quality, and production safety.",
+    ],
+  },
+  {
+    no: "§ 02",
+    title: "My biggest challenge",
+    body: [
+      "The steepest learning curve was adapting to the quality expectations of a DAX-listed engineering organization. The codebase was tested at every layer across distributed services, with SSO federated from Scout24's German platform. Small changes still required clear reasoning, good coverage, and careful review.",
+      "I had to level up my testing discipline, communicate more precisely with senior engineers, and learn when to sync with my mentor. That calibration mattered: ask too early and you create noise; wait too long and you block delivery.",
+    ],
+  },
+];
+
+const delivered = [
+  { n: "01", h: "UX improvements", p: "Shipped focused improvements in search and listing flows, reviewed against an existing product and testing culture rather than a greenfield codebase." },
+  { n: "02", h: "SEO-sensitive delivery", p: "Worked on technical SEO where page structure, rendering behaviour, and release quality had direct product impact. The team tracked organic visibility closely, so regressions had to be avoided." },
+  { n: "03", h: "Marketing automation (Iterable)", p: "Integrated Iterable so marketing could run targeted campaigns and automate lifecycle messaging without depending on engineering for every campaign change." },
+  { n: "04", h: "Enricher task upgrades", p: "Upgraded the functional-style enricher tasks that process and transform property data — improving reliability and maintainability of the data pipeline." },
+];
+
+const metrics = [
+  { v: "Top 3", k: "Most-used listing platform in AT" },
+  { v: "ATH", k: "SEO performance improved" },
+  { v: "20%", k: "Higher user engagement" },
+];
+
+const stack = ["React", "Hapi.js", "Node.js", "MongoDB", "AWS", "Iterable"];
 ---
 
 <ProjectLayout
   title="ImmoScout24 Austria — Search Platform"
-  description="Case study: contributing to Austria's top 3 real estate search platform with fully tested distributed microservices"
+  description="Case study: shipping search, listing, SEO, and marketing-automation work inside a fully tested distributed real-estate platform."
 >
-  <main>
-    <section
-      class="project-hero"
-      style="background: var(--hero-bg); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
-    >
-      <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
-        <h1
-          style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em;"
-        >
-          ImmoScout24 Austria
-        </h1>
-        <p
-          style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
-        >
-          Search, listing, SEO, and marketing automation work inside a tested
-          distributed real-estate platform
-        </p>
-        <div
-          style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
-        >
-          <span
-            style="padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.1); border-radius: 50px; font-weight: 600; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.15);"
-          >
-            LIVE
-          </span>
-          <a
-            href="https://github.com/calindotgabriel/immobile-search"
-            style="padding: 0.5rem 1.25rem; background: white; color: #0f172a; border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
-          >
-            Demo repo
-          </a>
+  <div class="ed-wrap">
+    <section class="ed-hero">
+      <p class="ed-kicker">
+        <a href="/projects">← Case files</a>
+        <span>·</span>
+        <span>Case file 01</span>
+      </p>
+      <h1>ImmoScout24 Austria</h1>
+      <p class="ed-hero-lead">Search, listing, SEO, and marketing-automation work inside a tested distributed real-estate platform.</p>
+      <div class="ed-hero-meta">
+        <span class="ed-status is-live">Live</span>
+        <a class="mono-pill" href="https://github.com/calindotgabriel/immobile-search" target="_blank" rel="noopener">Demo repo ↗</a>
+      </div>
+    </section>
+
+    {sections.map((s) => (
+      <section class="ed-section">
+        <div class="ed-section-grid">
+          <span class="ed-section-no">{s.no}</span>
+          <div>
+            <h2 class="ed-h2">{s.title}</h2>
+            {s.body.map((p) => <p class="ed-body" set:html={p} />)}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 03</span>
+        <div>
+          <h2 class="ed-h2">What I delivered</h2>
+          <div class="ed-cards">
+            {delivered.map((d) => (
+              <div class="ed-card">
+                <span class="ed-card-no">{d.n}</span>
+                <h3>{d.h}</h3>
+                <p>{d.p}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 04</span>
+        <div>
+          <h2 class="ed-h2">Business impact</h2>
+          <dl class="ed-ledger">
+            {metrics.map((m) => (
+              <div class="ed-metric"><dt>{m.v}</dt><dd>{m.k}</dd></div>
+            ))}
+          </dl>
+          <p class="ed-body">The impact was practical: SEO changes supported organic visibility, UX work contributed to engagement, and Iterable reduced the engineering effort marketing needed for campaigns. Some exact business metrics aren't mine to disclose, so I keep the public proof focused on the work I owned and the production context it shipped into.</p>
+          <p class="ed-body">For a contract buyer, the useful signal isn't a greenfield demo. It's evidence that I can enter a mature system, respect the quality bar, and ship targeted product / integration changes without increasing release risk.</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- THE PROBLEM -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          The Problem
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          ImmoScout24 is one of the most-used real-estate platforms in Austria and part
-          of the wider Scout24 group. The work sat inside a mature distributed system:
-          search and listing flows, SEO-sensitive pages, marketing automation, and
-          integration points that had to keep working under normal product delivery pressure.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          The existing system already had strong unit, integration, and e2e coverage.
-          My contribution was not a rewrite. It was the work of getting productive in
-          that environment, making targeted changes, and matching the team's expectations
-          for testing, review quality, and production safety.
-        </p>
-      </section>
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 05</span>
+        <div>
+          <h2 class="ed-h2">What I took away</h2>
+          <p class="ed-body">This project reset my default expectations for test coverage and review quality. A fully tested distributed system doesn't remove the need for judgment — it gives good engineers the confidence to make smaller, better-scoped changes.</p>
+          <p class="ed-body">On the human side, I learned when to reach out to a mentor and when to push through on my own. That calibration — knowing when to sync and when to execute — is now a core part of how I operate in any team.</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- THE CHALLENGE -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          My Biggest Challenge
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          The steepest learning curve was adapting to the quality expectations of a
-          DAX-listed engineering organization. The codebase was tested at every layer
-          across distributed services, with SSO federated from Scout24's German platform.
-          Small changes still required clear reasoning, good test coverage, and careful review.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          I had to level up my testing discipline, communicate more precisely with senior
-          engineers, and learn when to sync with my mentor. That calibration mattered:
-          ask too early and you create noise; wait too long and you block delivery.
-        </p>
-      </section>
-
-      <!-- WHAT I DELIVERED -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
-        >
-          What I Delivered
-        </h2>
-
-        <div
-          class="features-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
-        >
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              UX Improvements
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Shipped focused improvements in search and listing flows, with changes
-              reviewed against an existing product and testing culture rather than a
-              greenfield codebase.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              SEO-Sensitive Delivery
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Worked on technical SEO changes where page structure, rendering behavior,
-              and release quality had direct product impact. The team tracked organic
-              visibility closely, so regressions had to be avoided.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              Marketing Automation (Iterable)
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Integrated Iterable so marketing teams could run targeted campaigns and
-              automate lifecycle messaging without depending on engineering for every
-              campaign change.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              Enricher Task Upgrades
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Upgraded the functional programming-style enricher tasks that
-              process and transform property data — improving reliability
-              and maintainability of the data pipeline.
-            </p>
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 06</span>
+        <div>
+          <h2 class="ed-h2">Stack</h2>
+          <div class="ed-stack">
+            {stack.map((t) => <span class="mono-pill">{t}</span>)}
           </div>
         </div>
-      </section>
-
-      <!-- BUSINESS IMPACT -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          Business Impact
-        </h2>
-
-        <div
-          class="metrics-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
-        >
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              Top 3
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Most-Used Listing Platform in AT
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              ATH
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              SEO Performance Improved
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              20%
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Higher User Engagement
-            </div>
-          </div>
-        </div>
-
-        <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem;"
-        >
-          The impact was practical: SEO changes supported organic visibility, UX work
-          contributed to engagement, and Iterable reduced the amount of engineering effort
-          needed for marketing campaigns. Some exact business metrics are not mine to
-          disclose in detail, so I keep the public proof focused on the work I owned and
-          the production context it shipped into.
-        </p>
-        <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1rem;"
-        >
-          For a contract buyer, the useful signal is not a greenfield demo. It is evidence
-          that I can enter a mature system, respect the quality bar, and ship targeted
-          product/integration changes without increasing release risk.
-        </p>
-      </section>
-
-      <!-- WHAT I LEARNED -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          What I Took Away
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          This project changed my default expectations for test coverage and review quality.
-          A fully tested distributed system does not remove the need for judgment; it gives
-          good engineers the confidence to make smaller, better-scoped changes.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          On the human side, I learned when to reach out to a mentor and when to push
-          through on my own. That calibration — knowing when to sync and when to execute —
-          is something I now consider a core part of how I operate in any team.
-        </p>
-      </section>
-
-      <!-- TECH STACK -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
-        >
-          Technology Stack
-        </h2>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.5rem;"
-        >
-          {
-            [
-              { name: "React", tech: "React" },
-              { name: "Hapi.js", tech: "Hapi" },
-              { name: "Node.js", tech: "Node.js" },
-              { name: "MongoDB", tech: "MongoDB" },
-              { name: "AWS", tech: "AWS" },
-              { name: "Iterable", tech: "JavaScript" },
-            ].map((item) => (
-              <div style="padding: 1.25rem 1rem; background: var(--hero-bg); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
-                <TechIcon technology={item.tech} size={32} />
-                <span style="font-size: 0.9rem; line-height: 1.2;">
-                  {item.name}
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </section>
-    </article>
-  </main>
+      </div>
+    </section>
+  </div>
 </ProjectLayout>
-
-<style>
-  .project-hero h1 {
-    color: white;
-  }
-
-  .content-section {
-    animation: fadeInUp 0.6s ease forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .features-grid > div:hover {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease;
-  }
-
-  .content-section div[style*="min-height: 100px"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.15);
-  }
-
-  @media (max-width: 768px) {
-    .project-hero {
-      padding: 48px 0 32px;
-    }
-
-    .project-hero h1 {
-      font-size: 2.25rem;
-    }
-
-    .project-hero p {
-      font-size: 1.1rem;
-    }
-
-    .content-section {
-      padding: 2rem 1.5rem;
-    }
-
-    .metrics-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .content-section div[style*="repeat(auto-fill, minmax(140px, 1fr))"] {
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
-      gap: 1rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] {
-      min-height: 80px !important;
-      padding: 1rem 0.75rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] span:first-child {
-      font-size: 1.5rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] span:last-child {
-      font-size: 0.8rem !important;
-    }
-  }
-</style>

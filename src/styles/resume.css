@@ -1,4 +1,11 @@
-/* Resume — print-optimized, A4-friendly */
+/* Resume — print-optimized, A4-friendly. Editorial type system:
+   Fraunces (display), Newsreader (body), JetBrains Mono (labels). */
+
+:root {
+  --r-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --r-body: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --r-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+}
 
 * {
   margin: 0;
@@ -7,7 +14,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--r-body);
   color: #1a1a1a;
   background: #fdfbf7;
   line-height: 1.5;
@@ -54,9 +61,12 @@ a {
   padding: 8px 20px;
   background: #0f172a;
   color: #fff;
-  border-radius: 6px;
-  font-size: 9.5pt;
-  font-weight: 600;
+  border-radius: 3px;
+  font-family: var(--r-mono);
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 500;
   text-decoration: none;
   transition: background 0.2s;
 }
@@ -86,25 +96,30 @@ a {
 }
 
 .resume-name {
-  font-size: 26pt;
-  font-weight: 800;
+  font-family: var(--r-display);
+  font-size: 27pt;
+  font-weight: 600;
   color: #0f172a;
-  line-height: 1.1;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
 }
 
 .resume-title {
-  font-size: 11pt;
+  font-family: var(--r-mono);
+  font-size: 8.5pt;
   font-weight: 500;
   color: #9a3412;
-  margin-top: 3px;
-  letter-spacing: 0.3px;
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .resume-contact {
   text-align: right;
-  font-size: 8.5pt;
+  font-family: var(--r-mono);
+  font-size: 8pt;
   color: #475569;
-  line-height: 1.9;
+  line-height: 1.95;
 }
 
 .resume-contact a:hover {
@@ -136,14 +151,15 @@ a {
 }
 
 .sidebar-section h3 {
-  font-size: 7.5pt;
-  font-weight: 700;
+  font-family: var(--r-mono);
+  font-size: 7pt;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.06em;
   color: #9a3412;
   margin-bottom: 2mm;
   padding-bottom: 1.5mm;
-  border-bottom: 1.5px solid #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
 }
 
 .sidebar-list {
@@ -203,7 +219,8 @@ a {
 }
 
 .language-tag {
-  font-size: 8pt;
+  font-family: var(--r-mono);
+  font-size: 7.5pt;
   color: #475569;
 }
 
@@ -213,14 +230,15 @@ a {
 }
 
 .summary-section h2 {
-  font-size: 10pt;
-  font-weight: 700;
+  font-family: var(--r-mono);
+  font-size: 8pt;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.06em;
   color: #9a3412;
   margin-bottom: 2mm;
   padding-bottom: 1.5mm;
-  border-bottom: 1.5px solid #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
 }
 
 .summary-text {
@@ -231,14 +249,15 @@ a {
 
 /* ---- EXPERIENCE ---- */
 .experience-section h2 {
-  font-size: 10pt;
-  font-weight: 700;
+  font-family: var(--r-mono);
+  font-size: 8pt;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.06em;
   color: #9a3412;
   margin-bottom: 3mm;
   padding-bottom: 1.5mm;
-  border-bottom: 1.5px solid #e2e8f0;
+  border-bottom: 1px solid #cbd5e1;
 }
 
 .experience-entry {
@@ -254,9 +273,11 @@ a {
 }
 
 .company-name {
-  font-size: 10.5pt;
-  font-weight: 700;
+  font-family: var(--r-display);
+  font-size: 11.5pt;
+  font-weight: 600;
   color: #0f172a;
+  letter-spacing: -0.01em;
 }
 
 .company-location {
@@ -267,10 +288,12 @@ a {
 }
 
 .experience-period {
-  font-size: 8.5pt;
-  font-weight: 600;
+  font-family: var(--r-mono);
+  font-size: 7.5pt;
+  font-weight: 500;
   color: #64748b;
   white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .experience-highlights {

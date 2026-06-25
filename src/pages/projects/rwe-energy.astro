@@ -1,393 +1,128 @@
 ---
 import ProjectLayout from "../../components/ProjectLayout.astro";
-import TechIcon from "../../components/TechIcon.astro";
+
+const sections = [
+  {
+    no: "§ 01",
+    title: "The problem",
+    body: [
+      "RWE's energy-services platform depended on legacy Java components that were difficult for the team to extend. Energy-market data had to be queried, filtered, and exported daily. Large dataset exports took 45 minutes, and response times were slow enough to affect day-to-day analyst workflows.",
+      "The business needed faster data access and a codebase a small team could evolve safely. My work focused on the Node.js / NestJS replacement path, the data-filtering pipeline, and the tests needed to keep migration work controlled.",
+    ],
+  },
+  {
+    no: "§ 02",
+    title: "How I approached it",
+    body: [
+      "We moved replacement work into Node.js with NestJS and MongoDB. Energy projects have dynamic properties, so the filtering system needed to generate columns from each project's characteristics. I built and tuned this path with MongoDB aggregations, using profiling to find the expensive parts before changing them.",
+      "The biggest technical constraint was heavy processing on the main thread. I implemented <strong>worker pools</strong> to move large dataset operations into parallel work, which brought export time from 45 minutes down to 12. The profiler helped separate real bottlenecks from guesses.",
+      "I also introduced <strong>TDD early</strong> for the features I owned. On a migration project, tests are not ceremony; they are how you avoid replacing known behaviour with subtle regressions. That discipline became a useful bridge into later teams where high coverage was already expected.",
+    ],
+  },
+];
+
+const decisions = [
+  { n: "01", h: "Worker pools for exports", p: "Large dataset operations were blocking the event loop. Worker pools moved heavy processing to parallel threads, keeping API work responsive while exports ran separately. 45 min became 12." },
+  { n: "02", h: "Profiler-driven optimization", p: "I used the Node.js profiler to find where time was actually spent in the column-filtering pipeline, then optimized the MongoDB aggregations that were genuinely responsible for the slowdown." },
+  { n: "03", h: "Dynamic column generation", p: "Energy projects have variable properties. The filtering system generates columns dynamically from project characteristics — flexible enough for any project shape, fast enough for daily use." },
+  { n: "04", h: "TDD from day one", p: "On a migration, replacing working behaviour is the risk. I used test-driven development for the features I owned, so changes could be reviewed against expected behaviour, not intent alone." },
+];
+
+const metrics = [
+  { v: "65%", k: "Faster API responses" },
+  { v: "45 → 12 min", k: "Export time (≈73% faster)" },
+  { v: "15,000+", k: "Daily queries handled" },
+];
+
+const stack = ["NestJS", "MongoDB", "TypeScript", "Docker", "Node.js", "Worker threads"];
 ---
 
 <ProjectLayout
   title="RWE Energy — Platform Migration"
-  description="Case study: migrating a legacy Java monolith to Node.js microservices for Germany's largest energy company"
+  description="Case study: migrating a legacy Java monolith to NestJS services for one of Germany's largest energy companies."
 >
-  <main>
-    <section
-      class="project-hero"
-      style="background: var(--hero-bg); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
-    >
-      <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
-        <h1
-          style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em;"
-        >
-          RWE Energy Platform
-        </h1>
-        <p
-          style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
-        >
-          Migration and performance work on an energy-market data platform for
-          one of Germany's largest energy companies
-        </p>
-        <div
-          style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
-        >
-          <span
-            style="padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.1); border-radius: 50px; font-weight: 600; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.15);"
-          >
-            ENTERPRISE
-          </span>
-          <a
-            href="https://github.com/calindotgabriel/energy-reporter"
-            style="padding: 0.5rem 1.25rem; background: white; color: #0f172a; border-radius: 50px; font-weight: 600; font-size: 0.85rem; text-decoration: none; transition: all 0.2s ease;"
-          >
-            Demo repo
-          </a>
+  <div class="ed-wrap">
+    <section class="ed-hero">
+      <p class="ed-kicker">
+        <a href="/projects">← Case files</a>
+        <span>·</span>
+        <span>Case file 02</span>
+      </p>
+      <h1>RWE Energy Platform</h1>
+      <p class="ed-hero-lead">Migration and performance work on an energy-market data platform for one of Germany's largest energy companies.</p>
+      <div class="ed-hero-meta">
+        <span class="ed-status is-enterprise">Enterprise</span>
+        <a class="mono-pill" href="https://github.com/calindotgabriel/energy-reporter" target="_blank" rel="noopener">Demo repo ↗</a>
+      </div>
+    </section>
+
+    {sections.map((s) => (
+      <section class="ed-section">
+        <div class="ed-section-grid">
+          <span class="ed-section-no">{s.no}</span>
+          <div>
+            <h2 class="ed-h2">{s.title}</h2>
+            {s.body.map((p) => <p class="ed-body" set:html={p} />)}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 03</span>
+        <div>
+          <h2 class="ed-h2">Key technical decisions</h2>
+          <div class="ed-cards">
+            {decisions.map((d) => (
+              <div class="ed-card">
+                <span class="ed-card-no">{d.n}</span>
+                <h3>{d.h}</h3>
+                <p>{d.p}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
-    <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 04</span>
+        <div>
+          <h2 class="ed-h2">Business impact</h2>
+          <dl class="ed-ledger">
+            {metrics.map((m) => (
+              <div class="ed-metric"><dt>{m.v}</dt><dd>{m.k}</dd></div>
+            ))}
+          </dl>
+          <p class="ed-body">The 65% API improvement made market-data workflows faster for users who queried the system daily. The export-time reduction turned exports from an overnight-style task into something analysts could run during the workday. The NestJS structure also gave the 4-person team a clearer path for follow-up work.</p>
+          <p class="ed-body">For a contract buyer, the relevance is direct: this is the kind of messy, high-context backend work where a senior engineer has to improve the system without stopping day-to-day delivery.</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- THE PROBLEM -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          The Problem
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          RWE's energy services platform depended on legacy Java components that were
-          difficult for the team to extend. Energy market data had to be queried,
-          filtered, and exported daily. Large dataset exports took 45 minutes, and
-          response times were slow enough to affect day-to-day analyst workflows.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          The business needed faster data access and a codebase a small team could
-          evolve safely. My work focused on the Node.js/NestJS replacement path, the
-          data filtering pipeline, and the tests needed to keep migration work controlled.
-        </p>
-      </section>
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 05</span>
+        <div>
+          <h2 class="ed-h2">What I took away</h2>
+          <p class="ed-body">This project taught me the value of <strong>consistency in delivery</strong>. On a small team replacing a production system, there's no room for erratic output — every week had to move the migration forward predictably. I learned to scope work tightly, ship reliably, and communicate progress clearly.</p>
+          <p class="ed-body">Technically, it deepened my conviction that performance work starts with measurement. The profiler-first approach — finding the real bottleneck before writing a single optimization — saved weeks of wasted effort and became a permanent part of how I work.</p>
+        </div>
+      </div>
+    </section>
 
-      <!-- THE APPROACH -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          How I Approached It
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          We moved replacement work into Node.js with NestJS and MongoDB. Energy projects
-          have dynamic properties, so the filtering system needed to generate columns
-          from each project's characteristics. I built and tuned this path with MongoDB
-          aggregations, using profiling to find the expensive parts before changing them.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          The biggest technical constraint was heavy processing on the main thread. I
-          implemented <strong>Worker Pools</strong> to move large dataset operations into
-          parallel work, which brought export time from 45 minutes down to 12. The profiler
-          helped separate real bottlenecks from guesses.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          I also introduced <strong>TDD early</strong> for the features I owned. On a
-          migration project, tests are not ceremony; they are how you avoid replacing known
-          behavior with subtle regressions. That discipline became a useful bridge into
-          later teams where high coverage was already expected.
-        </p>
-      </section>
-
-      <!-- WHAT I DELIVERED -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
-        >
-          Key Technical Decisions
-        </h2>
-
-        <div
-          class="features-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
-        >
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              Worker Pools for Exports
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Large dataset operations were blocking the event loop. Worker Pools moved
-              heavy processing to parallel threads, keeping API work responsive while
-              exports ran separately. 45min became 12min.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              Profiler-Driven Optimization
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              I used the Node.js profiler to identify where time was spent in the column
-              filtering pipeline, then optimized the MongoDB aggregations that were actually
-              responsible for the slowdown.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              Dynamic Column Generation
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Energy projects have variable properties. The filtering system generates
-              columns dynamically based on project characteristics — flexible enough
-              for any project shape, fast enough for daily use.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);"
-            >
-              TDD from Day One
-            </h3>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              On a migration project, replacing working behavior is the risk. I used
-              test-driven development for the features I owned so changes could be reviewed
-              against expected behavior instead of intent alone.
-            </p>
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 06</span>
+        <div>
+          <h2 class="ed-h2">Stack</h2>
+          <div class="ed-stack">
+            {stack.map((t) => <span class="mono-pill">{t}</span>)}
           </div>
         </div>
-      </section>
-
-      <!-- BUSINESS IMPACT -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          Business Impact
-        </h2>
-
-        <div
-          class="metrics-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
-        >
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              65%
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Faster API Responses
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              73%
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Faster Exports (45min → 12min)
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              15K+
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Daily Queries Handled
-            </div>
-          </div>
-        </div>
-
-        <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem;"
-        >
-          The 65% API improvement made market-data workflows faster for users who queried
-          the system daily. The export-time reduction changed exports from an overnight-style
-          task into something analysts could run during the workday. The NestJS structure
-          also gave the 4-person team a clearer path for follow-up work.
-        </p>
-        <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1rem;"
-        >
-          For a contract buyer, the relevance is direct: this is the kind of messy,
-          high-context backend work where a senior engineer needs to improve the system
-          without stopping day-to-day delivery.
-        </p>
-      </section>
-
-      <!-- WHAT I LEARNED -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          What I Took Away
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          This project taught me the value of <strong>consistency in delivery</strong>.
-          On a small team replacing a production system, there's no room for erratic output.
-          Every week needed to move the migration forward predictably. I learned to scope
-          work tightly, ship reliably, and communicate progress clearly.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          Technically, it deepened my conviction that performance optimization starts with
-          measurement. The profiler-first approach — finding the real bottleneck before
-          writing a single optimization — saved weeks of wasted effort and became a
-          permanent part of how I work.
-        </p>
-      </section>
-
-      <!-- TECH STACK -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
-        >
-          Technology Stack
-        </h2>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.5rem;"
-        >
-          {
-            [
-              { name: "NestJS", tech: "NestJS" },
-              { name: "MongoDB", tech: "MongoDB" },
-              { name: "TypeScript", tech: "TypeScript" },
-              { name: "Docker", tech: "Docker" },
-              { name: "Node.js", tech: "Node.js" },
-              { name: "Worker Threads", tech: "Microservices" },
-            ].map((item) => (
-              <div style="padding: 1.25rem 1rem; background: var(--hero-bg); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
-                <TechIcon technology={item.tech} size={32} />
-                <span style="font-size: 0.9rem; line-height: 1.2;">
-                  {item.name}
-                </span>
-              </div>
-            ))
-          }
-        </div>
-      </section>
-    </article>
-  </main>
+      </div>
+    </section>
+  </div>
 </ProjectLayout>
-
-<style>
-  .project-hero h1 {
-    color: white;
-  }
-
-  .content-section {
-    animation: fadeInUp 0.6s ease forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .features-grid > div:hover {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease;
-  }
-
-  .content-section div[style*="min-height: 100px"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.15);
-  }
-
-  @media (max-width: 768px) {
-    .project-hero {
-      padding: 48px 0 32px;
-    }
-
-    .project-hero h1 {
-      font-size: 2.25rem;
-    }
-
-    .project-hero p {
-      font-size: 1.1rem;
-    }
-
-    .content-section {
-      padding: 2rem 1.5rem;
-    }
-
-    .metrics-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .content-section div[style*="repeat(auto-fill, minmax(140px, 1fr))"] {
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
-      gap: 1rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] {
-      min-height: 80px !important;
-      padding: 1rem 0.75rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] span:first-child {
-      font-size: 1.5rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] span:last-child {
-      font-size: 0.8rem !important;
-    }
-  }
-</style>

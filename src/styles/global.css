@@ -1,4 +1,6 @@
 /* styles/global.css */
+@import "./editorial.css";
+
 :root {
   color-scheme: light;
 

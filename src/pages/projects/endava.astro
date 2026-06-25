@@ -1,319 +1,111 @@
 ---
 import ProjectLayout from "../../components/ProjectLayout.astro";
-import TechIcon from "../../components/TechIcon.astro";
+
+const built = [
+  {
+    client: "eLife Sciences · UK",
+    h: "Scientific paper processing",
+    p: "Built a document-conversion system with Node.js, AWS S3, and Lambda that processed 2,000+ scientific papers daily. The React frontend handled submission, tracking, and collaborative workflows — optimized to render large document collections without choking the browser.",
+  },
+  {
+    client: "NETS · Scandinavia",
+    h: "E-commerce checkout system",
+    p: "Created a checkout with React and TypeScript supporting multiple payment methods including Klarna and cards. In payments, reliability is the requirement — every edge case affects money, reconciliation, or trust. This is where my attention to payment-critical code started.",
+  },
+];
+
+const metrics = [
+  { v: "2,000+", k: "Papers processed daily" },
+  { v: "3", k: "Domains — telecom, payments, academic" },
+  { v: "2", k: "Junior devs mentored" },
+];
+
+const stack = ["React", "TypeScript", "Node.js", "AWS Lambda", "AWS S3", "Klarna"];
 ---
 
 <ProjectLayout
   title="Endava — Enterprise Consulting"
-  description="Case study: 3 years of full-stack JS across Deutsche Telekom, NETS Scandinavia, and eLife Sciences"
+  description="Case study: three years of full-stack JavaScript across Deutsche Telekom, NETS Scandinavia, and eLife Sciences."
 >
-  <main>
-    <section
-      class="project-hero"
-      style="background: var(--hero-bg); color: white; padding: 5rem 0 3.5rem; margin-bottom: 3rem; text-align: center; position: relative;"
-    >
-      <div style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
-        <h1
-          style="font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em;"
-        >
-          Endava — Enterprise Clients
-        </h1>
-        <p
-          style="font-size: 1.35rem; color: rgba(255,255,255,0.9); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;"
-        >
-          Full-stack JavaScript delivery across Deutsche Telekom, NETS Scandinavia,
-          and eLife Sciences
-        </p>
-        <div
-          style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;"
-        >
-          <span
-            style="padding: 0.5rem 1.25rem; background: rgba(255,255,255,0.1); border-radius: 50px; font-weight: 600; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.15);"
-          >
-            AGENCY
-          </span>
+  <div class="ed-wrap">
+    <section class="ed-hero">
+      <p class="ed-kicker">
+        <a href="/projects">← Case files</a>
+        <span>·</span>
+        <span>Case file 03</span>
+      </p>
+      <h1>Endava — Enterprise Clients</h1>
+      <p class="ed-hero-lead">Full-stack JavaScript delivery across Deutsche Telekom, NETS Scandinavia, and eLife Sciences.</p>
+      <div class="ed-hero-meta">
+        <span class="ed-status is-agency">Agency</span>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 01</span>
+        <div>
+          <h2 class="ed-h2">The context</h2>
+          <p class="ed-body">Endava is a global technology consultancy that places engineers with major enterprise clients. Over nearly three years there, I rotated across projects for Deutsche Telekom, NETS (Scandinavian payments infrastructure), and eLife Sciences (UK academic publishing) — all full-stack JavaScript.</p>
+          <p class="ed-body">This period built my delivery baseline. Working across telecoms, payments, and academic publishing forced me to adapt quickly, understand unfamiliar domains, and contribute without needing a long ramp-up.</p>
         </div>
       </div>
     </section>
 
-    <article style="max-width: 900px; margin: 0 auto; padding: 0 24px;">
-
-      <!-- THE CONTEXT -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          The Context
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          Endava is a global technology consultancy that places engineers with major
-          enterprise clients. Over nearly 3 years there, I rotated across projects for
-          Deutsche Telekom, NETS (Scandinavian payments infrastructure), and eLife Sciences
-          (UK academic publishing) — all full-stack JavaScript.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          This period built my delivery baseline. Working across telecoms, payments, and
-          academic publishing forced me to adapt quickly, understand unfamiliar domains,
-          and contribute without needing a long ramp-up.
-        </p>
-      </section>
-
-      <!-- THE WORK -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
-        >
-          What I Built
-        </h2>
-
-        <div
-          class="features-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
-        >
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary);"
-            >
-              Scientific Paper Processing
-            </h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">eLife Sciences (UK)</p>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Built a document conversion system with Node.js, AWS S3, and Lambda
-              that processed 2,000+ scientific papers daily. The React frontend handled
-              paper submission, tracking, and collaborative workflows — optimized for
-              rendering large document collections without choking the browser.
-            </p>
-          </div>
-          <div
-            style="padding: 2rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <h3
-              style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--primary);"
-            >
-              E-Commerce Checkout System
-            </h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.75rem; font-style: italic;">NETS Scandinavia</p>
-            <p style="color: var(--text-muted); line-height: 1.6;">
-              Created a checkout system with React and TypeScript supporting multiple
-              payment methods including Klarna and traditional cards. In payments,
-              reliability was the core requirement. Every checkout edge case affects money,
-              reconciliation, or user trust. This is where my attention to payment-critical
-              code started.
-            </p>
-          </div>
-        </div>
-        <p
-          style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); margin-top: 1.5rem;"
-        >
-          For a contract buyer, this case study is the adaptability proof: I have already
-          been the engineer dropped into unfamiliar enterprise domains and expected to
-          become useful quickly without needing a long runway.
-        </p>
-      </section>
-
-      <!-- BUSINESS IMPACT -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          Impact Across Clients
-        </h2>
-
-        <div
-          class="metrics-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2.5rem 0;"
-        >
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              2K+
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Papers Processed Daily
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              3
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Enterprise Domains (Telecom, Payments, Academic)
-            </div>
-          </div>
-          <div
-            style="text-align: center; padding: 1.5rem; background: var(--card-soft-bg); border-radius: 16px; border: 1px solid var(--pill-border);"
-          >
-            <div
-              style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;"
-            >
-              2
-            </div>
-            <div style="color: var(--text-muted); font-weight: 500;">
-              Junior Devs Mentored
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- WHAT I LEARNED -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text);"
-        >
-          What I Took Away
-        </h2>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 1.5rem;"
-        >
-          Agency work forces you to get productive in unfamiliar codebases and domains.
-          After rotating through telecoms, payments, and academic publishing, I learned to
-          start with domain constraints, then narrow the technical work to what the client
-          actually needed shipped.
-        </p>
-        <p
-          style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);"
-        >
-          This is also where I started mentoring — guiding 2 junior developers through
-          React best practices and Node.js architecture. Teaching others forced me to
-          articulate what I knew and identify gaps in my own understanding. It made me
-          a better engineer, not just a more senior one.
-        </p>
-      </section>
-
-      <!-- TECH STACK -->
-      <section
-        class="content-section"
-        style="background: var(--gradient-card); border-radius: 20px; padding: 3rem 2.5rem; margin-bottom: 3rem; box-shadow: var(--shadow-lg);"
-      >
-        <h2
-          style="font-size: 1.75rem; font-weight: 700; margin-bottom: 2rem; color: var(--text);"
-        >
-          Technology Stack
-        </h2>
-        <div
-          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.5rem;"
-        >
-          {
-            [
-              { name: "React", tech: "React" },
-              { name: "TypeScript", tech: "TypeScript" },
-              { name: "Node.js", tech: "Node.js" },
-              { name: "AWS Lambda", tech: "AWS" },
-              { name: "AWS S3", tech: "AWS" },
-              { name: "Klarna", tech: "JavaScript" },
-            ].map((item) => (
-              <div style="padding: 1.25rem 1rem; background: var(--hero-bg); color: white; border-radius: 16px; font-weight: 600; text-align: center; border: 1px solid rgba(255,255,255,0.08); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; min-height: 100px; justify-content: center;">
-                <TechIcon technology={item.tech} size={32} />
-                <span style="font-size: 0.9rem; line-height: 1.2;">
-                  {item.name}
-                </span>
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 02</span>
+        <div>
+          <h2 class="ed-h2">What I built</h2>
+          <div class="ed-cards">
+            {built.map((b) => (
+              <div class="ed-card">
+                <span class="ed-card-no">{b.client}</span>
+                <h3>{b.h}</h3>
+                <p>{b.p}</p>
               </div>
-            ))
-          }
+            ))}
+          </div>
+          <p class="ed-body" style="margin-top:1.4rem">For a contract buyer, this is the adaptability proof: I've already been the engineer dropped into unfamiliar enterprise domains and expected to become useful quickly without a long runway.</p>
         </div>
-      </section>
-    </article>
-  </main>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 03</span>
+        <div>
+          <h2 class="ed-h2">Impact across clients</h2>
+          <dl class="ed-ledger">
+            {metrics.map((m) => (
+              <div class="ed-metric"><dt>{m.v}</dt><dd>{m.k}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 04</span>
+        <div>
+          <h2 class="ed-h2">What I took away</h2>
+          <p class="ed-body">Agency work forces you to get productive in unfamiliar codebases and domains. After rotating through telecoms, payments, and academic publishing, I learned to start with the domain constraints, then narrow the technical work to what the client actually needed shipped.</p>
+          <p class="ed-body">This is also where I started mentoring — guiding two junior developers through React best practices and Node.js architecture. Teaching forced me to articulate what I knew and find the gaps in my own understanding. It made me a better engineer, not just a more senior one.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 05</span>
+        <div>
+          <h2 class="ed-h2">Stack</h2>
+          <div class="ed-stack">
+            {stack.map((t) => <span class="mono-pill">{t}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </ProjectLayout>
-
-<style>
-  .project-hero h1 {
-    color: white;
-  }
-
-  .content-section {
-    animation: fadeInUp 0.6s ease forwards;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .features-grid > div:hover {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease;
-  }
-
-  .content-section div[style*="min-height: 100px"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    border-color: rgba(255, 255, 255, 0.15);
-  }
-
-  @media (max-width: 768px) {
-    .project-hero {
-      padding: 48px 0 32px;
-    }
-
-    .project-hero h1 {
-      font-size: 2.25rem;
-    }
-
-    .project-hero p {
-      font-size: 1.1rem;
-    }
-
-    .content-section {
-      padding: 2rem 1.5rem;
-    }
-
-    .metrics-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .features-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .content-section div[style*="repeat(auto-fill, minmax(140px, 1fr))"] {
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
-      gap: 1rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] {
-      min-height: 80px !important;
-      padding: 1rem 0.75rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] span:first-child {
-      font-size: 1.5rem !important;
-    }
-
-    .content-section div[style*="min-height: 100px"] span:last-child {
-      font-size: 0.8rem !important;
-    }
-  }
-</style>

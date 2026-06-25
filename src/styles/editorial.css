@@ -1,0 +1,185 @@
+/* ============================================================
+   Editorial system — shared primitives for case-study pages.
+   Web only (themed via tokens in global.css). Mirrors the
+   "Field Notes" aesthetic of the homepage.
+   ============================================================ */
+
+.ed-wrap {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ---- Document hero ---- */
+.ed-hero {
+  padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2rem, 5vw, 3.25rem);
+  border-bottom: 1px solid var(--border-strong);
+  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+.ed-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 1.4rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.ed-kicker a { color: var(--text-muted); text-decoration: none; }
+.ed-kicker a:hover { color: var(--secondary); }
+.ed-hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.3rem, 6vw, 4.1rem);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin: 0 0 1.4rem;
+  max-width: 20ch;
+}
+.ed-hero-lead {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2.2vw, 1.38rem);
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 62ch;
+}
+.ed-hero-meta {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1.7rem;
+}
+
+/* ---- Mono chips & status tags ---- */
+.mono-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  padding: 0.26rem 0.6rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+a.mono-pill:hover { border-color: var(--secondary); color: var(--secondary); }
+
+.ed-status {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.24rem 0.55rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 2px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.ed-status.is-live { color: #1f9d6b; border-color: color-mix(in srgb, #1f9d6b 42%, transparent); }
+.ed-status.is-enterprise { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 42%, transparent); }
+.ed-status.is-agency { color: var(--text-muted); }
+
+/* ---- Document sections ---- */
+.ed-section {
+  padding: clamp(2rem, 5vw, 3.25rem) 0;
+  border-top: 1px solid var(--border-strong);
+}
+.ed-section-grid {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: start;
+}
+.ed-section-no {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  padding-top: 0.4rem;
+}
+.ed-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  color: var(--text);
+  margin: 0 0 1.25rem;
+}
+.ed-body {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 66ch;
+  margin: 0 0 1.1rem;
+}
+.ed-body:last-child { margin-bottom: 0; }
+.ed-body strong { color: var(--text); font-weight: 600; }
+
+/* ---- Decision cards (hairline grid) ---- */
+.ed-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border-strong);
+  border: 1px solid var(--border-strong);
+  margin-top: 1.5rem;
+}
+.ed-card { background: var(--page-bg); padding: 1.5rem 1.6rem; }
+.ed-card-no { font-family: var(--font-mono); font-size: 0.72rem; color: var(--secondary); display: block; margin-bottom: 0.7rem; }
+.ed-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.18rem; color: var(--text); margin: 0 0 0.6rem; }
+.ed-card p { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.6; color: var(--text-muted); margin: 0; }
+
+/* ---- Metric ledger ---- */
+.ed-ledger {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem 2.2rem;
+  margin: 0 0 1.7rem;
+  padding: 0;
+}
+.ed-metric { border-top: 2px solid var(--text); padding-top: 0.85rem; }
+.ed-metric dt {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.ed-metric dd {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0.5rem 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ---- Tech stack row ---- */
+.ed-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+
+/* ---- Back / pager links ---- */
+.ed-back {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.ed-back:hover { color: var(--secondary); }
+
+@media (max-width: 720px) {
+  .ed-section-grid { grid-template-columns: 1fr; gap: 0.7rem; }
+  .ed-section-no { padding-top: 0; }
+}

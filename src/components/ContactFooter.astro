@@ -1,110 +1,76 @@
 ---
+const email = "contact@calingabriel.com";
+const mailto = `mailto:${email}?subject=Senior%20Node.js%20%2F%20TypeScript%20contract`;
+const year = new Date().getFullYear();
 ---
 
-<footer class="project-footer" id="contact">
-  <div class="project-footer-container">
-    <h3 class="project-footer-title">Need a senior Node.js / TypeScript contractor?</h3>
-    <p class="project-footer-subtitle">
-      Available immediately for remote EU B2B work on migrations, APIs, integrations,
-      testing, and performance
-    </p>
-    <div class="project-footer-cta">
-      <a href="mailto:contact@calingabriel.com" class="project-footer-link">
-        contact@calingabriel.com
-      </a>
-      <a href="tel:+40759407066" class="project-footer-link">
-        +40 759 407 066
-      </a>
+<footer class="colophon" id="contact">
+  <div class="colophon-wrap">
+    <div class="colophon-rule"></div>
+    <div class="colophon-grid">
+      <div class="colophon-lead">
+        <h2>Need a senior who can move risky backend work without adding chaos?</h2>
+        <a href={mailto} class="btn-ink">Book a 20-minute fit call</a>
+      </div>
+      <dl class="colophon-meta">
+        <div><dt>Email</dt><dd><a href={mailto}>{email}</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+40759407066">+40 759 407 066</a></dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">github.com/calindotgabriel</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me">/calingabriel-ts-dev</a></dd></div>
+        <div><dt>Engagement</dt><dd>Remote EU · B2B · available now</dd></div>
+      </dl>
     </div>
-    <div class="project-footer-social">
-      <a
-        href="https://www.linkedin.com/in/calingabriel-ts-dev/"
-        target="_blank"
-        rel="noopener"
-        class="project-footer-social-link"
-      >
-        LinkedIn
-      </a>
-      <a
-        href="https://github.com/calindotgabriel"
-        target="_blank"
-        rel="noopener"
-        class="project-footer-social-link"
-      >
-        GitHub
-      </a>
-    </div>
+    <p class="colophon-sign">Set in Fraunces &amp; Newsreader. Built with Astro, no template. © {year} Calin Gabriel.</p>
   </div>
 </footer>
 
 <style>
-  .project-footer {
-    background: var(--hero-bg);
-    color: white;
-    padding: 4rem 0;
-    text-align: center;
+  .colophon { padding: clamp(3rem, 7vw, 5rem) 0 4rem; }
+  .colophon-wrap { max-width: 940px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+  .colophon-rule { height: 2px; background: var(--text); margin-bottom: 2.6rem; }
+  .colophon-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+    margin-bottom: 3rem;
   }
-
-  .project-footer-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .project-footer-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-
-  .project-footer-subtitle {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .project-footer-cta {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-  }
-
-  .project-footer-link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
+  .colophon-lead h2 {
+    font-family: var(--font-display);
     font-weight: 500;
-    transition: color 0.2s ease;
+    font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.6rem;
+    color: var(--text);
+    max-width: 20ch;
   }
-
-  .project-footer-link:hover {
-    color: white;
-  }
-
-  .project-footer-social {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .project-footer-social-link {
-    color: rgba(255, 255, 255, 0.5);
+  .btn-ink {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s ease;
+    padding: 0.85rem 1.4rem;
+    border-radius: 2px;
+    background: var(--text);
+    color: var(--page-bg);
+    border: 1px solid var(--text);
+    transition: transform 0.18s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
+  .btn-ink:hover { transform: translateY(-2px); background: var(--secondary); border-color: var(--secondary); color: #fff; }
 
-  .project-footer-social-link:hover {
-    color: white;
-  }
+  .colophon-meta { display: grid; gap: 0; margin: 0; }
+  .colophon-meta > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid var(--border); }
+  .colophon-meta dt { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-subtle); }
+  .colophon-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
+  .colophon-meta a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--secondary); transition: color 0.2s ease; }
+  .colophon-meta a:hover { color: var(--secondary); }
+  .colophon-sign { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-subtle); border-top: 1px solid var(--border); padding-top: 1.4rem; max-width: none; }
 
-  @media (max-width: 768px) {
-    .project-footer-cta {
-      flex-direction: column;
-      align-items: center;
-    }
+  @media (max-width: 720px) {
+    .colophon-grid { grid-template-columns: 1fr; }
   }
 </style>
