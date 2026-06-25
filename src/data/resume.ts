@@ -69,7 +69,7 @@ export const resume: ResumeData = {
       company: "Bitpanda",
       location: "AT",
       role: "Senior Backend Developer",
-      period: "Sep 2025 - Present",
+      period: "Sep 2025 - Aug 2026",
       highlights: [
         "Build the backend of an institutional crypto-custody platform for banks using Fastify, GraphQL, and TypeScript on AWS microservices and serverless",
         "Owned the crypto address-book feature end-to-end — designed, built, and shipped the backend for managing and validating customer crypto addresses in a regulated custody environment",

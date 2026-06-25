@@ -13,6 +13,11 @@
   --white: #ffffff;
   --theme-color: #fdfbf7;
 
+  /* Typography system — editorial serif display + reading serif + technical mono */
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
   /* Theme tokens */
   --page-bg: #fdfbf7;
   --surface: #ffffff;
@@ -81,7 +86,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   color: var(--text);
   background: var(--page-bg);
@@ -90,6 +95,7 @@ body {
 
 /* Bold, impactful headings */
 h1 {
+  font-family: var(--font-display);
   font-size: clamp(3.5rem, 8vw, 6.5rem);
   font-weight: 800;
   line-height: 0.9;
@@ -98,6 +104,7 @@ h1 {
 }
 
 h2 {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   line-height: 1.1;
@@ -106,6 +113,7 @@ h2 {
 }
 
 h3 {
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;

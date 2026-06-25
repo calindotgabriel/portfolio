@@ -1,1080 +1,507 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
-import ContactFooter from "../components/ContactFooter.astro";
-import TechIcon from "../components/TechIcon.astro";
 import { projects } from "../data/projects";
 
+const email = "contact@calingabriel.com";
+const mailto = `mailto:${email}?subject=Senior%20Node.js%20%2F%20TypeScript%20contract`;
+
+const approach = [
+  {
+    n: "01",
+    title: "Legacy → Node / NestJS migration",
+    body: "Replace risky legacy paths with maintainable TypeScript services, using tests and narrow migration slices so the team keeps shipping while the system changes underneath them.",
+    evidence: "RWE — Java→NestJS migration of an energy-market platform.",
+  },
+  {
+    n: "02",
+    title: "API, data & backend reliability",
+    body: "Profile slow flows, separate real bottlenecks from guesses, fix data access, and keep production workflows responsive under actual usage rather than benchmark conditions.",
+    evidence: "~65% faster APIs · exports cut from 45 min to 12.",
+  },
+  {
+    n: "03",
+    title: "Security-critical / regulated backend",
+    body: "Build bank-facing services where correctness, auth, and auditability are the product. The kind of work where a quiet bug is a headline, so it ships tested and reviewed.",
+    evidence: "Bitpanda — institutional crypto-custody for banks.",
+  },
+  {
+    n: "04",
+    title: "Tested React / Node product delivery",
+    body: "Ship product changes in mature systems where SEO, integrations, reviews, and coverage all decide whether a release is safe to send.",
+    evidence: "ImmoScout24 — search, listing, SEO, Iterable.",
+  },
+];
+
+const ledger = [
+  { v: "45 → 12 min", k: "RWE export pipeline, moved to worker pools" },
+  { v: "≈ 65%", k: "faster API responses after migration" },
+  { v: "15,000+/day", k: "energy-market queries served" },
+  { v: "2,000+/day", k: "documents processed (Endava pipeline)" },
+  { v: "~10 yrs", k: "shipping production software" },
+  { v: "Remote · EU · B2B", k: "engagement model, available now" },
+];
+
+const trajectory = [
+  {
+    label: "Origin",
+    note: "// since 2013",
+    title: "Started by shipping, then formalised it.",
+    body: "At 16 I won an internship contest in Galați and turned it into my first software job — Linux and web development on real work. Then Computer Science at Babeș-Bolyai in Cluj-Napoca put formal structure around habits I'd already built by breaking things in production.",
+  },
+  {
+    label: "Present",
+    note: "// measured, not guessed",
+    title: "Senior Node.js / TypeScript across regulated domains.",
+    body: "I've worked across fintech and crypto-custody, energy, real estate, e-commerce and publishing — including DAX-listed companies, a regulated custody platform for banks, and major European platforms. The strongest work is backend-heavy: services, data access, testing, integrations, and performance that's profiled rather than assumed.",
+  },
+  {
+    label: "Next",
+    note: "// long-term, high-context",
+    title: "Teams with real system risk worth a senior.",
+    body: "Long-term remote-EU B2B contracts where engineers own outcomes, communicate plainly, and care about maintainability. The best fit is a product or platform team with enough domain complexity to reward careful work — not another seat to fill.",
+  },
+];
+
+const statusLabel = {
+  LIVE: "Live",
+  ENTERPRISE: "Enterprise",
+  AGENCY: "Agency",
+};
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Calin Gabriel - Senior Node.js / TypeScript Engineer"
   description="Senior Node.js/TypeScript engineer for backend-heavy product systems, remote EU B2B contracts, migrations, APIs, testing, and performance."
 >
-  <!-- HEADER NAVIGATION -->
-  <header class="header-nav">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="#hero">
-          <span class="logo-text">Calin Gabriel</span>
-          <span class="logo-subtitle">Senior Node.js / TypeScript Engineer</span>
-        </a>
-      </div>
-      
-      <!-- Desktop Navigation -->
-      <nav class="nav-desktop">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- MASTHEAD -->
+  <header class="masthead" id="top">
+    <div class="masthead-rule"></div>
+    <div class="masthead-inner">
+      <a class="mast-id" href="#top">
+        <span class="mast-name">Calin Gabriel</span>
+        <span class="mast-role">Senior Backend Engineer · Node.js / TypeScript</span>
+      </a>
+
+      <nav class="mast-nav" aria-label="Sections">
+        <a href="#approach"><span class="nav-no">01</span> Approach</a>
+        <a href="#trajectory"><span class="nav-no">02</span> Trajectory</a>
+        <a href="#casefiles"><span class="nav-no">03</span> Case files</a>
+        <a href="#contact"><span class="nav-no">04</span> Contact</a>
       </nav>
 
-      <div class="nav-actions">
+      <div class="mast-actions">
+        <span class="mast-status" aria-label="Availability">
+          <span class="status-dot"></span> Available
+        </span>
         <ThemeToggle />
       </div>
-      
-      <!-- Mobile Hamburger -->
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
     </div>
-    
-    <!-- Mobile Navigation -->
-    <nav class="nav-mobile" id="nav-mobile">
-      <a href="#hero" class="nav-mobile-link">Home</a>
-      <a href="#about" class="nav-mobile-link">About</a>
-      <a href="#projects" class="nav-mobile-link">Projects</a>
-      <a href="#contact" class="nav-mobile-link">Contact</a>
-    </nav>
+    <div class="masthead-rule thin"></div>
   </header>
 
-  <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="hero-content">
-        <span class="hero-badge">Remote EU B2B contracts / available immediately</span>
+  <main class="sheet">
+    <!-- LEDE / HERO -->
+    <section class="lede" aria-labelledby="lede-title">
+      <p class="kicker rise" style="--d:.04s">Remote-EU B2B · available immediately · est. Cluj-Napoca</p>
 
-        <h1 class="hero-title">Senior Node.js / TypeScript engineer for backend-heavy product systems</h1>
+      <h1 class="lede-title rise" style="--d:.12s" id="lede-title">
+        Production-grade backend<br />
+        for systems where a quiet<br />
+        bug becomes a <em>headline</em>.
+      </h1>
 
-        <p class="hero-tagline">
-          I help teams reduce delivery risk in migrations, data-heavy APIs,
-          integrations, and tested React/Node systems for companies like
-          <strong>Bitpanda</strong>, <strong>Scout24</strong>, <strong>RWE</strong>, and <strong>NETS</strong>.
+      <div class="lede-columns">
+        <p class="lede-body rise" style="--d:.22s">
+          I help teams reduce delivery risk in migrations, data-heavy APIs, and
+          regulated platforms. Right now that's an <strong>institutional crypto-custody
+          platform for banks</strong> at Bitpanda — before it, Scout24, RWE, and a run of
+          systems that had to keep working while they were rebuilt.
         </p>
-
-        <p class="hero-sub">
-          Best fit: long-term remote EU B2B contracts where production quality,
-          measured performance, and clear senior communication matter more than
-          another generic full-stack profile.
+        <p class="lede-sub rise" style="--d:.3s">
+          Best fit: long-term remote-EU contracts where production quality, measured
+          performance, and plain senior communication matter more than another generic
+          full-stack profile.
         </p>
+      </div>
 
-        <div class="proof-strip" aria-label="Contract proof points">
-          <div class="proof-item">
-            <span class="proof-value">45min -> 12min</span>
-            <span class="proof-label">RWE export pipeline</span>
-          </div>
-          <div class="proof-item">
-            <span class="proof-value">65% faster</span>
-            <span class="proof-label">API responses</span>
-          </div>
-          <div class="proof-item">
-            <span class="proof-value">Scout24</span>
-            <span class="proof-label">tested distributed platform</span>
-          </div>
-          <div class="proof-item">
-            <span class="proof-value">Payments / energy / search</span>
-            <span class="proof-label">production domains</span>
-          </div>
-        </div>
-
-        <div class="hero-cta">
-          <a href="mailto:contact@calingabriel.com?subject=Senior%20Node.js%20%2F%20TypeScript%20contract" class="cta-primary">Book a 20-minute fit call</a>
-          <a href="#hire-me-for" class="cta-secondary">What I can take on</a>
-          <a href="/resume" class="cta-secondary">View CV</a>
-        </div>
+      <div class="lede-cta rise" style="--d:.38s">
+        <a href={mailto} class="btn btn-ink">Book a 20-minute fit call</a>
+        <a href="#approach" class="btn btn-line">What I take on</a>
+        <a href="/resume" class="btn btn-line">Read the CV</a>
       </div>
     </section>
 
-    <!-- CONTRACT OFFERS -->
-    <section id="hire-me-for" class="offers-section">
-      <div class="offers-container">
-        <div class="offers-header">
-          <span class="section-kicker">Hire me for</span>
-          <h2>Senior delivery where the risk is in the backend, data, and production edges.</h2>
-          <p>
-            I am not positioning as a cheap task executor. The strongest fit is a team that
-            needs a senior engineer who can enter an existing system, understand the domain,
-            and move important work without adding chaos.
-          </p>
-        </div>
+    <!-- LEDGER / METRICS -->
+    <section class="ledger rise" style="--d:.46s" aria-label="Track record in numbers">
+      <span class="ledger-tag">Track record, abbreviated</span>
+      <dl class="ledger-grid">
+        {ledger.map((item) => (
+          <div class="ledger-row">
+            <dt>{item.v}</dt>
+            <dd>{item.k}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
 
-        <div class="offers-grid">
-          <article class="offer-card">
-            <span class="offer-number">01</span>
-            <h3>Legacy-to-Node / NestJS migration</h3>
-            <p>
-              Replace risky legacy paths with maintainable TypeScript services, using tests
-              and narrow migration slices so the team keeps shipping while the system changes.
-            </p>
-            <strong>Proof: RWE Java-to-NestJS migration work.</strong>
+    <!-- APPROACH -->
+    <section class="approach" id="approach" aria-labelledby="approach-title">
+      <div class="section-head">
+        <span class="section-no">§ 01</span>
+        <h2 id="approach-title">Hire me for the work where the risk lives in the backend.</h2>
+        <p class="section-lede">
+          Not a cheap task executor. The strongest fit is a team that needs a senior who can
+          enter an existing system, understand the domain, and move important work without
+          adding chaos.
+        </p>
+      </div>
+
+      <ol class="approach-list">
+        {approach.map((item) => (
+          <li class="approach-item reveal">
+            <span class="approach-no">{item.n}</span>
+            <div class="approach-body">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <p class="approach-evidence"><span>Evidence</span> {item.evidence}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- TRAJECTORY -->
+    <section class="trajectory" id="trajectory" aria-labelledby="trajectory-title">
+      <div class="section-head">
+        <span class="section-no">§ 02</span>
+        <h2 id="trajectory-title">A path built by shipping, not by titles.</h2>
+      </div>
+
+      <div class="traj-list">
+        {trajectory.map((phase) => (
+          <article class="traj-item reveal">
+            <div class="traj-meta">
+              <span class="traj-label">{phase.label}</span>
+              <span class="traj-note">{phase.note}</span>
+            </div>
+            <div class="traj-content">
+              <h3>{phase.title}</h3>
+              <p>{phase.body}</p>
+            </div>
           </article>
-          <article class="offer-card">
-            <span class="offer-number">02</span>
-            <h3>API, data, and backend reliability</h3>
-            <p>
-              Profile slow flows, separate bottlenecks from guesses, improve data access,
-              and keep production workflows responsive under real usage.
-            </p>
-            <strong>Proof: 65% faster APIs and exports cut from 45 minutes to 12.</strong>
-          </article>
-          <article class="offer-card">
-            <span class="offer-number">03</span>
-            <h3>Tested React / Node product delivery</h3>
-            <p>
-              Ship product changes in mature systems where SEO, integrations, reviews,
-              and coverage all matter to release confidence.
-            </p>
-            <strong>Proof: ImmoScout24 search, listing, SEO, and Iterable work.</strong>
-          </article>
-        </div>
+        ))}
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="about-section">
-      <div class="about-container">
-        <h2 class="about-heading">Why this profile fits contract delivery</h2>
-
-        <div class="about-timeline">
-          <!-- Past -->
-          <div class="about-phase">
-            <div class="phase-marker">
-              <div class="phase-dot"></div>
-              <div class="phase-line"></div>
-            </div>
-            <div class="phase-content">
-              <span class="phase-label">Delivery baseline</span>
-              <h3 class="phase-title">Started early, learned by shipping production work</h3>
-              <p class="phase-text">
-                At 16 I won an internship contest in Galati and turned it into my first
-                software job. I learned Linux and web development on real work before moving
-                to Cluj-Napoca for Computer Science at Babes-Bolyai University, where I put
-                formal structure around the practical habits I had already started building.
-              </p>
-            </div>
-          </div>
-
-          <!-- Present -->
-          <div class="about-phase">
-            <div class="phase-marker">
-              <div class="phase-dot phase-dot-active"></div>
-              <div class="phase-line"></div>
-            </div>
-            <div class="phase-content">
-              <span class="phase-label">Current fit</span>
-              <h3 class="phase-title">Senior Node.js / TypeScript delivery across product domains</h3>
-              <p class="phase-text">
-                I have worked across fintech and crypto-custody, energy, real estate, e-commerce, and publishing,
-                including DAX-listed companies, a regulated custody platform for banks, and major European platforms. My strongest work
-                is in backend-heavy full-stack systems: Node.js, React, databases, testing,
-                integration work, and performance improvements that are measured rather than guessed.
-              </p>
-            </div>
-          </div>
-
-          <!-- Future -->
-          <div class="about-phase">
-            <div class="phase-marker">
-              <div class="phase-dot phase-dot-future"></div>
-            </div>
-            <div class="phase-content">
-              <span class="phase-label">Contract preference</span>
-              <h3 class="phase-title">Looking for high-context teams with real system risk</h3>
-              <p class="phase-text">
-                I am looking for long-term remote EU B2B contracts where engineers own outcomes,
-                communicate clearly, and care about maintainability. The best fit is a product
-                or platform team with enough domain complexity to reward careful senior work.
-              </p>
-            </div>
-          </div>
-        </div>
+    <!-- CASE FILES -->
+    <section class="casefiles" id="casefiles" aria-labelledby="casefiles-title">
+      <div class="section-head">
+        <span class="section-no">§ 03</span>
+        <h2 id="casefiles-title">Case files.</h2>
+        <p class="section-lede">Real problems, real decisions, real outcomes.</p>
       </div>
-    </section>
 
-    <!-- PROJECTS COMPACT -->
-    <section id="projects" class="projects-section">
-      <div class="projects-container">
-        <div class="projects-header">
-          <h2>Case Studies</h2>
-          <p>Real problems, real decisions, real outcomes.</p>
-        </div>
-
-        <div class="projects-grid">
-          {projects.map((project, index) => (
-            <a href={`/projects/${project.id}`} class="project-link">
-              <div
-                class:list={[
-                  "project-card",
-                  index < 2 ? "project-card-large" : "project-card-compact",
-                  index === 1 ? "project-card-reverse" : "",
-                ]}
-              >
-                {index === 1 && (
-                  <div class="project-results">
-                    <div class="results-header">
-                      <span class="results-title">Impact</span>
-                    </div>
-                    <ul class="results-list">
-                      {project.results.map((result) => <li>{result}</li>)}
-                    </ul>
-                  </div>
-                )}
-
-                <div class={index === 2 ? "project-compact-content" : ""}>
-                  <div class={index === 2 ? "project-compact-info" : ""}>
-                    <div class="project-header">
-                      <h3 class={index === 2 ? "project-compact-title" : "project-title"}>
-                        {project.homeTitle}
-                      </h3>
-                      <span
-                        class:list={[
-                          "project-badge",
-                          {
-                            "badge-live": project.status === "LIVE",
-                            "badge-enterprise": project.status === "ENTERPRISE",
-                            "badge-agency": project.status === "AGENCY",
-                          },
-                        ]}
-                      >
-                        {project.status}
-                      </span>
-                    </div>
-                    <p class={index === 2 ? "project-compact-description" : "project-description"}>
-                      {project.caseStudySummary}
-                    </p>
-                  </div>
-                  <div class={index === 2 ? "project-compact-tech" : "project-tech-container"}>
-                    {project.tech.map((tech) => (
-                      <span class="tech-pill"><TechIcon technology={tech} size={16} />{tech}</span>
-                    ))}
-                  </div>
-                </div>
-
-                {index !== 1 && index < 2 && (
-                  <div class="project-results">
-                    <div class="results-header">
-                      <span class="results-title">Impact</span>
-                    </div>
-                    <ul class="results-list">
-                      {project.results.map((result) => <li>{result}</li>)}
-                    </ul>
-                  </div>
-                )}
+      <div class="case-list">
+        {projects.map((project, i) => (
+          <a href={`/projects/${project.id}`} class="case reveal">
+            <span class="case-index">{String(i + 1).padStart(2, "0")}</span>
+            <div class="case-main">
+              <div class="case-top">
+                <h3>{project.homeTitle}</h3>
+                <span class:list={["case-status", `is-${project.status.toLowerCase()}`]}>
+                  {statusLabel[project.status]}
+                </span>
               </div>
-            </a>
-          ))}
-        </div>
+              <p class="case-summary">{project.caseStudySummary}</p>
+              <div class="case-tech">
+                {project.tech.map((t) => <span class="mono-pill">{t}</span>)}
+              </div>
+            </div>
+            <ul class="case-results">
+              {project.results.map((r) => <li>{r}</li>)}
+            </ul>
+            <span class="case-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
       </div>
     </section>
 
-    <ContactFooter />
-
-    <style>
-      /* HEADER NAVIGATION */
-      .header-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: var(--nav-bg);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border);
-        z-index: 1000;
-        transition: all 0.3s ease;
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 70px;
-      }
-
-      .nav-logo a {
-        text-decoration: none;
-        color: var(--text);
-        display: flex;
-        flex-direction: column;
-        line-height: 1.1;
-      }
-
-      .logo-text {
-        font-size: 1.3rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #0f172a 0%, #9a3412 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .logo-subtitle {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        font-weight: 500;
-      }
-
-      .nav-desktop {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-      }
-
-      .nav-link {
-        text-decoration: none;
-        color: var(--text);
-        font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        position: relative;
-        padding: 0.5rem 0;
-      }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        margin-left: 0.5rem;
-      }
-
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--secondary);
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover {
-        color: var(--primary);
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      /* Hamburger Menu */
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 4px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        transition: all 0.3s ease;
-      }
-
-      .hamburger-line {
-        width: 25px;
-        height: 2px;
-        background: var(--text);
-        transition: all 0.3s ease;
-        transform-origin: center;
-      }
-
-      .hamburger.active .hamburger-line:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-
-      .hamburger.active .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active .hamburger-line:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      /* Mobile Navigation */
-      .nav-mobile {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--nav-bg-solid);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--border);
-        padding: 2rem;
-        display: none;
-        flex-direction: column;
-        gap: 1.5rem;
-        animation: slideDown 0.3s ease;
-      }
-
-      .nav-mobile.active {
-        display: flex;
-      }
-
-      .nav-mobile-link {
-        text-decoration: none;
-        color: var(--text);
-        font-weight: 500;
-        font-size: 1.1rem;
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--border);
-        transition: all 0.3s ease;
-      }
-
-      .nav-mobile-link:hover {
-        color: var(--primary);
-        transform: translateX(10px);
-      }
-
-      .nav-mobile-link:last-child {
-        border-bottom: none;
-      }
-
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .nav-desktop {
-          display: none;
-        }
-
-        .hamburger {
-          display: flex;
-        }
-
-        .nav-container {
-          padding: 0 1rem;
-        }
-      }
-
-      /* Add padding to body to account for fixed header */
-      body {
-        padding-top: 70px;
-      }
-
-
-      /* HERO SECTION */
-      .hero-section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--hero-bg);
-        position: relative;
-      }
-
-      .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-          radial-gradient(ellipse at 20% 50%, rgba(15, 23, 42, 0.4) 0%, transparent 50%),
-          radial-gradient(ellipse at 80% 50%, rgba(154, 52, 18, 0.1) 0%, transparent 50%);
-        pointer-events: none;
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 10;
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 2rem;
-        color: white;
-      }
-
-      .hero-badge {
-        display: inline-block;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 50px;
-        padding: 0.5rem 1.25rem;
-        margin-bottom: 2rem;
-        animation: fadeInUp 0.8s ease both;
-      }
-
-      .hero-title {
-        font-size: 3.65rem;
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-        color: white;
-        animation: fadeInUp 0.8s ease 0.15s both;
-      }
-
-      .hero-tagline {
-        font-size: 1.3rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.85);
-        margin-bottom: 1.25rem;
-        animation: fadeInUp 0.8s ease 0.3s both;
-      }
-
-      .hero-tagline strong {
-        color: white;
-        font-weight: 600;
-      }
-
-      .hero-sub {
-        font-size: 1.05rem;
-        line-height: 1.6;
-        color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 1.5rem;
-        animation: fadeInUp 0.8s ease 0.45s both;
-      }
-
-      .proof-strip {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 0.75rem;
-        margin: 2rem 0 2.25rem;
-        animation: fadeInUp 0.8s ease 0.52s both;
-      }
-
-      .proof-item {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.06);
-        border-radius: 8px;
-        padding: 1rem;
-        min-height: 104px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .proof-value {
-        color: white;
-        font-weight: 800;
-        font-size: 1.02rem;
-        line-height: 1.25;
-      }
-
-      .proof-label {
-        color: rgba(255, 255, 255, 0.58);
-        font-size: 0.82rem;
-        line-height: 1.35;
-      }
-
-      .hero-cta {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        animation: fadeInUp 0.8s ease 0.6s both;
-      }
-
-      .offers-section {
-        padding: 96px 0;
-        background: var(--surface);
-      }
-
-      .offers-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .offers-header {
-        max-width: 780px;
-        margin-bottom: 2.25rem;
-      }
-
-      .section-kicker {
-        display: inline-block;
-        color: var(--primary);
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 0.85rem;
-      }
-
-      .offers-header h2 {
-        color: var(--text);
-        font-size: 2.4rem;
-        line-height: 1.15;
-        margin-bottom: 1rem;
-      }
-
-      .offers-header p {
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        line-height: 1.75;
-      }
-
-      .offers-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 1rem;
-      }
-
-      .offer-card {
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.5rem;
-        background: var(--card-bg);
-      }
-
-      .offer-number {
-        display: inline-block;
-        color: var(--text-subtle);
-        font-weight: 800;
-        font-size: 0.85rem;
-        margin-bottom: 1rem;
-      }
-
-      .offer-card h3 {
-        color: var(--text);
-        font-size: 1.2rem;
-        line-height: 1.25;
-        margin-bottom: 0.9rem;
-      }
-
-      .offer-card p {
-        color: var(--text-muted);
-        font-size: 0.96rem;
-        line-height: 1.65;
-        margin-bottom: 1rem;
-      }
-
-      .offer-card strong {
-        display: block;
-        color: var(--text);
-        font-size: 0.9rem;
-        line-height: 1.45;
-      }
-
-      .cta-primary {
-        display: inline-block;
-        background: white;
-        color: var(--dark);
-        text-decoration: none;
-        padding: 0.85rem 1.75rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-      }
-
-      .cta-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-      }
-
-      .cta-secondary {
-        display: inline-block;
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        padding: 0.85rem 1.75rem;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        font-weight: 500;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-      }
-
-      .cta-secondary:hover {
-        color: white;
-        border-color: rgba(255, 255, 255, 0.4);
-      }
-
-      .project-link {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .projects-section {
-        padding: 100px 0;
-        background: var(--surface-soft);
-      }
-
-      .projects-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .projects-header {
-        margin-bottom: 2.5rem;
-      }
-
-      .projects-header h2 {
-        font-size: 2.5rem;
-        color: var(--text);
-        margin-bottom: 0.75rem;
-      }
-
-      .projects-header p {
-        color: var(--text-muted);
-      }
-
-      .projects-grid {
-        display: grid;
-        gap: 1.5rem;
-      }
-
-      .project-card-large {
-        display: grid;
-        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 0.8fr);
-        gap: 2rem;
-        align-items: start;
-      }
-
-      .project-card-reverse {
-        grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.5fr);
-      }
-
-      .project-card-compact {
-        padding: 2rem;
-      }
-
-      .project-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        margin-bottom: 1rem;
-      }
-
-      .project-title,
-      .project-compact-title {
-        color: var(--text);
-        margin: 0;
-      }
-
-      .project-description,
-      .project-compact-description {
-        font-size: 1rem;
-        line-height: 1.7;
-        color: var(--text-muted);
-        margin-bottom: 1.25rem;
-      }
-
-      .project-tech-container,
-      .project-compact-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.65rem;
-      }
-
-      .project-compact-content {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 1.5rem;
-        align-items: center;
-      }
-
-      .project-results {
-        background: var(--card-soft-bg);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.25rem;
-      }
-
-      .results-title {
-        display: inline-block;
-        color: var(--text);
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-      }
-
-      .results-list {
-        list-style: none;
-        display: grid;
-        gap: 0.55rem;
-      }
-
-      .results-list li {
-        color: var(--text-muted);
-        font-size: 0.95rem;
-      }
-
-      .project-badge {
-        padding: 0.25rem 0.65rem;
-        border-radius: 999px;
-        color: white;
-        font-size: 0.72rem;
-        font-weight: 700;
-      }
-
-      .badge-live { background: #0f766e; }
-      .badge-enterprise { background: var(--primary-dark); }
-      .badge-agency { background: #475569; }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .hero-title {
-          font-size: 2.25rem;
-        }
-
-        .hero-tagline {
-          font-size: 1.1rem;
-        }
-
-        .proof-strip,
-        .offers-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .proof-item {
-          min-height: auto;
-          gap: 0.5rem;
-        }
-
-        .offers-section {
-          padding: 72px 0;
-        }
-
-        .offers-header h2 {
-          font-size: 2rem;
-        }
-
-        .hero-cta {
-          flex-direction: column;
-        }
-
-        .cta-primary,
-        .cta-secondary {
-          text-align: center;
-        }
-
-        .projects-section {
-          padding: 72px 0;
-        }
-
-        .project-card-large,
-        .project-card-reverse,
-        .project-compact-content {
-          grid-template-columns: 1fr;
-        }
-      }      /* ABOUT SECTION */
-      .about-section {
-        padding: 100px 0;
-        background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
-      }
-
-      .about-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .about-heading {
-        font-size: 2.5rem;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 4rem;
-        color: var(--text);
-      }
-
-      .about-timeline {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-      }
-
-      .about-phase {
-        display: flex;
-        gap: 2rem;
-        padding-bottom: 3rem;
-      }
-
-      .about-phase:last-child {
-        padding-bottom: 0;
-      }
-
-      .phase-marker {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-shrink: 0;
-        width: 20px;
-      }
-
-      .phase-dot {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: var(--text-subtle);
-        border: 3px solid var(--border-strong);
-        flex-shrink: 0;
-        position: relative;
-        z-index: 2;
-      }
-
-      .phase-dot-active {
-        background: var(--secondary);
-        border-color: rgba(154, 52, 18, 0.3);
-        box-shadow: 0 0 12px rgba(154, 52, 18, 0.4);
-      }
-
-      .phase-dot-future {
-        background: var(--primary);
-        border-color: var(--border-strong);
-      }
-
-      .phase-line {
-        width: 2px;
-        flex-grow: 1;
-        background: linear-gradient(180deg, var(--border-strong) 0%, var(--border) 100%);
-        margin-top: 0.5rem;
-      }
-
-      .phase-content {
-        padding-top: 0;
-      }
-
-      .phase-label {
-        display: inline-block;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 0.5rem;
-      }
-
-      .phase-title {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--text);
-        margin-bottom: 0.75rem;
-        line-height: 1.3;
-      }
-
-      .phase-text {
-        font-size: 1.05rem;
-        line-height: 1.75;
-        color: var(--text-muted);
-      }
-
-      .phase-text strong {
-        color: var(--text);
-        font-weight: 600;
-      }
-
-      @media (max-width: 768px) {
-        .about-heading {
-          font-size: 2rem;
-        }
-
-        .about-phase {
-          gap: 1.25rem;
-        }
-
-        .phase-title {
-          font-size: 1.2rem;
-        }
-
-        .phase-text {
-          font-size: 1rem;
-        }
-      }
-
-    </style>
-
-    <script>
-      // Hamburger menu functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.getElementById('hamburger');
-        const navMobile = document.getElementById('nav-mobile');
-        const mobileLinks = document.querySelectorAll('.nav-mobile-link');
-        const allNavLinks = document.querySelectorAll('.nav-link, .nav-mobile-link');
-        const header = document.querySelector('.header-nav') as HTMLElement;
-
-        if (!hamburger || !navMobile || !header) return;
-
-        // Toggle mobile menu
-        hamburger.addEventListener('click', function() {
-          hamburger.classList.toggle('active');
-          navMobile.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        mobileLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            navMobile.classList.remove('active');
-          });
-        });
-
-        // Smooth scroll to sections
-        allNavLinks.forEach(link => {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const href = (e.target as HTMLAnchorElement).getAttribute('href');
-            if (!href) return;
-            
-            const targetSection = document.querySelector(href);
-            
-            if (targetSection) {
-              const headerHeight = 70;
-              const offsetTop = (targetSection as HTMLElement).offsetTop - headerHeight;
-              
-              window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-              });
-            }
-          });
-        });
-
-        // Header background on scroll
-        let lastScrollY = window.scrollY;
-
-        window.addEventListener('scroll', function() {
-          const currentScrollY = window.scrollY;
-          
-          if (currentScrollY > 50) {
-            header.style.background = 'var(--nav-bg-solid)';
-            header.style.boxShadow = 'var(--nav-shadow)';
-          } else {
-            header.style.background = 'var(--nav-bg)';
-            header.style.boxShadow = 'none';
-          }
-          
-          lastScrollY = currentScrollY;
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-          const target = e.target as Node;
-          if (!header.contains(target) && navMobile.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navMobile.classList.remove('active');
-          }
+    <!-- COLOPHON / CONTACT -->
+    <footer class="colophon" id="contact">
+      <div class="colophon-rule"></div>
+      <div class="colophon-grid">
+        <div class="colophon-lead">
+          <h2>Let's talk about the system you can't afford to break.</h2>
+          <a href={mailto} class="btn btn-ink">Book a 20-minute fit call</a>
+        </div>
+        <dl class="colophon-meta">
+          <div><dt>Email</dt><dd><a href={mailto}>{email}</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">github.com/calindotgabriel</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me">/calingabriel-ts-dev</a></dd></div>
+          <div><dt>Engagement</dt><dd>Remote EU · B2B · available now</dd></div>
+        </dl>
+      </div>
+      <p class="colophon-sign">
+        Set in Fraunces &amp; Newsreader. Built with Astro, no template.
+        © {new Date().getFullYear()} Calin Gabriel.
+      </p>
+    </footer>
+  </main>
+
+  <style>
+    /* ---------- Atmosphere ---------- */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.5;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    :global([data-theme="dark"]) .grain { opacity: 0.28; mix-blend-mode: overlay; }
+
+    :global(body) { padding-top: 0; }
+
+    .sheet {
+      position: relative;
+      z-index: 2;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 4rem);
+    }
+
+    /* ---------- Masthead ---------- */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: color-mix(in srgb, var(--page-bg) 88%, transparent);
+      backdrop-filter: blur(8px) saturate(1.1);
+    }
+    .masthead-rule { height: 2px; background: var(--text); }
+    .masthead-rule.thin { height: 1px; background: var(--border-strong); }
+    .masthead-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.7rem clamp(1.25rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    .mast-id { text-decoration: none; color: var(--text); display: flex; flex-direction: column; line-height: 1.15; }
+    .mast-name { font-family: var(--font-display); font-weight: 600; font-size: 1.18rem; letter-spacing: -0.01em; }
+    .mast-role { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+
+    .mast-nav { display: flex; gap: 1.6rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; }
+    .mast-nav a { text-decoration: none; color: var(--text-muted); text-transform: uppercase; transition: color 0.2s ease; position: relative; padding-bottom: 2px; }
+    .mast-nav a:hover { color: var(--text); }
+    .mast-nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0; background: var(--secondary); transition: width 0.25s ease; }
+    .mast-nav a:hover::after { width: 100%; }
+    .nav-no { color: var(--secondary); margin-right: 0.35rem; }
+
+    .mast-actions { display: flex; align-items: center; gap: 1rem; }
+    .mast-status { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #1f9d6b; box-shadow: 0 0 0 0 rgba(31,157,107,0.5); animation: pulse 2.4s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(31,157,107,0.5); } 70% { box-shadow: 0 0 0 7px rgba(31,157,107,0); } 100% { box-shadow: 0 0 0 0 rgba(31,157,107,0); } }
+
+    /* ---------- Lede / hero ---------- */
+    .lede { padding: clamp(4rem, 11vw, 9rem) 0 clamp(3rem, 6vw, 5rem); }
+    .kicker { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1.6rem; }
+
+    .lede-title {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: clamp(2.6rem, 7.2vw, 6rem);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin: 0 0 2.4rem;
+      max-width: 16ch;
+    }
+    .lede-title em { font-style: italic; font-weight: 500; color: var(--secondary); }
+
+    .lede-columns {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      max-width: 920px;
+      margin-bottom: 2.6rem;
+    }
+    .lede-body { font-size: 1.32rem; line-height: 1.55; color: var(--text); max-width: none; }
+    .lede-body strong { font-weight: 600; box-shadow: inset 0 -0.5em 0 color-mix(in srgb, var(--secondary) 16%, transparent); }
+    .lede-sub { font-size: 1.02rem; line-height: 1.65; color: var(--text-muted); border-left: 2px solid var(--secondary); padding-left: 1.1rem; max-width: none; }
+
+    .lede-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase;
+      text-decoration: none; padding: 0.85rem 1.4rem; border-radius: 2px; transition: transform 0.18s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .btn-ink { background: var(--text); color: var(--page-bg); border: 1px solid var(--text); }
+    .btn-ink:hover { transform: translateY(-2px); background: var(--secondary); border-color: var(--secondary); color: #fff; }
+    .btn-line { background: transparent; color: var(--text); border: 1px solid var(--border-strong); }
+    .btn-line:hover { border-color: var(--text); transform: translateY(-2px); }
+
+    /* ---------- Ledger ---------- */
+    .ledger { border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); padding: 2.2rem 0 2.4rem; margin-bottom: clamp(3rem, 7vw, 6rem); }
+    .ledger-tag { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 1.6rem; }
+    .ledger-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 2.4rem; margin: 0; }
+    .ledger-row { border-top: 1px solid var(--border); padding-top: 0.9rem; }
+    .ledger-row dt { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem; }
+    .ledger-row dd { font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.5; color: var(--text-muted); margin: 0; }
+
+    /* ---------- Section heads ---------- */
+    .section-head { max-width: 760px; margin-bottom: clamp(2.2rem, 5vw, 3.4rem); }
+    .section-no { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; color: var(--secondary); display: block; margin-bottom: 1rem; }
+    .section-head h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 4.4vw, 3.1rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.1rem; }
+    .section-lede { font-size: 1.12rem; line-height: 1.6; color: var(--text-muted); }
+
+    section { padding-block: clamp(3rem, 7vw, 6rem); }
+    .lede, .ledger { padding-block: revert; }
+
+    /* ---------- Approach ---------- */
+    .approach-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+    .approach-item { display: grid; grid-template-columns: 5.5rem 1fr; gap: clamp(1rem, 3vw, 2.5rem); padding: 2rem 0; border-top: 1px solid var(--border-strong); }
+    .approach-item:last-child { border-bottom: 1px solid var(--border-strong); }
+    .approach-no { font-family: var(--font-mono); font-size: 0.9rem; color: var(--secondary); padding-top: 0.45rem; }
+    .approach-body h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 2.6vw, 1.85rem); letter-spacing: -0.01em; margin-bottom: 0.7rem; color: var(--text); }
+    .approach-body > p { font-size: 1.08rem; line-height: 1.62; color: var(--text-muted); max-width: 64ch; margin-bottom: 0.9rem; }
+    .approach-evidence { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; color: var(--text); margin: 0; }
+    .approach-evidence span { color: var(--secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 0.5rem; }
+    .approach-item { transition: background 0.25s ease; }
+    .approach-item:hover { background: var(--card-soft-bg); }
+
+    /* ---------- Trajectory ---------- */
+    .traj-list { display: grid; gap: 0; }
+    .traj-item { display: grid; grid-template-columns: 14rem 1fr; gap: clamp(1rem, 3vw, 3rem); padding: 2.2rem 0; border-top: 1px solid var(--border); }
+    .traj-item:first-child { border-top: 1px solid var(--border-strong); }
+    .traj-meta { display: flex; flex-direction: column; gap: 0.4rem; }
+    .traj-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
+    .traj-note { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-subtle); font-style: normal; }
+    .traj-content h3 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.4rem, 3vw, 2.05rem); line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 0.8rem; color: var(--text); }
+    .traj-content p { font-size: 1.08rem; line-height: 1.68; color: var(--text-muted); max-width: 62ch; }
+
+    /* ---------- Case files ---------- */
+    .case-list { display: grid; gap: 0; }
+    .case {
+      display: grid;
+      grid-template-columns: 3.5rem minmax(0, 1.6fr) minmax(0, 0.9fr) 1.5rem;
+      gap: clamp(1rem, 3vw, 2.5rem);
+      align-items: start;
+      padding: 2.2rem 0;
+      border-top: 1px solid var(--border-strong);
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      transition: padding-left 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .case:last-child { border-bottom: 1px solid var(--border-strong); }
+    .case::before { content: ""; position: absolute; left: -1.5rem; top: 0; bottom: 0; width: 2px; background: var(--secondary); transform: scaleY(0); transform-origin: top; transition: transform 0.3s ease; }
+    .case:hover { padding-left: 0.6rem; }
+    .case:hover::before { transform: scaleY(1); }
+    .case-index { font-family: var(--font-mono); font-size: 0.82rem; color: var(--secondary); padding-top: 0.5rem; }
+    .case-top { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+    .case-top h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.25rem, 2.4vw, 1.7rem); letter-spacing: -0.01em; margin: 0; color: var(--text); }
+    .case-status { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.5rem; border-radius: 2px; border: 1px solid var(--border-strong); color: var(--text-muted); white-space: nowrap; }
+    .case-status.is-live { color: #1f9d6b; border-color: color-mix(in srgb, #1f9d6b 40%, transparent); }
+    .case-status.is-enterprise { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 40%, transparent); }
+    .case-summary { font-size: 1.04rem; line-height: 1.62; color: var(--text-muted); margin-bottom: 1rem; max-width: 56ch; }
+    .case-tech { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .mono-pill { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--text); border: 1px solid var(--border-strong); border-radius: 2px; padding: 0.22rem 0.55rem; }
+    .case-results { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+    .case-results li { font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.4; color: var(--text-muted); padding-left: 1rem; position: relative; }
+    .case-results li::before { content: "→"; position: absolute; left: 0; color: var(--secondary); }
+    .case-arrow { font-size: 1.3rem; color: var(--text-subtle); padding-top: 0.3rem; transition: transform 0.3s ease, color 0.2s ease; }
+    .case:hover .case-arrow { transform: translate(4px, -4px); color: var(--secondary); }
+
+    /* ---------- Colophon ---------- */
+    .colophon { padding-bottom: 4rem; }
+    .colophon-rule { height: 2px; background: var(--text); margin-bottom: 2.6rem; }
+    .colophon-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; margin-bottom: 3rem; }
+    .colophon-lead h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1.6rem; color: var(--text); max-width: 18ch; }
+    .colophon-meta { display: grid; gap: 0; margin: 0; }
+    .colophon-meta > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid var(--border); }
+    .colophon-meta dt { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-subtle); }
+    .colophon-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
+    .colophon-meta a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--secondary); transition: color 0.2s ease; }
+    .colophon-meta a:hover { color: var(--secondary); }
+    .colophon-sign { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-subtle); border-top: 1px solid var(--border); padding-top: 1.4rem; max-width: none; }
+
+    /* ---------- Entrance animations ---------- */
+    /* Above-the-fold: CSS load animation (never depends on JS) */
+    .rise { opacity: 0; animation: riseIn 0.85s cubic-bezier(0.2,0.7,0.2,1) both; animation-delay: var(--d, 0s); }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    /* Below-the-fold: scroll-triggered */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
+    .reveal.in-view { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .reveal { opacity: 1; transform: none; transition: none; animation: none; }
+      .status-dot { animation: none; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .mast-nav { display: none; }
+      .lede-columns { grid-template-columns: 1fr; }
+      .ledger-grid { grid-template-columns: repeat(2, 1fr); }
+      .traj-item { grid-template-columns: 1fr; gap: 0.6rem; }
+      .traj-meta { flex-direction: row; gap: 0.9rem; align-items: baseline; }
+      .colophon-grid { grid-template-columns: 1fr; }
+      .case { grid-template-columns: 2.5rem 1fr; }
+      .case-results { grid-column: 1 / -1; padding-left: 2.5rem; margin-top: 0.4rem; }
+      .case-arrow { display: none; }
+    }
+    @media (max-width: 540px) {
+      .mast-role { display: none; }
+      .ledger-grid { grid-template-columns: 1fr; }
+      .approach-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .approach-no { padding-top: 0; }
+      .lede-cta { flex-direction: column; align-items: stretch; }
+      .btn { justify-content: center; }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Smooth scroll for in-page anchors
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          if (!href || href === "#") return;
+          const target = document.querySelector(href);
+          if (!target) return;
+          e.preventDefault();
+          const top = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 64;
+          window.scrollTo({ top, behavior: "smooth" });
         });
       });
-    </script>
+
+      // Staggered reveal on scroll
+      const reveals = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach((el) => el.classList.add("in-view"));
+        return;
+      }
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              el.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
+              el.classList.add("in-view");
+              io.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      reveals.forEach((el) => io.observe(el));
+    });
+  </script>
 </BaseLayout>
