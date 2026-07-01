@@ -1,10 +1,14 @@
 import { chromium } from "playwright";
 import { createServer } from "node:http";
-import { readFileSync, existsSync } from "node:fs";
-import { resolve, join, extname } from "node:path";
+import { readFileSync, existsSync, copyFileSync } from "node:fs";
+import { resolve, join, extname, dirname } from "node:path";
+import { homedir } from "node:os";
 
 const DIST = resolve("dist");
 const OUT = join(DIST, "cv.pdf");
+
+const cvSyncConfig = JSON.parse(readFileSync(resolve("cv-sync.config.json"), "utf8"));
+const CV_SYNC_PATH = cvSyncConfig.syncPath.replace(/^~/, homedir());
 
 const MIME = {
   ".html": "text/html",
@@ -67,6 +71,11 @@ async function main() {
   server.close();
 
   console.log(`CV PDF generated at ${OUT}`);
+
+  if (existsSync(dirname(CV_SYNC_PATH))) {
+    copyFileSync(OUT, CV_SYNC_PATH);
+    console.log(`Synced to ${CV_SYNC_PATH}`);
+  }
 }
 
 main().catch((err) => {
