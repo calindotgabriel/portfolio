@@ -50,7 +50,7 @@ export const resume: ResumeData = {
 
   summary: [
     "Senior Node.js/TypeScript engineer for backend-heavy product systems, available for remote EU B2B contracts and long-term product engagements.",
-    "Currently Senior Backend Developer at Bitpanda, building an institutional crypto-custody platform for banks on Fastify, GraphQL and AWS serverless.",
+    "Most recently Senior Backend Developer at Bitpanda, building an institutional crypto-custody platform for banks on Fastify, GraphQL and AWS serverless.",
     "I help teams reduce delivery risk in migrations, data-heavy APIs, integrations, and tested React/Node systems, with measured work across fintech/custody, energy, real estate, and publishing platforms.",
     "Recent proof includes cutting RWE exports from 45 minutes to 12, improving API response times by 65%, and shipping inside ImmoScout24's fully tested distributed platform.",
   ],
@@ -69,7 +69,7 @@ export const resume: ResumeData = {
       company: "Bitpanda",
       location: "AT",
       role: "Senior Backend Developer",
-      period: "Sep 2025 - Aug 2026",
+      period: "Sep 2025 - Jun 2026",
       highlights: [
         "Build the backend of an institutional crypto-custody platform for banks using Fastify, GraphQL, and TypeScript on AWS microservices and serverless",
         "Owned the crypto address-book feature end-to-end — designed, built, and shipped the backend for managing and validating customer crypto addresses in a regulated custody environment",
