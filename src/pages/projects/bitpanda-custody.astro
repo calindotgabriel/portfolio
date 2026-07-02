@@ -1,0 +1,127 @@
+---
+import ProjectLayout from "../../components/ProjectLayout.astro";
+
+const sections = [
+  {
+    no: "§ 01",
+    title: "The problem",
+    body: [
+      "Bitpanda was building an institutional crypto-custody platform for banks — infrastructure that lets regulated financial institutions hold and manage digital assets for their customers. In custody, the backend <em>is</em> the product: correctness, authentication, and auditability decide whether a bank can trust the platform at all.",
+      "Banks needed a safe way to manage and validate the crypto addresses their customers withdraw to. A wrong address in custody isn't a bug ticket; it's potentially unrecoverable customer funds. My work centred on owning that address-book capability end-to-end, alongside hardening authentication across services and raising the backend testing bar.",
+    ],
+  },
+  {
+    no: "§ 02",
+    title: "How I approached it",
+    body: [
+      "I owned the <strong>crypto address-book feature end-to-end</strong> — from design through build to production — on a backend built with Fastify, GraphQL, and TypeScript running on AWS microservices and serverless. The feature manages and validates customer crypto addresses inside a regulated custody environment, so validation rules, edge cases, and failure modes were treated as first-class requirements, not afterthoughts.",
+      "Working across service boundaries, I <strong>strengthened authentication between services</strong> — in a platform serving banks, inter-service trust is part of the security model, not plumbing. I also introduced <strong>backend testing patterns that the team adopted</strong>, so confidence in changes came from executable checks rather than review vigilance alone.",
+      "Delivery happened inside a cross-functional team of 3 backend and 4 frontend engineers, a designer, and a product owner — which meant plain communication about risk and scope was as much a part of the job as the code.",
+    ],
+  },
+];
+
+const decisions = [
+  { n: "01", h: "Validation as the product", p: "Customer crypto addresses must be validated before they can ever receive funds. The address-book treated validation rules and edge cases as core domain logic — because in custody, a quietly accepted bad address is the worst possible failure." },
+  { n: "02", h: "End-to-end feature ownership", p: "Designed, built, and shipped the address-book backend as a complete slice — API design, data model, validation, tests, and release — rather than task-by-task execution. That's the ownership shape regulated platforms need from a senior." },
+  { n: "03", h: "Auth across service boundaries", p: "Strengthened authentication between services on an AWS microservices and serverless architecture. For bank-facing infrastructure, inter-service trust is part of the threat model and was treated accordingly." },
+  { n: "04", h: "Testing patterns the team kept", p: "Introduced backend testing patterns that other engineers adopted, raising the shared quality bar instead of just protecting my own features. Adoption by the team is the difference between habit and policy." },
+];
+
+const metrics = [
+  { v: "End-to-end", k: "Address-book: design → production" },
+  { v: "Bank-grade", k: "Regulated custody environment" },
+  { v: "Adopted", k: "Testing patterns picked up by the team" },
+];
+
+const stack = ["Fastify", "GraphQL", "TypeScript", "AWS", "Serverless", "Node.js"];
+---
+
+<ProjectLayout
+  title="Bitpanda — Institutional Crypto Custody"
+  description="Case study: building the backend of an institutional crypto-custody platform for banks — end-to-end feature ownership, auth hardening, and testing in a regulated environment."
+>
+  <div class="ed-wrap">
+    <section class="ed-hero">
+      <p class="ed-kicker">
+        <a href="/projects">← Case files</a>
+        <span>·</span>
+        <span>Case file 01</span>
+      </p>
+      <h1>Bitpanda Custody Platform</h1>
+      <p class="ed-hero-lead">Backend work on an institutional crypto-custody platform for banks — where correctness, auth, and auditability are the product.</p>
+      <div class="ed-hero-meta">
+        <span class="ed-status is-fintech">Fintech</span>
+      </div>
+    </section>
+
+    {sections.map((s) => (
+      <section class="ed-section">
+        <div class="ed-section-grid">
+          <span class="ed-section-no">{s.no}</span>
+          <div>
+            <h2 class="ed-h2">{s.title}</h2>
+            {s.body.map((p) => <p class="ed-body" set:html={p} />)}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 03</span>
+        <div>
+          <h2 class="ed-h2">Key technical decisions</h2>
+          <div class="ed-cards">
+            {decisions.map((d) => (
+              <div class="ed-card">
+                <span class="ed-card-no">{d.n}</span>
+                <h3>{d.h}</h3>
+                <p>{d.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 04</span>
+        <div>
+          <h2 class="ed-h2">Business impact</h2>
+          <dl class="ed-ledger">
+            {metrics.map((m) => (
+              <div class="ed-metric"><dt>{m.v}</dt><dd>{m.k}</dd></div>
+            ))}
+          </dl>
+          <p class="ed-body">The address-book gave banks a validated, auditable way to manage where customer crypto can move — a prerequisite for offering custody at all. Auth hardening and the adopted testing patterns raised the platform's baseline, not just one feature's. Exact platform metrics aren't mine to disclose; the custody domain doesn't publish its numbers.</p>
+        <p class="ed-body">For a contract buyer, the relevance is direct: this is recent, senior, regulated-fintech backend work — the environment where a quiet bug becomes a headline, and where features ship only when they're tested, reviewed, and defensible to an auditor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 05</span>
+        <div>
+          <h2 class="ed-h2">What I took away</h2>
+          <p class="ed-body">Custody work rewires how you think about risk. In most products, an edge case is a bug; in custody, an edge case can be <strong>irreversible movement of customer funds</strong>. I learned to design from the failure modes backwards — what must never happen — and let that drive API shape, validation, and tests.</p>
+          <p class="ed-body">It also confirmed something about seniority in regulated teams: the value isn't typing speed, it's <strong>owning a slice end-to-end and making its risks legible</strong> — to reviewers, to product, and ultimately to the banks relying on the platform.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ed-section">
+      <div class="ed-section-grid">
+        <span class="ed-section-no">§ 06</span>
+        <div>
+          <h2 class="ed-h2">Stack</h2>
+          <div class="ed-stack">
+            {stack.map((t) => <span class="mono-pill">{t}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</ProjectLayout>

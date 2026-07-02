@@ -5,13 +5,29 @@ export interface Project {
   shortDescription: string;
   caseStudySummary: string;
   tech: string[];
-  status: "LIVE" | "ENTERPRISE" | "AGENCY";
+  status: "LIVE" | "ENTERPRISE" | "AGENCY" | "FINTECH";
   github?: string;
   githubLabel?: string;
   results: string[];
 }
 
 export const projects: Project[] = [
+  {
+    id: "bitpanda-custody",
+    title: "Bitpanda Custody Platform",
+    homeTitle: "Bitpanda — Institutional Crypto Custody",
+    shortDescription:
+      "Backend of an institutional crypto-custody platform for banks — Fastify, GraphQL, AWS serverless.",
+    caseStudySummary:
+      "Owned the crypto address-book backend end-to-end in a regulated custody platform for banks, strengthened auth across services, and introduced testing patterns the team adopted.",
+    tech: ["Fastify", "GraphQL", "TypeScript", "AWS"],
+    status: "FINTECH",
+    results: [
+      "Address-book owned design → production",
+      "Auth strengthened across services",
+      "Testing patterns adopted by team",
+    ],
+  },
   {
     id: "immobile-search",
     title: "ImmoScout24 Austria",

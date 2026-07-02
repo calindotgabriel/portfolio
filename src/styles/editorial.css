@@ -84,6 +84,7 @@ a.mono-pill:hover { border-color: var(--secondary); color: var(--secondary); }
 .ed-status.is-live { color: #1f9d6b; border-color: color-mix(in srgb, #1f9d6b 42%, transparent); }
 .ed-status.is-enterprise { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 42%, transparent); }
 .ed-status.is-agency { color: var(--text-muted); }
+.ed-status.is-fintech { color: #b8860b; border-color: color-mix(in srgb, #b8860b 42%, transparent); }
 
 /* ---- Document sections ---- */
 .ed-section {

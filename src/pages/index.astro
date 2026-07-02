@@ -4,26 +4,26 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import { projects } from "../data/projects";
 
 const email = "contact@calingabriel.com";
-const mailto = `mailto:${email}?subject=Senior%20Node.js%20%2F%20TypeScript%20contract`;
+const mailto = `mailto:${email}?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20fintech%20%26%20regulated%20systems%20contract`;
 
 const approach = [
   {
     n: "01",
+    title: "Security-critical / regulated backend",
+    body: "Build bank-facing services where correctness, auth, and auditability are the product. The kind of work where a quiet bug is a headline, so it ships tested and reviewed.",
+    evidence: "Bitpanda — institutional crypto-custody for banks.",
+  },
+  {
+    n: "02",
     title: "Legacy → Node / NestJS migration",
     body: "Replace risky legacy paths with maintainable TypeScript services, using tests and narrow migration slices so the team keeps shipping while the system changes underneath them.",
     evidence: "RWE — Java→NestJS migration of an energy-market platform.",
   },
   {
-    n: "02",
+    n: "03",
     title: "API, data & backend reliability",
     body: "Profile slow flows, separate real bottlenecks from guesses, fix data access, and keep production workflows responsive under actual usage rather than benchmark conditions.",
     evidence: "~65% faster APIs · exports cut from 45 min to 12.",
-  },
-  {
-    n: "03",
-    title: "Security-critical / regulated backend",
-    body: "Build bank-facing services where correctness, auth, and auditability are the product. The kind of work where a quiet bug is a headline, so it ships tested and reviewed.",
-    evidence: "Bitpanda — institutional crypto-custody for banks.",
   },
   {
     n: "04",
@@ -67,12 +67,13 @@ const statusLabel = {
   LIVE: "Live",
   ENTERPRISE: "Enterprise",
   AGENCY: "Agency",
+  FINTECH: "Fintech",
 };
 ---
 
 <BaseLayout
   title="Calin Gabriel - Senior Node.js / TypeScript Engineer"
-  description="Senior Node.js/TypeScript engineer for backend-heavy product systems, remote EU B2B contracts, migrations, APIs, testing, and performance."
+  description="Senior Node.js/TypeScript engineer for fintech and regulated backend systems — crypto custody, migrations, data-heavy APIs — remote EU B2B contracts."
 >
   <div class="grain" aria-hidden="true"></div>
 
@@ -411,6 +412,7 @@ const statusLabel = {
     .case-status { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.5rem; border-radius: 2px; border: 1px solid var(--border-strong); color: var(--text-muted); white-space: nowrap; }
     .case-status.is-live { color: #1f9d6b; border-color: color-mix(in srgb, #1f9d6b 40%, transparent); }
     .case-status.is-enterprise { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 40%, transparent); }
+    .case-status.is-fintech { color: #b8860b; border-color: color-mix(in srgb, #b8860b 40%, transparent); }
     .case-summary { font-size: 1.04rem; line-height: 1.62; color: var(--text-muted); margin-bottom: 1rem; max-width: 56ch; }
     .case-tech { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .mono-pill { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--text); border: 1px solid var(--border-strong); border-radius: 2px; padding: 0.22rem 0.55rem; }

@@ -2,7 +2,7 @@
 
 ## Positioning Answer
 
-I am a senior Node.js/TypeScript engineer focused on backend-heavy product systems. My strongest fit is teams modernizing or scaling production services where delivery risk matters: migrations, data-heavy APIs, testing, integrations, and performance.
+I am a senior Node.js/TypeScript engineer focused on fintech and regulated backend systems. Most recently I built the backend of an institutional crypto-custody platform for banks at Bitpanda. My strongest fit is teams where delivery risk lives in the backend: regulated platforms, migrations, data-heavy APIs, testing, integrations, and performance.
 
 I am available immediately from Romania for remote EU work, and I prefer long-term B2B contracts where I can own meaningful slices of an existing system rather than just clear tickets.
 
@@ -13,7 +13,27 @@ I am available immediately from Romania for remote EU work, and I prefer long-te
 - Offer goal: one long-term B2B contract within 30 days after focused outreach.
 - Funnel goal: 30 qualified leads, 20 direct applications or direct notes, 5 replies, 3 interviews.
 
-## Story 1: RWE Migration
+## Story 1: Bitpanda Custody Address-Book (End-to-End Ownership)
+
+Use when asked about ownership, API design, regulated/compliance-adjacent work, fintech, or "walk me through something you built recently".
+
+- Situation: Bitpanda was building an institutional crypto-custody platform for banks. Banks needed a safe, validated way to manage the crypto addresses their customers withdraw to — in custody, a quietly accepted bad address can mean unrecoverable customer funds.
+- Task: Own the crypto address-book feature end-to-end in a regulated environment.
+- Action: Designed, built, and shipped the backend slice — API design, data model, validation rules, tests, and release — on Fastify, GraphQL, and TypeScript over AWS microservices and serverless. Treated validation edge cases and failure modes as core domain logic, designing from "what must never happen" backwards.
+- Result: The address-book shipped to production in a bank-facing custody platform.
+- Buyer relevance: I can own a complete feature slice where mistakes have regulatory and financial consequences, and make its risks legible to reviewers, product, and auditors — not just close tickets.
+
+## Story 2: Bitpanda Auth Hardening And Testing Patterns
+
+Use when asked about security, quality bars, senior influence beyond your own tickets, or raising team standards.
+
+- Situation: A custody platform serving banks runs on AWS microservices where inter-service trust is part of the threat model, and backend confidence depended heavily on review vigilance.
+- Task: Strengthen authentication across services and improve how the backend team gained confidence in changes.
+- Action: Hardened service-to-service authentication and introduced backend testing patterns for the features I touched, structured so other engineers could reuse them.
+- Result: The testing patterns were adopted by the team — the quality bar rose platform-wide, not just on my features.
+- Buyer relevance: My senior impact compounds: security and quality improvements I introduce get adopted, so the platform baseline improves beyond my own output.
+
+## Story 3: RWE Migration
 
 Use when asked about legacy modernization, ownership, or backend architecture.
 
@@ -23,7 +43,7 @@ Use when asked about legacy modernization, ownership, or backend architecture.
 - Result: The team gained a clearer TypeScript service path for follow-up work, with production behavior protected by tests.
 - Buyer relevance: I can enter an existing system, understand domain constraints, and modernize backend paths without treating the project like a greenfield rewrite.
 
-## Story 2: RWE Performance And Export Optimization
+## Story 4: RWE Performance And Export Optimization
 
 Use when asked about performance, debugging, profiling, or measurable business impact.
 
@@ -33,7 +53,7 @@ Use when asked about performance, debugging, profiling, or measurable business i
 - Result: Export time dropped from 45 minutes to 12 minutes, and API responses improved by 65%.
 - Buyer relevance: I do not guess at performance fixes; I measure first, isolate the expensive path, and ship changes tied to user workflow impact.
 
-## Story 3: ImmoScout24 Quality-Bar Adaptation
+## Story 5: ImmoScout24 Quality-Bar Adaptation
 
 Use when asked about ramp-up, senior collaboration, code review, or joining mature teams.
 
@@ -43,7 +63,7 @@ Use when asked about ramp-up, senior collaboration, code review, or joining matu
 - Result: Contributed inside a high-quality production environment without needing a long runway.
 - Buyer relevance: I can join teams that already have standards and become useful without creating extra coordination drag.
 
-## Story 4: Iterable Product Integration
+## Story 6: Iterable Product Integration
 
 Use when asked about integrations, product collaboration, or business enablement.
 
@@ -53,7 +73,7 @@ Use when asked about integrations, product collaboration, or business enablement
 - Result: Marketing teams gained more automation leverage while the engineering team protected platform quality.
 - Buyer relevance: I can handle third-party integrations as product work, not just API glue.
 
-## Story 5: Endava Payments And Checkout
+## Story 7: Endava Payments And Checkout
 
 Use when asked about payments, reliability, or enterprise client work.
 
@@ -63,7 +83,7 @@ Use when asked about payments, reliability, or enterprise client work.
 - Result: Delivered enterprise payment work inside an agency/client environment.
 - Buyer relevance: I understand that production work is not only code correctness; it is trust, edge cases, and domain risk.
 
-## Story 6: Mentoring And Communication
+## Story 8: Mentoring And Communication
 
 Use when asked about seniority, leadership, stakeholder communication, or team behavior.
 
@@ -76,11 +96,20 @@ Use when asked about seniority, leadership, stakeholder communication, or team b
 ## Technical Depth To Prepare
 
 - Node.js: event loop, worker threads, worker pools, profiling, API latency, when CPU-bound work must leave the main thread.
+- Fastify vs NestJS: plugin/encapsulation model vs DI modules, performance tradeoffs, when a lighter framework wins, validation via JSON schema vs class-validator.
+- GraphQL: schema design, resolver boundaries, N+1 and dataloader patterns, query depth/complexity limits, auth at the field/resolver level.
+- Financial-systems patterns: idempotency keys, audit trails, validation as domain logic, irreversibility (why custody edge cases differ from normal product bugs), least-privilege service-to-service auth.
+- AWS serverless: Lambda-based microservices, cold starts, event-driven boundaries, when serverless fits and when it fights you.
 - NestJS: module boundaries, service design, validation, testing strategy, migration slices, dependency injection tradeoffs.
 - Databases: MongoDB aggregation profiling, indexes, query shape, PostgreSQL tradeoffs, Redis use cases.
 - Testing: unit versus integration versus e2e, TDD in migration work, regression safety, reviewable test boundaries.
 - React: product delivery, state boundaries, SEO-sensitive pages, integration work, avoiding a frontend-only positioning trap.
 - Cloud/delivery: AWS, Docker, CI/CD, honest boundaries around deeper Kubernetes/IaC ownership if asked.
+
+## CV Gap Answers (Decided In Advance — Do Not Improvise)
+
+- Mar 2015 – Jul 2018: "I was completing my Computer Science degree at Babeș-Bolyai full-time after starting my career early — I'd already been working professionally since 16." One sentence, calm, then move on.
+- Jul 2021 – Sep 2022: "I took a deliberate break between engagements and returned with the RWE contract, which ran two years." One sentence, calm, no over-explaining. If pressed: independent projects and skill investment during that period, then redirect to RWE results.
 
 ## Contract-Specific Answers
 
