@@ -49,7 +49,7 @@ export const resume: ResumeData = {
   github: "https://github.com/calindotgabriel",
 
   summary: [
-    "Senior Node.js/TypeScript engineer for backend-heavy product systems, available for remote EU B2B contracts and long-term product engagements.",
+    "Senior Node.js/TypeScript engineer for fintech and regulated backend systems — custody, payments, and data-heavy platforms — available for remote EU B2B contracts and long-term product engagements.",
     "Most recently Senior Backend Developer at Bitpanda, building an institutional crypto-custody platform for banks on Fastify, GraphQL and AWS serverless.",
     "I help teams reduce delivery risk in migrations, data-heavy APIs, integrations, and tested React/Node systems, with measured work across fintech/custody, energy, real estate, and publishing platforms.",
     "Recent proof includes cutting RWE exports from 45 minutes to 12, improving API response times by 65%, and shipping inside ImmoScout24's fully tested distributed platform.",
@@ -71,7 +71,7 @@ export const resume: ResumeData = {
       role: "Senior Backend Developer",
       period: "Sep 2025 - Jun 2026",
       highlights: [
-        "Build the backend of an institutional crypto-custody platform for banks using Fastify, GraphQL, and TypeScript on AWS microservices and serverless",
+        "Built the backend of an institutional crypto-custody platform for banks using Fastify, GraphQL, and TypeScript on AWS microservices and serverless",
         "Owned the crypto address-book feature end-to-end — designed, built, and shipped the backend for managing and validating customer crypto addresses in a regulated custody environment",
         "Strengthened authentication across services and introduced new backend testing patterns adopted by the team",
         "Collaborated in a cross-functional team of 3 backend and 4 frontend engineers, a designer, and a product owner",
