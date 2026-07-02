@@ -26,7 +26,7 @@ Companion to `interview-narrative.md`. That doc is what to say in the room; this
 
 ## 30-Day Cadence
 
-- **Week 1:** ship site/CV repositioning (done in this repo) + LinkedIn rewrite + recommendation requests; build the 30-lead shortlist.
+- **Week 1:** ship site/CV repositioning (done in this repo) + LinkedIn rewrite + recommendation requests; build the 30-lead shortlist → done, see `leads-shortlist.md` (the working tracker).
 - **Weeks 2–3:** 5 outbound touches per day (mix recruiter / direct / board / warm). Log every reply. Run the pre-interview brief template (see `interview-narrative.md`) before every call.
 - **Week 4:** convert interviews. "Available immediately" is closing leverage, not desperation — anchor the rate band before the call, per the playbook rule.
 
