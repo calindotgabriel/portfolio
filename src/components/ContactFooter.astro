@@ -17,17 +17,17 @@ const year = new Date().getFullYear();
         <div><dt>Phone</dt><dd><a href="tel:+40759407066">+40 759 407 066</a></dd></div>
         <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">github.com/calindotgabriel</a></dd></div>
         <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me">/calingabriel-ts-dev</a></dd></div>
-        <div><dt>Engagement</dt><dd>Remote EU · B2B · available now</dd></div>
+        <div><dt>Engagement</dt><dd>Cluj hybrid · permanent or B2B · available now</dd></div>
       </dl>
     </div>
-    <p class="colophon-sign">Set in Fraunces &amp; Newsreader. Built with Astro, no template. © {year} Calin Gabriel.</p>
+    <p class="colophon-sign">Runtime Dossier system · Geologica, Atkinson &amp; Martian Mono. © {year} Calin Gabriel.</p>
   </div>
 </footer>
 
 <style>
   .colophon { padding: clamp(3rem, 7vw, 5rem) 0 4rem; }
   .colophon-wrap { max-width: 940px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
-  .colophon-rule { height: 2px; background: var(--text); margin-bottom: 2.6rem; }
+  .colophon-rule { height: 3px; background: var(--secondary); margin-bottom: 2.6rem; }
   .colophon-grid {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -35,12 +35,13 @@ const year = new Date().getFullYear();
     align-items: start;
     margin-bottom: 3rem;
   }
+  .colophon-grid > * { min-width: 0; }
   .colophon-lead h2 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 650;
     font-size: clamp(1.6rem, 3.4vw, 2.4rem);
     line-height: 1.08;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
     margin: 0 0 1.6rem;
     color: var(--text);
     max-width: 20ch;
@@ -55,17 +56,17 @@ const year = new Date().getFullYear();
     text-decoration: none;
     padding: 0.85rem 1.4rem;
     border-radius: 2px;
-    background: var(--text);
-    color: var(--page-bg);
-    border: 1px solid var(--text);
-    transition: transform 0.18s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    background: var(--secondary);
+    color: #fff;
+    border: 1px solid var(--secondary);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
-  .btn-ink:hover { transform: translateY(-2px); background: var(--secondary); border-color: var(--secondary); color: #fff; }
+  .btn-ink:hover { background: var(--text); border-color: var(--text); color: var(--page-bg); }
 
   .colophon-meta { display: grid; gap: 0; margin: 0; }
   .colophon-meta > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid var(--border); }
   .colophon-meta dt { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-subtle); }
-  .colophon-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
+  .colophon-meta dd { min-width: 0; margin: 0; overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
   .colophon-meta a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--secondary); transition: color 0.2s ease; }
   .colophon-meta a:hover { color: var(--secondary); }
   .colophon-sign { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-subtle); border-top: 1px solid var(--border); padding-top: 1.4rem; max-width: none; }
