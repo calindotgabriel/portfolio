@@ -1,0 +1,184 @@
+---
+import { resumeDraft } from "../data/resumeDraft";
+import "../styles/resume-draft.css";
+
+export interface Props {
+  statusLabel: string;
+  downloadHref: string;
+  downloadName: string;
+  downloadLabel: string;
+}
+
+const { statusLabel, downloadHref, downloadName, downloadLabel } = Astro.props;
+const pageOneExperience = resumeDraft.experience.slice(0, 3);
+const pageTwoExperience = resumeDraft.experience.slice(3);
+
+const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
+---
+
+  <div class="draft-actions" aria-label="CV actions">
+    <span class="draft-badge">{statusLabel}</span>
+    <a
+      href={downloadHref}
+      download={downloadName}
+      class="draft-download"
+      id="download-runtime-pdf"
+    >{downloadLabel}</a>
+  </div>
+
+  <main class="draft-document" aria-label="Calin Gabriel Runtime Dossier CV">
+    <section class="draft-page draft-page-one" aria-labelledby="draft-name">
+      <header class="draft-header">
+        <div>
+          <p class="draft-eyebrow">Runtime dossier · Cluj-Napoca · since 2013</p>
+          <h1 id="draft-name">Calin<br />Gabriel</h1>
+          <p class="draft-title">{resumeDraft.title}</p>
+        </div>
+
+        <address class="draft-contact">
+          <p><span>Location</span>{resumeDraft.locationDetail}</p>
+          <p><span>Email</span><a href={`mailto:${resumeDraft.email}`}>{resumeDraft.email}</a></p>
+          <p><span>Phone</span><a href={`tel:${resumeDraft.phone.replace(/\s/g, "")}`}>{resumeDraft.phone}</a></p>
+          <p>
+            <span>Web</span>
+            <a href={resumeDraft.website}>{resumeDraft.websiteDisplay}</a>
+            <span class="contact-separator">·</span>
+            <a href={resumeDraft.linkedin}>LinkedIn</a>
+            <span class="contact-separator">·</span>
+            <a href={resumeDraft.github}>GitHub</a>
+          </p>
+        </address>
+      </header>
+
+      <section class="draft-intro" aria-label="Positioning and selected outcomes">
+        <p>{resumeDraft.summary}</p>
+        <dl class="draft-proofs">
+          {resumeDraft.proofs.map((proof) => (
+            <div>
+              <dt>{proof.value}</dt>
+              <dd>{proof.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section class="draft-record" aria-labelledby="recent-record">
+        <div class="draft-section-head">
+          <h2 id="recent-record">Recent system record</h2>
+          <p>Production work · newest first</p>
+        </div>
+
+        <div class="draft-timeline">
+          {pageOneExperience.map((job) => (
+            <article class="draft-entry">
+              <time datetime={`${job.start}/${job.end}`}>{formatPeriod(job.period)}</time>
+              <div class="draft-entry-content">
+                <div class="draft-entry-heading">
+                  <h3>{job.company}</h3>
+                  <span>{job.location}</span>
+                </div>
+                <p class="draft-role">{job.role}</p>
+                <ul>
+                  {job.highlights.map((highlight) => <li>{highlight}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <footer class="draft-footer">
+        <span>Calin Gabriel · Runtime dossier</span>
+        <span>01 / 02</span>
+      </footer>
+    </section>
+
+    <section class="draft-page draft-page-two" aria-labelledby="earlier-record">
+      <header class="draft-continuation-header">
+        <div>
+          <p class="draft-eyebrow">Runtime dossier · continued</p>
+          <h2 id="earlier-record">Earlier system record</h2>
+        </div>
+        <p>Calin Gabriel · Node.js / TypeScript</p>
+      </header>
+
+      <section class="draft-timeline draft-timeline-earlier" aria-label="Earlier experience">
+        {pageTwoExperience.map((job) => (
+          <article class="draft-entry">
+            <time datetime={`${job.start}/${job.end}`}>{formatPeriod(job.period)}</time>
+            <div class="draft-entry-content">
+              <div class="draft-entry-heading">
+                <h3>{job.company}</h3>
+                <span>{job.location}</span>
+              </div>
+              <p class="draft-role">{job.role}</p>
+              <ul>
+                {job.highlights.map((highlight) => <li>{highlight}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section class="draft-capabilities" aria-labelledby="engineering-capability">
+        <div>
+          <h2 id="engineering-capability">Engineering capability</h2>
+          <dl class="draft-skills">
+            {resumeDraft.skills.map((group) => (
+              <>
+                <dt>{group.category}</dt>
+                <dd>{group.items.join(", ")}</dd>
+              </>
+            ))}
+          </dl>
+        </div>
+
+        <div class="draft-facts">
+          <section>
+            <h3>Education</h3>
+            {resumeDraft.education.map((education) => (
+              <p>
+                {education.degree}, {education.period}<br />
+                {education.institution} · {education.location.replace(", Romania", "")}
+              </p>
+            ))}
+          </section>
+
+          <section>
+            <h3>Languages</h3>
+            <p>{resumeDraft.languages.map((language) => `${language.language} · ${language.level}`).join("\n")}</p>
+          </section>
+
+          <section>
+            <h3>Availability</h3>
+            <p>{resumeDraft.availability.join("\n")}</p>
+          </section>
+
+          <section>
+            <h3>Contact</h3>
+            <p>
+              <a href={`mailto:${resumeDraft.email}`}>{resumeDraft.email}</a><br />
+              <a href={resumeDraft.website}>{resumeDraft.websiteDisplay}</a><br />
+              <a href={resumeDraft.linkedin}>{resumeDraft.linkedinDisplay}</a><br />
+              <a href={resumeDraft.github}>{resumeDraft.githubDisplay}</a>
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <footer class="draft-footer">
+        <span>Senior Node.js &amp; TypeScript Engineer · Cluj-Napoca</span>
+        <span>02 / 02</span>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const download = document.getElementById("download-runtime-pdf");
+    if (download && location.port === "4321") {
+      download.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.print();
+      });
+    }
+  </script>

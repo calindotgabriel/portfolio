@@ -5,7 +5,10 @@ import { resolve, join, extname, dirname } from "node:path";
 import { homedir } from "node:os";
 
 const DIST = resolve("dist");
-const OUT = join(DIST, "cv.pdf");
+const PDF_TARGETS = [
+  { route: "/resume/", filename: "cv.pdf" },
+  { route: "/resume-draft/", filename: "cv-runtime-dossier.pdf" },
+];
 
 const cvSyncConfig = JSON.parse(readFileSync(resolve("cv-sync.config.json"), "utf8"));
 const CV_SYNC_PATH = cvSyncConfig.syncPath.replace(/^~/, homedir());
@@ -54,26 +57,28 @@ async function main() {
   const { server, port } = await serve();
 
   const browser = await chromium.launch();
-  const page = await browser.newPage();
-
-  await page.goto(`http://127.0.0.1:${port}/resume/`, {
-    waitUntil: "networkidle",
-  });
-
-  await page.pdf({
-    path: OUT,
-    format: "A4",
-    printBackground: true,
-    margin: { top: "15mm", bottom: "15mm", left: "15mm", right: "15mm" },
-  });
+  for (const target of PDF_TARGETS) {
+    const page = await browser.newPage();
+    await page.goto(`http://127.0.0.1:${port}${target.route}`, {
+      waitUntil: "networkidle",
+    });
+    await page.evaluate(() => document.fonts.ready);
+    await page.pdf({
+      path: join(DIST, target.filename),
+      format: "A4",
+      printBackground: true,
+      tagged: true,
+      margin: { top: 0, bottom: 0, left: 0, right: 0 },
+    });
+    await page.close();
+    console.log(`CV PDF generated at ${join(DIST, target.filename)}`);
+  }
 
   await browser.close();
   server.close();
 
-  console.log(`CV PDF generated at ${OUT}`);
-
   if (existsSync(dirname(CV_SYNC_PATH))) {
-    copyFileSync(OUT, CV_SYNC_PATH);
+    copyFileSync(join(DIST, "cv.pdf"), CV_SYNC_PATH);
     console.log(`Synced to ${CV_SYNC_PATH}`);
   }
 }
