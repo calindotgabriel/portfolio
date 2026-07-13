@@ -37,7 +37,7 @@ The source appears on the left and the implementation PDF on the right at matchi
 - Default `pdftotext` order passes: name → title → contact → summary → chronological experience → skills → education → languages → availability.
 - The production candidate retains the existing canonical title, description, Person JSON-LD, `/resume` route, `/cv.pdf`, navigation, and sitemap entry.
 - `/resume-dossier` and `/cv-runtime-dossier.pdf` are unlisted and absent from the sitemap. The route is `noindex, nofollow`; both routes and the PDF are disallowed in `robots.txt` because GitHub Pages cannot attach an `X-Robots-Tag` header to a static PDF.
-- `/resume-draft` is a `noindex, nofollow` compatibility redirect to `/resume-dossier`.
+- `/resume-draft` is a `noindex, nofollow` compatibility redirect to the one-page `/resume`, so existing review links resolve to the application CV.
 
 ## PDF checks
 
@@ -58,7 +58,7 @@ The source appears on the left and the implementation PDF on the right at matchi
 - Reduced-motion mode removes the download transition (`0s`).
 - Browser console and page-error capture returned no errors.
 - `/resume-dossier` renders two document pages with the correct noindex canonical metadata.
-- `/resume-draft` resolves to `/resume-dossier` in the browser.
+- `/resume-draft` resolves to the one-page `/resume` in the browser.
 
 ## Iteration history
 

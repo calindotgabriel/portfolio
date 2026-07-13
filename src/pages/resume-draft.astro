@@ -1,5 +1,5 @@
 ---
-const destination = "/resume-dossier";
+const destination = "/resume";
 ---
 
 <!doctype html>
@@ -7,15 +7,15 @@ const destination = "/resume-dossier";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Runtime Dossier moved | Calin Gabriel</title>
+    <title>One-page CV | Calin Gabriel</title>
     <meta name="robots" content="noindex, nofollow" />
-    <link rel="canonical" href="https://calingabriel.com/resume-dossier" />
+    <link rel="canonical" href="https://calingabriel.com/resume" />
     <meta http-equiv="refresh" content={`0; url=${destination}`} />
     <script is:inline define:vars={{ destination }}>
       window.location.replace(destination);
     </script>
   </head>
   <body>
-    <p>The Runtime Dossier moved to <a href={destination}>/resume-dossier</a>.</p>
+    <p>The one-page CV moved to <a href={destination}>/resume</a>.</p>
   </body>
 </html>
