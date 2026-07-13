@@ -1,63 +1,71 @@
-# Runtime Dossier Production Design QA
+# One-Page Runtime Dossier Design QA
 
 ## Result
 
 `passed`
 
-No P0, P1, or P2 findings remain. The production promotion matches the approved two-page target; the only intentional visual difference is the corrected Bitpanda end date (`Jun 2026`) from the latest upstream resume data.
+No P0, P1, or P2 findings remain. The production candidate is one tagged A4 page, preserves all six engagements and target keywords, and matches the approved source visual without actionable drift. The existing full dossier remains two tagged A4 pages.
 
-## Comparison target and evidence
+## Source target and evidence
 
-- Source page 1: `/Users/calingabriel/.codex/visualizations/2026/07/13/019f5a37-e68a-7be2-99ff-0e6326b5a978/runtime-dossier-target-page-1.png`
-- Source page 2: `/Users/calingabriel/.codex/visualizations/2026/07/13/019f5a37-e68a-7be2-99ff-0e6326b5a978/runtime-dossier-target-page-2.png`
-- Production comparison page 1: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/comparison-page-1.jpg`
-- Production comparison page 2: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/comparison-page-2.jpg`
-- Production PDF render page 1: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/cv-page-1.png`
-- Production PDF render page 2: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/cv-page-2.png`
-- Desktop route capture: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/browser-desktop.png`
-- Narrow route capture: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/browser-narrow.png`
-- 200%-effective-width capture: `/Users/calingabriel/.codex/worktrees/runtime-dossier-prod/cgdev-portfolio/tmp/design-qa-prod/browser-200-percent.png`
-- Verified route: `http://127.0.0.1:4175/resume/`
+- Source HTML: `/Users/calingabriel/.codex/visualizations/2026/07/13/019f5a37-e68a-7be2-99ff-0e6326b5a978/one-page-runtime-dossier-target.html`
+- Source A4 target: `/Users/calingabriel/.codex/visualizations/2026/07/13/019f5a37-e68a-7be2-99ff-0e6326b5a978/one-page-runtime-dossier-target.png`
+- Matched source/implementation comparison: `/Users/calingabriel/.codex/worktrees/runtime-dossier-one-page/cgdev-portfolio/tmp/design-qa-one-page/one-page-comparison.jpg`
+- One-page PDF render: `/Users/calingabriel/.codex/worktrees/runtime-dossier-one-page/cgdev-portfolio/tmp/design-qa-one-page/cv-one-page-1.png`
+- Desktop browser capture: `/Users/calingabriel/.codex/worktrees/runtime-dossier-one-page/cgdev-portfolio/tmp/design-qa-one-page/browser-desktop.png`
+- Narrow browser capture: `/Users/calingabriel/.codex/worktrees/runtime-dossier-one-page/cgdev-portfolio/tmp/design-qa-one-page/browser-narrow.png`
+- 200%-effective-width capture: `/Users/calingabriel/.codex/worktrees/runtime-dossier-one-page/cgdev-portfolio/tmp/design-qa-one-page/browser-200-percent.png`
+- Verified local route: `http://127.0.0.1:4176/resume/`
 
-The source is on the left and the implementation on the right in each matched 794 × 1123 A4 comparison. Typography, margins, cobalt edge, rules, career-spine geometry, entry spacing, capability matrix, and footer baselines match without actionable drift.
+The source appears on the left and the implementation PDF on the right at matching 794 × 1123 A4 dimensions. Header hierarchy, two-line name, contact block, summary, continuous career spine, experience spacing, capability rows, facts rows, cobalt edge, rules, and footer placement match.
 
-## Typography, layout, and color
+## Typography, spacing, color, and assets
 
-- Geologica, Atkinson Hyperlegible Next, and Martian Mono resolved during generation and are embedded as subsets in the PDF.
-- Both output files are exactly two A4 pages (`595.92 × 842.88 pt`) with no clipping, overlap, orphaned entry, or third page.
-- Frost, Carbon, Cobalt, Steel, Rule, and Paper tokens match the target.
-- White-background contrast remains: Carbon 16.09:1, Cobalt 5.18:1, Steel 4.85:1.
-- No photography, logos, illustrations, shadows inside the document, or fallback ornamental assets are present.
+- Geologica, Atkinson Hyperlegible Next, and Martian Mono load successfully and are embedded as subsets in both PDFs.
+- The one-page document uses the same Frost, Carbon, Cobalt, Steel, Rule, and Paper tokens as the approved dossier.
+- White-background contrast remains Carbon 16.09:1, Cobalt 5.18:1, and Steel 4.85:1.
+- Readability was protected by editing content and expanding useful spacing rather than applying a global scale reduction.
+- The main information reaches the lower portion of the A4 page, leaving only the deliberate footer breathing zone instead of a mostly empty second page.
+- No photography, icons, logos, cards, shadows inside the document, skill pills, or decorative metrics were introduced.
 
-## Content, SEO, and document extraction
+## Content, SEO, and extraction
 
-- `/resume` has the production canonical `https://calingabriel.com/resume`, descriptive title and description, and no `noindex` directive.
-- `/resume-draft` keeps `noindex, nofollow`, its own canonical, and remains absent from navigation and the sitemap.
-- Person JSON-LD includes `jobTitle`, Cluj-Napoca locality, URL, LinkedIn and GitHub `sameAs`, Babeș-Bolyai University, and factual engineering topics.
-- Selectable text includes all six companies, roles, dates, proof metrics, and the intended Node.js, TypeScript, Fastify, NestJS, GraphQL, REST APIs, microservices, AWS/serverless, MongoDB, PostgreSQL, Redis, Docker, CI/CD, integration/E2E testing, profiling, Worker Pools, and React terms.
-- The PDF is tagged. Raw extraction follows name → title → contact → summary; normal spatial extraction preserves chronological experience and all remaining sections. The right-side header contact can be grouped after the left summary by spatial extractors, but all labeled fields remain complete and selectable.
-- Link annotations are present for email, phone, website, LinkedIn, and GitHub.
+- Bitpanda, ImmoScout24, and RWE each contain exactly two outcome-focused bullets.
+- Endava, WIP Romania, and DeverSoft remain chronological compact records with company, role, dates, location, and one factual summary each.
+- The PDF preserves `65%`, `15,000+`, `45 to 12 minutes`, `2,000+`, regulated custody ownership, all contact channels, and career continuity.
+- Required Node.js, TypeScript, Fastify, NestJS, GraphQL, REST APIs, microservices, AWS/serverless, MongoDB, PostgreSQL, Redis, Docker, CI/CD, integration/E2E testing, profiling, Worker Pools, and React terms are present.
+- Default `pdftotext` order passes: name → title → contact → summary → chronological experience → skills → education → languages → availability.
+- The production candidate retains the existing canonical title, description, Person JSON-LD, `/resume` route, `/cv.pdf`, navigation, and sitemap entry.
+- `/resume-dossier` and `/cv-runtime-dossier.pdf` are unlisted and absent from the sitemap. The route is `noindex, nofollow`; both routes and the PDF are disallowed in `robots.txt` because GitHub Pages cannot attach an `X-Robots-Tag` header to a static PDF.
+- `/resume-draft` is a `noindex, nofollow` compatibility redirect to `/resume-dossier`.
+
+## PDF checks
+
+- `dist/cv.pdf`: one page, tagged, A4 `595.92 × 842.88 pt`.
+- `dist/cv-runtime-dossier.pdf`: two pages, tagged, A4 `595.92 × 842.88 pt`.
+- All fonts report embedded, subsetted, and Unicode-mapped.
+- Email, phone, website, LinkedIn, and GitHub annotations are clickable in the one-page PDF.
+- The configured local CV sync is byte-for-byte identical to `dist/cv.pdf`.
+- No clipping, overlap, orphaned experience, unintended second page, or missing text was found.
 
 ## Responsive and accessibility checks
 
-- Desktop: 1280 × 720, no horizontal overflow.
-- Narrow: 390 × 844, no horizontal overflow and the header/intro reflow to one column.
-- 200%-effective-width proxy: 640 × 720, no horizontal overflow.
-- First Tab focuses the production `/cv.pdf` link with a visible 2 px cobalt outline.
+- Desktop: 1280 × 720, one document page, no horizontal overflow.
+- Narrow: 390 × 844, semantic single-column reflow, no horizontal overflow.
+- Effective 200% zoom: 640 × 720, no horizontal overflow.
+- All tested layouts contain three recent entries with two bullets each and three compact earlier entries.
+- First Tab focuses `/cv.pdf` with a visible 2 px cobalt outline.
 - Reduced-motion mode removes the download transition (`0s`).
-- Browser console and page-error capture returned no errors at all tested widths.
-- Both `/cv.pdf` and `/cv-runtime-dossier.pdf` returned HTTP 200 with `application/pdf`.
-
-## PDF and build verification
-
-- Production build completed successfully.
-- `dist/cv.pdf` and `dist/cv-runtime-dossier.pdf` were generated together.
-- `dist/cv.pdf` was synced byte-for-byte to the configured local CV path.
-- Both PDFs are tagged, have embedded fonts, preserve selectable text, and contain live contact annotations.
+- Browser console and page-error capture returned no errors.
+- `/resume-dossier` renders two document pages with the correct noindex canonical metadata.
+- `/resume-draft` resolves to `/resume-dossier` in the browser.
 
 ## Iteration history
 
-1. The approved isolated draft passed matched full-page and focused comparison with no P0/P1/P2 visual findings.
-2. Production integration moved the same document component to `/resume`, retained the noindex draft mirror, and incorporated the newer upstream Bitpanda end date.
-3. PDF generation was upgraded to tagged output and rerun for both routes.
-4. Production comparisons and desktop, narrow, 200%-effective-width, focus, reduced-motion, PDF, metadata, link, font, and extraction checks all passed.
+1. Built and reviewed the one-page visual target using a single uninterrupted 2026→2013 runtime spine and no duplicate proof strip.
+2. Implemented the target; the matched visual comparison had no layout drift, but a two-column lower grid allowed spatial PDF extraction to interleave education with skills. Classified P2.
+3. Moved capabilities into full-width rows; extraction improved, but the rightmost availability block could still follow the footer. Classified P2.
+4. Replaced the facts columns with a semantic full-width definition list. Rebuilt, recaptured, and confirmed the complete intended extraction order.
+5. Re-ran build, PDF, font, link, target-comparison, responsive, focus, reduced-motion, redirect, metadata, and console checks. All P0/P1/P2 findings are resolved.
+
+final result: passed

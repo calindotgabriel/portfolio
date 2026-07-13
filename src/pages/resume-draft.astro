@@ -1,24 +1,21 @@
 ---
-import RuntimeDossierDocument from "../components/RuntimeDossierDocument.astro";
-import RuntimeDossierLayout from "../layouts/RuntimeDossierLayout.astro";
-import {
-  runtimeDossierDescription,
-  runtimeDossierPersonJsonLd,
-  runtimeDossierTitle,
-} from "../data/runtimeDossierSeo";
+const destination = "/resume-dossier";
 ---
 
-<RuntimeDossierLayout
-  title={runtimeDossierTitle}
-  description={runtimeDossierDescription}
-  personJsonLd={runtimeDossierPersonJsonLd}
-  canonicalUrl="https://calingabriel.com/resume-draft"
-  robots="noindex, nofollow"
->
-  <RuntimeDossierDocument
-    statusLabel="Isolated draft · not linked"
-    downloadHref="/cv-runtime-dossier.pdf"
-    downloadName="Calin_Gabriel_Runtime_Dossier_CV.pdf"
-    downloadLabel="Download draft PDF"
-  />
-</RuntimeDossierLayout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Runtime Dossier moved | Calin Gabriel</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://calingabriel.com/resume-dossier" />
+    <meta http-equiv="refresh" content={`0; url=${destination}`} />
+    <script is:inline define:vars={{ destination }}>
+      window.location.replace(destination);
+    </script>
+  </head>
+  <body>
+    <p>The Runtime Dossier moved to <a href={destination}>/resume-dossier</a>.</p>
+  </body>
+</html>

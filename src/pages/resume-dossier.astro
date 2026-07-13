@@ -1,0 +1,24 @@
+---
+import RuntimeDossierDocument from "../components/RuntimeDossierDocument.astro";
+import RuntimeDossierLayout from "../layouts/RuntimeDossierLayout.astro";
+import {
+  runtimeDossierDescription,
+  runtimeDossierPersonJsonLd,
+  runtimeDossierTitle,
+} from "../data/runtimeDossierSeo";
+---
+
+<RuntimeDossierLayout
+  title={`Full Runtime Dossier | ${runtimeDossierTitle}`}
+  description={runtimeDossierDescription}
+  personJsonLd={runtimeDossierPersonJsonLd}
+  canonicalUrl="https://calingabriel.com/resume-dossier"
+  robots="noindex, nofollow"
+>
+  <RuntimeDossierDocument
+    statusLabel="Full dossier · 2 pages"
+    downloadHref="/cv-runtime-dossier.pdf"
+    downloadName="Calin_Gabriel_Runtime_Dossier_CV.pdf"
+    downloadLabel="Download dossier PDF"
+  />
+</RuntimeDossierLayout>

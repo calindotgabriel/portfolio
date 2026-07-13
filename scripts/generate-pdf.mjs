@@ -7,7 +7,7 @@ import { homedir } from "node:os";
 const DIST = resolve("dist");
 const PDF_TARGETS = [
   { route: "/resume/", filename: "cv.pdf" },
-  { route: "/resume-draft/", filename: "cv-runtime-dossier.pdf" },
+  { route: "/resume-dossier/", filename: "cv-runtime-dossier.pdf" },
 ];
 
 const cvSyncConfig = JSON.parse(readFileSync(resolve("cv-sync.config.json"), "utf8"));

@@ -6,6 +6,8 @@ export interface ResumeDraftExperience {
   start: string;
   end: string;
   highlights: string[];
+  onePageHighlights?: string[];
+  compactSummary?: string;
 }
 
 export interface ResumeDraftProof {
@@ -32,9 +34,11 @@ export interface ResumeDraftData {
   github: string;
   githubDisplay: string;
   summary: string;
+  onePageSummary: string;
   proofs: ResumeDraftProof[];
   experience: ResumeDraftExperience[];
   skills: ResumeDraftSkillGroup[];
+  onePageSkills: ResumeDraftSkillGroup[];
   education: {
     degree: string;
     institution: string;
@@ -61,6 +65,8 @@ export const resumeDraft: ResumeDraftData = {
 
   summary:
     "Senior engineer for backend-heavy product systems, based in Cluj-Napoca and open to hybrid permanent or B2B roles. I reduce delivery risk in regulated services, migrations, data-heavy APIs, testing, and performance across fintech, energy, real estate, and publishing.",
+  onePageSummary:
+    "Senior Node.js and TypeScript engineer in Cluj-Napoca, focused on backend-heavy systems across fintech, energy, real estate, and publishing. Open to hybrid permanent or long-term B2B roles, with strength in regulated services, migrations, testing, and performance.",
 
   proofs: [
     { value: "45→12m", label: "RWE export pipeline" },
@@ -81,6 +87,10 @@ export const resumeDraft: ResumeDraftData = {
         "Owned the crypto address-book backend end to end, including regulated customer-address management and validation.",
         "Strengthened service authentication and introduced backend testing patterns adopted by the team.",
       ],
+      onePageHighlights: [
+        "Built institutional crypto-custody services for banks with Fastify, GraphQL, TypeScript, AWS microservices, and serverless infrastructure.",
+        "Owned the regulated crypto address-book backend end to end; strengthened validation, service authentication, and team testing patterns.",
+      ],
     },
     {
       company: "ImmoScout24",
@@ -93,6 +103,10 @@ export const resumeDraft: ResumeDraftData = {
         "Shipped search and listing improvements inside a fully tested distributed real-estate platform.",
         "Integrated Iterable marketing automation and delivered SEO-sensitive product changes with platform teams.",
         "Worked across React, Node.js, AWS, and MongoDB while matching mature coverage and review expectations.",
+      ],
+      onePageHighlights: [
+        "Shipped search, listing, and SEO-sensitive improvements in a fully tested distributed real-estate platform.",
+        "Integrated Iterable and worked across React, Node.js, AWS, and MongoDB within mature coverage and review standards.",
       ],
     },
     {
@@ -107,6 +121,10 @@ export const resumeDraft: ResumeDraftData = {
         "Optimized MongoDB filtering for 15,000+ daily queries and improved API response times by 65%.",
         "Introduced E2E testing during migration and used Worker Pools to cut exports from 45 to 12 minutes.",
       ],
+      onePageHighlights: [
+        "Migrated Java paths to tested NestJS services and introduced E2E coverage for an energy-market data platform.",
+        "Improved APIs by 65% across 15,000+ daily queries and used Worker Pools to cut exports from 45 to 12 minutes.",
+      ],
     },
     {
       company: "Endava",
@@ -120,6 +138,8 @@ export const resumeDraft: ResumeDraftData = {
         "Delivered React submission and tracking flows for large document collections and collaborative workflows.",
         "Mentored two junior developers and shipped TypeScript checkout support for Klarna and card payments.",
       ],
+      compactSummary:
+        "Built a Node.js, AWS S3, and Lambda pipeline processing 2,000+ scientific papers daily; delivered React and TypeScript payment workflows.",
     },
     {
       company: "WIP Romania",
@@ -132,6 +152,8 @@ export const resumeDraft: ResumeDraftData = {
         "Built a MeteorJS and React mobile wallet with deposits, withdrawals, balance updates, and transaction history.",
         "Used WebSockets and reliable client state to keep concurrent account activity responsive during peak usage.",
       ],
+      compactSummary:
+        "Built a MeteorJS and React wallet with WebSockets for deposits, withdrawals, balances, and transaction history.",
     },
     {
       company: "DeverSoft",
@@ -144,6 +166,8 @@ export const resumeDraft: ResumeDraftData = {
         "Developed a restaurant-management frontend with JavaScript, Java integration, and real-time WebSocket updates.",
         "Improved everyday order, table, kitchen, and service workflows for restaurant staff.",
       ],
+      compactSummary:
+        "Developed JavaScript and Java restaurant-management workflows with real-time WebSocket updates.",
     },
   ],
 
@@ -171,6 +195,25 @@ export const resumeDraft: ResumeDraftData = {
     {
       category: "Frontend",
       items: ["React", "Redux", "Tailwind", "SEO-sensitive UI delivery"],
+    },
+  ],
+
+  onePageSkills: [
+    {
+      category: "Backend",
+      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "microservices"],
+    },
+    {
+      category: "Data & performance",
+      items: ["MongoDB", "PostgreSQL", "Redis", "query profiling", "Node profiling", "Worker Pools"],
+    },
+    {
+      category: "Cloud & delivery",
+      items: ["AWS", "Lambda", "serverless", "Docker", "CI/CD", "GitHub Actions"],
+    },
+    {
+      category: "Quality & frontend",
+      items: ["Integration testing", "E2E testing", "TDD", "code review", "React"],
     },
   ],
 
