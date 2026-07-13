@@ -28,7 +28,7 @@ import "../styles/global.css";
       name="description"
       content={metaDescription}
     />
-    <meta name="theme-color" content="#fdfbf7" />
+    <meta name="theme-color" content="#f4f7fa" />
     <script is:inline>
       (() => {
         const storageKey = "cgdev-theme";
@@ -52,7 +52,7 @@ import "../styles/global.css";
         root.style.colorScheme = theme;
 
         if (themeMeta) {
-          themeMeta.content = theme === "dark" ? "#020617" : "#fdfbf7";
+          themeMeta.content = theme === "dark" ? "#111923" : "#f4f7fa";
         }
       })();
     </script>
@@ -68,10 +68,9 @@ import "../styles/global.css";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Geologica:CRSV,SHRP,slnt,wght@0,0,-12..0,100..900&family=Martian+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/index.css" />
     <Favicons />
     <Analytics />
   </head>

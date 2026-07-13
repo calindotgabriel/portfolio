@@ -32,10 +32,10 @@
 .ed-kicker a:hover { color: var(--secondary); }
 .ed-hero h1 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 680;
   font-size: clamp(2.3rem, 6vw, 4.1rem);
   line-height: 1.0;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.04em;
   color: var(--text);
   margin: 0 0 1.4rem;
   max-width: 20ch;
@@ -84,7 +84,7 @@ a.mono-pill:hover { border-color: var(--secondary); color: var(--secondary); }
 .ed-status.is-live { color: #1f9d6b; border-color: color-mix(in srgb, #1f9d6b 42%, transparent); }
 .ed-status.is-enterprise { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 42%, transparent); }
 .ed-status.is-agency { color: var(--text-muted); }
-.ed-status.is-fintech { color: #b8860b; border-color: color-mix(in srgb, #b8860b 42%, transparent); }
+.ed-status.is-fintech { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 42%, transparent); }
 
 /* ---- Document sections ---- */
 .ed-section {
@@ -107,9 +107,9 @@ a.mono-pill:hover { border-color: var(--secondary); color: var(--secondary); }
 }
 .ed-h2 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 650;
   font-size: clamp(1.5rem, 3vw, 2.1rem);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
   line-height: 1.1;
   color: var(--text);
   margin: 0 0 1.25rem;
@@ -136,7 +136,7 @@ a.mono-pill:hover { border-color: var(--secondary); color: var(--secondary); }
 }
 .ed-card { background: var(--page-bg); padding: 1.5rem 1.6rem; }
 .ed-card-no { font-family: var(--font-mono); font-size: 0.72rem; color: var(--secondary); display: block; margin-bottom: 0.7rem; }
-.ed-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.18rem; color: var(--text); margin: 0 0 0.6rem; }
+.ed-card h3 { font-family: var(--font-display); font-weight: 650; font-size: 1.18rem; color: var(--text); margin: 0 0 0.6rem; }
 .ed-card p { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.6; color: var(--text-muted); margin: 0; }
 
 /* ---- Metric ledger ---- */
@@ -150,7 +150,7 @@ a.mono-pill:hover { border-color: var(--secondary); color: var(--secondary); }
 .ed-metric { border-top: 2px solid var(--text); padding-top: 0.85rem; }
 .ed-metric dt {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 650;
   font-size: clamp(1.9rem, 3.5vw, 2.7rem);
   line-height: 1;
   letter-spacing: -0.02em;

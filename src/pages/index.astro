@@ -8,25 +8,25 @@ const mailto = `mailto:${email}?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%
 
 const approach = [
   {
-    n: "01",
+    n: "BACKEND",
     title: "Security-critical / regulated backend",
     body: "Build bank-facing services where correctness, auth, and auditability are the product. The kind of work where a quiet bug is a headline, so it ships tested and reviewed.",
     evidence: "Bitpanda — institutional crypto-custody for banks.",
   },
   {
-    n: "02",
+    n: "MIGRATION",
     title: "Legacy → Node / NestJS migration",
     body: "Replace risky legacy paths with maintainable TypeScript services, using tests and narrow migration slices so the team keeps shipping while the system changes underneath them.",
     evidence: "RWE — Java→NestJS migration of an energy-market platform.",
   },
   {
-    n: "03",
+    n: "PERFORMANCE",
     title: "API, data & backend reliability",
     body: "Profile slow flows, separate real bottlenecks from guesses, fix data access, and keep production workflows responsive under actual usage rather than benchmark conditions.",
     evidence: "~65% faster APIs · exports cut from 45 min to 12.",
   },
   {
-    n: "04",
+    n: "PRODUCT",
     title: "Tested React / Node product delivery",
     body: "Ship product changes in mature systems where SEO, integrations, reviews, and coverage all decide whether a release is safe to send.",
     evidence: "ImmoScout24 — search, listing, SEO, Iterable.",
@@ -39,7 +39,7 @@ const ledger = [
   { v: "15,000+/day", k: "energy-market queries served" },
   { v: "2,000+/day", k: "documents processed (Endava pipeline)" },
   { v: "~10 yrs", k: "shipping production software" },
-  { v: "Remote · EU · B2B", k: "engagement model, available now" },
+  { v: "Cluj · hybrid · B2B", k: "engagement model, available now" },
 ];
 
 const trajectory = [
@@ -59,7 +59,7 @@ const trajectory = [
     label: "Next",
     note: "// long-term, high-context",
     title: "Teams with real system risk worth a senior.",
-    body: "Long-term remote-EU B2B contracts where engineers own outcomes, communicate plainly, and care about maintainability. The best fit is a product or platform team with enough domain complexity to reward careful work — not another seat to fill.",
+    body: "Cluj hybrid permanent roles or long-term B2B work where engineers own outcomes, communicate plainly, and care about maintainability. The best fit is a product or platform team with enough domain complexity to reward careful work — not another seat to fill.",
   },
 ];
 
@@ -73,10 +73,8 @@ const statusLabel = {
 
 <BaseLayout
   title="Calin Gabriel - Senior Node.js / TypeScript Engineer"
-  description="Senior Node.js/TypeScript engineer for fintech and regulated backend systems — crypto custody, migrations, data-heavy APIs — remote EU B2B contracts."
+  description="Senior Node.js/TypeScript engineer in Cluj-Napoca for backend-heavy fintech and regulated systems, open to hybrid permanent or long-term B2B roles."
 >
-  <div class="grain" aria-hidden="true"></div>
-
   <!-- MASTHEAD -->
   <header class="masthead" id="top">
     <div class="masthead-rule"></div>
@@ -87,10 +85,10 @@ const statusLabel = {
       </a>
 
       <nav class="mast-nav" aria-label="Sections">
-        <a href="#approach"><span class="nav-no">01</span> Approach</a>
-        <a href="#trajectory"><span class="nav-no">02</span> Trajectory</a>
-        <a href="#casefiles"><span class="nav-no">03</span> Case files</a>
-        <a href="#contact"><span class="nav-no">04</span> Contact</a>
+        <a href="#approach">System fit</a>
+        <a href="#trajectory">Career trace</a>
+        <a href="#casefiles">Case files</a>
+        <a href="#contact">Contact</a>
       </nav>
 
       <div class="mast-actions">
@@ -106,29 +104,29 @@ const statusLabel = {
   <main class="sheet">
     <!-- LEDE / HERO -->
     <section class="lede" aria-labelledby="lede-title">
-      <p class="kicker rise" style="--d:.04s">Remote-EU B2B · available immediately · est. Cluj-Napoca</p>
+      <p class="kicker">Runtime dossier · Cluj-Napoca · hybrid · available immediately</p>
 
-      <h1 class="lede-title rise" style="--d:.12s" id="lede-title">
+      <h1 class="lede-title" id="lede-title">
         Production-grade backend<br />
         for systems where a quiet<br />
-        bug becomes a <em>headline</em>.
+        bug becomes a <span>headline</span>.
       </h1>
 
       <div class="lede-columns">
-        <p class="lede-body rise" style="--d:.22s">
+        <p class="lede-body">
           I help teams reduce delivery risk in migrations, data-heavy APIs, and
           regulated platforms. Most recently that was an <strong>institutional crypto-custody
           platform for banks</strong> at Bitpanda — before it, Scout24, RWE, and a run of
           systems that had to keep working while they were rebuilt.
         </p>
-        <p class="lede-sub rise" style="--d:.3s">
-          Best fit: long-term remote-EU contracts where production quality, measured
-          performance, and plain senior communication matter more than another generic
-          full-stack profile.
+        <p class="lede-sub">
+          Best fit: Cluj hybrid or long-term B2B roles where production quality,
+          measured performance, and plain senior communication matter more than another
+          generic full-stack profile.
         </p>
       </div>
 
-      <div class="lede-cta rise" style="--d:.38s">
+      <div class="lede-cta">
         <a href={mailto} class="btn btn-ink">Book a 20-minute fit call</a>
         <a href="#approach" class="btn btn-line">What I take on</a>
         <a href="/resume" class="btn btn-line">Read the CV</a>
@@ -136,7 +134,7 @@ const statusLabel = {
     </section>
 
     <!-- LEDGER / METRICS -->
-    <section class="ledger rise" style="--d:.46s" aria-label="Track record in numbers">
+    <section class="ledger" aria-label="Track record in numbers">
       <span class="ledger-tag">Track record, abbreviated</span>
       <dl class="ledger-grid">
         {ledger.map((item) => (
@@ -151,7 +149,7 @@ const statusLabel = {
     <!-- APPROACH -->
     <section class="approach" id="approach" aria-labelledby="approach-title">
       <div class="section-head">
-        <span class="section-no">§ 01</span>
+        <span class="section-no">Operating scope</span>
         <h2 id="approach-title">Hire me for the work where the risk lives in the backend.</h2>
         <p class="section-lede">
           Not a cheap task executor. The strongest fit is a team that needs a senior who can
@@ -162,7 +160,7 @@ const statusLabel = {
 
       <ol class="approach-list">
         {approach.map((item) => (
-          <li class="approach-item reveal">
+          <li class="approach-item">
             <span class="approach-no">{item.n}</span>
             <div class="approach-body">
               <h3>{item.title}</h3>
@@ -177,13 +175,13 @@ const statusLabel = {
     <!-- TRAJECTORY -->
     <section class="trajectory" id="trajectory" aria-labelledby="trajectory-title">
       <div class="section-head">
-        <span class="section-no">§ 02</span>
+        <span class="section-no">Career trace</span>
         <h2 id="trajectory-title">A path built by shipping, not by titles.</h2>
       </div>
 
       <div class="traj-list">
         {trajectory.map((phase) => (
-          <article class="traj-item reveal">
+          <article class="traj-item">
             <div class="traj-meta">
               <span class="traj-label">{phase.label}</span>
               <span class="traj-note">{phase.note}</span>
@@ -200,14 +198,14 @@ const statusLabel = {
     <!-- CASE FILES -->
     <section class="casefiles" id="casefiles" aria-labelledby="casefiles-title">
       <div class="section-head">
-        <span class="section-no">§ 03</span>
+        <span class="section-no">Selected systems</span>
         <h2 id="casefiles-title">Case files.</h2>
         <p class="section-lede">Real problems, real decisions, real outcomes.</p>
       </div>
 
       <div class="case-list">
         {projects.map((project, i) => (
-          <a href={`/projects/${project.id}`} class="case reveal">
+          <a href={`/projects/${project.id}`} class="case">
             <span class="case-index">{String(i + 1).padStart(2, "0")}</span>
             <div class="case-main">
               <div class="case-top">
@@ -242,29 +240,17 @@ const statusLabel = {
           <div><dt>Email</dt><dd><a href={mailto}>{email}</a></dd></div>
           <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">github.com/calindotgabriel</a></dd></div>
           <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me">/calingabriel-ts-dev</a></dd></div>
-          <div><dt>Engagement</dt><dd>Remote EU · B2B · available now</dd></div>
+          <div><dt>Engagement</dt><dd>Cluj hybrid · permanent or B2B · available now</dd></div>
         </dl>
       </div>
       <p class="colophon-sign">
-        Set in Fraunces &amp; Newsreader. Built with Astro, no template.
+        Runtime Dossier system · Geologica, Atkinson &amp; Martian Mono.
         © {new Date().getFullYear()} Calin Gabriel.
       </p>
     </footer>
   </main>
 
   <style>
-    /* ---------- Atmosphere ---------- */
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.5;
-      mix-blend-mode: soft-light;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    :global([data-theme="dark"]) .grain { opacity: 0.28; mix-blend-mode: overlay; }
-
     :global(body) { padding-top: 0; }
 
     .sheet {
@@ -283,7 +269,7 @@ const statusLabel = {
       background: color-mix(in srgb, var(--page-bg) 88%, transparent);
       backdrop-filter: blur(8px) saturate(1.1);
     }
-    .masthead-rule { height: 2px; background: var(--text); }
+    .masthead-rule { height: 3px; background: var(--secondary); }
     .masthead-rule.thin { height: 1px; background: var(--border-strong); }
     .masthead-inner {
       max-width: 1180px;
@@ -295,7 +281,7 @@ const statusLabel = {
       gap: 1.5rem;
     }
     .mast-id { text-decoration: none; color: var(--text); display: flex; flex-direction: column; line-height: 1.15; }
-    .mast-name { font-family: var(--font-display); font-weight: 600; font-size: 1.18rem; letter-spacing: -0.01em; }
+    .mast-name { font-family: var(--font-display); font-weight: 670; font-size: 1.18rem; letter-spacing: -0.025em; }
     .mast-role { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
 
     .mast-nav { display: flex; gap: 1.6rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; }
@@ -303,28 +289,25 @@ const statusLabel = {
     .mast-nav a:hover { color: var(--text); }
     .mast-nav a::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 0; background: var(--secondary); transition: width 0.25s ease; }
     .mast-nav a:hover::after { width: 100%; }
-    .nav-no { color: var(--secondary); margin-right: 0.35rem; }
-
     .mast-actions { display: flex; align-items: center; gap: 1rem; }
     .mast-status { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
-    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #1f9d6b; box-shadow: 0 0 0 0 rgba(31,157,107,0.5); animation: pulse 2.4s infinite; }
-    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(31,157,107,0.5); } 70% { box-shadow: 0 0 0 7px rgba(31,157,107,0); } 100% { box-shadow: 0 0 0 0 rgba(31,157,107,0); } }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #1f9d6b; }
 
     /* ---------- Lede / hero ---------- */
-    .lede { padding: clamp(4rem, 11vw, 9rem) 0 clamp(3rem, 6vw, 5rem); }
-    .kicker { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1.6rem; }
+    .lede { padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(3rem, 6vw, 5rem); }
+    .kicker { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.075em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1.8rem; }
 
     .lede-title {
       font-family: var(--font-display);
-      font-weight: 500;
-      font-size: clamp(2.6rem, 7.2vw, 6rem);
-      line-height: 0.98;
-      letter-spacing: -0.025em;
+      font-weight: 690;
+      font-size: clamp(2.7rem, 6.8vw, 5.7rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
       color: var(--text);
       margin: 0 0 2.4rem;
-      max-width: 16ch;
+      max-width: 17ch;
     }
-    .lede-title em { font-style: italic; font-weight: 500; color: var(--secondary); }
+    .lede-title span { color: var(--secondary); }
 
     .lede-columns {
       display: grid;
@@ -333,8 +316,8 @@ const statusLabel = {
       max-width: 920px;
       margin-bottom: 2.6rem;
     }
-    .lede-body { font-size: 1.32rem; line-height: 1.55; color: var(--text); max-width: none; }
-    .lede-body strong { font-weight: 600; box-shadow: inset 0 -0.5em 0 color-mix(in srgb, var(--secondary) 16%, transparent); }
+    .lede-body { font-size: 1.18rem; line-height: 1.6; color: var(--text); max-width: none; }
+    .lede-body strong { font-weight: 700; border-bottom: 2px solid color-mix(in srgb, var(--secondary) 45%, transparent); }
     .lede-sub { font-size: 1.02rem; line-height: 1.65; color: var(--text-muted); border-left: 2px solid var(--secondary); padding-left: 1.1rem; max-width: none; }
 
     .lede-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
@@ -342,25 +325,25 @@ const statusLabel = {
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase;
-      text-decoration: none; padding: 0.85rem 1.4rem; border-radius: 2px; transition: transform 0.18s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      text-decoration: none; padding: 0.85rem 1.4rem; border-radius: 2px; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     }
-    .btn-ink { background: var(--text); color: var(--page-bg); border: 1px solid var(--text); }
-    .btn-ink:hover { transform: translateY(-2px); background: var(--secondary); border-color: var(--secondary); color: #fff; }
+    .btn-ink { background: var(--secondary); color: #fff; border: 1px solid var(--secondary); }
+    .btn-ink:hover { background: var(--text); border-color: var(--text); color: var(--page-bg); }
     .btn-line { background: transparent; color: var(--text); border: 1px solid var(--border-strong); }
-    .btn-line:hover { border-color: var(--text); transform: translateY(-2px); }
+    .btn-line:hover { border-color: var(--secondary); color: var(--secondary); }
 
     /* ---------- Ledger ---------- */
     .ledger { border-top: 1px solid var(--border-strong); border-bottom: 1px solid var(--border-strong); padding: 2.2rem 0 2.4rem; margin-bottom: clamp(3rem, 7vw, 6rem); }
-    .ledger-tag { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 1.6rem; }
-    .ledger-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 2.4rem; margin: 0; }
-    .ledger-row { border-top: 1px solid var(--border); padding-top: 0.9rem; }
-    .ledger-row dt { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1; letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem; }
-    .ledger-row dd { font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.5; color: var(--text-muted); margin: 0; }
+    .ledger-tag { display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.075em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1.2rem; }
+    .ledger-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 2.4rem; margin: 0; }
+    .ledger-row { display: grid; grid-template-columns: minmax(7.5rem, auto) 1fr; gap: 1rem; align-items: baseline; border-top: 1px solid var(--border); padding: 0.9rem 0; }
+    .ledger-row dt { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1; letter-spacing: -0.025em; color: var(--text); }
+    .ledger-row dd { font-family: var(--font-mono); font-size: 0.68rem; line-height: 1.5; color: var(--text-muted); margin: 0; }
 
     /* ---------- Section heads ---------- */
     .section-head { max-width: 760px; margin-bottom: clamp(2.2rem, 5vw, 3.4rem); }
-    .section-no { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; color: var(--secondary); display: block; margin-bottom: 1rem; }
-    .section-head h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.9rem, 4.4vw, 3.1rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1.1rem; }
+    .section-no { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.075em; text-transform: uppercase; color: var(--secondary); display: block; margin-bottom: 1rem; }
+    .section-head h2 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.9rem, 4.4vw, 3.1rem); line-height: 1.05; letter-spacing: -0.04em; color: var(--text); margin-bottom: 1.1rem; }
     .section-lede { font-size: 1.12rem; line-height: 1.6; color: var(--text-muted); }
 
     section { padding-block: clamp(3rem, 7vw, 6rem); }
@@ -368,15 +351,15 @@ const statusLabel = {
 
     /* ---------- Approach ---------- */
     .approach-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-    .approach-item { display: grid; grid-template-columns: 5.5rem 1fr; gap: clamp(1rem, 3vw, 2.5rem); padding: 2rem 0; border-top: 1px solid var(--border-strong); }
+    .approach-item { display: grid; grid-template-columns: 7rem 1fr; gap: clamp(1rem, 3vw, 2.5rem); padding: 0; border-top: 1px solid var(--border-strong); }
     .approach-item:last-child { border-bottom: 1px solid var(--border-strong); }
-    .approach-no { font-family: var(--font-mono); font-size: 0.9rem; color: var(--secondary); padding-top: 0.45rem; }
-    .approach-body h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 2.6vw, 1.85rem); letter-spacing: -0.01em; margin-bottom: 0.7rem; color: var(--text); }
+    .approach-no { font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.04em; color: var(--secondary); padding-top: 2.45rem; }
+    .approach-body { position: relative; border-left: 2px solid var(--border-strong); padding: 2rem 0 2rem clamp(1.4rem, 3vw, 2.5rem); }
+    .approach-body::before { content: ""; position: absolute; top: 2.55rem; left: -6px; width: 8px; height: 8px; border: 2px solid var(--secondary); border-radius: 50%; background: var(--page-bg); }
+    .approach-body h3 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.3rem, 2.6vw, 1.85rem); letter-spacing: -0.025em; margin-bottom: 0.7rem; color: var(--text); }
     .approach-body > p { font-size: 1.08rem; line-height: 1.62; color: var(--text-muted); max-width: 64ch; margin-bottom: 0.9rem; }
     .approach-evidence { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.5; color: var(--text); margin: 0; }
     .approach-evidence span { color: var(--secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 0.5rem; }
-    .approach-item { transition: background 0.25s ease; }
-    .approach-item:hover { background: var(--card-soft-bg); }
 
     /* ---------- Trajectory ---------- */
     .traj-list { display: grid; gap: 0; }
@@ -385,7 +368,8 @@ const statusLabel = {
     .traj-meta { display: flex; flex-direction: column; gap: 0.4rem; }
     .traj-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
     .traj-note { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-subtle); font-style: normal; }
-    .traj-content h3 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.4rem, 3vw, 2.05rem); line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 0.8rem; color: var(--text); }
+    .traj-content { border-left: 2px solid var(--border-strong); padding-left: clamp(1.2rem, 3vw, 2rem); }
+    .traj-content h3 { font-family: var(--font-display); font-weight: 630; font-size: clamp(1.4rem, 3vw, 2.05rem); line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 0.8rem; color: var(--text); }
     .traj-content p { font-size: 1.08rem; line-height: 1.68; color: var(--text-muted); max-width: 62ch; }
 
     /* ---------- Case files ---------- */
@@ -408,11 +392,11 @@ const statusLabel = {
     .case:hover::before { transform: scaleY(1); }
     .case-index { font-family: var(--font-mono); font-size: 0.82rem; color: var(--secondary); padding-top: 0.5rem; }
     .case-top { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
-    .case-top h3 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.25rem, 2.4vw, 1.7rem); letter-spacing: -0.01em; margin: 0; color: var(--text); }
+    .case-top h3 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.25rem, 2.4vw, 1.7rem); letter-spacing: -0.025em; margin: 0; color: var(--text); }
     .case-status { font-family: var(--font-mono); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.18rem 0.5rem; border-radius: 2px; border: 1px solid var(--border-strong); color: var(--text-muted); white-space: nowrap; }
     .case-status.is-live { color: #1f9d6b; border-color: color-mix(in srgb, #1f9d6b 40%, transparent); }
     .case-status.is-enterprise { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 40%, transparent); }
-    .case-status.is-fintech { color: #b8860b; border-color: color-mix(in srgb, #b8860b 40%, transparent); }
+    .case-status.is-fintech { color: var(--secondary); border-color: color-mix(in srgb, var(--secondary) 40%, transparent); }
     .case-summary { font-size: 1.04rem; line-height: 1.62; color: var(--text-muted); margin-bottom: 1rem; max-width: 56ch; }
     .case-tech { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .mono-pill { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--text); border: 1px solid var(--border-strong); border-radius: 2px; padding: 0.22rem 0.55rem; }
@@ -424,35 +408,23 @@ const statusLabel = {
 
     /* ---------- Colophon ---------- */
     .colophon { padding-bottom: 4rem; }
-    .colophon-rule { height: 2px; background: var(--text); margin-bottom: 2.6rem; }
+    .colophon-rule { height: 3px; background: var(--secondary); margin-bottom: 2.6rem; }
     .colophon-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; margin-bottom: 3rem; }
-    .colophon-lead h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1.6rem; color: var(--text); max-width: 18ch; }
+    .colophon-grid > * { min-width: 0; }
+    .colophon-lead h2 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.7rem, 3.6vw, 2.6rem); line-height: 1.06; letter-spacing: -0.035em; margin-bottom: 1.6rem; color: var(--text); max-width: 18ch; }
     .colophon-meta { display: grid; gap: 0; margin: 0; }
     .colophon-meta > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.75rem 0; border-top: 1px solid var(--border); }
     .colophon-meta dt { font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-subtle); }
-    .colophon-meta dd { margin: 0; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
+    .colophon-meta dd { min-width: 0; margin: 0; overflow-wrap: anywhere; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text); }
     .colophon-meta a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--secondary); transition: color 0.2s ease; }
     .colophon-meta a:hover { color: var(--secondary); }
     .colophon-sign { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-subtle); border-top: 1px solid var(--border); padding-top: 1.4rem; max-width: none; }
-
-    /* ---------- Entrance animations ---------- */
-    /* Above-the-fold: CSS load animation (never depends on JS) */
-    .rise { opacity: 0; animation: riseIn 0.85s cubic-bezier(0.2,0.7,0.2,1) both; animation-delay: var(--d, 0s); }
-    @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-    /* Below-the-fold: scroll-triggered. Hidden state is gated on the `js`
-       class so the content is NEVER invisible if the script fails to run. */
-    :global(html.js) .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(0.2,0.7,0.2,1), transform 0.7s cubic-bezier(0.2,0.7,0.2,1); }
-    :global(html.js) .reveal.in-view { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) {
-      .rise, .reveal { opacity: 1; transform: none; transition: none; animation: none; }
-      .status-dot { animation: none; }
-    }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
       .mast-nav { display: none; }
       .lede-columns { grid-template-columns: 1fr; }
-      .ledger-grid { grid-template-columns: repeat(2, 1fr); }
+      .ledger-grid { grid-template-columns: 1fr; }
       .traj-item { grid-template-columns: 1fr; gap: 0.6rem; }
       .traj-meta { flex-direction: row; gap: 0.9rem; align-items: baseline; }
       .colophon-grid { grid-template-columns: 1fr; }
@@ -463,61 +435,13 @@ const statusLabel = {
     @media (max-width: 540px) {
       .mast-role { display: none; }
       .ledger-grid { grid-template-columns: 1fr; }
-      .approach-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .approach-no { padding-top: 0; }
+      .approach-item { grid-template-columns: 1fr; gap: 0; }
+      .approach-no { padding: 1.4rem 0 0; }
+      .approach-body { padding-top: 1.2rem; }
+      .approach-body::before { top: 1.75rem; }
       .lede-cta { flex-direction: column; align-items: stretch; }
       .btn { justify-content: center; }
     }
   </style>
 
-  <script>
-    (() => {
-      // Mark JS as available so the reveal "hidden" state can apply.
-      // Astro bundles this as a deferred module, so the DOM is already parsed
-      // and DOMContentLoaded may have fired — run init directly in that case.
-      document.documentElement.classList.add("js");
-
-      const init = () => {
-        // Smooth scroll for in-page anchors
-        document.querySelectorAll('a[href^="#"]').forEach((link) => {
-          link.addEventListener("click", (e) => {
-            const href = link.getAttribute("href");
-            if (!href || href === "#") return;
-            const target = document.querySelector(href);
-            if (!target) return;
-            e.preventDefault();
-            const top = (target as HTMLElement).getBoundingClientRect().top + window.scrollY - 64;
-            window.scrollTo({ top, behavior: "smooth" });
-          });
-        });
-
-        // Staggered reveal on scroll
-        const reveals = document.querySelectorAll(".reveal");
-        if (!("IntersectionObserver" in window)) {
-          reveals.forEach((el) => el.classList.add("in-view"));
-          return;
-        }
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry, i) => {
-              if (entry.isIntersecting) {
-                const el = entry.target as HTMLElement;
-                el.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
-                el.classList.add("in-view");
-                io.unobserve(el);
-              }
-            });
-          },
-          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-        );
-        reveals.forEach((el) => io.observe(el));
-      };
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", init);
-      } else {
-        init();
-      }
-    })();
-  </script>
 </BaseLayout>
