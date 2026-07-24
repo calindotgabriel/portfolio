@@ -53,7 +53,7 @@ export const resumeDraft: ResumeDraftData = {
   name: "Calin Gabriel",
   title: "Senior Node.js & TypeScript Engineer",
   location: "Cluj-Napoca, Romania",
-  locationDetail: "Cluj-Napoca, Romania · hybrid",
+  locationDetail: "Romania · Remote EU",
   email: "contact@calingabriel.com",
   phone: "+40 759 407 066",
   website: "https://calingabriel.com",
@@ -64,9 +64,9 @@ export const resumeDraft: ResumeDraftData = {
   githubDisplay: "github.com/calindotgabriel",
 
   summary:
-    "Senior engineer for backend-heavy product systems, based in Cluj-Napoca and open to hybrid permanent or B2B roles. I reduce delivery risk in regulated services, migrations, data-heavy APIs, testing, and performance across fintech, energy, real estate, and publishing.",
+    "Senior Node.js and TypeScript engineer for backend-heavy product systems, available for long-term remote-EU B2B contracts. I reduce delivery risk in regulated services, migrations, data-heavy APIs, testing, and performance across fintech, energy, real estate, and publishing.",
   onePageSummary:
-    "Senior Node.js and TypeScript engineer in Cluj-Napoca, focused on backend-heavy systems across fintech, energy, real estate, and publishing. Open to hybrid permanent or long-term B2B roles, with strength in regulated services, migrations, testing, and performance.",
+    "Senior Node.js and TypeScript engineer focused on backend-heavy systems across fintech, energy, real estate, and publishing. Available for long-term remote-EU B2B contracts, with strength in regulated services, migrations, testing, and performance.",
 
   proofs: [
     { value: "45→12m", label: "RWE export pipeline" },
@@ -204,16 +204,16 @@ export const resumeDraft: ResumeDraftData = {
       items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "microservices"],
     },
     {
-      category: "Data & performance",
-      items: ["MongoDB", "PostgreSQL", "Redis", "query profiling", "Node profiling", "Worker Pools"],
+      category: "Frontend",
+      items: ["React", "Redux", "Tailwind", "SEO-sensitive UI delivery"],
     },
     {
-      category: "Cloud & delivery",
-      items: ["AWS", "Lambda", "serverless", "Docker", "CI/CD", "GitHub Actions"],
+      category: "Cloud & data",
+      items: ["AWS", "Lambda", "serverless", "MongoDB", "PostgreSQL", "Redis", "Docker"],
     },
     {
-      category: "Quality & frontend",
-      items: ["Integration testing", "E2E testing", "TDD", "code review", "React"],
+      category: "Quality & performance",
+      items: ["Integration testing", "E2E testing", "TDD", "Node profiling", "Worker Pools", "CI/CD"],
     },
   ],
 
@@ -232,9 +232,6 @@ export const resumeDraft: ResumeDraftData = {
   ],
 
   availability: [
-    "Cluj-Napoca hybrid",
-    "Permanent or long-term B2B",
-    "Available immediately",
-    "EU citizen · Europe/Bucharest",
+    "Long-term B2B contract · Remote EU / Romania · Available immediately · EU citizen · Fluent English",
   ],
 };
