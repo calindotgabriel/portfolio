@@ -6,7 +6,7 @@
 - Sample size: 2 applications.
 - Diagnosis: there is still insufficient response evidence for a canonical proposal change. The approved work addresses a public-CV consistency gap, matching-profile discoverability, and missing third-party proof.
 - Decision: keep `sales/core-proposal.md`, EXP-001, pipeline statuses, and verified metrics unchanged.
-- External-action boundary: the initial implementation made truthful local source and build changes only. Calin later explicitly authorized committing and pushing the CV changes to `main` so Vercel can deploy them to the production domain. Profile publication, external-profile login, messages, recommendation requests, applications, and all other external actions remain unauthorized.
+- External-action boundary: the initial implementation made truthful local source and build changes only. Calin later explicitly authorized committing and pushing the CV changes to `main` so the production pipeline can deploy them to the domain. Repository and domain inspection confirmed that pipeline is GitHub Pages, not Vercel. Profile publication, external-profile login, messages, recommendation requests, applications, and all other external actions remain unauthorized.
 
 ## Work Completed
 
@@ -29,7 +29,8 @@
 - Preserved the verified proof displayed by the Runtime Dossier source: RWE exports reduced from 45 to 12 minutes, API response times improved by 65%, 15,000+ daily queries, and Endava's 2,000+ scientific papers daily.
 - Reordered the one-page capability groups so Node.js, TypeScript, React, and AWS remain prominent.
 - Preserved the current tagged A4 PDF generator and Runtime Dossier layout without adding stale scaling or margin overrides.
-- Regenerated the PDF locally and prepared the scoped changes for the separately authorized Vercel production push.
+- Added print-only system font stacks to both Runtime Dossier PDF styles after the first production build exposed corrupted glyph embedding from externally loaded Google variable fonts in the GitHub Actions environment. Screen typography remains unchanged.
+- Regenerated the PDF locally and prepared the scoped changes for the separately authorized GitHub Pages production push.
 
 ### 2. Matching-profile pack
 
@@ -53,6 +54,10 @@
   - Reordered the one-page capability groups to keep Node.js, TypeScript, React, and AWS prominent.
 - `src/components/RuntimeResumeDocument.astro`
   - Replaced the hard-coded hybrid/permanent availability line with the required exact wording.
+- `src/styles/runtime-resume.css`
+  - Added a print-only Arial/Helvetica/Courier stack so the one-page CI-generated PDF does not depend on externally loaded variable-font embedding.
+- `src/styles/resume-draft.css`
+  - Applied the same print-only font reliability fix to the generated two-page Runtime Dossier PDF.
 - `sales/handoffs/2026-07-24-profile-improvements-implementation-results.md`
   - This implementation, upstream-integration, validation, publishing-authorization, and return handoff record.
 
@@ -66,7 +71,7 @@ Files intentionally not changed:
 
 - `sales/core-proposal.md`
 - `sales/pipeline.csv`
-- `src/data/resume.ts`, `src/pages/resume.astro`, `src/styles/resume.css`, `src/styles/runtime-resume.css`, and `scripts/generate-pdf.mjs`
+- `src/data/resume.ts`, `src/pages/resume.astro`, `src/styles/resume.css`, and `scripts/generate-pdf.mjs`
 - Pipeline statuses, experiment state, verified metrics, and unrelated portfolio content
 
 ## Exact Profile Copy
@@ -231,6 +236,8 @@ Send only if there is no response seven days after the initial request:
 - Verified the required availability sentence appears exactly in `src/data/resumeDraft.ts`, `src/components/RuntimeResumeDocument.astro`, and built `dist/resume/index.html`.
 - Extracted the final PDF with `pypdf` and verified, after normalizing font-related extraction spaces, the exact availability sentence, all six employers, and the retained 45-to-12-minute, 65%, 15,000+, and 2,000+ proof.
 - Verified `hybrid` and `permanent` occur zero times in the active CV source, built resume HTML, and normalized PDF text.
+- Observed the first GitHub Pages production build complete successfully, then downloaded and rendered the live PDF. Its text layer was correct, but several visible glyph groups were missing because the CI-generated PDF embedded the external variable fonts incorrectly.
+- Replaced only the print font variables with stable system stacks, rebuilt locally, and visually revalidated both the one-page CV and the first page of the two-page dossier with no missing glyphs, clipping, overlap, or page-count regression.
 - Verified the implementation did not alter `sales/core-proposal.md`, `sales/pipeline.csv`, pipeline statuses, or verified metric values.
 - Verified the matching-profile copy does not claim Python, FastAPI, Flask, Vue, GCP, Kubernetes, IaC, or commercetools experience.
 - Verified `git diff --check` after resolving the upstream architecture change.
@@ -257,7 +264,7 @@ Send only if there is no response seven days after the initial request:
 
 ## Remaining Blockers
 
-- Production publication depends on Vercel completing the deployment triggered by the authorized push to `origin/main`; the live domain must be checked after the deployment reaches a terminal state.
+- Production publication depends on GitHub Pages completing the corrective deployment triggered by the authorized push to `origin/main`; the live domain must be checked after the deployment reaches a terminal state.
 - Current Himalayas and LinkedIn field contents, dropdown options, and completion states were not inspected because external-profile access was not authorized. Calin must map the exact values to the available truthful fields.
 - A qualifying recommendation recipient has not been identified. Relationship strength, direct observation, willingness, and any confidentiality constraints remain unknown.
 - The PDF generator's optional sync destination is `~/job-search/cv.pdf`; that parent directory was absent during generation, so the confirmed artifact is `dist/cv.pdf`.
@@ -265,7 +272,7 @@ Send only if there is no response seven days after the initial request:
 
 ## Items Requiring Calin's External Action
 
-1. Review the production `https://calingabriel.com/cv.pdf` after Vercel completes the authorized deployment.
+1. Review the production `https://calingabriel.com/cv.pdf` after GitHub Pages completes the authorized deployment.
 2. Review existing Himalayas and LinkedIn fields, then manually paste or map the approved copy and publish it.
 3. Confirm every platform-visible skill remains supported by the verified CV sources; do not add an excluded technology for matching.
 4. Select one genuine former colleague using the criteria above.
@@ -280,11 +287,11 @@ Send only if there is no response seven days after the initial request:
 - Output path: `sales/handoffs/2026-07-24-profile-improvements-implementation-results.md`.
 - Verified evidence: two applications and no replies or objections; the deployed CV's hybrid/permanent inconsistency; the approved verified profile terms; detailed Bitpanda, RWE, ImmoScout24, and Endava proof; and the absence of reviewed third-party recommendations.
 - Work completed: current Runtime Dossier one-page contract CV implemented and validated against the latest `origin/main`; exact Himalayas/LinkedIn copy prepared; one-recipient recommendation selection criteria, request, follow-up, and stop rule prepared; production commit/push authorized as a later follow-up.
-- Recommendation: confirm the Vercel production deployment and live PDF, then have Calin separately publish the profile fields and run the recommendation request as a one-person 14-day experiment. Keep `sales/core-proposal.md` and EXP-001 unchanged.
+- Recommendation: confirm the GitHub Pages production deployment and live PDF, then have Calin separately publish the profile fields and run the recommendation request as a one-person 14-day experiment. Keep `sales/core-proposal.md` and EXP-001 unchanged.
 - Success measure: zero engagement-model ambiguity, at least one qualified profile-sourced signal within 14 days, and one truthful third-party recommendation within 14 days of the request.
 - Rollback condition: use a separately named employment CV if permanent/hybrid search resumes; otherwise change only after verified recruiter or matching evidence. Stop recommendation outreach after day 14 without a result.
 - Affected assets: local CV source and generated PDF; draft-only Himalayas/LinkedIn values; draft-only recommendation request.
-- Blockers or unknowns: Vercel deployment completion, current external profile field state, platform dropdown labels, recipient identity and willingness, confidentiality constraints, and future response evidence.
+- Blockers or unknowns: GitHub Pages deployment completion, current external profile field state, platform dropdown labels, recipient identity and willingness, confidentiality constraints, and future response evidence.
 - Next owner: Lead Contract Sales.
 - Due date: 2026-07-24.
 - External action: Calin explicitly authorized commit and push to `main` for the portfolio deployment. Profile publication and any message still require Calin's personal action.

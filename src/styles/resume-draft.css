@@ -610,6 +610,12 @@ a:focus-visible {
     margin: 0;
   }
 
+  :root {
+    --rd-display: Arial, Helvetica, sans-serif;
+    --rd-body: Arial, Helvetica, sans-serif;
+    --rd-mono: "Courier New", Courier, monospace;
+  }
+
   html,
   body {
     width: 210mm;
