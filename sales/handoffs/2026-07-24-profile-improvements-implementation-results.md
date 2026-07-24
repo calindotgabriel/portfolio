@@ -30,7 +30,7 @@
 - Reordered the one-page capability groups so Node.js, TypeScript, React, and AWS remain prominent.
 - Preserved the current tagged A4 PDF generator and Runtime Dossier layout without adding stale scaling or margin overrides.
 - Added print-only system font stacks to both Runtime Dossier PDF styles after the first production build exposed corrupted glyph embedding from externally loaded Google variable fonts in the GitHub Actions environment. Screen typography remains unchanged.
-- Regenerated the PDF locally and prepared the scoped changes for the separately authorized GitHub Pages production push.
+- Regenerated the PDF locally, pushed the scoped changes to `main`, and completed the GitHub Pages production deployment.
 
 ### 2. Matching-profile pack
 
@@ -238,6 +238,8 @@ Send only if there is no response seven days after the initial request:
 - Verified `hybrid` and `permanent` occur zero times in the active CV source, built resume HTML, and normalized PDF text.
 - Observed the first GitHub Pages production build complete successfully, then downloaded and rendered the live PDF. Its text layer was correct, but several visible glyph groups were missing because the CI-generated PDF embedded the external variable fonts incorrectly.
 - Replaced only the print font variables with stable system stacks, rebuilt locally, and visually revalidated both the one-page CV and the first page of the two-page dossier with no missing glyphs, clipping, overlap, or page-count regression.
+- Observed corrective GitHub Pages workflow run `30075366997` complete successfully for commit `965fec5`.
+- Downloaded the cache-busted production `https://calingabriel.com/cv.pdf`, confirmed its `Last-Modified` timestamp followed the corrective deployment, verified one tagged A4 page and the required text/proof checks, rendered it to PNG, and visually confirmed that the missing-glyph defect was resolved with no clipping or overlap.
 - Verified the implementation did not alter `sales/core-proposal.md`, `sales/pipeline.csv`, pipeline statuses, or verified metric values.
 - Verified the matching-profile copy does not claim Python, FastAPI, Flask, Vue, GCP, Kubernetes, IaC, or commercetools experience.
 - Verified `git diff --check` after resolving the upstream architecture change.
@@ -264,7 +266,7 @@ Send only if there is no response seven days after the initial request:
 
 ## Remaining Blockers
 
-- Production publication depends on GitHub Pages completing the corrective deployment triggered by the authorized push to `origin/main`; the live domain must be checked after the deployment reaches a terminal state.
+- No production deployment blocker remains: the corrective GitHub Pages deployment completed and the live PDF passed visual and text validation.
 - Current Himalayas and LinkedIn field contents, dropdown options, and completion states were not inspected because external-profile access was not authorized. Calin must map the exact values to the available truthful fields.
 - A qualifying recommendation recipient has not been identified. Relationship strength, direct observation, willingness, and any confidentiality constraints remain unknown.
 - The PDF generator's optional sync destination is `~/job-search/cv.pdf`; that parent directory was absent during generation, so the confirmed artifact is `dist/cv.pdf`.
@@ -287,11 +289,11 @@ Send only if there is no response seven days after the initial request:
 - Output path: `sales/handoffs/2026-07-24-profile-improvements-implementation-results.md`.
 - Verified evidence: two applications and no replies or objections; the deployed CV's hybrid/permanent inconsistency; the approved verified profile terms; detailed Bitpanda, RWE, ImmoScout24, and Endava proof; and the absence of reviewed third-party recommendations.
 - Work completed: current Runtime Dossier one-page contract CV implemented and validated against the latest `origin/main`; exact Himalayas/LinkedIn copy prepared; one-recipient recommendation selection criteria, request, follow-up, and stop rule prepared; production commit/push authorized as a later follow-up.
-- Recommendation: confirm the GitHub Pages production deployment and live PDF, then have Calin separately publish the profile fields and run the recommendation request as a one-person 14-day experiment. Keep `sales/core-proposal.md` and EXP-001 unchanged.
+- Recommendation: keep the validated production CV in place, then have Calin separately publish the profile fields and run the recommendation request as a one-person 14-day experiment. Keep `sales/core-proposal.md` and EXP-001 unchanged.
 - Success measure: zero engagement-model ambiguity, at least one qualified profile-sourced signal within 14 days, and one truthful third-party recommendation within 14 days of the request.
 - Rollback condition: use a separately named employment CV if permanent/hybrid search resumes; otherwise change only after verified recruiter or matching evidence. Stop recommendation outreach after day 14 without a result.
 - Affected assets: local CV source and generated PDF; draft-only Himalayas/LinkedIn values; draft-only recommendation request.
-- Blockers or unknowns: GitHub Pages deployment completion, current external profile field state, platform dropdown labels, recipient identity and willingness, confidentiality constraints, and future response evidence.
+- Blockers or unknowns: current external profile field state, platform dropdown labels, recipient identity and willingness, confidentiality constraints, and future response evidence.
 - Next owner: Lead Contract Sales.
 - Due date: 2026-07-24.
 - External action: Calin explicitly authorized commit and push to `main` for the portfolio deployment. Profile publication and any message still require Calin's personal action.
