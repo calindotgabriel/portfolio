@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contract Proof Strategist"
+  short_description: "Improve proposals and supporting proof"
+  default_prompt: "Use $strengthen-contract-proof to turn recent sales feedback into one evidence-based proposal improvement."

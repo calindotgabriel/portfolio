@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contract Opportunity Closer"
+  short_description: "Prepare interviews and protect contract value"
+  default_prompt: "Use $close-contract-opportunity to prepare this opportunity’s interview and negotiation plan."

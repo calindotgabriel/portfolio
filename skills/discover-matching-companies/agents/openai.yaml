@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contract Company Scout"
+  short_description: "Find and score matching EU contract targets"
+  default_prompt: "Use $discover-matching-companies to find and score today’s best matching contract companies."

@@ -50,8 +50,8 @@ export const resume: ResumeData = {
 
   summary: [
     "Senior Node.js/TypeScript engineer for fintech and regulated backend systems — custody, payments, and data-heavy platforms — available for remote EU B2B contracts and long-term product engagements.",
-    "Most recently Senior Backend Developer at Bitpanda, building an institutional crypto-custody platform for banks on Fastify, GraphQL and AWS serverless.",
-    "I help teams reduce delivery risk in migrations, data-heavy APIs, integrations, and tested React/Node systems, with measured work across fintech/custody, energy, real estate, and publishing platforms.",
+    "Most recently Senior Backend Developer at Bitpanda, building application-layer services for an institutional digital-asset custody platform for banks on Fastify, GraphQL and AWS serverless.",
+    "I help teams reduce delivery risk in migrations, data-heavy APIs, integrations, and reliability-minded distributed systems, with measured work across fintech/custody, energy, real estate, and publishing platforms.",
     "Recent proof includes cutting RWE exports from 45 minutes to 12, improving API response times by 65%, and shipping inside ImmoScout24's fully tested distributed platform.",
   ],
 
@@ -71,7 +71,7 @@ export const resume: ResumeData = {
       role: "Senior Backend Developer",
       period: "Sep 2025 - Jun 2026",
       highlights: [
-        "Built the backend of an institutional crypto-custody platform for banks using Fastify, GraphQL, and TypeScript on AWS microservices and serverless",
+        "Built application-layer backend features supporting a blockchain-integrated institutional crypto-custody platform for banks using Fastify, GraphQL, and TypeScript on AWS microservices and serverless",
         "Owned the crypto address-book feature end-to-end — designed, built, and shipped the backend for managing and validating customer crypto addresses in a regulated custody environment",
         "Strengthened authentication across services and introduced new backend testing patterns adopted by the team",
         "Collaborated in a cross-functional team of 3 backend and 4 frontend engineers, a designer, and a product owner",
@@ -98,7 +98,7 @@ export const resume: ResumeData = {
         "Helped migrate legacy Java components toward NestJS services for an energy-market data platform, improving maintainability for a small delivery team",
         "Built and optimized MongoDB-backed data filtering for 15,000+ daily energy market queries",
         "Introduced e2e testing practices early in the migration so replacement work could be shipped with confidence",
-        "Implemented parallel processing with Worker Pools for large dataset operations, reducing data export time from 45 minutes to 12 minutes",
+        "Implemented Node.js Worker Pools for CPU-heavy export processing, reducing data export time from 45 minutes to 12 minutes while keeping API work responsive",
         "Improved API response times by 65% through microservices architecture, enabling faster energy trading operations and better user experience",
         "Collaborated with 4-person development team and provided technical guidance on Node.js architecture decisions",
       ],
@@ -156,7 +156,7 @@ export const resume: ResumeData = {
     },
     {
       category: "Backend",
-      items: ["Node.js", "TypeScript", "NestJS", "Fastify", "GraphQL", "API design"],
+      items: ["Node.js", "TypeScript", "NestJS", "Fastify", "GraphQL", "API design", "Distributed systems"],
     },
     {
       category: "Databases",
@@ -164,7 +164,7 @@ export const resume: ResumeData = {
     },
     {
       category: "Cloud & DevOps",
-      items: ["AWS", "Azure", "Docker", "CI/CD", "GitHub Actions"],
+      items: ["AWS", "AWS Lambda", "AWS serverless", "Azure", "Docker", "CI/CD", "GitHub Actions"],
     },
     {
       category: "Testing & Quality",
@@ -172,7 +172,11 @@ export const resume: ResumeData = {
     },
     {
       category: "Performance",
-      items: ["Node profiling", "Worker threads", "Worker pools", "Export pipelines", "API latency"],
+      items: ["Node profiling", "API profiling", "Worker threads", "Worker pools", "Export pipelines", "API latency"],
+    },
+    {
+      category: "Domain",
+      items: ["Digital-asset custody", "Crypto-address management", "Crypto-address validation"],
     },
   ],
 

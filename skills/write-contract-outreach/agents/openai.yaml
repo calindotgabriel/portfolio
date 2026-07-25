@@ -1,0 +1,4 @@
+interface:
+  display_name: "Contract Outreach Writer"
+  short_description: "Draft tailored outreach and follow-ups"
+  default_prompt: "Use $write-contract-outreach to draft outreach for the approved company angle."

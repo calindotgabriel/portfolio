@@ -1,0 +1,4 @@
+interface:
+  display_name: "Company Entry Strategist"
+  short_description: "Develop one evidence-backed company angle"
+  default_prompt: "Use $develop-entry-angle to create the strongest truthful entry angle for this company."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lead Contract Sales"
+  short_description: "Run the daily contract acquisition system"
+  default_prompt: "Use $lead-contract-sales to review the pipeline and issue today’s prioritized role handoffs."

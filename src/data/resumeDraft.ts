@@ -64,9 +64,9 @@ export const resumeDraft: ResumeDraftData = {
   githubDisplay: "github.com/calindotgabriel",
 
   summary:
-    "Senior Node.js and TypeScript engineer for backend-heavy product systems, available for long-term remote-EU B2B contracts. I reduce delivery risk in regulated services, migrations, data-heavy APIs, testing, and performance across fintech, energy, real estate, and publishing.",
+    "Senior Node.js and TypeScript engineer for backend-heavy product systems, available for long-term remote-EU B2B contracts. I reduce delivery risk in application-layer digital-asset custody services, migrations, data-heavy APIs, and reliability-minded distributed systems.",
   onePageSummary:
-    "Senior Node.js and TypeScript engineer focused on backend-heavy systems across fintech, energy, real estate, and publishing. Available for long-term remote-EU B2B contracts, with strength in regulated services, migrations, testing, and performance.",
+    "Senior Node.js and TypeScript engineer focused on application-layer digital-asset custody, data-heavy APIs, and reliability-minded distributed systems. Available for long-term remote-EU B2B contracts.",
 
   proofs: [
     { value: "45→12m", label: "RWE export pipeline" },
@@ -83,12 +83,12 @@ export const resumeDraft: ResumeDraftData = {
       start: "2025-09",
       end: "2026-06",
       highlights: [
-        "Built institutional crypto-custody services for banks with Fastify, GraphQL, TypeScript, AWS microservices, and serverless infrastructure.",
+        "Built application-layer services for an institutional digital-asset custody platform for banks with Fastify, GraphQL, TypeScript, AWS microservices, and serverless infrastructure.",
         "Owned the crypto address-book backend end to end, including regulated customer-address management and validation.",
         "Strengthened service authentication and introduced backend testing patterns adopted by the team.",
       ],
       onePageHighlights: [
-        "Built institutional crypto-custody services for banks with Fastify, GraphQL, TypeScript, AWS microservices, and serverless infrastructure.",
+        "Built application-layer services for an institutional digital-asset custody platform for banks using Fastify, GraphQL, TypeScript, and AWS serverless.",
         "Owned the regulated crypto address-book backend end to end; strengthened validation, service authentication, and team testing patterns.",
       ],
     },
@@ -119,11 +119,11 @@ export const resumeDraft: ResumeDraftData = {
       highlights: [
         "Migrated legacy Java paths toward tested NestJS services for an energy-market data platform.",
         "Optimized MongoDB filtering for 15,000+ daily queries and improved API response times by 65%.",
-        "Introduced E2E testing during migration and used Worker Pools to cut exports from 45 to 12 minutes.",
+        "Introduced E2E testing and implemented Node.js Worker Pools for CPU-heavy exports, cutting processing from 45 to 12 minutes while keeping API work responsive.",
       ],
       onePageHighlights: [
         "Migrated Java paths to tested NestJS services and introduced E2E coverage for an energy-market data platform.",
-        "Improved APIs by 65% across 15,000+ daily queries and used Worker Pools to cut exports from 45 to 12 minutes.",
+        "Improved APIs by 65% across 15,000+ daily queries; Worker Pools cut exports from 45 to 12 minutes while keeping API work responsive.",
       ],
     },
     {
@@ -174,7 +174,7 @@ export const resumeDraft: ResumeDraftData = {
   skills: [
     {
       category: "Backend",
-      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "microservices"],
+      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "microservices", "distributed systems"],
     },
     {
       category: "Data",
@@ -190,18 +190,22 @@ export const resumeDraft: ResumeDraftData = {
     },
     {
       category: "Performance",
-      items: ["Node profiling", "Worker Threads", "Worker Pools", "export pipelines", "API latency"],
+      items: ["Node profiling", "API profiling", "Worker Threads", "Worker Pools", "export pipelines", "API latency"],
     },
     {
       category: "Frontend",
       items: ["React", "Redux", "Tailwind", "SEO-sensitive UI delivery"],
+    },
+    {
+      category: "Domain",
+      items: ["Digital-asset custody", "Crypto-address management", "Crypto-address validation"],
     },
   ],
 
   onePageSkills: [
     {
       category: "Backend",
-      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "microservices"],
+      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "distributed systems"],
     },
     {
       category: "Frontend",
@@ -213,7 +217,7 @@ export const resumeDraft: ResumeDraftData = {
     },
     {
       category: "Quality & performance",
-      items: ["Integration testing", "E2E testing", "TDD", "Node profiling", "Worker Pools", "CI/CD"],
+      items: ["Integration testing", "E2E testing", "TDD", "API profiling", "Worker Pools", "CI/CD"],
     },
   ],
 
