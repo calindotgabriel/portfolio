@@ -29,13 +29,13 @@ const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
   <section class="runtime-page" aria-labelledby="runtime-name">
     <header class="runtime-header">
       <div>
-        <p class="runtime-eyebrow">Runtime dossier · Cluj-Napoca · since 2013</p>
-        <h1 id="runtime-name">Calin<br />Gabriel</h1>
+        <p class="runtime-eyebrow">Curriculum vitae · July 2026</p>
+        <h1 id="runtime-name">Calin Gabriel</h1>
         <p class="runtime-title">{resumeDraft.title}</p>
       </div>
 
       <address class="runtime-contact">
-        <p><span>Location</span>{resumeDraft.locationDetail}</p>
+        <p><span>Based in</span>{resumeDraft.locationDetail}</p>
         <p><span>Email</span><a href={`mailto:${resumeDraft.email}`}>{resumeDraft.email}</a></p>
         <p><span>Phone</span><a href={`tel:${resumeDraft.phone.replace(/\s/g, "")}`}>{resumeDraft.phone}</a></p>
         <p>
@@ -51,10 +51,19 @@ const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
 
     <p class="runtime-summary">{resumeDraft.onePageSummary}</p>
 
+    <dl class="runtime-proof-grid" aria-label="Selected results">
+      {resumeDraft.proofs.map((proof) => (
+        <div>
+          <dt>{proof.value}</dt>
+          <dd>{proof.label}</dd>
+        </div>
+      ))}
+    </dl>
+
     <section class="runtime-career" aria-labelledby="career-runtime">
       <div class="runtime-career-head">
-        <h2 id="career-runtime">Career runtime</h2>
-        <p>Production systems · newest first</p>
+        <h2 id="career-runtime">Work experience</h2>
+        <p>Most recent first</p>
       </div>
 
       <div class="runtime-timeline">
@@ -75,7 +84,7 @@ const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
         ))}
 
         <div class="runtime-phase" aria-hidden="true">
-          <p>Earlier system record</p>
+          <p>Earlier experience</p>
         </div>
 
         {earlierExperience.map((job) => (
@@ -98,7 +107,7 @@ const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
 
     <section class="runtime-capabilities" aria-labelledby="engineering-capability">
       <div>
-        <h2 id="engineering-capability">Engineering capability</h2>
+        <h2 id="engineering-capability">Technical skills</h2>
         <dl class="runtime-skills">
           {resumeDraft.onePageSkills.map((group) => (
             <>
@@ -121,12 +130,12 @@ const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
         <dd>{resumeDraft.languages.map((language) => `${language.language} · ${language.level}`).join(" · ")}</dd>
 
         <dt>Availability</dt>
-        <dd>Long-term B2B contract · Remote EU / Romania · Available immediately · EU citizen · Fluent English</dd>
+        <dd>{resumeDraft.availability[0]}</dd>
       </dl>
     </section>
 
     <footer class="runtime-footer">
-      <span>Calin Gabriel · Senior Node.js &amp; TypeScript Engineer</span>
+      <span>Calin Gabriel · Curriculum vitae</span>
       <span>01 / 01</span>
     </footer>
   </section>
