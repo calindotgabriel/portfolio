@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /resume-dossier
+Disallow: /resume-draft
+Disallow: /cv-runtime-dossier.pdf
 
 Sitemap: https://calingabriel.com/sitemap.xml
 
-# SEO recommendations
-# Allow all main pages and projects
-# Disallow sensitive or admin paths if any (none present)
+# Keep the unlisted full CV dossier outside search crawling.
