@@ -38,8 +38,6 @@ export const projects: Project[] = [
       "Shipped search/listing, SEO, and Iterable integration work inside a fully tested distributed platform where release quality and production safety mattered.",
     tech: ["React", "Node.js", "AWS", "MongoDB"],
     status: "LIVE",
-    github: "https://github.com/calindotgabriel/immobile-search",
-    githubLabel: "Demo repo",
     results: [
       "Contributed to improved SEO performance",
       "Supported engagement gains in listing flows",
@@ -56,8 +54,6 @@ export const projects: Project[] = [
       "Reduced delivery risk in a Java-to-NestJS migration, profiled MongoDB-heavy data flows, and moved export processing into worker pools.",
     tech: ["NestJS", "MongoDB", "Docker", "TypeScript"],
     status: "ENTERPRISE",
-    github: "https://github.com/calindotgabriel/energy-reporter",
-    githubLabel: "Demo repo",
     results: [
       "65% faster APIs",
       "Exports: 45min to 12min",

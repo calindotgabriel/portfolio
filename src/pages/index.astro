@@ -6,31 +6,31 @@ import portrait from "../assets/calin-gabriel-portrait.jpg";
 import { projects } from "../data/projects";
 
 const email = "contact@calingabriel.com";
-const mailto = `mailto:${email}?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20fintech%20%26%20regulated%20systems%20contract`;
+const mailto = `mailto:${email}?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20contract%20or%20permanent`;
 
 const approach = [
   {
     n: "BACKEND",
-    title: "Security-critical / regulated backend",
-    body: "Build bank-facing services where correctness, auth, and auditability are the product. The kind of work where a quiet bug is a headline, so it ships tested and reviewed.",
+    title: "Regulated, security-critical backend",
+    body: "Bank-facing services where a wrong answer costs somebody real money. I owned the crypto address book at Bitpanda, and in custody a bad address quietly accepted means funds nobody gets back. So I built it backwards from what must never happen.",
     evidence: "Bitpanda — institutional crypto-custody for banks.",
   },
   {
     n: "MIGRATION",
-    title: "Legacy → Node / NestJS migration",
-    body: "Replace risky legacy paths with maintainable TypeScript services, using tests and narrow migration slices so the team keeps shipping while the system changes underneath them.",
-    evidence: "RWE — Java→NestJS migration of an energy-market platform.",
+    title: "Legacy into Node / NestJS",
+    body: "Old service, small team, no appetite for a rewrite that stops everything. At RWE we moved it across in slices with tests around each one, so delivery kept going while the ground shifted underneath.",
+    evidence: "RWE — Java to NestJS on an energy-market platform.",
   },
   {
     n: "PERFORMANCE",
-    title: "API, data & backend reliability",
-    body: "Profile slow flows, separate real bottlenecks from guesses, fix data access, and keep production workflows responsive under actual usage rather than benchmark conditions.",
-    evidence: "~65% faster APIs · exports cut from 45 min to 12.",
+    title: "APIs, data access, and things that got slow",
+    body: "I measure before I touch anything. Most slow systems turn out to be slow in one place nobody has looked at yet, and a week spent guessing is a week gone. The export figure below came from profiling first and fixing what the profile actually showed.",
+    evidence: "About 65% faster APIs. Exports from 45 minutes down to 12.",
   },
   {
     n: "PRODUCT",
-    title: "Tested React / Node product delivery",
-    body: "Ship product changes in mature systems where SEO, integrations, reviews, and coverage all decide whether a release is safe to send.",
+    title: "Product work in systems that already have standards",
+    body: "Joining a team that has its own conventions and becoming useful inside them quickly. No rewrite proposals in week one. I'd rather learn why it was built that way first.",
     evidence: "ImmoScout24 — search, listing, SEO, Iterable.",
   },
 ];
@@ -40,28 +40,28 @@ const ledger = [
   { v: "≈ 65%", k: "faster API responses after migration" },
   { v: "15,000+/day", k: "energy-market queries served" },
   { v: "2,000+/day", k: "documents processed (Endava pipeline)" },
-  { v: "~10 yrs", k: "shipping production software" },
-  { v: "Cluj · hybrid · B2B", k: "engagement model, available now" },
+  { v: "Since 2013", k: "shipping production software" },
+  { v: "Contract or permanent", k: "remote EU or Cluj, free now" },
 ];
 
 const trajectory = [
   {
     label: "Origin",
     note: "// since 2013",
-    title: "Started by shipping, then formalised it.",
-    body: "At 16 I won an internship contest in Galați and turned it into my first software job — Linux and web development on real work. Then Computer Science at Babeș-Bolyai in Cluj-Napoca put formal structure around habits I'd already built by breaking things in production.",
+    title: "Started by shipping, formalised it later.",
+    body: "At 16 I won an internship contest in Galați and turned it into my first software job, doing Linux and web work on things people actually used. Computer Science at Babeș-Bolyai came after, and mostly it put names to habits I'd picked up by breaking things in production and having to fix them.",
   },
   {
     label: "Present",
     note: "// measured, not guessed",
-    title: "Senior Node.js / TypeScript across regulated domains.",
-    body: "I've worked across fintech and crypto-custody, energy, real estate, e-commerce and publishing — including DAX-listed companies, a regulated custody platform for banks, and major European platforms. The strongest work is backend-heavy: services, data access, testing, integrations, and performance that's profiled rather than assumed.",
+    title: "The one who takes the difficult piece.",
+    body: "Fintech and custody, energy, real estate, publishing. A DAX-listed energy company, a custody platform for banks, one of Austria's biggest property portals. The pattern is usually the same. I get handed the part everyone has been working around, and I stay on it until it's genuinely done rather than technically closed.",
   },
   {
     label: "Next",
     note: "// long-term, high-context",
-    title: "Teams with real system risk worth a senior.",
-    body: "Cluj hybrid permanent roles or long-term B2B work where engineers own outcomes, communicate plainly, and care about maintainability. The best fit is a product or platform team with enough domain complexity to reward careful work — not another seat to fill.",
+    title: "Somewhere the problems are genuinely hard.",
+    body: "Remote EU or Cluj, contract or permanent. The shape matters less than whether the problems are hard enough to be worth doing properly. What I want is a product or platform team with real domain complexity, where people talk to each other and own what they build.",
   },
 ];
 
@@ -75,7 +75,7 @@ const statusLabel = {
 
 <BaseLayout
   title="Calin Gabriel - Senior Node.js / TypeScript Engineer"
-  description="Senior Node.js/TypeScript engineer in Cluj-Napoca for backend-heavy fintech and regulated systems, open to hybrid permanent or long-term B2B roles."
+  description="Senior Node.js/TypeScript engineer in Cluj-Napoca. Backend-heavy work in fintech, regulated systems, migrations and performance. Open to permanent roles or long-term B2B contracts, remote EU or Cluj."
 >
   <!-- MASTHEAD -->
   <header class="masthead" id="top">
@@ -120,26 +120,27 @@ const statusLabel = {
             fetchpriority="high"
           />
         </span>
-        <p class="kicker">Runtime dossier · Cluj-Napoca · hybrid · available immediately</p>
+        <p class="kicker">Cluj-Napoca · remote EU or hybrid · contract or permanent</p>
       </div>
 
       <h1 class="lede-title" id="lede-title">
-        Production-grade backend<br />
-        for systems where a quiet<br />
-        bug becomes a <span>headline</span>.
+        Give me the part of the<br />
+        system nobody wants<br />
+        to <span>touch</span>.
       </h1>
 
       <div class="lede-columns">
         <p class="lede-body">
-          I help teams reduce delivery risk in migrations, data-heavy APIs, and
-          regulated platforms. Most recently that was an <strong>institutional crypto-custody
-          platform for banks</strong> at Bitpanda — before it, Scout24, RWE, and a run of
-          systems that had to keep working while they were rebuilt.
+          Usually that's a migration nobody can afford to let stall, or an API that got
+          slow and nobody's sure where. Sometimes it's a regulated backend where the edge
+          cases are the actual product. Most recently that was an
+          <strong>institutional crypto-custody platform for banks</strong> at Bitpanda, and
+          before it ImmoScout24, RWE, and a run of systems that had to keep working while
+          they were rebuilt underneath.
         </p>
         <p class="lede-sub">
-          Best fit: Cluj hybrid or long-term B2B roles where production quality,
-          measured performance, and plain senior communication matter more than another
-          generic full-stack profile.
+          I ask a lot of questions in the first week and considerably fewer after that.
+          Then I take the difficult thing off your plate, and it ships tested.
         </p>
       </div>
 
@@ -169,9 +170,9 @@ const statusLabel = {
         <span class="section-no">Operating scope</span>
         <h2 id="approach-title">Hire me for the work where the risk lives in the backend.</h2>
         <p class="section-lede">
-          Not a cheap task executor. The strongest fit is a team that needs a senior who can
-          enter an existing system, understand the domain, and move important work without
-          adding chaos.
+          The best fit is usually a problem that's been sitting on the board a while:
+          awkward, a little risky, never quite this quarter's priority. That's the work
+          I want.
         </p>
       </div>
 
@@ -193,7 +194,7 @@ const statusLabel = {
     <section class="trajectory" id="trajectory" aria-labelledby="trajectory-title">
       <div class="section-head">
         <span class="section-no">Career trace</span>
-        <h2 id="trajectory-title">A path built by shipping, not by titles.</h2>
+        <h2 id="trajectory-title">A path built by shipping things.</h2>
       </div>
 
       <div class="traj-list">
@@ -217,7 +218,7 @@ const statusLabel = {
       <div class="section-head">
         <span class="section-no">Selected systems</span>
         <h2 id="casefiles-title">Case files.</h2>
-        <p class="section-lede">Real problems, real decisions, real outcomes.</p>
+        <p class="section-lede">Four systems, what was actually wrong with each, and what changed.</p>
       </div>
 
       <div class="case-list">
@@ -250,14 +251,14 @@ const statusLabel = {
       <div class="colophon-rule"></div>
       <div class="colophon-grid">
         <div class="colophon-lead">
-          <h2>Let's talk about the system you can't afford to break.</h2>
+          <h2>Tell me about the thing that's been sitting on your board.</h2>
           <a href={mailto} class="btn btn-ink">Book a 20-minute fit call</a>
         </div>
         <dl class="colophon-meta">
           <div><dt>Email</dt><dd><a href={mailto}>{email}</a></dd></div>
           <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">github.com/calindotgabriel</a></dd></div>
           <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me">/calingabriel-ts-dev</a></dd></div>
-          <div><dt>Engagement</dt><dd>Cluj hybrid · permanent or B2B · available now</dd></div>
+          <div><dt>Engagement</dt><dd>Permanent or B2B · remote EU or Cluj · available now</dd></div>
         </dl>
       </div>
       <p class="colophon-sign">
