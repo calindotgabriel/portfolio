@@ -7,7 +7,7 @@
 - Pipeline status: contacted
 - Fit score: 88/100
 - Assigned role chat: Lead Contract Sales
-- Last verified: 2026-07-23
+- Last verified: 2026-07-27 public listing re-observation; user-confirmed application event remains dated 2026-07-23
 
 ## Score Breakdown
 
@@ -23,6 +23,7 @@
 
 ## Verified Facts
 
+- The public listing still presented an Apply path and its 2026-08-14 deadline when re-observed by Lead Contract Sales on 2026-07-27. This does not establish Calin's current reply state.
 - [The direct listing](https://himalayas.app/companies/data-edge/jobs/react-typescript-developer-with-python) was posted 2026-06-15, closes 2026-08-14, and was observed 2026-07-23.
 - Contract type is B2B through PFA/SRL; work model is Remote EU/Romania; period is 12 months; workload is full time.
 - Location requirement and hiring timezone identify Romania.

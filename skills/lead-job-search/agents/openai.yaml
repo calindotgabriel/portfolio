@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lead Job Search"
+  short_description: "Run the daily dual-track job search system"
+  default_prompt: "Use $lead-job-search to review the pipeline across both tracks and issue today's prioritized role handoffs."

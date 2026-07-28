@@ -4,10 +4,10 @@
 
 - Company URL: https://tether.to/
 - Segment: Blockchain integrations and digital-asset infrastructure
-- Pipeline status: contacted
+- Pipeline status: rejected
 - Fit score: 84/100
 - Assigned role chat: Lead Contract Sales
-- Last verified: 2026-07-24
+- Last verified: 2026-07-27
 - Activation note: User-initiated application already completed. Romania eligibility remains unresolved, so this account is tracked but is not retroactively counted as a hard-gate-qualified scout target.
 
 ## Score Breakdown
@@ -24,6 +24,9 @@
 
 ## Verified Facts
 
+- Calin confirmed that Tether rejected the application by email on the morning of 2026-07-27.
+- Evidence for the outcome: **Calin-confirmed rejection based on email received 2026-07-27**.
+- No rejection reason was provided to this sales system.
 - [The first-party application](https://tether.recruitee.com/o/backend-developer-blockchain-integrations-malaysia/c/new) is for `Backend Developer - Blockchain Integrations (100% remote)`.
 - The application asks about Node.js experience, crypto-wallet or blockchain-application integrations, genuine interest in Tether's Hyperswarm P2P framework, working country, and expected annual salary in USD.
 - Calin confirmed on 2026-07-24 that he submitted the application.
@@ -38,21 +41,20 @@
 
 ## Unknowns and Disqualifiers
 
-- Unknown: Whether Romania is an eligible working and contracting country for this listing.
-- Unknown: Employment versus B2B structure, employer entity, total compensation, benefits, payroll/tax treatment, and whether $120,000 is within budget.
-- Unknown: Recruiter, hiring manager, interview stages, technical assessment, start date, and decision timeline.
-- Unknown: Weighting of direct P2P/Hyperswarm experience versus adjacent distributed-backend experience.
-- Disqualifier: Romania ineligibility or effective B2B compensation below the €40/hour floor.
+- Confirmed outcome: The application was rejected.
+- Unknown: The rejection reason. Do not infer one from geography, compensation, or Calin's lack of direct production P2P/Hyperswarm work.
+- Historical unknowns that were never resolved: Romania eligibility; employment versus B2B structure; employer entity; compensation and benefits; recruiter or hiring manager; interview process; and weighting of direct P2P/Hyperswarm experience.
+- Duplicate-control constraint: Do not reapply to or reactivate this opportunity without materially new evidence and Lead Contract Sales review.
 
 ## Entry Strategy
 
 - Primary angle: Regulated fintech and custody — recent institutional crypto-custody backend work for banks.
-- Why now: User-confirmed application to a current first-party blockchain-integration role.
+- Why now: Historical only; the application is now rejected and the opportunity is inactive for Calin.
 - Closest proof: Bitpanda address validation, authentication, testing, and backend ownership in a regulated custody environment.
 - Supporting proof: WIP wallet deposits, withdrawals, balances, transaction history, and real-time WebSocket delivery.
 - Stakeholder or contact path: First-party application channel; no named recruiter verified.
 - Likely objection: No direct production P2P/Hyperswarm implementation.
-- CTA: None until Tether replies. Do not submit another application or seek parallel contacts for the same role.
+- CTA: None. Do not follow up, reapply, or seek parallel contacts for the same role.
 
 ## Submitted Answer Summary
 
@@ -66,23 +68,23 @@
 ## Conversation and Outcome
 
 - 2026-07-24 — Calin confirmed the Tether application was submitted — no reply reported — Lead Contract Sales to monitor until the 2026-07-31 checkpoint.
+- 2026-07-27 — Calin confirmed that Tether rejected the application by email that morning — evidence: “Calin-confirmed rejection based on email received 2026-07-27” — rejection reason unknown — account moved to `rejected`; no follow-up or reapplication.
 
 ## Role Routing
 
-- Before reply: `lead-contract-sales` owns status, duplicate prevention, and the dated checkpoint.
-- On reply: move status to `replied` and route to `close-contract-opportunity` for recruiter-screen, P2P/Hyperswarm assessment, compensation, country eligibility, and interview preparation.
-- Reusable proof changes: `strengthen-contract-proof` may review only after actual response, objection, or interview evidence.
-- Follow-up copy: `write-contract-outreach` may draft only after the lead verifies a legitimate reply or follow-up channel.
+- `lead-contract-sales` owns the rejected state and duplicate suppression.
+- Do not route this account to entry-angle, outreach, closing, or proof specialists based on the rejection alone.
+- Reusable proof changes require specific evidence beyond the bare rejection event; none is available.
 
 ## Handoff
 
-- Objective: Track Calin's submitted Tether Backend Developer - Blockchain Integrations application and make the next role-agent routing explicit.
+- Objective: Preserve the confirmed rejection outcome for Calin's Tether Backend Developer - Blockchain Integrations application and prevent duplicate work.
 - Inputs and file paths: `sales/operating-system.md`; `sales/core-proposal.md`; `sales/pipeline.csv`; `src/data/resume.ts`; this conversation; Tether first-party application linked above.
 - Output path: `sales/accounts/tether.md`.
-- Verified evidence: Calin confirmed submission on 2026-07-24; the application targeted Node.js, blockchain-wallet integrations, P2P/Hyperswarm interest, country, and USD annual compensation.
-- Required deliverable: Application record, truthful answer summary, score, evidence separation, duplicate control, checkpoint, and role routing.
-- Recommendation: Wait for a response. If one arrives, route immediately to the closer and qualify Romania eligibility and compensation before advancing.
-- Blockers or unknowns: Romania eligibility, employment/contract structure, employer budget, P2P weighting, recruiter, interview process, and response timing.
+- Verified evidence: Calin confirmed submission on 2026-07-24 and confirmed rejection based on an email received 2026-07-27.
+- Required deliverable: Rejection record, truthful evidence separation, unknown-reason protection, and duplicate suppression.
+- Recommendation: Keep the account rejected. Do not infer the reason, follow up, or reapply.
+- Blockers or unknowns: Rejection reason and all previously unresolved eligibility, commercial, and process details.
 - Next owner: Lead Contract Sales.
-- Due date: 2026-07-31 checkpoint unless a reply arrives sooner.
+- Due date: None; terminal rejected state unless Calin supplies materially new evidence.
 - External action: Draft only; Calin approval required.

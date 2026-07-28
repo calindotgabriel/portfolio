@@ -1,0 +1,4 @@
+interface:
+  display_name: "Recover Verified Experience"
+  short_description: "Reconstruct missing CV history and reconcile span claims"
+  default_prompt: "Use $recover-verified-experience to recover the missing early experience and make the CV's span claim match its own experience data."

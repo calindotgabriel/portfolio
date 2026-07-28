@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write In Calin's Voice"
+  short_description: "Keep all copy human-sounding and consistent"
+  default_prompt: "Use $write-in-calins-voice to rewrite this copy so it reads as human-written and matches the rest of the assets."

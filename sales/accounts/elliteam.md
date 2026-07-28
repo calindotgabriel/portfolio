@@ -4,10 +4,10 @@
 
 - Company URL: https://elliteam.com/
 - Segment: International e-commerce and headless-commerce delivery
-- Pipeline status: qualified
+- Pipeline status: contacted
 - Fit score: 92/100
 - Assigned role chat: Lead Contract Sales
-- Last verified: 2026-07-24
+- Last verified: 2026-07-27 public-post re-observation; open capacity remains unverified
 
 ## Score Breakdown
 
@@ -23,6 +23,8 @@
 
 ## Verified Facts
 
+- On 2026-07-27, the public post showed that Adeline Gentilhomme had replied one day earlier to a commenter by asking them to share an email. This is a current recruiter interaction on the role post, but it does not prove that capacity remains open for Calin.
+- The recruiter post remained publicly visible when re-observed by Lead Contract Sales on 2026-07-27, displayed approximately three weeks old, and still named an ASAP/early-July start. Public visibility does not confirm that profiles are still being accepted.
 - [Adeline Gentilhomme's public LinkedIn post](https://fr.linkedin.com/posts/adeline-gentilhomme-3b08849a_freelance-nodejs-nestjs-activity-7477629658113605632-OSmQ) was observed on 2026-07-24 and requests a senior freelance Node.js developer for an international e-commerce project.
 - The post states full remote Europe, ASAP/early-July start, eight or more years of experience, and a rate up to €380/day.
 - The stated stack is Node.js LTS, NestJS 10, commercetools, Jest/Nock, Helm/Terraform, and Azure; fluent English is explicit.
@@ -101,11 +103,109 @@
 
 ## Drafts
 
-No outreach draft created. Calin approval and a lead-controlled strategy handoff are required.
+### Application Draft Package — 2026-07-27
+
+**DRAFT — CALIN APPROVAL REQUIRED**
+
+**Send-state note:** Calin later confirmed that he had already sent an ELLITEAM message on 2026-07-27. The exact sent content, recipient, channel, CV attachment, rate statement, and delivery state were not provided. Do not treat this draft as the sent message and do not use its follow-ups until the actual sent context and reply state are known.
+
+#### Recommended Motion
+
+- Channel: Private LinkedIn message to the named recruiter, Adeline Gentilhomme, using her public role post as context.
+- Attachment: Current generated CV at `dist/cv.pdf`.
+- Purpose: Apply directly while qualifying open capacity, Romania B2B eligibility, commercetools weighting, and commercial terms.
+- Sender: Calin Gabriel. No agent may send, submit, schedule, or promise anything.
+
+#### Primary LinkedIn Application
+
+**DRAFT — CALIN APPROVAL REQUIRED**
+
+> Hi Adeline — I saw your post about the senior Node.js/NestJS freelance role for an international e-commerce project. I’m a Romania-based EU citizen available immediately for B2B work. At RWE I worked on a tested Java-to-NestJS migration, and at Endava I delivered enterprise checkout flows across Klarna and card payments. I don’t have production commercetools experience, so I’d like to confirm whether that is a strict requirement. If the role is still open and Romania contracting is eligible, I’d be glad to discuss the fit. I’ve attached my CV and included the requested details below.
+>
+> - Target TJM: €440/day for up to eight billable hours (€55/hour), VAT exclusive. I saw the published ceiling is €380/day and can discuss the engagement structure, but the effective rate must remain at least €40/hour.
+> - Email: contact@calingabriel.com
+> - Location: Romania, Europe/Bucharest
+> - Status: Freelance / B2B; EU citizen
+> - Availability: Immediate
+>
+> Thanks,
+> Calin
+
+#### Conditional Follow-Up 1
+
+Use only if Calin sends the application, no reply arrives after two business days, and the post or a legitimate recruiter path remains active.
+
+**DRAFT — CALIN APPROVAL REQUIRED**
+
+> Hi Adeline — a brief follow-up on my application for the Node.js/NestJS freelance role. My closest technical match is the tested Java-to-NestJS migration at RWE, supported by enterprise e-commerce checkout work. If the role remains open and commercetools is not a strict production-experience gate, I’d welcome a short qualification exchange about Romania B2B eligibility and the project terms. Thanks, Calin
+
+#### Conditional Follow-Up 2
+
+Use only if there is still no reply five business days after Follow-Up 1 and the role remains active. Stop after this message.
+
+**DRAFT — CALIN APPROVAL REQUIRED**
+
+> Hi Adeline — I’ll close the loop after this. If you are still considering senior Node.js/NestJS contractors for the e-commerce project, I’d be glad to discuss whether my migration, testing, and payments experience fits despite not having production commercetools work. If that requirement is strict or the role is filled, no problem. Thanks, Calin
+
+#### Attachment and Profile Checklist
+
+- [ ] Attach `dist/cv.pdf`; do not substitute an older CV without review.
+- [ ] Send from Calin's own LinkedIn account.
+- [ ] Confirm the visible recipient is Adeline Gentilhomme and the message references the correct Node.js/NestJS post.
+- [ ] Include the requested day rate, email, location, and freelance status exactly as reviewed.
+- [ ] Do not add a public comment containing contact or commercial details.
+- [ ] Do not submit through a second recruiter or duplicate route for the same request.
+
+#### Personalization and Truth Checklist
+
+| Draft claim | Status | Evidence |
+| --- | --- | --- |
+| Adeline posted a senior Node.js/NestJS freelance request for an international e-commerce project. | Verified | Public LinkedIn post recorded in this account; observed again 2026-07-27. |
+| The post requests CV, day rate, email, location, and freelance status. | Verified | Public LinkedIn post and this account's verified-facts section. |
+| Adeline interacted on the post one day earlier by asking a commenter to share an email. | Verified | Public LinkedIn post re-observed 2026-07-27. This does not prove open capacity. |
+| Calin is Romania-based, an EU citizen, available immediately, and seeking B2B work. | Verified | `src/data/resume.ts`; `sales/core-proposal.md`. |
+| Calin worked on a tested Java-to-NestJS migration at RWE. | Verified | `src/data/resume.ts`; `sales/core-proposal.md`; approved ELLITEAM entry strategy above. |
+| Calin delivered Klarna and card checkout work at Endava. | Verified | `src/data/resume.ts`; approved ELLITEAM entry strategy above. |
+| Calin does not claim production commercetools experience. | Truth boundary | No verified production commercetools evidence exists. |
+| €440/day for up to eight hours equals the €55/hour target. | Arithmetic and canonical posture | `sales/operating-system.md`; `sales/core-proposal.md`. |
+| The published ceiling is €380/day. | Verified | Recruiter post recorded in this account. It is not treated as accepted compensation. |
+| Open capacity, Romania vendor eligibility, billable hours, VAT, payment terms, and commercetools flexibility remain unconfirmed. | Unknown and explicitly qualified | This account's unknowns and the 2026-07-27 application handoff. |
+
+#### Commercial Conditions
+
+- Target: €55/hour, expressed as €440/day for no more than eight billable hours, VAT exclusive.
+- Hard floor: €40/hour effective. Never accept or recommend less.
+- The public €380/day ceiling is not accepted by this draft. At eight billable hours it is approximately €47.50/hour; it reaches the hard floor at 9.5 billable hours.
+- If ELLITEAM cannot meet €440/day, qualify billable hours, weekly commitment, duration, VAT, payment terms, notice, and rate flexibility before deciding whether the total structure remains worthwhile.
+- No rate, scope, availability, start date, or commercial term becomes a promise until Calin explicitly agrees.
+
+#### Timing and Stop Conditions
+
+- The primary application is ready for Calin's review on 2026-07-27.
+- Before sending, re-open the post and verify that the named recruiter path remains available.
+- Any reply stops the no-reply sequence and returns the account to Lead Contract Sales.
+- If the role is filled, Romania is ineligible, production commercetools is mandatory, or the effective rate is below €40/hour, stop and move the account to `rejected` or `nurture` as appropriate.
+- No more than the primary application and two conditional follow-ups may be used without a new lead decision.
+
+## Application Return Handoff
+
+- Objective: Return a truthful, application-ready ELLITEAM LinkedIn package to Lead Contract Sales for Calin's review.
+- Inputs and file paths: `skills/write-contract-outreach/SKILL.md`; `sales/operating-system.md`; `sales/core-proposal.md`; `sales/pipeline.csv`; `sales/accounts/elliteam.md`; `sales/handoffs/2026-07-27-elliteam-application.md`; `sales/handoffs/2026-07-24-elliteam-entry-angle.md`; `src/data/resume.ts`; `dist/cv.pdf`.
+- Output path: `sales/accounts/elliteam.md`.
+- Verified evidence: The named recruiter publicly requested a senior Node.js/NestJS freelancer for full-remote-Europe e-commerce work and requested CV, rate, email, location, and freelance status. The post remained visible on 2026-07-27, with a recruiter reply from one day earlier asking a commenter to share an email. Calin has verified RWE NestJS migration/testing and Endava payments/e-commerce proof, but no verified production commercetools claim.
+- Required deliverable: Completed in the application draft package above: primary application, two conditional follow-ups, attachment/profile checklist, claim-level evidence, commercial posture, timing, duplicate control, and stop conditions.
+- Recommendation: Calin should review the primary private LinkedIn application and the €440/day target. If approved, Calin attaches `dist/cv.pdf` and sends it himself to the named recruiter. The message explicitly qualifies role availability, Romania eligibility, commercetools weighting, and effective economics.
+- Blockers or unknowns: Open capacity; Romania PFA/SRL eligibility; whether production commercetools is mandatory; duration/workload; billable-day definition; VAT; payment and notice terms; end client; selection process; and rate flexibility.
+- Next owner: Lead Contract Sales, then Calin for explicit approval and external action.
+- Due date: 2026-07-27, completed.
+- External action: Draft only; Calin approval required.
 
 ## Conversation and Outcome
 
 - 2026-07-24 — Public qualification only — no contact or application — Lead Contract Sales to review activation and commercial questions.
+- 2026-07-27 — Public post re-observed but current capacity not confirmed — account remains `qualified` but is stale for action; no outreach until availability and hard commercial/eligibility questions are revalidated.
+- 2026-07-27 — Current recruiter interaction observed on the public post; Calin requested to get closer and apply; private LinkedIn application package prepared with CV, requested details, truthful commercetools boundary, and rate-floor protection — no message sent — status moved to `awaiting-approval`.
+- 2026-07-27 — Calin confirmed that he had already sent an ELLITEAM message — status moved to `contacted`; exact recipient, channel, content, attachment, rate statement, and delivery state unknown; do not duplicate; first reply check set for 2026-07-29.
 
 ## Handoff
 

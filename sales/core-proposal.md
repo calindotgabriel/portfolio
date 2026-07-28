@@ -38,11 +38,38 @@ Senior Node.js/TypeScript engineer for migrations and performance-sensitive APIs
 
 ## Commercial Guardrails
 
+The search runs two tracks. Each has its own commercial posture; never convert one into the other.
+
+### Contract track
+
 - Engagement: long-term remote-EU B2B; contract-to-hire only when the scope is strong.
 - Availability: immediate.
 - Anchor: €55–65/hour B2B for qualified work.
-- Hard floor: €40/hour B2B.
-- Never trade below the floor; negotiate scope, duration, weekly commitment, notice, payment terms, or other conditions instead.
+- Hard floor: €40/hour B2B, measured as the **effective** rate after currency conversion, fees, and
+  VAT treatment.
+- Never trade below the floor; negotiate scope, duration, weekly commitment, notice, payment terms,
+  or other conditions instead.
+
+### Permanent track
+
+- Engagement: senior Node/TypeScript permanent role, remote-EU or Cluj-Napoca hybrid.
+- Availability: immediate.
+- **Target annual salary band: NOT YET SET.**
+- **Salary floor: NOT YET SET.**
+- The hourly contract floor does not apply here and must not be converted into an annual figure.
+- Until the band is set, no permanent-track salary number may be quoted to any recruiter or employer.
+  Setting it is a blocking prerequisite for permanent-track outreach.
+- Evaluate total compensation: base, bonus, equity, pension, private healthcare, paid leave, learning
+  budget, equipment, and any remote or relocation allowance.
+- Note: a `$120,000 USD` expectation was recorded against the Tether opportunity. It was never
+  validated against the Romania-based remote market and must not be reused as the band without
+  research.
+
+### Channel constraint (both tracks)
+
+Calin has no referenceable former colleagues and no warm introductions. No motion may assume,
+imply, or depend on a referral, a shared contact, or a recommendation. Third-party credibility comes
+from inspectable public proof instead.
 
 ## Default CTA
 

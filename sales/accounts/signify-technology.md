@@ -7,7 +7,7 @@
 - Pipeline status: contacted — application submitted by Calin
 - Fit score: 98/100
 - Assigned role chat: Lead Contract Sales
-- Last verified: 2026-07-23 user-confirmed application event; opportunity evidence last verified 2026-07-22
+- Last verified: 2026-07-27 public listing re-observation; user-confirmed application event remains dated 2026-07-23
 
 ## Score Breakdown
 
@@ -23,6 +23,7 @@
 
 ## Verified Facts
 
+- The direct LinkedIn listing still presented an Apply path when re-observed by Lead Contract Sales on 2026-07-27. This confirms public page availability, not that Calin's application was viewed or that no reply exists.
 - Calin confirmed that he submitted an application for this role through LinkedIn on 2026-07-23. This is the only verified external action after qualification.
 - Signify Technology is the publicly named intermediary; the end client is not named — [first-party company site](https://www.signifytechnology.com/) — observed 2026-07-22.
 - The [direct LinkedIn listing](https://lt.linkedin.com/jobs/view/freelance-full-stack-engineer-at-signify-technology-4432902232?pageNum=0&position=3) displayed an active Apply path and “4 days ago” — observed 2026-07-22.
@@ -40,7 +41,7 @@
 
 ## Unknowns and Disqualifiers
 
-- Unknown: Whether the application has been viewed and whether Signify Technology will reply; no reply has been reported as of 2026-07-23.
+- Unknown: Whether the application has been viewed and whether Signify Technology has replied after 2026-07-23. Calin's response check is due 2026-07-28.
 - Unknown: The exact application answers, attachment contents, and any rate statement in Calin's submitted application were not provided and must not be reconstructed.
 - Unknown: End-client identity, exact company domain, stakeholder, team, interview process, and success measures.
 - Unknown: Whether Remote (Europe) has a country whitelist or vendor-country restriction and whether Romania is approved.

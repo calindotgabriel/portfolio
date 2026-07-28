@@ -1,0 +1,4 @@
+interface:
+  display_name: "Strengthen Market Proof"
+  short_description: "Turn market feedback into one defensible improvement"
+  default_prompt: "Use $strengthen-market-proof to diagnose the current funnel evidence and propose one improvement."

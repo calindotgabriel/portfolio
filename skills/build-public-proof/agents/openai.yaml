@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Public Proof"
+  short_description: "Ship inspectable proof that replaces missing references"
+  default_prompt: "Use $build-public-proof to design and ship one public artifact that substantiates a claim already on the CV."

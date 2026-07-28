@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prepare Technical Interview"
+  short_description: "Drill stories, live coding, and system design for one interview"
+  default_prompt: "Use $prepare-technical-interview to prepare for the next scheduled technical interview."

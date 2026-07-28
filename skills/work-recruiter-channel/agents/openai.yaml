@@ -1,0 +1,4 @@
+interface:
+  display_name: "Work Recruiter Channel"
+  short_description: "Build the DACH contract and RO/EU permanent recruiter channel"
+  default_prompt: "Use $work-recruiter-channel to shortlist agencies and draft capability registrations for both tracks."
