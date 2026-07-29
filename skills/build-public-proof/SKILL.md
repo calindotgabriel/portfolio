@@ -22,7 +22,7 @@ The links have been removed. They may only return when the repositories contain 
 ## Start Every Run
 
 1. Read `sales/operating-system.md` (the Proof Constraint section), `sales/core-proposal.md`,
-   `src/data/projects.ts`, and `src/data/resume.ts`.
+   `src/data/projects.ts`, and `src/data/resumeDraft.ts`.
 2. Identify which CV claim the artifact is meant to substantiate. An artifact that proves nothing on
    the CV is a hobby project, not pipeline work.
 3. Check what already exists before building something new.

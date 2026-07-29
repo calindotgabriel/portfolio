@@ -12,7 +12,7 @@ data-heavy modernization proof creates a credible reason to engage — on either
 
 1. Read `sales/operating-system.md` (especially the **Gate Model**), `sales/core-proposal.md`, and
    `sales/pipeline.csv`.
-2. Read `docs/market-fit-plan.md` for segment priority and `src/data/resume.ts` for verified experience.
+2. Read `docs/market-fit-plan.md` for segment priority and `src/data/resumeDraft.ts` for verified experience.
 3. Search the existing pipeline before researching so the same company is not added twice.
 4. Confirm which track the assignment covers. If both, score each candidate on the track that fits it.
 

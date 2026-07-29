@@ -5,6 +5,7 @@ export interface ResumeDraftExperience {
   period: string;
   start: string;
   end: string;
+  countsTowardProfessionalExperience: boolean;
   highlights: string[];
   onePageHighlights?: string[];
   compactSummary?: string;
@@ -51,7 +52,7 @@ export interface ResumeDraftData {
 
 export const resumeDraft: ResumeDraftData = {
   name: "Calin Gabriel",
-  title: "Senior Backend Engineer · Node.js / TypeScript",
+  title: "Senior Backend Engineer · Node.js / TypeScript · Regulated Fintech",
   location: "Cluj-Napoca, Romania",
   locationDetail: "Romania · Remote EU",
   email: "contact@calingabriel.com",
@@ -64,9 +65,9 @@ export const resumeDraft: ResumeDraftData = {
   githubDisplay: "github.com/calindotgabriel",
 
   summary:
-    "Backend engineer with more than 10 years in software, mostly working with Node.js and TypeScript. My recent work includes digital-asset custody, high-volume energy data, real-estate search, and payment flows. I enjoy joining established teams, understanding how their systems really behave, and improving them without disrupting delivery.",
+    "Senior backend engineer focused on Node.js and TypeScript systems for regulated fintech and data-heavy products. Most recently, I owned the crypto address-book backend for Bitpanda's bank-facing digital-asset custody platform, from API and data-model design through validation, testing, and production delivery. I work best in established systems where careful migration, profiling, and test coverage make difficult changes safer to ship.",
   onePageSummary:
-    "Backend engineer with more than 10 years in software, mostly with Node.js and TypeScript. I have worked on digital-asset custody, energy data, real-estate search, and payments. I am at my best when I can understand an existing system, improve the difficult parts, and leave the code easier to work with.",
+    "Senior backend engineer focused on Node.js and TypeScript for regulated fintech and data-heavy products. Most recently owned Bitpanda's bank-facing crypto address-book backend from API and data-model design through validation, tests, and production delivery. Strongest general proof: tested migrations and measured performance work in established systems.",
 
   proofs: [
     { value: "45→12m", label: "RWE export pipeline" },
@@ -82,14 +83,15 @@ export const resumeDraft: ResumeDraftData = {
       period: "Sep 2025 — Jun 2026",
       start: "2025-09",
       end: "2026-06",
+      countsTowardProfessionalExperience: true,
       highlights: [
-        "Worked on backend services for an institutional digital-asset custody platform used by banks. The stack included Fastify, GraphQL, TypeScript, and AWS serverless services.",
-        "Took ownership of the crypto address-book backend, from customer-address management to validation and production delivery.",
-        "Improved service authentication and introduced a practical backend testing approach that the team continued to use.",
+        "Built backend services for an institutional digital-asset custody platform used by banks with Fastify, GraphQL, TypeScript, and AWS serverless.",
+        "Owned the crypto address-book backend from API and data-model design through validation, tests, and production delivery.",
+        "Strengthened service authentication and introduced backend testing patterns adopted by the team.",
       ],
       onePageHighlights: [
-        "Worked on backend services for a digital-asset custody platform used by banks, using Fastify, GraphQL, TypeScript, and AWS.",
-        "Owned the crypto address-book backend, including customer-address validation, service authentication, testing, and production delivery.",
+        "Owned the crypto address-book backend for a bank-facing digital-asset custody platform, from API and data-model design through validation, tests, and production.",
+        "Strengthened service authentication and introduced backend testing patterns adopted by the team, using Fastify, GraphQL, TypeScript, and AWS.",
       ],
     },
     {
@@ -99,14 +101,15 @@ export const resumeDraft: ResumeDraftData = {
       period: "Aug 2024 — Jun 2025",
       start: "2024-08",
       end: "2025-06",
+      countsTowardProfessionalExperience: true,
       highlights: [
-        "Worked in the search and listing area of a large real-estate platform, shipping changes across React and Node.js.",
-        "Integrated Iterable and delivered product changes where SEO and release quality both mattered.",
-        "Contributed inside a mature AWS and MongoDB environment with strong testing and review practices.",
+        "Shipped search, listing, and SEO improvements across React and Node.js in a mature real-estate platform.",
+        "Integrated Iterable and delivered changes inside an AWS and MongoDB environment with unit, integration, and E2E coverage.",
+        "Matched the platform's review and production-safety standards while contributing inside an established distributed system.",
       ],
       onePageHighlights: [
-        "Shipped search, listing, and SEO-related improvements across React and Node.js in a large real-estate platform.",
-        "Integrated Iterable and worked in an AWS and MongoDB environment with strong testing and review practices.",
+        "Shipped search, listing, and SEO improvements across React and Node.js in a mature AWS and MongoDB real-estate platform.",
+        "Integrated Iterable while matching the platform's unit, integration, E2E testing, and review standards.",
       ],
     },
     {
@@ -116,15 +119,30 @@ export const resumeDraft: ResumeDraftData = {
       period: "Sep 2022 — Jul 2024",
       start: "2022-09",
       end: "2024-07",
+      countsTowardProfessionalExperience: true,
       highlights: [
-        "Helped move parts of an energy-market data platform from Java to tested NestJS services.",
-        "Profiled MongoDB queries used more than 15,000 times a day and reduced API response times by 65%.",
-        "Added E2E coverage and moved CPU-heavy exports into Node.js worker pools. Export time dropped from 45 to 12 minutes without blocking regular API work.",
+        "Migrated parts of an energy-market data platform from Java to NestJS, adding E2E coverage to reduce replacement risk.",
+        "Profiled MongoDB aggregations handling 15,000+ daily queries and reduced API response times by 65%.",
+        "Moved CPU-heavy exports into Node.js Worker Pools, cutting runtime from 45 to 12 minutes while keeping normal API work responsive.",
       ],
       onePageHighlights: [
-        "Helped move Java services to NestJS and added E2E coverage for an energy-market data platform.",
-        "After profiling the data flow, improved API response times by 65% and cut exports from 45 to 12 minutes using worker pools.",
+        "Migrated Java services to NestJS and added E2E coverage for an energy-market data platform.",
+        "Profiled MongoDB flows serving 15,000+ daily queries, improved API response times by 65%, and cut exports from 45 to 12 minutes with Worker Pools.",
       ],
+    },
+    {
+      company: "Independent",
+      location: "RO",
+      role: "Projects & Professional Development",
+      period: "Aug 2021 — Aug 2022",
+      start: "2021-08",
+      end: "2022-08",
+      countsTowardProfessionalExperience: false,
+      highlights: [
+        "Worked on independent software projects and professional development before returning to long-term product work at RWE.",
+      ],
+      compactSummary:
+        "Worked on independent software projects and professional development before returning to long-term product work at RWE.",
     },
     {
       company: "Endava",
@@ -133,13 +151,14 @@ export const resumeDraft: ResumeDraftData = {
       period: "Sep 2019 — Jul 2021",
       start: "2019-09",
       end: "2021-07",
+      countsTowardProfessionalExperience: true,
       highlights: [
         "Built a Node.js, AWS S3, and Lambda document pipeline processing 2,000+ scientific papers daily.",
         "Delivered React submission and tracking flows for large document collections and collaborative workflows.",
         "Mentored two junior developers and shipped TypeScript checkout support for Klarna and card payments.",
       ],
       compactSummary:
-        "Built a Node.js, S3, and Lambda pipeline handling 2,000+ scientific papers a day, then worked on React and TypeScript payment flows.",
+        "Built a Node.js, S3, and Lambda pipeline processing 2,000+ scientific papers daily; later shipped TypeScript payment flows and mentored two junior developers.",
     },
     {
       company: "WIP Romania",
@@ -148,6 +167,7 @@ export const resumeDraft: ResumeDraftData = {
       period: "Jul 2018 — Sep 2019",
       start: "2018-07",
       end: "2019-09",
+      countsTowardProfessionalExperience: true,
       highlights: [
         "Built a MeteorJS and React mobile wallet with deposits, withdrawals, balance updates, and transaction history.",
         "Used WebSockets and reliable client state to keep concurrent account activity responsive during peak usage.",
@@ -162,6 +182,7 @@ export const resumeDraft: ResumeDraftData = {
       period: "Oct 2013 — Mar 2015",
       start: "2013-10",
       end: "2015-03",
+      countsTowardProfessionalExperience: true,
       highlights: [
         "Developed a restaurant-management frontend with JavaScript, Java integration, and real-time WebSocket updates.",
         "Improved everyday order, table, kitchen, and service workflows for restaurant staff.",
@@ -205,19 +226,19 @@ export const resumeDraft: ResumeDraftData = {
   onePageSkills: [
     {
       category: "Backend",
-      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "GraphQL", "REST APIs", "distributed systems"],
+      items: ["Node.js", "TypeScript", "Fastify", "NestJS", "REST APIs", "GraphQL", "microservices", "distributed systems"],
     },
     {
-      category: "Frontend",
-      items: ["React", "Redux", "Tailwind", "SEO-sensitive UI delivery"],
+      category: "Data & performance",
+      items: ["MongoDB", "PostgreSQL", "Redis", "query profiling", "Worker Threads", "Worker Pools"],
     },
     {
-      category: "Cloud & data",
-      items: ["AWS", "Lambda", "serverless", "MongoDB", "PostgreSQL", "Redis", "Docker"],
+      category: "Cloud & delivery",
+      items: ["AWS", "Lambda", "serverless", "Docker", "CI/CD"],
     },
     {
-      category: "Quality & performance",
-      items: ["Integration testing", "E2E testing", "TDD", "API profiling", "Worker Pools", "CI/CD"],
+      category: "Quality & domain",
+      items: ["Integration testing", "E2E testing", "TDD", "service authentication", "validation", "regulated digital-asset custody", "payments"],
     },
   ],
 
@@ -236,6 +257,6 @@ export const resumeDraft: ResumeDraftData = {
   ],
 
   availability: [
-    "Long-term B2B contract · Remote from Romania · EU citizen · Available immediately",
+    "Permanent / long-term B2B · Remote EU / Cluj hybrid · EU citizen · Available immediately",
   ],
 };

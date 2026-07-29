@@ -10,23 +10,22 @@ claim the CV's own data cannot support. This is a truth-restoration role, not a 
 
 ## Why This Exists
 
-`src/data/resumeDraft.ts` claims "more than 10 years in software". The `experience` array sums to
-roughly eight years. That contradiction has a measurable cost: on 2026-07-27 the scout rejected
-Teramind — 95/100, exact stack, Romania contractor, explicit B2B question, $50–65/hour — solely
-because the canonical resume could not verify "10+ years". A near-perfect match was discarded by
-Calin's own data inconsistency.
+The July 2026 CV audit removed an unsupported cumulative-duration claim and made
+`src/data/resumeDraft.ts` the sole canonical resume source. This skill exists to keep that source
+truthful when real work is missing, a career note needs verification, or a role imposes a
+years-of-experience threshold.
 
 Calin has confirmed real early work is missing. Recovering it is the highest-leverage single fix in
 the job search.
 
 ## Start Every Run
 
-1. Read `sales/operating-system.md`, `src/data/resumeDraft.ts`, `src/data/resume.ts`, and
-   `docs/interview-narrative.md` (the "CV Gap Answers" section).
+1. Read `sales/operating-system.md`, `src/data/resumeDraft.ts`, and `docs/interview-narrative.md`
+   (the "CV Gap Answers" section).
 2. Compute the current cumulative employment total from the `experience` array and compare it to
    every span claim in the summaries, the site, and `docs/`.
-3. List each unexplained period. As of this writing: pre-Oct 2013, Mar 2015 – Jul 2018, and
-   Jul 2021 – Sep 2022.
+3. List each unexplained period. Treat entries with `countsTowardProfessionalExperience: false` as
+   chronology notes, not paid employment months.
 
 ## Recovery Interview
 
@@ -67,9 +66,8 @@ After classification, the span claim and the data must agree. Exactly one of the
 
 - Recovered CV-eligible years genuinely reach the claimed span → keep the claim, and the resume now
   substantiates it.
-- They do not → rewrite the claim to what is defensible. Prefer a span framing over a sum
-  ("shipping production software since 2013") when the career has gaps, because it is both true and
-  verifiable.
+- They do not → remove the claim or rewrite it to what the dated paid-employment record can
+  substantiate. The canonical public positioning currently uses no cumulative-duration claim.
 
 Never split the difference. Never leave a claim standing that the `experience` array contradicts.
 
@@ -78,7 +76,6 @@ Never split the difference. Never leave a claim standing that the `experience` a
 A change here propagates. Update all of these in the same pass, or the contradiction simply moves:
 
 - `src/data/resumeDraft.ts` — `summary`, `onePageSummary`, `experience`
-- `src/data/resume.ts` — `summary`, `experience` (the scout reads this file)
 - `src/pages/index.astro` — the ledger entry for years, and the trajectory copy
 - `docs/interview-narrative.md` — "CV Gap Answers" for any gap that is now filled
 - `sales/core-proposal.md` — primary proof, if a recovered role adds a segment

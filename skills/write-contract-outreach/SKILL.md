@@ -57,7 +57,7 @@ available in a cold message.
 - Never send, post, submit, schedule, or promise anything.
 - Never imply a referral, relationship, shared contact, technology, opening, or pain point that is
   not evidenced.
-- Never claim experience beyond what `src/data/resume.ts` supports.
+- Never claim experience beyond what `src/data/resumeDraft.ts` supports.
 - Avoid generic flattery, fake familiarity, desperation, and long biography dumps.
 - Do not accept or recommend a contract engagement below €40/hour B2B.
 - Check the pipeline for an existing application before drafting a recruiter submission to the same

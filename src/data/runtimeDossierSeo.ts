@@ -1,10 +1,10 @@
 import { resumeDraft } from "./resumeDraft";
 
 export const runtimeDossierTitle =
-  "Senior Backend Engineer · Node.js / TypeScript | Calin Gabriel";
+  `${resumeDraft.title} | ${resumeDraft.name}`;
 
 export const runtimeDossierDescription =
-  "Calin Gabriel is a senior backend engineer based in Romania, with more than 10 years in software and recent experience in digital-asset custody, energy data, real-estate search, and payments.";
+  "Calin Gabriel is a Romania-based senior backend engineer focused on Node.js and TypeScript systems for regulated fintech, digital-asset custody, payments, migrations, and performance-sensitive APIs. Open to permanent roles or long-term B2B contracts across the EU or hybrid in Cluj-Napoca.";
 
 export const runtimeDossierPersonJsonLd = {
   "@context": "https://schema.org",

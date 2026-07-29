@@ -17,7 +17,7 @@ the funnel — it is where the whole case is made or lost.
 ## Start Every Run
 
 1. Read `sales/operating-system.md`, the account file, `docs/interview-narrative.md`, and
-   `src/data/resume.ts`.
+   `src/data/resumeDraft.ts`.
 2. Confirm the interview format, stage, interviewer, and stack focus. Mark unknowns explicitly rather
    than guessing.
 3. Read the role's requirements and identify every **Tier 2 gap** the scout recorded as an objection.
@@ -79,7 +79,7 @@ bottleneck, test and release process, ownership boundaries, remote collaboration
 
 ## Guardrails
 
-- Never coach a claim beyond what `src/data/resume.ts` supports.
+- Never coach a claim beyond what `src/data/resumeDraft.ts` supports.
 - Never rehearse a fabricated project, metric, or responsibility.
 - Do not let Calin improvise a rate or salary number mid-interview; the band comes from
   `sales/core-proposal.md` and `close-contract-opportunity` owns the negotiation.

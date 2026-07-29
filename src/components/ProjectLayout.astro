@@ -9,6 +9,7 @@ const { title, description } = Astro.props;
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import ContactFooter from "./ContactFooter.astro";
+import { resumeDraft } from "../data/resumeDraft";
 import "../styles/global.css";
 ---
 
@@ -18,7 +19,7 @@ import "../styles/global.css";
     <div class="masthead-inner">
       <a class="mast-id" href="/">
         <span class="mast-name">Calin Gabriel</span>
-        <span class="mast-role">Senior Backend Engineer · Node.js / TypeScript</span>
+        <span class="mast-role">{resumeDraft.title}</span>
       </a>
       <nav class="mast-nav" aria-label="Sections">
         <a href="/">Home</a>
