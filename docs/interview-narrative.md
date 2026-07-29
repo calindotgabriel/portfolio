@@ -109,7 +109,7 @@ Use when asked about seniority, leadership, stakeholder communication, or team b
 ## CV Gap Answers (Decided In Advance — Do Not Improvise)
 
 - Mar 2015 – Jul 2018: "I was completing my Computer Science degree at Babeș-Bolyai full-time after starting my career early — I'd already been working professionally since 16." One sentence, calm, then move on.
-- Jul 2021 – Sep 2022: "I took a deliberate break between engagements and returned with the RWE contract, which ran two years." One sentence, calm, no over-explaining. If pressed: independent projects and skill investment during that period, then redirect to RWE results.
+- Aug 2021 – Aug 2022: "I worked on independent software projects and professional development before returning to long-term product work at RWE." One sentence, calm, then redirect to the RWE results.
 
 ## Contract-Specific Answers
 

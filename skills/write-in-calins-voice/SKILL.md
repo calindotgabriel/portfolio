@@ -51,12 +51,13 @@ them. Let the evidence carry the weight.
 
 Voice work never changes facts.
 
-- Every claim must be supported by `src/data/resume.ts`. If the copy needs a claim the resume does
+- Every claim must be supported by `src/data/resumeDraft.ts`. If the copy needs a claim the resume does
   not carry, stop and raise it — do not write around it.
 - Never inflate a metric, a scope, or a responsibility to make a sentence land better.
 - Never imply references, recommendations, or relationships. There are none.
-- Span claims must match the resume's own experience data. Prefer "since 2013" over a cumulative
-  year count while the two disagree. See `recover-verified-experience`.
+- Span claims must match the resume's own employment data and exclude chronology notes marked
+  `countsTowardProfessionalExperience: false`. The canonical public positioning currently uses no
+  cumulative-duration claim. See `recover-verified-experience`.
 
 ## Self-Check Before Returning
 
@@ -66,7 +67,7 @@ Read the draft back and ask:
 - Is there a number or a shipped outcome in every claim of quality?
 - Count the em-dashes. Count the three-item lists. Are sentence lengths varied?
 - Does the "easy to work with" thread appear anywhere, or is it all capability?
-- Has any fact drifted from `src/data/resume.ts`?
+- Has any fact drifted from `src/data/resumeDraft.ts`?
 - Is anything defensive rather than confident?
 
 ## Required Output

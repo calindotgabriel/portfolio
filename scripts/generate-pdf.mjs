@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 import { createServer } from "node:http";
-import { readFileSync, existsSync, copyFileSync } from "node:fs";
+import { readFileSync, existsSync, copyFileSync, mkdirSync } from "node:fs";
 import { resolve, join, extname, dirname } from "node:path";
 import { homedir } from "node:os";
 
@@ -51,6 +51,59 @@ function serve() {
   });
 }
 
+async function assertNoPageOverflow(page, route) {
+  const pageChecks = await page.evaluate(() => {
+    const pageElements = [
+      ...document.querySelectorAll(".runtime-page, .draft-page"),
+    ];
+
+    return pageElements.map((pageElement, index) => {
+      const pageRect = pageElement.getBoundingClientRect();
+      const descendants = [...pageElement.querySelectorAll("*")].filter((element) => {
+        const style = getComputedStyle(element);
+        return style.display !== "none" && style.visibility !== "hidden";
+      });
+      const descendantBottom = Math.max(
+        pageRect.top,
+        ...descendants.map((element) => element.getBoundingClientRect().bottom),
+      );
+      const descendantRight = Math.max(
+        pageRect.left,
+        ...descendants.map((element) => element.getBoundingClientRect().right),
+      );
+
+      return {
+        index: index + 1,
+        verticalOverflow: Math.max(
+          pageElement.scrollHeight - pageElement.clientHeight,
+          descendantBottom - pageRect.bottom,
+          0,
+        ),
+        horizontalOverflow: Math.max(
+          pageElement.scrollWidth - pageElement.clientWidth,
+          descendantRight - pageRect.right,
+          0,
+        ),
+      };
+    });
+  });
+
+  if (pageChecks.length === 0) {
+    throw new Error(`No printable page container found for ${route}`);
+  }
+
+  const failures = pageChecks.filter(
+    ({ verticalOverflow, horizontalOverflow }) =>
+      verticalOverflow > 1 || horizontalOverflow > 1,
+  );
+
+  if (failures.length > 0) {
+    throw new Error(
+      `Printable page overflow on ${route}: ${JSON.stringify(failures)}`,
+    );
+  }
+}
+
 async function main() {
   console.log("Generating CV PDF...");
 
@@ -63,6 +116,8 @@ async function main() {
       waitUntil: "networkidle",
     });
     await page.evaluate(() => document.fonts.ready);
+    await page.emulateMedia({ media: "print" });
+    await assertNoPageOverflow(page, target.route);
     await page.pdf({
       path: join(DIST, target.filename),
       format: "A4",
@@ -77,10 +132,9 @@ async function main() {
   await browser.close();
   server.close();
 
-  if (existsSync(dirname(CV_SYNC_PATH))) {
-    copyFileSync(join(DIST, "cv.pdf"), CV_SYNC_PATH);
-    console.log(`Synced to ${CV_SYNC_PATH}`);
-  }
+  mkdirSync(dirname(CV_SYNC_PATH), { recursive: true });
+  copyFileSync(join(DIST, "cv.pdf"), CV_SYNC_PATH);
+  console.log(`Synced to ${CV_SYNC_PATH}`);
 }
 
 main().catch((err) => {

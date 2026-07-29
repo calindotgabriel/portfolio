@@ -630,6 +630,58 @@ a:focus-visible {
     border-radius: 0;
     box-shadow: none;
   }
+
+  .runtime-timeline {
+    display: contents;
+    position: static;
+  }
+
+  .runtime-timeline::before,
+  .runtime-entry::before {
+    display: none;
+  }
+
+  .runtime-entry,
+  .runtime-phase {
+    padding-left: 0;
+    position: static;
+  }
+
+  .runtime-entry {
+    display: flex;
+    gap: 5.8mm;
+    break-inside: auto;
+    background:
+      radial-gradient(circle, var(--rr-paper) 0 1.1mm, transparent 1.2mm),
+      linear-gradient(var(--rr-rule), var(--rr-rule));
+    background-position:
+      16.5mm 0.1mm,
+      17.58mm 0;
+    background-repeat: no-repeat;
+    background-size:
+      2.6mm 2.6mm,
+      0.45mm calc(100% + 4.25mm);
+  }
+
+  .runtime-entry time {
+    flex: 0 0 17.8mm;
+    position: static;
+    width: auto;
+  }
+
+  .runtime-entry > div {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .runtime-phase {
+    display: block;
+    padding-left: 23.6mm;
+  }
+
+  .runtime-capabilities {
+    position: relative;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

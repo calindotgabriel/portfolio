@@ -12,7 +12,7 @@ without rewriting the positioning from intuition alone.
 
 1. Read `sales/operating-system.md`, `sales/core-proposal.md`, recent daily logs, and relevant
    account outcomes.
-2. Read `docs/market-fit-plan.md`, `docs/interview-narrative.md`, `src/data/resume.ts`, and relevant
+2. Read `docs/market-fit-plan.md`, `docs/interview-narrative.md`, `src/data/resumeDraft.ts`, and relevant
    case studies before suggesting claim changes.
 3. Identify the actual evidence: reply wording, repeated silence pattern, objection, interview
    question, conversion difference, or proof request.

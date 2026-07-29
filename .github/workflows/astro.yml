@@ -78,6 +78,9 @@ jobs:
       - name: Generate CV PDF
         run: node scripts/generate-pdf.mjs
         working-directory: ${{ env.BUILD_PATH }}
+      - name: Verify CV artifacts
+        run: node scripts/verify-cv.mjs
+        working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
