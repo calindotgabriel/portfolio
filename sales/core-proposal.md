@@ -2,8 +2,8 @@
 
 ## Version
 
-- Canonical version: 1.0
-- Updated: 2026-07-22
+- Canonical version: 1.1
+- Updated: 2026-08-07
 - Owner: Calin Gabriel
 - Status: approved starting position
 
@@ -44,26 +44,48 @@ The search runs two tracks. Each has its own commercial posture; never convert o
 
 - Engagement: long-term remote-EU B2B; contract-to-hire only when the scope is strong.
 - Availability: immediate.
-- Anchor: €55–65/hour B2B for qualified work.
-- Hard floor: €40/hour B2B, measured as the **effective** rate after currency conversion, fees, and
-  VAT treatment.
-- Never trade below the floor; negotiate scope, duration, weekly commitment, notice, payment terms,
-  or other conditions instead.
+- Anchor: €55–65/hour B2B for qualified work. **Unchanged — always open here.**
+- **Hard floor, long-term engagement (6+ months): €35/hour**, measured as the **effective** rate after
+  currency conversion, fees, and VAT treatment.
+- **Hard floor, bridge work (under 3 months, part-time, or fixed-scope): €25/hour** effective.
+- Prefer to negotiate scope, duration, weekly commitment, notice, or payment terms before trading rate.
+  But do not lose an engagement over the difference between the anchor and the floor.
+
+**Why the floor moved (2026-08-07):** the previous €40/hour hard floor was set when the search was
+diagnosed as a distribution problem. The funnel now shows the failure is interview conversion, not
+pricing, and Calin has explicitly accepted lower rates in order to enter the flow and generate
+references and reps. Runway is 1–2 months. An engagement at €35/hour that starts is worth more than a
+€55/hour engagement that does not exist — both financially and because billable work is the strongest
+available answer to the seniority question. Rate can be re-anchored at the next engagement.
 
 ### Permanent track
 
 - Engagement: senior Node/TypeScript permanent role, remote-EU or Cluj-Napoca hybrid.
 - Availability: immediate.
-- **Target annual salary band: NOT YET SET.**
-- **Salary floor: NOT YET SET.**
-- The hourly contract floor does not apply here and must not be converted into an annual figure.
-- Until the band is set, no permanent-track salary number may be quoted to any recruiter or employer.
-  Setting it is a blocking prerequisite for permanent-track outreach.
+- **Target annual salary band (remote-EU employer): €60,000–75,000 gross/year.**
+- **Salary floor (remote-EU employer): €48,000 gross/year.**
+- **Target band (Romanian employer, Cluj/Bucharest): 20,000–26,000 RON gross/month.**
+- **Salary floor (Romanian employer): 16,000 RON gross/month.**
+- Basis: anchored off the contract posture (€55/hour × 8h × ~215 billable days ≈ €95k gross B2B, less
+  the ~30–40% that B2B carries for holiday, sick leave, downtime, accounting, and benefits) and
+  cross-checked against the Cluj senior Node/TS market. **These are working numbers, not researched
+  market data.** Revise on the first concrete band a recruiter states — that is real evidence and
+  this is not.
+- The hourly contract floor does not apply here and must not be converted into an hourly figure.
 - Evaluate total compensation: base, bonus, equity, pension, private healthcare, paid leave, learning
   budget, equipment, and any remote or relocation allowance.
 - Note: a `$120,000 USD` expectation was recorded against the Tether opportunity. It was never
-  validated against the Romania-based remote market and must not be reused as the band without
-  research.
+  validated against the Romania-based remote market and is superseded by the bands above.
+
+**Track preference, revised 2026-08-07:** contract remains preferred **on rate**, but the permanent
+track and the **Cluj hybrid/on-site market are now actively pursued**, at Calin's decision, to
+maximise the chance of landing an engagement. The earlier exclusion of the local market is withdrawn.
+
+Relocation outside Romania remains out of scope.
+
+Work-model preference order, for scoring: remote-EU → Romania-wide remote → Cluj hybrid → Cluj
+on-site. **None of these is a rejection reason.** Work model adjusts the score; only the Tier 1
+blockers in `sales/operating-system.md` remove an opportunity.
 
 ### Channel constraint (both tracks)
 
@@ -77,17 +99,28 @@ Suggest a short conversation about the team's current backend delivery risk, suc
 
 ## Active Experiment
 
-- Experiment ID: EXP-001
-- Status: ready
-- Hypothesis: Bitpanda-led messaging will earn more relevant fintech and DACH replies than a broad full-stack introduction.
-- Audience: qualified EU fintech, payments, custody, and DACH platform targets.
-- Variant: one company observation + one closest Bitpanda or RWE proof + low-friction CTA.
-- Baseline: not yet established.
-- Success measure: qualified reply rate after the first 10 approved and sent messages.
-- Keep/change/kill rule: keep at 20%+ qualified replies; change at 10–19%; stop and diagnose targeting before rewriting at under 10%.
+- Experiment ID: EXP-002
+- Status: active from 2026-08-07
+- Hypothesis: the search is failing at interview conversion, not distribution. Reallocating roughly
+  60% of daily effort to `docs/training-plan.md`, widening targeting to mid-senior roles, and
+  debriefing every interview will convert the technical rounds that are already being won.
+- Audience: unchanged — EU fintech, payments, custody, and DACH platform targets, plus mid-senior
+  Node/TS roles previously filtered out.
+- Baseline: ~150 applications → 10 screens → 5–6 technical interviews → 0 offers; zero interview
+  post-mortems on record.
+- Success measure: **the failure mode named in interview post-mortems changes over time**, and
+  `solved in time` in the training checkpoint trends up. Offers are the outcome; these are the
+  leading indicators.
+- Keep/change/kill rule: keep while post-mortems show shifting failure modes; change the training
+  allocation if the same failure mode repeats across three consecutive technical interviews;
+  re-diagnose entirely if week 4 shows no movement in either indicator.
+
+EXP-001 (Bitpanda-led messaging) is superseded. It was never measured — no baseline was established
+and the 10 approved messages it required were never sent, so it produced no evidence in six weeks.
 
 ## Version History
 
 | Date | Version | Evidence | Decision | Change |
 | --- | --- | --- | --- | --- |
 | 2026-07-22 | 1.0 | Portfolio, CV, market-fit plan, interview narrative | Start | Seed Bitpanda-led positioning and commercial guardrails |
+| 2026-08-07 | 1.1 | Full-search funnel: ~150 applications → 10 screens → 5–6 technical interviews → 0 offers; batches 4–6 each activated zero of 20 | Change | Rediagnose as an interview-conversion failure. Lower contract floors to €35/h long-term and €25/h bridge; set permanent bands to unblock the track; supersede EXP-001 with EXP-002 |
