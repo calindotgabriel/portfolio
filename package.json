@@ -6,9 +6,6 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/prune-local-admin.mjs && node scripts/generate-pdf.mjs && node scripts/verify-cv.mjs",
     "verify:cv": "node scripts/verify-cv.mjs",
-    "track": "node --no-warnings scripts/track-server.mjs",
-    "track:seed": "node --no-warnings scripts/track-seed.mjs",
-    "track:export": "node --no-warnings scripts/track-export.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "npm run build && gh-pages -d dist"
