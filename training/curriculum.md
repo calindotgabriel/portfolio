@@ -3,20 +3,20 @@
 **Ăsta e răspunsul la „ce fac azi".** Deschizi fișierul, cauți data de azi, faci ce scrie pe rând.
 Zero decizii dimineața. Decizia dimineața e prima care se transformă în amânare.
 
-Calendarul îți spune **când**. Fișierul ăsta îți spune **ce**. `log.md` îți spune **ce ai făcut deja**.
+Calendarul îți spune **când**. Fișierul ăsta îți spune **ce**. `journal.md` îți spune **ce ai făcut deja**.
 
 ## Cum se folosește
 
 1. Dimineața la 10:00: cauți data de azi mai jos.
 2. Faci cele trei blocuri de pe rând.
-3. La 15:15, în blocul de aplicări, scrii o linie în `log.md`. **Asta e memoria.** Fără ea, peste
+3. La 15:15, în blocul de aplicări, scrii o intrare `#log` în `journal.md`. **Asta e memoria.** Fără ea, peste
    trei săptămâni nu mai știi ce ai făcut și tot sistemul devine iar o senzație în loc de date.
-4. Ce ratezi intră în `redo.md` cu scadență la +7 și +21 de zile.
+4. Ce ratezi primește o intrare `#redo` în `journal.md`, cu datele +7 și +21 scrise în ea.
 
 ## Reguli care nu se schimbă de la o zi la alta
 
 **Live coding:** TypeScript, editor fără Copilot. Cronometru: 25 min medium, 15 min easy. Când sună,
-te oprești și citești soluția. Vorbești cu voce tare tot timpul. Prima ratare → `redo.md`.
+te oprești și citești soluția. Vorbești cu voce tare tot timpul. Prima ratare → o intrare `#redo`.
 
 **Adâncime:** fiecare topic produce două artefacte — ~200 de cuvinte scrise în `training/depth/` și un
 demo care rulează. Un topic ține 3 zile: ziua 1 citești și experimentezi, ziua 2 scrii fișa, ziua 3

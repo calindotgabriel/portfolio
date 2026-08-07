@@ -32,14 +32,14 @@ not tell you what to do on a given morning, and it does not remember what you di
 | --- | --- |
 | Google Calendar | **When.** Time blocks, alarms, boundaries. |
 | `training/curriculum.md` | **What today.** All 48 days, with the actual problems and topics named. |
-| `training/log.md` | **What was done.** One row per day. The system's memory. |
-| `training/redo.md` | **What has not stuck.** Spaced repetition at +7 and +21 days. |
+| `training/journal.md` | **What was done.** Every entry, tagged. The system's memory. |
 | `training/depth/` | The 12 written explanations and their runnable demos. |
 | `training/design/` | Notes from the 10 design prompts and what was missed. |
 | `sales/interviews/` | Post-mortems from real interviews and mocks. |
 
 The daily loop: open `training/curriculum.md`, find today's date, do the three rows, then write one
-line in `training/log.md` during the 15:15 block. Anything missed goes into `training/redo.md`.
+`#log` entry in `training/journal.md` during the 15:15 block. Anything missed gets a `#redo` entry
+carrying its own +7 and +21 dates.
 
 ## Time Budget
 
@@ -227,7 +227,7 @@ of progress.
 
 ## Weekly Checkpoint
 
-Filled in **Saturday at 11:45**, by summing the week's columns in `training/log.md`. Numbers only — no
+Filled in **Saturday at 11:45**, by reading the week's entries in `training/journal.md`. Numbers only — no
 commentary, no explanations for a bad week. The personal check-in at 12:45 is a different question and
 stays separate from these figures.
 
