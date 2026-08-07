@@ -6,6 +6,12 @@ dist/
 output/
 tmp/
 
+# local tracker database — the committed record is the markdown export
+training/*.db
+training/*.db-journal
+training/*.db-shm
+training/*.db-wal
+
 # dependencies
 node_modules/
 

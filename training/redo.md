@@ -17,26 +17,34 @@ O problemă ratată se reface la **+7 zile** și la **+21 de zile** de la data r
 Sâmbăta e rezervată exclusiv pentru redo. Dacă lista e goală sâmbăta, faci probleme noi din categoria
 săptămânii — dar asta se întâmplă rar și e un semn bun.
 
-## Active
+## Listele
+
+**Goluri de fundament** sunt categorii, nu probleme. Acolo ajunge automat orice a fost resetat de trei
+ori. Se tratează citind teoria categoriei, nu făcând mai multe repetări.
+
+> Tabelele de mai jos sunt **generate** din `training/tracker.db` de `npm run track:export`.
+> Nu le edita de mână — se pierd la următorul export. Adaugi și marchezi rezultate prin UI:
+> `npm run track`. Textul din afara markerelor rămâne neatins.
+
+<!-- BEGIN:TABLE -->
+### Active
 
 | Problemă | Categorie | Ratată | Scadent +7 | Scadent +21 | Rezultat +7 | Rezultat +21 |
 | --- | --- | --- | --- | --- | --- | --- |
-| | | | | | | |
+| Move Zeroes | two pointers | 2026-08-07 | 2026-08-14 | 2026-08-28 |  |  |
 
-## Goluri de fundament
+### Goluri de fundament
 
-Categorii, nu probleme. Aici ajunge orice a fost resetat de trei ori — plus orice topic pe care l-ai
-ratat la un mock sau la un interviu real. Se tratează citind teoria categoriei, nu mai multe repetări.
+| Gol | De unde a venit | Data | Resetări | Închis |
+| --- | --- | --- | ---: | --- |
+|  |  |  |  | |
 
-| Gol | De unde a venit | Data | Tratat prin | Închis |
-| --- | --- | --- | --- | --- |
-| | | | | |
-
-## Închise
+### Închise
 
 | Problemă | Categorie | Ratată prima dată | Închisă |
 | --- | --- | --- | --- |
-| | | | |
+|  |  |  | |
+<!-- END:TABLE -->
 
 ---
 

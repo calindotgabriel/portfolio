@@ -22,15 +22,19 @@ jurnal sunt informație, iar rândurile lipsă te fac să crezi mai târziu că 
 
 ## Jurnal
 
+> Tabelul de mai jos e **generat** din `training/tracker.db` de `npm run track:export`.
+> Nu-l edita de mână — se pierde la următorul export. Scrii prin UI: `npm run track`.
+> Textul din afara markerelor rămâne neatins.
+
+<!-- BEGIN:TABLE -->
 | Data | Zi | LC | Adâncime | Design | Mock | Aplicări | PM | Notă |
 | --- | ---: | --- | --- | --- | --- | ---: | ---: | --- |
-| 07.08 | 0 | | — | — | — | | | Ziua 0: setup, prima sesiune înregistrată, post-mortems retroactive |
-| 08.08 | 0 | | 1 | — | — | 0 | 0 | |
+| 07.08 | 0 | 0/1 | — | — | — | 0 | 0 | Am fugit după ~10 min. Hashmap pe o problemă de two pointers. |
+<!-- END:TABLE -->
 
-<!--
 Exemplu de rând completat:
-| 10.08 | 1 | 1/2 | 1 fișă | 1 | — | 4 | 0 | Am blocat 12 min pe Valid Anagram fără să spun nimic cu voce tare |
--->
+
+`| 10.08 | 1 | 1/2 | 1 fișă | 1 | — | 4 | 0 | Am blocat 12 min pe Valid Anagram fără să spun nimic cu voce tare |`
 
 ## Ce se citește din jurnal sâmbăta
 

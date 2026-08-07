@@ -15,12 +15,35 @@ Execuția zilnică a planului din `../docs/training-plan.md`.
 | `design/` | Notițele de la cele 10 prompturi + ce a fost ratat. |
 | `../sales/interviews/` | Post-mortems de la interviuri reale și mock-uri. |
 
+## Trackerul
+
+```sh
+npm run track:seed     # o singură dată: încarcă cele 48 de zile din curriculum.md
+npm run track          # http://localhost:4173
+npm run track:export   # regenerează tabelele din log.md și redo.md, pentru git
+```
+
+Zero dependențe — folosește `node:sqlite`, nativ în Node 22.5+. Ascultă doar pe `127.0.0.1`,
+fără autentificare: e un tool local cu un singur utilizator și **nu trebuie expus în rețea**.
+
+Baza de date e `training/tracker.db` și e gitignorată — e binară și ar intra în conflict la fiecare
+merge. **Markdown-ul exportat e înregistrarea care se comite.** Rulează exportul sâmbăta, la
+checkpoint, și comiți atunci.
+
+Tabelele dintre markerele `<!-- BEGIN:TABLE -->` și `<!-- END:TABLE -->` din `log.md` și `redo.md`
+sunt generate. Nu le edita de mână — se pierd la următorul export. Textul din jur rămâne neatins.
+
 ## Bucla zilnică
 
-1. **10:00** — deschizi `curriculum.md`, cauți data de azi.
+1. **10:00** — `npm run track`. Îți arată ziua N și cele trei blocuri din curriculum.
 2. Faci blocurile de pe rând.
-3. **15:15** — scrii un rând în `log.md`. Ce ai ratat intră în `redo.md`.
+3. **15:15** — completezi formularul zilei. Se salvează singur. Ce ai ratat adaugi în redo — datele
+   de +7 și +21 se calculează automat.
 4. **17:30** — stop. Brain dump pe hârtie. Se închide tot.
+
+Dacă trackerul nu pornește dintr-un motiv oarecare, `log.md` și `redo.md` rămân fișiere markdown
+obișnuite. Scrii rândul de mână și îl aliniezi la următorul export. Tool-ul e comoditate, nu
+dependență.
 
 ## Bucla săptămânală
 
