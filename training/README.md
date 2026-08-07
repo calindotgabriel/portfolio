@@ -9,6 +9,7 @@ bază de date, fără nimic de pornit.
 | `../docs/training-plan.md` | **De ce.** Diagnosticul, metodele, regulile fiecărui bloc. |
 | `curriculum.md` | **Ce fac azi.** 48 de zile, cu problemele și topicurile numite. |
 | `journal.md` | **Ce am făcut.** Tot ce scriu, cu taguri. Memoria sistemului. |
+| `journal-manual.md` | Referință: exemple pentru fiecare tip de intrare. Se citește, nu se scrie. |
 | `depth/` | Cele 12 fișe scrise + demo-urile. |
 | `design/` | Notițele de la cele 10 prompturi + ce a fost ratat. |
 | `../sales/interviews/` | Post-mortems de la interviuri și mock-uri, câte un fișier. |

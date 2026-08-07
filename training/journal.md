@@ -5,15 +5,7 @@ Scriu aici tot. Cel mai nou sus. Adaug, nu rescriu.
 **Taguri:** `#log` ziua · `#redo` problemă de refăcut · `#problema` enunț din interviu real ·
 `#nota` orice altceva.
 
-Post-mortemurile de la interviuri și mock-uri stau separat, câte un fișier în `../sales/interviews/`.
-Aici le menționez cu o linie și un link.
-
-**Redo:** o problemă ratată se reface la **+7** și **+21** de zile. Scriu ambele date în intrare.
-Ratată din nou → resetez de la data nouă. A treia resetare nu mai e problemă de repetiție, e gol de
-fundament: tratez categoria, nu problema.
-
-**O zi ratată primește totuși intrare, cu 0.** Golurile din jurnal sunt informație; rândurile lipsă
-mă fac să cred peste o lună că săptămâna aia n-a existat.
+Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.md`](journal-manual.md).
 
 ---
 
