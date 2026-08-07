@@ -37,11 +37,42 @@ Two consequences drive everything below:
 The search runs on both tracks in parallel, scored separately (see `sales/operating-system.md`).
 
 - **Contract** — remote-EU B2B. €55–65/hour anchor, revised floors in `sales/core-proposal.md`.
-- **Permanent** — senior Node/TS roles, remote-EU or Cluj hybrid, evaluated against the salary band in
-  `sales/core-proposal.md`.
+- **Permanent** — senior Node/TS roles, remote-EU **or Cluj hybrid/on-site**, evaluated against the
+  salary bands in `sales/core-proposal.md`.
 
-Contract remains the stated preference. The permanent track is unblocked and available rather than
-actively pushed.
+Both tracks are now **actively pursued**. Contract remains the preference on rate; permanent is no
+longer held back, and the Cluj local market is a first-class target rather than a fallback.
+
+## The Cluj Local Market (Opened 2026-08-07)
+
+Previously excluded. Opening it is the single largest expansion available, for reasons that have
+nothing to do with lowering standards:
+
+1. **The applicant pool collapses.** A remote-EU role draws hundreds of applicants across 25
+   countries. A Cluj hybrid role draws a local pool. Same CV, far less competition — and the
+   competition is the thing that has been beating him at the technical round.
+2. **The CV reads differently here.** Three consecutive Western European employers (Bitpanda AT,
+   ImmoScout24 AT, RWE DE) is unremarkable in a pan-EU pool and genuinely differentiating in Cluj.
+3. **Being on the ground becomes an asset.** On-site interviews build rapport that a 45-minute video
+   call cannot, and rapport is worth real points at exactly the stage that is failing.
+4. **Warm paths exist here and do not exist remotely.** See the channel correction in
+   `sales/operating-system.md` — the blanket "no warm network" rule was written for cold remote-EU
+   outreach and is materially false locally.
+
+**Segment priorities inside Cluj**, strongest fit first:
+
+- **Local fintech and banking tech.** Banca Transilvania is headquartered in Cluj with a substantial
+  in-house technology arm — the closest available match to the Bitpanda regulated-fintech proof.
+- **Product companies with Cluj engineering**, including the Romanian offices of international
+  product firms.
+- **Services and consultancies** — Endava (a former employer, see the boomerang channel), Accesa,
+  Fortech, Arobs, NTT Data, Cognizant, 3Pillar, Yardi, and similar. Lower ceiling, faster process,
+  and they hire continuously.
+- **Bucharest remote-friendly employers** that accept Romania-wide remote — same market, no relocation.
+
+Every company name above is a **research starting point, not a verified opening**. Confirm a live
+first-party role before it enters the pipeline, per the evidence rules in
+`sales/operating-system.md`.
 
 ## The Targeting Band Correction
 

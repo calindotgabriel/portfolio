@@ -137,6 +137,15 @@ The threshold moved from 65 to 55 on 2026-08-07. Scoring exists to rank a queue,
 under the widened seniority band, a mid-senior role with real stack overlap that scores 58 is worth
 applying to, because an interview taken is a training rep produced.
 
+**Cluj scoring note (2026-08-07).** A Cluj hybrid or on-site role scores **full marks** on work-model
+compatibility — Calin lives there, so proximity is an advantage, not a compromise. Do not deduct for
+on-site. Two further adjustments for local roles:
+
+- **Local roles carry a smaller applicant pool**, which is worth more than a few points of stack
+  overlap right now. When ranking the queue, a local 60 beats a remote-EU 75.
+- **An in-person interview is a better training rep than a video call**, because it reproduces more of
+  the pressure that is currently breaking. Count it accordingly.
+
 ## Pipeline Statuses
 
 Use only: `researching`, `qualified`, `angle-ready`, `draft-ready`, `awaiting-approval`, `contacted`,
@@ -144,8 +153,23 @@ Use only: `researching`, `qualified`, `angle-ready`, `draft-ready`, `awaiting-ap
 
 ## Channels
 
-Warm network and colleague referrals are **unavailable** and must not be planned for or assumed.
-Never draft a message that implies an existing relationship, shared contact, or referral.
+**Correction, 2026-08-07.** The former blanket rule — "warm network and colleague referrals are
+unavailable" — was written for cold remote-EU outreach, where it is true. It is **materially false for
+the Cluj local market**, and applying it there suppressed a real channel for months.
+
+What remains true everywhere: never invent, imply, or assume a relationship that does not exist, and
+never draft a message that implies a shared contact or a referral Calin does not have.
+
+What is actually available locally:
+
+1. **Boomerang at Endava.** A former employer with a Cluj office. Re-applying to a company that
+   already employed you is not a referral and needs no personal vouching — HR keeps the record, and
+   returning candidates are a recognised hiring channel. This is a legitimate, evidence-backed path
+   and must not be blocked by the no-warm-network rule.
+2. **Local meetups and the Cluj tech community.** Cluj has active JS, backend, and general tech
+   meetups. Attending creates real contacts from zero — that is building a network, not assuming one.
+3. **Cluj and Bucharest technical recruiters**, who work a market small enough that one good
+   conversation surfaces many roles.
 
 Active channels, in order of expected yield:
 

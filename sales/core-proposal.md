@@ -77,10 +77,15 @@ available answer to the seniority question. Rate can be re-anchored at the next 
 - Note: a `$120,000 USD` expectation was recorded against the Tether opportunity. It was never
   validated against the Romania-based remote market and is superseded by the bands above.
 
-**Track preference:** contract remains preferred. Calin has ruled out actively pursuing the permanent
-track, the Romanian local market, and relocation. These bands exist so that the track is **unblocked
-and answerable** — a recruiter asking for a number gets one instead of a stall. They are not an
-instruction to redirect the search.
+**Track preference, revised 2026-08-07:** contract remains preferred **on rate**, but the permanent
+track and the **Cluj hybrid/on-site market are now actively pursued**, at Calin's decision, to
+maximise the chance of landing an engagement. The earlier exclusion of the local market is withdrawn.
+
+Relocation outside Romania remains out of scope.
+
+Work-model preference order, for scoring: remote-EU → Romania-wide remote → Cluj hybrid → Cluj
+on-site. **None of these is a rejection reason.** Work model adjusts the score; only the Tier 1
+blockers in `sales/operating-system.md` remove an opportunity.
 
 ### Channel constraint (both tracks)
 
