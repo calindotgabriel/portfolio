@@ -22,6 +22,25 @@ record of why, because no interview was ever debriefed.
 the first and not the second. This is not a seniority problem — it is an untrained-skill problem, and
 the treatment is eight weeks of deliberate practice.
 
+## Where Execution Lives
+
+This document is the **why and how**: the diagnosis, the methods, the rules for each block. It does
+not tell you what to do on a given morning, and it does not remember what you did. Those live in
+`training/`:
+
+| File | Answers |
+| --- | --- |
+| Google Calendar | **When.** Time blocks, alarms, boundaries. |
+| `training/curriculum.md` | **What today.** All 48 days, with the actual problems and topics named. |
+| `training/log.md` | **What was done.** One row per day. The system's memory. |
+| `training/redo.md` | **What has not stuck.** Spaced repetition at +7 and +21 days. |
+| `training/depth/` | The 12 written explanations and their runnable demos. |
+| `training/design/` | Notes from the 10 design prompts and what was missed. |
+| `sales/interviews/` | Post-mortems from real interviews and mocks. |
+
+The daily loop: open `training/curriculum.md`, find today's date, do the three rows, then write one
+line in `training/log.md` during the 15:15 block. Anything missed goes into `training/redo.md`.
+
 ## Time Budget
 
 Roughly 60% training / 40% applying. The applying half must stay cheap — see the throughput rules in
@@ -208,7 +227,9 @@ of progress.
 
 ## Weekly Checkpoint
 
-Fill this in every Sunday. Numbers only — no commentary, no explanations for a bad week.
+Filled in **Saturday at 11:45**, by summing the week's columns in `training/log.md`. Numbers only — no
+commentary, no explanations for a bad week. The personal check-in at 12:45 is a different question and
+stays separate from these figures.
 
 | Week | Attempted | **Solved in time** | Redo list size | Design prompts | Mocks | Real interviews | Post-mortems written |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
