@@ -14,6 +14,22 @@ bază de date, fără nimic de pornit.
 | `design/` | Notițele de la cele 10 prompturi + ce a fost ratat. |
 | `../sales/interviews/` | Post-mortems de la interviuri și mock-uri, câte un fișier. |
 
+## Cum deschid jurnalul
+
+Obsidian deschide **foldere ca vault**, nu fișiere — de asta nu merge dublu-click pe `journal.md`.
+
+1. Obsidian → *Open folder as vault* → rădăcina repo-ului (nu fișierul, nu `training/`).
+2. Settings → Files & Links → **Excluded files**: `node_modules`, `dist`, `.astro`.
+   Fără asta, cele ~560 de `.md` din `node_modules` îmi îngroapă cele ~89 ale mele la fiecare căutare.
+
+Rădăcina și nu `training/`, pentru că post-mortemurile stau în `../sales/interviews/` — un singur vault
+le acoperă pe amândouă și pot lega o intrare direct de un post-mortem.
+
+Cele patru taguri sunt taguri Obsidian native: click pe `#redo` îmi arată tot ce e de refăcut, click pe
+`#problema` toate enunțurile din interviuri. Panoul de taguri **e** cititul de sâmbătă.
+
+`.obsidian/` e gitignorat.
+
 ## Bucla zilnică
 
 1. **10:00** — deschid `curriculum.md`, caut data de azi, fac cele trei blocuri de pe rând.
