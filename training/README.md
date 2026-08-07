@@ -10,7 +10,8 @@ Execuția zilnică a planului din `../docs/training-plan.md`.
 | `../docs/training-plan.md` | **De ce.** Diagnosticul, metodele, regulile fiecărui bloc. |
 | `curriculum.md` | **Ce fac azi.** 48 de zile, cu problemele și topicurile numite. |
 | `log.md` | **Ce am făcut.** Un rând pe zi. Memoria sistemului. |
-| `redo.md` | **Ce nu s-a prins încă.** Repetiție spațiată la +7 și +21 zile. |
+| `redo.md` | **Ce nu s-a prins încă.** Repetiție spațiată la +7 și +21 zile. Tabelele sunt generate. |
+| `interview-problems.md` | **Ce m-au întrebat efectiv la interviuri.** Scris de mână, pe categorii. |
 | `depth/` | Cele 12 fișe scrise + demo-urile. |
 | `design/` | Notițele de la cele 10 prompturi + ce a fost ratat. |
 | `../sales/interviews/` | Post-mortems de la interviuri reale și mock-uri. |
