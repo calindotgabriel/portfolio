@@ -4,9 +4,26 @@
 
 `passed`
 
-No P0, P1, or P2 findings remain. The production candidate is one tagged A4 page, preserves all six engagements and target keywords, and matches the approved source visual without actionable drift. The existing full dossier remains two tagged A4 pages.
+No P0, P1, or P2 findings remain. The production candidate is one tagged A4 page and preserves six professional engagements, one independent professional-development record, and the target keywords. The existing full dossier remains two tagged A4 pages.
 
-## Source target and evidence
+## 2026-08-10 Iterable and migration content consolidation
+
+Result: `passed`
+
+- The canonical one-page CV now names Iterable marketing automation and Java-to-NestJS microservice migration without changing the approved layout or route structure.
+- ImmoScout24 explicitly connects Iterable to React and Node.js product flows, targeted lifecycle messaging, SEO, testing, and release constraints.
+- RWE explicitly describes incremental legacy Java to NestJS microservice migration, integration and E2E coverage, regression-risk reduction, MongoDB profiling, and Worker Pools.
+- The capability section and Person JSON-LD now include Iterable, marketing automation, third-party integrations, legacy modernization, and Java-to-NestJS migration terms.
+- `npm run build` completed successfully, regenerated both PDFs, and synchronized the canonical CV to `/Users/calingabriel/job-search/cv.pdf`.
+- `dist/cv.pdf` remains one tagged A4 page at `595.92 × 842.88 pt`; the full dossier remains two tagged A4 pages.
+- Extracted PDF text contains the required keywords in the intended summary, ImmoScout24, RWE, and capability sections, with no em or en dashes.
+- Arial and Courier New remain embedded, subsetted, and Unicode-mapped. Email, phone, website, LinkedIn, and GitHub annotations remain clickable.
+- Visual inspection found no clipping, overlap, orphaning, or unintended second page. Desktop, narrow, and 200%-effective-width browser checks found no horizontal overflow or console errors.
+- The synchronized PDF is byte-for-byte identical to `dist/cv.pdf`.
+
+## Previous source target and evidence
+
+The paths below document the earlier Runtime Dossier design iteration and predate the current CV-audit redesign.
 
 - Source HTML: `/Users/calingabriel/.codex/visualizations/2026/07/13/019f5a37-e68a-7be2-99ff-0e6326b5a978/one-page-runtime-dossier-target.html`
 - Source A4 target: `/Users/calingabriel/.codex/visualizations/2026/07/13/019f5a37-e68a-7be2-99ff-0e6326b5a978/one-page-runtime-dossier-target.png`
@@ -21,7 +38,7 @@ The source appears on the left and the implementation PDF on the right at matchi
 
 ## Typography, spacing, color, and assets
 
-- Geologica, Atkinson Hyperlegible Next, and Martian Mono load successfully and are embedded as subsets in both PDFs.
+- Arial and Courier New load successfully and are embedded as subsets in both PDFs.
 - The one-page document uses the same Frost, Carbon, Cobalt, Steel, Rule, and Paper tokens as the approved dossier.
 - White-background contrast remains Carbon 16.09:1, Cobalt 5.18:1, and Steel 4.85:1.
 - Readability was protected by editing content and expanding useful spacing rather than applying a global scale reduction.
@@ -31,9 +48,9 @@ The source appears on the left and the implementation PDF on the right at matchi
 ## Content, SEO, and extraction
 
 - Bitpanda, ImmoScout24, and RWE each contain exactly two outcome-focused bullets.
-- Endava, WIP Romania, and DeverSoft remain chronological compact records with company, role, dates, location, and one factual summary each.
+- Independent professional development, Endava, WIP Romania, and DeverSoft remain chronological compact records with role, dates, location, and one factual summary each.
 - The PDF preserves `65%`, `15,000+`, `45 to 12 minutes`, `2,000+`, regulated custody ownership, all contact channels, and career continuity.
-- Required Node.js, TypeScript, Fastify, NestJS, GraphQL, REST APIs, microservices, AWS/serverless, MongoDB, PostgreSQL, Redis, Docker, CI/CD, integration/E2E testing, profiling, Worker Pools, and React terms are present.
+- Required Node.js, TypeScript, Fastify, NestJS, GraphQL, REST APIs, microservices, Iterable, marketing automation, legacy modernization, AWS/serverless, MongoDB, PostgreSQL, Redis, Docker, CI/CD, integration/E2E testing, profiling, Worker Pools, and React terms are present.
 - Default `pdftotext` order passes: name → title → contact → summary → chronological experience → skills → education → languages → availability.
 - The production candidate retains the existing canonical title, description, Person JSON-LD, `/resume` route, `/cv.pdf`, navigation, and sitemap entry.
 - `/resume-dossier` and `/cv-runtime-dossier.pdf` are unlisted and absent from the sitemap. The route is `noindex, nofollow`; both routes and the PDF are disallowed in `robots.txt` because GitHub Pages cannot attach an `X-Robots-Tag` header to a static PDF.
@@ -53,7 +70,7 @@ The source appears on the left and the implementation PDF on the right at matchi
 - Desktop: 1280 × 720, one document page, no horizontal overflow.
 - Narrow: 390 × 844, semantic single-column reflow, no horizontal overflow.
 - Effective 200% zoom: 640 × 720, no horizontal overflow.
-- All tested layouts contain three recent entries with two bullets each and three compact earlier entries.
+- All tested layouts contain three recent entries with two bullets each and four compact earlier entries.
 - First Tab focuses `/cv.pdf` with a visible 2 px cobalt outline.
 - Reduced-motion mode removes the download transition (`0s`).
 - Browser console and page-error capture returned no errors.

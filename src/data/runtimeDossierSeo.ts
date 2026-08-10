@@ -4,7 +4,7 @@ export const runtimeDossierTitle =
   `${resumeDraft.title} | ${resumeDraft.name}`;
 
 export const runtimeDossierDescription =
-  "Calin Gabriel is a Romania-based senior backend engineer focused on Node.js and TypeScript systems for regulated fintech, digital-asset custody, payments, migrations, and performance-sensitive APIs. Open to permanent roles or long-term B2B contracts across the EU or hybrid in Cluj-Napoca.";
+  "Calin Gabriel is a Romania-based senior backend engineer focused on Node.js and TypeScript for regulated fintech, Iterable integrations, marketing automation, legacy-to-microservices migrations, and performance-sensitive APIs. Open to permanent roles or long-term B2B contracts across the EU or hybrid in Cluj-Napoca.";
 
 export const runtimeDossierPersonJsonLd = {
   "@context": "https://schema.org",
@@ -32,6 +32,12 @@ export const runtimeDossierPersonJsonLd = {
     "GraphQL",
     "REST APIs",
     "Microservices",
+    "Legacy modernization",
+    "Java-to-NestJS migration",
+    "Third-party integrations",
+    "Iterable",
+    "Marketing automation",
+    "Lifecycle messaging",
     "AWS serverless",
     "MongoDB",
     "PostgreSQL",
