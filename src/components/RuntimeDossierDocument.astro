@@ -13,7 +13,7 @@ const { statusLabel, downloadHref, downloadName, downloadLabel } = Astro.props;
 const pageOneExperience = resumeDraft.experience.slice(0, 3);
 const pageTwoExperience = resumeDraft.experience.slice(3);
 
-const formatPeriod = (period: string) => period.replace(" — ", "\n— ");
+const formatPeriod = (period: string) => period.replace(" - ", "\n- ");
 ---
 
   <div class="draft-actions" aria-label="CV actions">
