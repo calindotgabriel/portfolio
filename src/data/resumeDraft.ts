@@ -65,14 +65,14 @@ export const resumeDraft: ResumeDraftData = {
   githubDisplay: "github.com/calindotgabriel",
 
   summary:
-    "Senior backend engineer focused on Node.js and TypeScript systems for regulated fintech and data-heavy products. Most recently, I owned the crypto address-book backend for Bitpanda's bank-facing digital-asset custody platform, from API and data-model design through validation, testing, and production delivery. I work best in established systems where third-party integrations, legacy-to-microservices migrations, profiling, and test coverage make difficult changes safer to ship, including Iterable at ImmoScout24 and Java-to-NestJS modernization at RWE.",
+    "Senior backend engineer with around 7 years of commercial Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Most recently, I owned the crypto address-book backend for Bitpanda's bank-facing digital-asset custody platform, from API and data-model design through validation, testing, third-party integrations, and AWS production delivery. Additional work includes TypeScript payment and wallet flows, event-driven integrations, tested Java-to-NestJS microservice migration, and performance optimization for high-volume services.",
   onePageSummary:
-    "Senior backend engineer focused on Node.js and TypeScript for regulated fintech and data-heavy products. Most recently owned Bitpanda's bank-facing crypto address-book backend from design through production. Additional proof includes Iterable marketing automation at ImmoScout24 and tested Java-to-NestJS microservice migration with measured performance gains at RWE.",
+    "Senior backend engineer with around 7 years of Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Owned Bitpanda's bank-facing crypto address-book backend from design through AWS production. Earlier work includes payment and wallet flows, NestJS microservice migration, and high-volume Node.js optimization.",
 
   proofs: [
-    { value: "45→12m", label: "RWE export pipeline" },
+    { value: "~7y", label: "Commercial Node.js" },
     { value: "65%", label: "API response improvement" },
-    { value: "15k+", label: "Daily energy queries" },
+    { value: "45→12m", label: "RWE export pipeline" },
   ],
 
   experience: [
@@ -90,8 +90,8 @@ export const resumeDraft: ResumeDraftData = {
         "Strengthened service authentication and introduced backend testing patterns adopted by the team.",
       ],
       onePageHighlights: [
-        "Owned the crypto address-book backend for a bank-facing digital-asset custody platform, from API and data-model design through validation, tests, and production.",
-        "Strengthened service authentication and introduced backend testing patterns adopted by the team, using Fastify, GraphQL, TypeScript, and AWS.",
+        "Owned the crypto address-book backend for bank-facing digital-asset custody: API and data-model design, validation, integrations, tests, and AWS production delivery.",
+        "Strengthened service authentication and introduced backend test patterns adopted by the team, using Fastify, GraphQL, TypeScript, and AWS serverless.",
       ],
     },
     {
@@ -108,8 +108,8 @@ export const resumeDraft: ResumeDraftData = {
         "Matched the platform's review and production-safety standards while contributing inside an established distributed system.",
       ],
       onePageHighlights: [
-        "Integrated Iterable marketing automation into React and Node.js lifecycle messaging flows.",
-        "Shipped search, listing, and SEO improvements in a mature AWS and MongoDB platform with unit, integration, and E2E coverage.",
+        "Integrated Iterable into Node.js lifecycle messaging within established release and production-safety constraints.",
+        "Shipped search, listing, and SEO improvements across a mature AWS and MongoDB platform with unit, integration, and E2E coverage.",
       ],
     },
     {
@@ -159,7 +159,7 @@ export const resumeDraft: ResumeDraftData = {
         "Mentored two junior developers and shipped TypeScript checkout support for Klarna and card payments.",
       ],
       compactSummary:
-        "Built a Node.js, S3, and Lambda pipeline processing 2,000+ scientific papers daily; later shipped TypeScript payment flows and mentored two junior developers.",
+        "Shipped TypeScript checkout support for Klarna and card payments; built a Node.js, S3, and Lambda pipeline processing 2,000+ documents daily.",
     },
     {
       company: "WIP Romania",
@@ -174,7 +174,7 @@ export const resumeDraft: ResumeDraftData = {
         "Used WebSockets and reliable client state to keep concurrent account activity responsive during peak usage.",
       ],
       compactSummary:
-        "Built a MeteorJS and React wallet covering deposits, withdrawals, balances, and real-time transaction updates.",
+        "Built a MeteorJS and React wallet covering deposits, withdrawals, balances, and reliable real-time transaction updates over WebSockets.",
     },
     {
       company: "DeverSoft",
@@ -205,7 +205,8 @@ export const resumeDraft: ResumeDraftData = {
         "REST APIs",
         "microservices",
         "distributed systems",
-        "legacy modernization",
+        "event-driven systems",
+        "async workflows",
       ],
     },
     {
@@ -260,27 +261,26 @@ export const resumeDraft: ResumeDraftData = {
         "REST APIs",
         "microservices",
         "distributed systems",
-        "legacy modernization",
+        "event-driven systems",
       ],
     },
     {
       category: "Data & performance",
-      items: ["MongoDB", "PostgreSQL", "Redis", "query profiling", "Worker Threads", "Worker Pools"],
+      items: ["PostgreSQL", "MongoDB", "Redis", "schema design", "indexing", "query profiling", "Worker Pools"],
     },
     {
       category: "Cloud & delivery",
       items: ["AWS", "Lambda", "serverless", "Docker", "CI/CD"],
     },
     {
-      category: "Integration & domain",
+      category: "Quality & domain",
       items: [
-        "Iterable",
-        "marketing automation",
         "integration testing",
         "E2E testing",
         "service authentication",
+        "third-party integrations",
+        "payments",
         "digital-asset custody",
-        "React",
       ],
     },
   ],
