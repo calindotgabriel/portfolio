@@ -11,6 +11,10 @@
 
 **Discovery call: Friday 2026-08-14, 15:00 Europe/Bucharest.**
 
+**Call prep:** technical substance in [`razvan-iterable-migration-briefing.md`](razvan-iterable-migration-briefing.md)
+(SFMC→Iterable translation map, five named pitfalls, the 600-email method). What to rehearse, when,
+and why in [`razvan-iterable-migration-rehearsal.md`](razvan-iterable-migration-rehearsal.md).
+
 ## Score Breakdown
 
 | Component | Score | Maximum | Evidence |
@@ -91,6 +95,9 @@ client is confirmed.
 2. What varies across the 600 emails — language, brand, product, lifecycle stage? Can I see 20–30 samples?
 3. Is Iterable already contracted, or still under evaluation?
 4. What language does the call and the project run in?
+5. How much of the segmentation lives in scheduled SQL Query Activities in Automation Studio, versus
+   in Journey Builder itself? — the block most often missing from the estimate.
+6. Of the ~600 emails, how many actually sent anything in the last 12 months?
 
 **Ask on the call — they should be talking 70% of the time:**
 
@@ -125,7 +132,9 @@ Per `../core-proposal.md`: anchor €55–65/hour, long-term floor €35/hour ef
 
 ## Migration Risks Worth Naming On The Call
 
-Naming two or three of these signals real production experience:
+Naming two or three of these signals real production experience. Expanded, verified against Iterable's
+own documentation, and with wording to use, in
+[`razvan-iterable-migration-briefing.md`](razvan-iterable-migration-briefing.md) §2.
 
 1. **Consent and unsubscribe state** must migrate exactly. Getting it wrong is GDPR exposure, not a bug.
 2. **Deliverability** — a new sending domain and IP need warm-up, so cutover cannot happen overnight.
