@@ -1,271 +1,285 @@
-# Briefing tehnic: migrare SFMC → Iterable
+# Technical briefing: SFMC → Iterable migration
 
-Pentru call-ul de vineri 2026-08-14, 15:00. Companion la
-[`razvan-iterable-migration.md`](razvan-iterable-migration.md) — acolo e strategia, aici e substanța.
+For the call on Friday 2026-08-14, 15:00, **in English**. Companion to
+[`razvan-iterable-migration.md`](razvan-iterable-migration.md) — the strategy is there, the substance
+is here. On the day itself, open
+[`razvan-iterable-migration-final-prep.md`](razvan-iterable-migration-final-prep.md) instead.
 
-Obiectiv: 10 minute de conversație credibilă. Nu mastery. Vorbești 30% din timp.
-
----
-
-## 0. Dacă reții doar trei propoziții
-
-1. **„În SFMC, logica reală de segmentare nu stă în Journey Builder — stă în SQL-urile din Automation
-   Studio. Iterable nu are echivalent pentru asta, și de obicei blocul ăsta lipsește din estimare."**
-2. **„Prima decizie în Iterable — tipul de proiect și cheia de identitate — nu se mai poate schimba
-   după aceea. Aia se ia înainte de orice import, nu în timpul lui."**
-3. **„La 600 de emailuri, prima întrebare nu e cum le migrăm. E câte dintre ele au trimis efectiv
-   ceva în ultimele 12 luni."**
-
-Oricare dintre astea, spusă natural, te scoate din categoria „dev care a citit despre Iterable".
+Goal: 10 minutes of credible conversation. Not mastery. You talk 30% of the time.
 
 ---
 
-## 1. Harta de traducere SFMC → Iterable
+## 0. If you retain only three sentences
 
-Asta e ce trebuie să poți parcurge din cap. Coloana a treia e unde se ascunde munca.
+1. **"In SFMC the real segmentation logic doesn't sit in Journey Builder — it sits in the SQL queries
+   in Automation Studio. Iterable has no equivalent for that, and it's usually the block that's
+   missing from the estimate."**
+2. **"The first decision in Iterable — the project type and the identity key — can't be changed
+   afterwards. That gets decided before any import, not during it."**
+3. **"With 600 emails, the first question isn't how we migrate them. It's how many of them actually
+   sent anything in the last 12 months."**
 
-| Salesforce Marketing Cloud | Iterable | Ce se întâmplă la migrare |
+Any one of these, said naturally, moves you out of the "developer who read about Iterable" category.
+
+---
+
+## 1. The SFMC → Iterable translation map
+
+This is what you need to be able to walk through from memory. The third column is where the work hides.
+
+| Salesforce Marketing Cloud | Iterable | What happens in the migration |
 | --- | --- | --- |
-| Subscriber Key / Contact Key | `userId` sau `email` | **Decizie ireversibilă.** Vezi capcana 1 |
-| Data Extension (sendable) | Profil user + Liste / Segmente | Iterable nu are tabele arbitrare |
-| Data Extension relațional (non-sendable) | Catalog, event data, sau Data Feed | Fiecare DE trebuie realocat manual |
-| Contact Builder + data relationships | Profil user plat + evenimente | **Iterable nu face join-uri.** Datele vin denormalizate |
-| Automation Studio + SQL Query Activity | *nu există echivalent* | Vezi capcana 2. Blocul cel mai subestimat |
-| Journey Builder journey | Journey | Nu se traduce 1:1, se regândește |
-| Entry source = Data Extension | Trigger: eveniment / listă / intrare în segment | Model complet diferit |
-| Filter / Filtered DE | Segment (dinamic) | OK dacă datele sunt pe profil |
-| Content Builder template + blocks | Template + Snippets | Snippets = biblioteca ta de blocuri reutilizabile |
-| AMPscript / SSJS / GTL | Handlebars | **Rescriere, nu conversie** |
-| `Lookup()` / `LookupRows()` în AMPscript | *nu există* → profil / Catalog / Data Feed | Vezi capcana 3 |
-| Publication List (subscription) | Message Type | Mapare explicită, nu automată |
-| Opt-out la nivel de All Subscribers | Global unsubscribe | |
-| Send Classification (transactional) | Message Channel marcat transactional | Utilizatorii nu se pot dezabona de la el |
-| `%%unsub_center_url%%` | `{{hostedUnsubscribeUrl}}` | Se rupe tăcut dacă îl uiți în cele 600 |
-| Business Unit (MID) | Project | **Proiectele Iterable nu împart useri între ele** |
-| Triggered Send | Journey pe eveniment / trigger prin API | |
-| Sender Authentication Package | Sending domain + DKIM/SPF + IP | Reputația nu se transferă |
-| Tracking data views (opens, clicks, sends) | *nu migrează* | Vezi capcana 4 |
+| Subscriber Key / Contact Key | `userId` or `email` | **Irreversible decision.** See pitfall 1 |
+| Data Extension (sendable) | User profile + Lists / Segments | Iterable has no arbitrary tables |
+| Relational DE (non-sendable) | Catalog, event data, or Data Feed | Each DE has to be rehomed by hand |
+| Contact Builder + data relationships | Flat user profile + events | **Iterable doesn't do joins.** Data arrives denormalised |
+| Automation Studio + SQL Query Activity | *no equivalent* | See pitfall 2. The most underestimated block |
+| Journey Builder journey | Journey | Doesn't translate 1:1, gets rethought |
+| Entry source = Data Extension | Trigger: event / list / segment entry | Completely different model |
+| Filter / Filtered DE | Segment (dynamic) | Fine, if the data is on the profile |
+| Content Builder template + blocks | Template + Snippets | Snippets are your reusable block library |
+| AMPscript / SSJS / GTL | Handlebars | **A rewrite, not a conversion** |
+| `Lookup()` / `LookupRows()` in AMPscript | *doesn't exist* → profile / Catalog / Data Feed | See pitfall 3 |
+| Publication List (subscription) | Message Type | Explicit mapping, not automatic |
+| All Subscribers opt-out | Global unsubscribe | |
+| Send Classification (transactional) | Message Channel marked transactional | Users can't unsubscribe from it |
+| `%%unsub_center_url%%` | `{{hostedUnsubscribeUrl}}` | Breaks silently if you leave it in the 600 |
+| Business Unit (MID) | Project | **Iterable projects don't share users** |
+| Triggered Send | Event-triggered journey / API trigger | |
+| Sender Authentication Package | Sending domain + DKIM/SPF + IP | Reputation doesn't transfer |
+| Tracking data views (opens, clicks, sends) | *doesn't migrate* | See pitfall 4 |
 
-Notă despre Business Units: dacă au mai multe BU-uri (per brand sau per țară), întrebarea „un proiect
-Iterable sau mai multe?" e o decizie de arhitectură cu consecințe mari — proiectele separate nu văd
-userii unul altuia. Și e foarte probabil legată de cele 600 de emailuri, care aproape sigur sunt
-variante brand × limbă × etapă.
-
----
-
-## 2. Capcanele de numit pe call
-
-Alege două. Trei dacă merge conversația. Nu le recita — le strecori ca răspuns la ceva ce zic ei.
-
-### Capcana 1 — Identitatea și tipurile de câmpuri se fixează la început și nu se mai schimbă
-
-Iterable are trei tipuri de proiect: **email-based**, **userId-based** și **hybrid**. Setarea se face
-la crearea proiectului și **nu se poate modifica ulterior**. Dacă în CRM-ul lor cheia master e un ID
-de contact (cum e de obicei Subscriber Key în SFMC), iar proiectul Iterable se creează email-based,
-fiecare sincronizare ulterioară va lucra împotriva modelului. Merge-urile de useri în Iterable sunt
-la rândul lor ireversibile.
-
-Al doilea strat, mai subtil: **tipul de dată al unui câmp de profil se deduce la prima scriere și nu
-mai poate fi schimbat.** Dacă primul import trimite `"42"` în loc de `42`, câmpul devine string pe
-vecie și nu mai poți segmenta pe interval numeric. La fel cu datele calendaristice trimise ca text.
-Un import de test făcut neatent otrăvește schema.
-
-> **Formulare:** „Un lucru pe care l-aș vrea clarificat înainte de orice import: tipul de proiect
-> Iterable și cheia de identitate nu se mai pot schimba după creare, iar tipurile câmpurilor de
-> profil se fixează la primul write. Deci mapping-ul din CRM nu e un pas de execuție — e o decizie
-> de arhitectură care se ia în prima săptămână, cu un import de test într-un proiect de sacrificiu."
-
-De ce funcționează: arată că gândești în termeni de decizii ireversibile, ceea ce e exact ce vrea
-cineva care plătește o migrare.
-
-### Capcana 2 — Logica reală nu e în Journey Builder, e în Automation Studio *(cea mai bună)*
-
-În majoritatea conturilor SFMC mature, segmentarea nu trăiește în journey-uri. Trăiește în **SQL Query
-Activities** rulate pe program în Automation Studio, care populează Data Extensions; Journey Builder
-doar citește DE-ul rezultat. Din interfața de journey-uri nu se vede nimic din asta.
-
-Iterable nu are nimic echivalent. Nu poți rula SQL programat peste datele tale în Iterable. Fiecare
-query devine una din două:
-
-- **un segment Iterable** — dar numai dacă toate datele de care depinde sunt deja pe profilul userului
-  sau în evenimente;
-- **un job în stack-ul lor**, care calculează valoarea și o împinge în Iterable ca un câmp de profil.
-
-A doua variantă e muncă de inginerie, la ei, nu la marketing. Și e blocul care lipsește din aproape
-orice estimare, fiindcă nimeni nu se uită în Automation Studio când numără journey-uri.
-
-> **Formulare:** „Întrebarea pe care aș pune-o devreme: cât din segmentarea voastră stă în SQL-uri
-> programate în Automation Studio, nu în Journey Builder? De obicei acolo e cea mai mare parte a
-> logicii, și Iterable nu are echivalent — deci fiecare query devie ori un segment, dacă datele sunt
-> deja pe profil, ori un job la voi în stack care calculează și împinge câmpul. Partea aia atinge
-> echipa de development, nu doar marketing-ul."
-
-De ce funcționează: e exact perspectiva unui backend dev, nu a unui consultant de marketing. Și e
-verificabil adevărată — dacă au SFMC serios, o să confirme imediat, poate cu ușurare.
-
-### Capcana 3 — Consimțământ și dezabonare nu se mapează 1:1
-
-SFMC are trei niveluri de opt-out care coexistă: la nivel de **All Subscribers** (global), la nivel de
-**listă**, și la nivel de **Publication List** (preferințe pe tip de conținut) — plus **Send
-Classification**, unde un send marcat transactional ocolește dezabonările.
-
-Iterable are propriul model: **global unsubscribe**, **message channel** (marketing vs transactional)
-și **message type** în interiorul canalului. Suprapunerea e parțială. Nu există mapare automată — cine
-face migrarea decide, iar singurul default sigur este *cea mai restrictivă interpretare câștigă*.
-
-Plus detaliul care se rupe tăcut: linkurile de dezabonare din cele 600 de template-uri arată spre
-SFMC. Trebuie să devină `{{hostedUnsubscribeUrl}}`. Un template migrat cu link vechi trimite oameni
-către un centru de preferințe al unui sistem pe care l-ai stins.
-
-> **Formulare:** „Aici nu e o mapare, e o decizie. SFMC are opt-out pe trei niveluri plus send
-> classification, Iterable are global, canal și message type. Se suprapun parțial. Regula pe care aș
-> aplica-o e: în caz de ambiguitate, câștigă interpretarea cea mai restrictivă — la GDPR, o greșeală
-> aici nu e bug, e expunere legală."
-
-### Capcana 4 — Istoricul de engagement nu vine cu tine *(rezervă)*
-
-Opens, clicks, sends rămân în SFMC. În ziua 1 pe Iterable, orice segment de tip „a deschis în ultimele
-90 de zile" e gol. Adică fiecare journey de reactivare, win-back sau supresie pe inactivitate e mort
-la cutover și rămâne subțire vreo trei luni.
-
-Mitigare concretă: backfill al câtorva câmpuri sumar pe profil (`lastOpenAt`, `lastClickAt`, un scor
-de engagement) prin bulk update, plus păstrarea accesului read-only la SFMC pentru o perioadă. Nu e
-migrare de istoric, e migrare de *derivate* — suficient cât să funcționeze segmentarea.
-
-### Capcana 5 — Deliverability impune cutover pe etape *(rezervă)*
-
-Domeniu nou de trimitere și IP nou înseamnă warm-up. Reputația nu se transferă între ESP-uri. Dacă
-la prima trimitere pe IP rece bagi lista întreagă, inclusiv inactivii de doi ani, ajungi în spam și
-strici reputația de la start.
-
-Consecință de proiect, nu doar tehnică: **nu poate exista big bang**. Se merge campanie cu campanie,
-în paralel, începând cu segmentele cele mai angajate, cu volum crescător. Asta trebuie să fie în plan
-de la început, altfel deadline-ul e fictiv.
+A note on Business Units: if they have several BUs (per brand or per country), the question "one
+Iterable project or several?" is an architecture decision with large consequences — separate projects
+can't see each other's users. And it's very likely tied to the 600 emails, which are almost certainly
+brand × language × lifecycle variants.
 
 ---
 
-## 3. Blocul de 600 de emailuri — metoda
+## 2. The pitfalls worth naming on the call
 
-Ăsta e terenul tău. E refactoring, nu email marketing. Patru pași, în ordine.
+Pick two. Three if the conversation runs. Don't recite them — slip them in as a response to something
+they said.
 
-**Pas 0 — întâi omori, apoi migrezi.**
-Cere logurile de trimitere pe ultimele 12–18 luni. În conturi cu 600 de template-uri, o parte
-consistentă nu a trimis nimic de un an. Fiecare template eliminat înainte de analiză e muncă
-economisită de trei ori: nu îl clusterizezi, nu îl rescrii, nu îl testezi.
+### Pitfall 1 — identity and field types are fixed at the start and never change
 
-> „Prima întrebare la 600 nu e cum le migrăm. E câte au trimis efectiv ceva anul trecut. De obicei
-> numărul real cu care lucrezi e semnificativ mai mic, și e cea mai ieftină reducere din tot proiectul."
+Iterable has three project types: **email-based**, **userId-based** and **hybrid**. The setting is
+made when the project is created and **cannot be changed later**. If the master key in their CRM is a
+contact ID (as Subscriber Key usually is in SFMC) and the Iterable project is created email-based,
+every subsequent sync will be working against the model. User merges in Iterable are likewise
+irreversible.
 
-**Pas 1 — clusterizare pe patru axe.**
-Limbă / piață · brand sau business unit · etapă de lifecycle · structură de layout.
-600 înseamnă tipic ceva de genul 40 de mesaje reale × 3 limbi × câteva variante.
+The second, subtler layer: **the data type of a profile field is inferred on first write and can
+never be changed.** If the first import sends `"42"` instead of `42`, that field is a string forever
+and you can no longer segment on a numeric range. Same with dates sent as text. One careless test
+import poisons the schema.
 
-**Pas 2 — separă tipurile de variație.** Aici e insight-ul real, și e unul de inginer:
+> **How to say it:** "One thing I'd want nailed down before any import: the Iterable project type and
+> the identity key can't be changed after creation, and profile field data types are fixed on first
+> write. So the CRM mapping isn't an execution step — it's an architecture decision that gets made in
+> week one, with a test import into a throwaway project."
 
-| Ce variază | Unde se rezolvă în Iterable |
+Why it works: it shows you think in terms of irreversible decisions, which is exactly what someone
+paying for a migration wants to hear.
+
+### Pitfall 2 — the real logic is in Automation Studio, not Journey Builder *(the best one)*
+
+In most mature SFMC accounts the segmentation doesn't live in journeys. It lives in **SQL Query
+Activities** running on a schedule in Automation Studio, which populate Data Extensions; Journey
+Builder just reads the resulting DE. None of it is visible from the journey UI.
+
+Iterable has nothing equivalent. You can't run scheduled SQL over your data inside Iterable. Every
+query becomes one of two things:
+
+- **an Iterable segment** — but only if all the data it depends on is already on the user profile or
+  in events;
+- **a job in their stack**, computing the value and pushing it into Iterable as a profile field.
+
+The second is engineering work, on their side, not marketing's. And it's the block missing from
+almost every estimate, because nobody looks inside Automation Studio when counting journeys.
+
+> **How to say it:** "How much of your segmentation actually lives in scheduled SQL query activities
+> in Automation Studio, rather than in Journey Builder itself? That's usually where most of the logic
+> sits, and Iterable has no equivalent — so every query becomes either a segment, if the data is
+> already on the user profile, or a job on your side that computes the field and pushes it in. That
+> part touches your engineering team, not just marketing."
+
+Why it works: it's an engineer's perspective, not a marketing consultant's. And it's verifiably true —
+if they run SFMC seriously they'll confirm it immediately, possibly with relief.
+
+### Pitfall 3 — consent and unsubscribe don't map 1:1
+
+SFMC has three coexisting levels of opt-out: **All Subscribers** (global), **list** level, and
+**Publication List** (content-type preferences) — plus **Send Classification**, where a send marked
+transactional bypasses unsubscribes entirely.
+
+Iterable has its own model: **global unsubscribe**, **message channel** (marketing vs transactional)
+and **message type** within the channel. The overlap is partial. There's no automatic mapping —
+whoever runs the migration decides, and the only safe default is *the most restrictive interpretation
+wins*.
+
+Plus the detail that breaks silently: the unsubscribe links in all 600 templates point at SFMC. They
+have to become `{{hostedUnsubscribeUrl}}`. A migrated template with the old link sends people to the
+preference centre of a system you've switched off.
+
+> **How to say it:** "This isn't a mapping, it's a decision. SFMC has opt-out at three levels — global,
+> list, publication list — plus send classification. Iterable has global, channel and message type.
+> They only partly overlap. The rule I'd apply is: where it's ambiguous, the most restrictive
+> interpretation wins. With GDPR, getting this wrong isn't a bug, it's legal exposure."
+
+### Pitfall 4 — engagement history doesn't come with you *(backup)*
+
+Opens, clicks and sends stay in SFMC. On day 1 in Iterable, any segment like "opened in the last 90
+days" is empty. Which means every re-engagement, win-back or inactivity-suppression journey is dead at
+cutover and stays thin for about a quarter.
+
+Concrete mitigation: backfill a few summary fields onto the profile (`lastOpenAt`, `lastClickAt`, an
+engagement score) via bulk update, and keep read-only access to SFMC for a while. It isn't a history
+migration, it's a migration of *derived values* — enough to make segmentation work.
+
+### Pitfall 5 — deliverability forces a phased cutover *(backup)*
+
+A new sending domain and a new IP mean warm-up. Reputation doesn't transfer between ESPs. If the first
+send on a cold IP goes to the whole list, including people inactive for two years, you land in spam
+and damage your reputation from the start.
+
+The consequence is about the plan, not just the tech: **there can't be a big bang**. Campaign by
+campaign, in parallel, starting with the most engaged segments and ramping volume. That has to be in
+the plan from day one, otherwise the deadline is fiction.
+
+---
+
+## 3. The 600-email block — the method
+
+This is your ground. It's refactoring, not email marketing. Four steps, in order.
+
+**Step 0 — kill first, migrate second.**
+Ask for the send logs for the last 12–18 months. In accounts with 600 templates, a substantial share
+haven't sent anything in a year. Every template eliminated before analysis is work saved three times
+over: you don't cluster it, don't rewrite it, don't test it.
+
+> "The first question with 600 isn't how we migrate them. It's how many of them actually sent
+> anything last year. Usually the real number you're working with is much smaller, and it's the
+> cheapest reduction in the whole project."
+
+**Step 1 — cluster on four axes.**
+Language / market · brand or business unit · lifecycle stage · layout structure.
+600 typically means something like 40 real messages × 3 languages × a few variants.
+
+**Step 2 — separate the kinds of variation.** This is the real insight, and it's an engineer's:
+
+| What varies | Where it's solved in Iterable |
 | --- | --- |
-| Layout / structură | Un template + Handlebars conditionals + Snippets |
-| Conținut (produse, prețuri, oferte) | Catalog, Data Feed, sau câmpuri de profil |
-| Audiență / momentul trimiterii | *Același* template, journey diferit |
+| Layout / structure | One template + Handlebars conditionals + Snippets |
+| Content (products, prices, offers) | Catalog, Data Feed, or profile fields |
+| Audience / send timing | The *same* template, a different journey |
 
-Cine nu face distincția asta ajunge fie la 600 de template-uri în sistemul nou, fie la un singur
-template monstruos pe care nu-l mai poate întreține nimeni. Consolidarea corectă înseamnă să muți
-variația la nivelul potrivit, nu să o comprimi.
+Whoever doesn't make this distinction ends up either with 600 templates in the new system, or with one
+monstrous template nobody can maintain. Consolidating properly means moving each kind of variation to
+the level where it belongs — not compressing it.
 
-**Pas 3 — fiecare `Lookup()` din AMPscript e un item de lucru.**
-În SFMC, un template poate interoga orice Data Extension la momentul trimiterii. În Iterable,
-Handlebars vede doar ce e pe profilul userului, în payload-ul evenimentului, într-un Catalog, sau ce
-vine dintr-un **Data Feed** — un endpoint HTTP apelat la send time și îmbinat în context.
+**Step 3 — every `Lookup()` in AMPscript is a work item.**
+In SFMC a template can query any Data Extension at send time. In Iterable, Handlebars only sees what's
+on the user profile, in the event payload, in a Catalog, or what comes from a **Data Feed** — an HTTP
+endpoint called at send time and merged into the render context.
 
-Deci fiecare `Lookup()` din cele 600 devine ori un câmp de profil, ori un item de catalog, ori un
-endpoint pe care cineva trebuie să-l construiască **și să-l opereze**. Data Feeds sunt puternice și
-sunt cheia consolidării, dar introduc o dependență la runtime: dacă endpointul e lent sau pică,
-afectează trimiterea. Feed-urile dinamice, cu merge tags în URL, se cachează prost — un apel per user.
+So every `Lookup()` across the 600 becomes either a profile field, a catalog item, or an endpoint
+somebody has to build **and operate**. Data Feeds are powerful and they're the key to consolidation,
+but they introduce a runtime dependency: if the endpoint is slow or down, it affects sending. Dynamic
+feeds, with merge tags in the URL, cache poorly — one call per user.
 
-**Pas 4 — numărul realist.**
-„Wenige" nu e un număr. Realist ajung la ceva de ordinul a **10–25 de template-uri de bază plus o
-bibliotecă de snippets**, nu la 5. Spune asta pe call. Nu e ce vor să audă, și exact de asta te crede.
+**Step 4 — the realistic number.**
+"Wenige" is not a number. Realistically they land at something like **10–25 base templates plus a
+snippet library**, not 5. Say that on the call. It isn't what they want to hear, and that's exactly
+why they'll believe you.
 
-> „600 pot fi 8 template-uri sau 80, și diferența e de câteva ori efortul. Nu dau niciun număr până nu
-> văd 20–30 de sample-uri. Ce pot să-ți spun deja e că răspunsul realist e mai aproape de 15–20 decât
-> de 3, și dacă cineva îți promite 3, ori nu s-a uitat în ele, ori construiește ceva ce nu întreții."
-
----
-
-## 4. „Ai mai făcut o migrare completă pe Iterable?"
-
-Patru propoziții, exersate cu voce tare. Fără scuze, fără explicații lungi.
-
-> „Nu, migrare completă de pe SFMC nu am condus. Am integrat Iterable în producție la ImmoScout24,
-> deci modelul de date și API-ul le cunosc din mână. Migrări legacy am condus — la RWE, Java către
-> NestJS, feliat și acoperit cu teste, nu rescris dintr-o bucată. Blocul de 600 de emailuri e o
-> problemă de refactoring și modelare de date, care e exact ce fac; hai să-ți spun cum aș ataca-o și
-> ce aș vrea să verific în primele două săptămâni."
-
-Și treci imediat mai departe. Pauza de după „nu" e ce te costă, nu răspunsul.
-
-Dacă întreabă adânc despre SFMC și te simți la limită:
-
-> „SFMC îl cunosc ca sistem-sursă — ce trebuie scos din el și în ce formă. Nu l-am operat zilnic. La o
-> migrare contează mai puțin decât pare, fiindcă tot ce iese de acolo se rescrie oricum."
-
-Onest, și adevărat.
+> "600 could be 8 templates or 80, and that's several times the effort. I won't give you a number
+> until I've seen 20 or 30 samples. What I can tell you already is that the realistic answer is closer
+> to 15 or 20 than to 3 — and if someone promises you 3, either they haven't looked inside them, or
+> they're building something you won't be able to maintain."
 
 ---
 
-## 5. Arcul de 10 minute
+## 4. "Have you run a full migration onto Iterable before?"
 
-1. **Ei vorbesc primii.** „Povestește-mi de unde a pornit — ce vă face să migrați *acum*?" Motivul
-   (contract care expiră, cost, o limită tehnică, un om care a plecat) îți spune totul despre urgență
-   și buget.
-2. **Asculți și pui o singură întrebare tehnică ascuțită** — cea cu Automation Studio. E momentul în
-   care se schimbă tonul conversației.
-3. **Numești o capcană**, nu trei. Cea care se leagă de ce tocmai au zis.
-4. **Poziționarea onestă**, dacă întreabă. Fără să aștepți să întrebe, dacă simți că plutește.
-5. **Blocul de 600** — metoda, pe scurt, plus refuzul politicos de a da un număr.
-6. **CTA:** 20–30 de sample-uri de emailuri, plus o evaluare de scope în trei zile.
+Four sentences, rehearsed out loud. No apology, no long explanation.
 
----
+> "No — I haven't led a full migration off SFMC. I have integrated Iterable in production at
+> ImmoScout24, so I know the data model and the API firsthand. And I have led legacy migrations — at
+> RWE, Java to NestJS, sliced and covered by tests rather than rewritten in one go. The 600-email
+> block is a refactoring and data-modelling problem, which is exactly what I do. Let me tell you how
+> I'd approach it and what I'd want to check in the first two weeks."
 
-## 6. Ce nu faci
+Then move straight on. The pause before the "No" is what costs you, not the answer.
 
-- **Nu te dai expert SFMC.** Ei probabil îl cunosc mai bine decât tine. Poziția ta e „inginer care
-  știe Iterable și știe migrări", nu „consultant SFMC".
-- **Nu dai număr** — nici zile, nici tarif. Întrebarea se întoarce: *care e bugetul proiectului?*
-- **Nu promiți 600 → 5.**
-- **Nu inventezi nume de feature-uri Iterable.** Dacă nu ești sigur: „asta verific și îți confirm
-  luni." Un dev care spune asta e mai credibil decât unul care nu greșește niciodată.
-- **Nu vorbești mai mult de 30%.** E get-to-know. Cine pune întrebările controlează impresia.
+Don't soften it into "unfortunately not" or "I have to be honest with you" — both read as apology.
+
+If they push deep on SFMC and you feel the edge:
+
+> "I know SFMC as a source system — what needs to come out of it and in what shape. I haven't operated
+> it day to day. On a migration that matters less than it sounds, because everything that comes out of
+> it gets rewritten anyway."
+
+Honest, and true.
 
 ---
 
-## 7. Întrebări de trimis în scris înainte de vineri
+## 5. The 10-minute arc
 
-Peste cele patru din fișierul de account, două care merită adăugate — ambele te fac să pari că ai mai
-văzut asta:
-
-5. Cât din segmentare stă în SQL-uri programate în Automation Studio, față de Journey Builder?
-6. Din cele ~600 de emailuri, câte au trimis efectiv ceva în ultimele 12 luni?
+1. **They speak first.** "Tell me where this started — what's making you migrate *now*?" The reason (a
+   contract expiring, cost, a technical limit, someone who left) tells you everything about urgency
+   and budget.
+2. **You listen and ask one sharp technical question** — the Automation Studio one. That's the moment
+   the tone of the conversation changes.
+3. **You name one pitfall**, not three. The one that connects to what they just said.
+4. **The honest positioning**, if they ask. Without waiting to be asked, if you sense it hanging.
+5. **The 600-email block** — the method, briefly, plus the polite refusal to give a number.
+6. **CTA:** 20–30 sample emails, and a scope assessment within three days.
 
 ---
 
-## 8. Vocabular — să recunoști termenii dacă apar
+## 6. What not to do
+
+- **Don't play SFMC expert.** They almost certainly know it better than you. Your position is
+  "engineer who knows Iterable and knows migrations", not "SFMC consultant".
+- **Don't give a number** — not days, not rate. Turn the question back: *what's the budget for this
+  project?*
+- **Don't promise 600 → 5.**
+- **Don't invent Iterable feature names.** If you're not sure: "I'll check and confirm on Monday." A
+  developer who says that is more credible than one who's never wrong.
+- **Don't talk more than 30% of the time.** It's a get-to-know. Whoever asks the questions controls
+  the impression.
+
+---
+
+## 7. Questions to send in writing before Friday
+
+Beyond the four in the account file, two worth adding — both make you sound like you've seen this
+before:
+
+5. How much of the segmentation sits in scheduled SQL query activities in Automation Studio, versus in
+   Journey Builder?
+6. Of the ~600 emails, how many actually sent anything in the last 12 months?
+
+---
+
+## 8. Vocabulary — to recognise the terms if they come up
 
 **SFMC:** Data Extension (DE) · Subscriber Key · Contact Builder · Journey Builder · Automation Studio
 · Query Activity · Content Builder · AMPscript · SSJS · GTL · Publication List · Send Classification ·
 Sender Profile · Business Unit (MID) · Triggered Send · All Subscribers.
 
-**Iterable:** User Profile · Custom Event · Catalog · List (statică) · Segment (dinamic) · Journey ·
+**Iterable:** User Profile · Custom Event · Catalog · List (static) · Segment (dynamic) · Journey ·
 Template · Snippet · Data Feed · Handlebars / merge tags · Message Channel · Message Type · Project ·
 `{{hostedUnsubscribeUrl}}`.
 
-**Din scope-ul german:** *Anbindung* = conectare/integrare · *Datenmodell* = model de date ·
-*Entry Audiences* = audiențele de intrare în journey · *Inhalte* = conținut · *voraussichtlich* =
-probabil/estimativ · *wenige* = puține (nu e un număr — asta e chiar problema).
+**From the German scope**, in case they quote it: *Anbindung* = connection/integration · *Datenmodell*
+= data model · *Entry Audiences* = journey entry audiences · *Inhalte* = content · *voraussichtlich* =
+presumably/estimated · *wenige* = few (not a number — which is precisely the problem).
 
 ---
 
-## Surse verificate
+## Verified sources
 
 - [Iterable — Project Types and Unique Identifiers](https://support.iterable.com/hc/en-us/articles/9216719179796-Project-Types-and-Unique-Identifiers)
 - [Iterable — Field Data Types](https://support.iterable.com/hc/en-us/articles/208183076-Field-Data-Types)
@@ -276,5 +290,5 @@ probabil/estimativ · *wenige* = puține (nu e un număr — asta e chiar proble
 - [Iterable — Message Channels and Message Types Overview](https://support.iterable.com/hc/en-us/articles/204780529-Message-Channels-and-Message-Types-Overview)
 - [Iterable — Creating a Subscription Preference Center](https://support.iterable.com/hc/en-us/articles/208463956-Creating-a-Subscription-Preference-Center)
 - [Iterable — Maximizing Email Deliverability](https://support.iterable.com/hc/en-us/articles/205480215-Maximizing-Email-Deliverability)
-- [SFMC Query Activity SQL — ghid](https://rizexlabs.com/sfmc-query-activity-sql-guide/)
-- [Automation Studio in Marketing Cloud — ghid](https://deselect.com/automation-studio-marketing-cloud-guide/)
+- [SFMC Query Activity SQL — guide](https://rizexlabs.com/sfmc-query-activity-sql-guide/)
+- [Automation Studio in Marketing Cloud — guide](https://deselect.com/automation-studio-marketing-cloud-guide/)

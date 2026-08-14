@@ -1,247 +1,264 @@
-# Repetiție finală — vineri 2026-08-14, 13:30–14:30
+# Final rehearsal — Friday 2026-08-14, 13:30–14:30
 
-Call la 15:00. Ora asta e **cu voce tare, în picioare, cronometrat.** Ca la mock, nu ca la citit.
+Call at 15:00, **in English**. This hour is **out loud, standing up, on the clock.** Like a mock, not
+like reading.
 
-**Fișierul ăsta e singurul pe care îl deschizi în ora asta.** Documentația Iterable e făcută. Ora asta
-nu mai e pentru știut — e pentru *livrat*. Sunt două lucruri diferite și se antrenează diferit.
+**This is the only file you open in this hour.** The Iterable documentation is done. This hour is no
+longer about knowing — it's about *delivering*. Those are two different things and they train
+differently.
 
-**La 14:30 închizi tot.** După un punct, mai multă pregătire scade încrederea în loc să o crească.
-Între 14:30 și 14:55 nu mai citești nimic. Ăsta nu e un sfat, e parte din plan.
+**At 14:30 you close everything.** Past a certain point, more preparation lowers confidence instead of
+raising it. Between 14:30 and 14:55 you read nothing. That isn't advice, it's part of the plan.
 
 ---
 
-## Minutajul
+## The clock
 
-| Ora | Ce | Cât |
+| Time | What | Length |
 | --- | --- | --- |
-| 13:30 | Blocul 1 — deschiderea de 60 de secunde | 8 min |
-| 13:38 | Blocul 2 — cele 9 întrebări de discovery | 12 min |
-| 13:50 | Blocul 3 — poziționarea onestă ⚠️ | 10 min |
-| 14:00 | Blocul 4 — răspunsul la rată | 7 min |
-| 14:07 | Blocul 5 — cele trei capcane | 13 min |
-| 14:20 | Blocul 6 — partea plictisitoare (tehnica) | 10 min |
-| **14:30** | **STOP.** Nu mai citești nimic. | 25 min |
-| 14:55 | Intri în call | |
+| 13:30 | Block 1 — the 60-second opening | 8 min |
+| 13:38 | Block 2 — the 9 discovery questions | 12 min |
+| 13:50 | Block 3 — honest positioning ⚠️ | 10 min |
+| 14:00 | Block 4 — the rate answer | 7 min |
+| 14:07 | Block 5 — the three pitfalls | 13 min |
+| 14:20 | Block 6 — the boring part (setup) | 10 min |
+| **14:30** | **STOP.** No more reading. | 25 min |
+| 14:55 | Join the call | |
 
-Dacă rămâi în urmă, **nu tăia din blocul 3.** Taie din 2 și din 5.
-
----
-
-## Blocul 1 — Deschiderea, 60 de secunde (13:30)
-
-Nu CV recitat. Cine ești, de ce ești relevant *pentru migrarea asta*, și predai mingea.
-
-> „Sunt backend dev senior, Node și TypeScript. Momentan lucrez la Bitpanda, pe custodie
-> instituțională de crypto pentru bănci. Iterable l-am integrat în producție la ImmoScout24 —
-> platformă React/Node pe AWS. Și am condus migrări de sisteme legacy, cea mai mare la RWE, Java
-> către NestJS. Din ce mi-a trimis Razvan, partea care mi-a sărit în ochi e blocul de 600 de
-> emailuri — dar hai să-mi spui tu întâi de unde a pornit tot proiectul."
-
-**Cum repeți:** de 4 ori, cronometrat. Prima dată o să iasă 75 de secunde — normal.
-
-**Criteriu:** sub 45 de secunde, și se termină cu întrebarea către ei. Dacă la a patra trecere încă
-depășești un minut, taie propoziția cu RWE — o recuperezi oricum în blocul 3.
-
-**De ce se termină cu întrebare:** predai mingea din prima. Ei trebuie să vorbească 70% din call.
+If you fall behind, **do not cut block 3.** Cut from 2 and from 5.
 
 ---
 
-## Blocul 2 — Cele 9 întrebări (13:38)
+## Block 1 — The opening, 60 seconds (13:30)
 
-Spuse cu voce tare până sună a conversație, nu a chestionar. Ordinea contează — asta e ordinea în
-care aterizează natural.
+Not a recited CV. Who you are, why you're relevant *to this migration*, then hand over the ball.
 
-1. **Ce vă face să migrați *acum*?** E un contract care expiră, costul, o limită tehnică în care ați dat?
-2. **Ați mai încercat asta înainte?** Ce s-a întâmplat?
-3. **Câte journeys și automatizări sunt live acum?** Câte template-uri, în total?
-4. **Cât din segmentare stă în SQL-uri programate în Automation Studio, față de Journey Builder?**
-5. **Din cele ~600 de emailuri, câte au trimis efectiv ceva în ultimele 12 luni?**
-6. **Unde stă consimțământul azi, și în ce format?**
-7. **Ce volum lunar de trimiteri aveți, și câți contacți?**
-8. **Cine face marketing ops la voi, și are capacitate pentru proiectul ăsta?**
-9. **Aveți un deadline? Bugetul e deja alocat?** Ce se întâmplă dacă alunecă cu două luni?
+> "I'm a senior backend developer, Node and TypeScript. Right now I'm at Bitpanda, working on
+> institutional crypto custody for banks. I've integrated Iterable in production at ImmoScout24 — a
+> React/Node platform on AWS. And I've led legacy migrations, the biggest one at RWE, Java to NestJS.
+> From what Razvan sent over, the part that stood out to me is the 600-email block — but tell me
+> first, where did this whole project come from?"
 
-**Cum repeți:** două treceri complete, cu voce tare. A doua trecere, fără să te uiți — dacă uiți una,
-lasă-o, nu te întoarce. Nu le bifezi pe toate în call oricum; e o listă din care tragi, nu un script.
+**How you rehearse it:** four times, on the clock. The first one will come out at 75 seconds — normal.
 
-**Criteriu:** întrebările 1, 4 și 5 îți vin fără să te gândești. Alea trei fac cea mai mare parte a
-treburilor. 4 și 5 sunt cele care te fac să pari că ai mai văzut asta.
+**Pass criterion:** under 45 seconds, and it ends with the question back to them. If you're still over
+a minute on the fourth run, cut the RWE sentence — you get it back in block 3 anyway.
 
-**Cel mai important lucru de repetat la blocul ăsta nu e o întrebare — e tăcerea de după ea.** Pune
-întrebarea 1 cu voce tare și apoi taci efectiv cinci secunde. De două ori. Tăcerea e locul unde
-majoritatea oamenilor se sabotează, umplând golul.
+**Why it ends with a question:** you hand over the ball immediately. They need to talk 70% of the call.
 
 ---
 
-## Blocul 3 — Poziționarea onestă ⚠️ (13:50)
+## Block 2 — The 9 questions (13:38)
 
-**Blocul cel mai important din toată ora.** Singurul moment în care poți pierde call-ul în trei
-secunde — și nu prin conținut, ci prin *ezitarea dinaintea lui*.
+Said out loud until they sound like conversation, not like a questionnaire. The order matters — this
+is the order in which they land naturally.
 
-> „Nu, migrare completă de pe SFMC nu am condus. Am integrat Iterable în producție la ImmoScout24,
-> deci modelul de date și API-ul le cunosc din mână. Migrări legacy am condus — la RWE, Java către
-> NestJS, feliat și acoperit cu teste, nu rescris dintr-o bucată. Blocul de 600 de emailuri e o
-> problemă de refactoring și modelare de date, care e exact ce fac; hai să-ți spun cum aș ataca-o și
-> ce aș vrea să verific în primele două săptămâni."
+1. **What's making you migrate *now*?** Is it a contract expiring, cost, or a technical limit you've hit?
+2. **Have you attempted this before?** What happened?
+3. **How many journeys and automations are live right now?** How many templates in total?
+4. **How much of the segmentation sits in scheduled SQL query activities in Automation Studio, versus
+   in Journey Builder itself?**
+5. **Of the ~600 emails, how many actually sent anything in the last 12 months?**
+6. **Where does consent live today, and in what format?**
+7. **What's your monthly send volume, and how many contacts?**
+8. **Who does marketing ops on your side, and do they have capacity for this?**
+9. **Do you have a deadline? Is the budget already allocated?** What happens if this slips by two months?
 
-**Cum repeți:** de 5 ori. Ultima dată **înregistrează-te pe telefon și ascultă-o.** E singurul bloc
-unde merită efortul ăsta — pentru că nu poți auzi singur dacă sună a scuză în timp ce vorbești.
+**How you rehearse it:** two full passes, out loud. Second pass without looking — if you forget one,
+let it go, don't go back. You won't tick all of them on the call anyway; it's a list you draw from,
+not a script.
 
-**Criteriu, trei condiții simultan:**
-- sub 25 de secunde
-- **zero pauză înainte de „Nu"** — nu inspiri, nu zici „păi", nu zâmbești scuzat
-- se termină pe pivot („hai să-ți spun cum aș ataca-o"), nu pe justificare
+**Pass criterion:** questions 1, 4 and 5 come out without thinking. Those three do most of the work.
+4 and 5 are the ones that make you sound like you've seen this before.
 
-**Greșeala de evitat:** să explici *de ce* nu ai făcut, sau să adaugi „dar cred că aș putea". Spui nu,
-apoi spui ce ai. Fără punte de scuze între ele. Tonul e de constatare, nu de mărturisire.
-
-**Dacă la ascultare sună defensiv:** spune-o o dată mai rar și cu 20% mai jos în ton. Aproape
-întotdeauna asta rezolvă.
-
----
-
-## Blocul 4 — Răspunsul la rată (14:00)
-
-Prima mișcare, mereu:
-
-> „Care e bugetul alocat pentru proiectul ăsta?"
-
-**Repetă a doua întoarcere, nu prima.** Prima e ușoară. A doua e cea la care cedează majoritatea.
-Zi-ți singur, cu voce tare, „hai, dă-mi și tu un ordin de mărime" — și răspunde:
-
-> „Depinde mult de forma colaborării și de durată. Ca să-ți dau un număr care înseamnă ceva, aș vrea
-> întâi să văd sample-urile. Dar dacă ai nevoie de un ordin de mărime ca să știi dacă are sens să
-> continuăm, spune-mi tu în ce interval vă încadrați și îți zic direct dacă lucrez acolo."
-
-Și dacă insistă pe durată, nu pe bani:
-
-> „600 pot fi 8 template-uri sau 80, și diferența e de câteva ori efortul. Nu dau niciun număr până nu
-> văd 20–30 de sample-uri."
-
-**În cap, nu pe masă:** ancoră 55–65 €/h, prag lung 35 €/h efectiv. **Fără preț fix.** Cu scope
-nedefinit, un preț fix mută tot riscul la tine.
-
-**Criteriu:** poți întoarce întrebarea de două ori la rând fără să sune evaziv, și fără să râzi jenat.
+**The most important thing to rehearse in this block isn't a question — it's the silence after it.**
+Say question 1 out loud and then actually stay quiet for five seconds. Twice. The silence is where
+most people sabotage themselves, by filling the gap.
 
 ---
 
-## Blocul 5 — Cele trei capcane (14:07)
+## Block 3 — Honest positioning ⚠️ (13:50)
 
-Le numești **doar dacă se deschide discuția tehnică**, și le legi de ce tocmai au zis. Nu le reciți.
+**The most important block of the hour.** The only moment where you can lose the call in three
+seconds — and not through content, but through the *hesitation before it*.
 
-Ordinea de mai jos e ordinea în care le folosești. **Am schimbat una față de ce scria în calendar:**
-capcana cu Automation Studio e mai puternică decât „journeys nu se mapează 1:1", fiindcă e verificabil
-adevărată la ei și e o observație de inginer, nu de consultant. „Journeys 1:1" a rămas ca rezervă.
+> "No — I haven't led a full migration off SFMC. I have integrated Iterable in production at
+> ImmoScout24, so I know the data model and the API firsthand. And I have led legacy migrations — at
+> RWE, Java to NestJS, sliced and covered by tests rather than rewritten in one go. The 600-email
+> block is a refactoring and data-modelling problem, which is exactly what I do. Let me tell you how
+> I'd approach it and what I'd want to check in the first two weeks."
 
-### Capcana A — logica reală nu e în Journey Builder *(cu asta deschizi)*
+**How you rehearse it:** five times. On the last one, **record yourself on your phone and listen
+back.** This is the only block where that's worth the effort — because you can't hear whether you
+sound apologetic while you're the one talking.
 
-> „Cât din segmentarea voastră stă în SQL-uri programate în Automation Studio, nu în Journey Builder?
-> De obicei acolo e cea mai mare parte a logicii, și Iterable nu are echivalent — deci fiecare query
-> devine ori un segment, dacă datele sunt deja pe profilul userului, ori un job la voi în stack care
-> calculează și împinge câmpul. Partea aia atinge echipa de development, nu doar marketing-ul."
+**Pass criterion, three conditions at once:**
+- under 25 seconds
+- **zero pause before "No"** — no intake of breath, no "so", no apologetic smile
+- it ends on the pivot ("let me tell you how I'd approach it"), not on a justification
 
-Dacă întreabă „și cât înseamnă asta?": *„depinde câte queries sunt și de ce date depind — e prima
-listă pe care aș cere-o."*
+**The mistake to avoid:** explaining *why* you haven't done it, or adding "but I think I could". You
+say no, then you say what you do have. No bridge of apology in between. The tone is a statement of
+fact, not a confession.
 
-### Capcana B — consimțământ și dezabonare
+**In English specifically:** don't soften it into "unfortunately no" or "I have to be honest with
+you". Both read as apology. Plain "No —" then straight into what you have.
 
-> „Aici nu e o mapare, e o decizie. SFMC are opt-out pe trei niveluri — global, listă, publication
-> list — plus send classification. Iterable are global, canal și message type. Se suprapun doar
-> parțial. Regula pe care aș aplica-o e: în caz de ambiguitate câștigă interpretarea cea mai
-> restrictivă. La GDPR, o greșeală aici nu e bug, e expunere legală."
-
-### Capcana C — deliverability și warm-up
-
-> „Domeniu nou și IP nou înseamnă warm-up, iar reputația nu se transferă între ESP-uri. Consecința nu
-> e tehnică, e de plan: nu poate exista big bang. Se merge campanie cu campanie, în paralel, începând
-> cu segmentele cele mai angajate. Dacă asta nu e în plan de la început, deadline-ul e fictiv."
-
-**Rezerve, dacă merge foarte bine și vor a patra:** journey-urile nu se mapează 1:1, se regândesc ·
-tipul de proiect Iterable și tipurile câmpurilor de profil se fixează ireversibil, deci mapping-ul e
-decizie de arhitectură, nu pas de execuție.
-
-**Cum repeți:** o trecere cu voce tare pentru fiecare din A, B, C. Apoi încă o dată doar A. Nu
-memorezi cuvânt cu cuvânt — trebuie să poți spune ideea cu cuvintele tale.
-
-**Criteriu:** poți spune A fără să te uiți, și poți continua natural dacă te întreabă ceva după.
+**If it sounds defensive on playback:** say it once more, slower and about 20% lower in pitch. That
+fixes it almost every time.
 
 ---
 
-## Blocul 6 — Partea plictisitoare (14:20)
+## Block 4 — The rate answer (14:00)
 
-Se face **acum**, nu la 14:58. Zece minute, cu mâna pe fiecare:
+First move, always:
 
-- [ ] **Link-ul de call se deschide.** Chiar îl deschizi, nu presupui. Ce platformă e?
-- [ ] **Microfonul** — testat, nu presupus. Căștile, dacă folosești căști.
-- [ ] **Camera** — pornită, încadrare la nivelul ochilor, nu de jos.
-- [ ] **Lumina** — pe față, nu din spate. Fereastra în față, nu în spatele tău.
-- [ ] **Fundalul** — curat sau blur.
-- [ ] **Notificări închise** — telefon pe silent, Slack, mail, tot.
-- [ ] **Apă** la îndemână.
-- [ ] **Cartonașul de hârtie** scris de mână, în față. (mai jos)
-- [ ] **Un tab deschis** cu briefing-ul, §1 și §2 — plasă de siguranță, nu material de citit.
+> "What's the budget allocated for this project?"
+
+**Rehearse the second deflection, not the first.** The first is easy. The second is where most people
+give in. Say to yourself, out loud, "come on, just give me a ballpark" — and answer:
+
+> "It depends a lot on the engagement form and the duration. To give you a number that actually means
+> something, I'd want to see the samples first. But if you need a ballpark just to know whether it's
+> worth continuing — tell me what range you're working with and I'll tell you straight away whether I
+> work there."
+
+And if they push on duration rather than money:
+
+> "600 could be 8 templates or 80, and that's several times the effort. I won't give you a number
+> until I've seen 20 or 30 samples."
+
+**In your head, not on the table:** anchor €55–65/hour, long-term floor €35/hour effective.
+**No fixed price.** With scope undefined, a fixed price moves all the risk onto you.
+
+**Pass criterion:** you can turn the question back twice in a row without sounding evasive, and
+without the nervous laugh.
 
 ---
 
-## Cartonașul — scris de mână, pe hârtie, în față
+## Block 5 — The three pitfalls (14:07)
 
-Hârtia bate ecranul: o privire în jos citește ca gândire, un scroll citește ca improvizație.
+You name them **only if the technical conversation opens up**, and you tie them to what they just
+said. You don't recite them.
+
+The order below is the order you use them in. **One is changed from the calendar entry:** the
+Automation Studio pitfall is stronger than "journeys don't map 1:1", because it's verifiably true at
+this client and it reads as an engineer's observation rather than a consultant's. "Journeys 1:1"
+stays as backup.
+
+### Pitfall A — the real logic isn't in Journey Builder *(open with this one)*
+
+> "How much of your segmentation actually lives in scheduled SQL query activities in Automation
+> Studio, rather than in Journey Builder itself? That's usually where most of the logic sits, and
+> Iterable has no equivalent — so every query becomes either a segment, if the data is already on the
+> user profile, or a job on your side that computes the field and pushes it in. That part touches
+> your engineering team, not just marketing."
+
+If they ask "and how much is that?": *"depends how many queries there are and what data they depend
+on — that's the first list I'd ask for."*
+
+### Pitfall B — consent and unsubscribe
+
+> "This isn't a mapping, it's a decision. SFMC has opt-out at three levels — global, list, publication
+> list — plus send classification. Iterable has global, channel and message type. They only partly
+> overlap. The rule I'd apply is: where it's ambiguous, the most restrictive interpretation wins. With
+> GDPR, getting this wrong isn't a bug, it's legal exposure."
+
+### Pitfall C — deliverability and warm-up
+
+> "A new sending domain and a new IP mean warm-up, and reputation doesn't transfer between ESPs. The
+> consequence isn't technical, it's about the plan: there can't be a big bang. You go campaign by
+> campaign, in parallel, starting with your most engaged segments. If that isn't in the plan from day
+> one, the deadline is fiction."
+
+**Backups, if it's going well and they want a fourth:** journeys don't map 1:1, each one gets
+rethought rather than translated · the Iterable project type and the profile field data types are
+both fixed irreversibly, so the mapping is an architecture decision, not an execution step.
+
+**How you rehearse it:** one pass out loud for each of A, B, C. Then A once more. You're not
+memorising word for word — you need to be able to say the idea in your own words.
+
+**Pass criterion:** you can say A without looking, and carry on naturally if they ask something after.
+
+---
+
+## Block 6 — The boring part (14:20)
+
+Done **now**, not at 14:58. Ten minutes, hands on each one:
+
+- [ ] **The call link opens.** Actually open it, don't assume. Which platform is it?
+- [ ] **Microphone** — tested, not assumed. Headphones too, if you're using them.
+- [ ] **Camera** — on, framed at eye level, not from below.
+- [ ] **Light** — on your face, not behind you. Window in front of you, not at your back.
+- [ ] **Background** — clean or blurred.
+- [ ] **Notifications off** — phone on silent, Slack, mail, all of it.
+- [ ] **Water** within reach.
+- [ ] **The paper card**, handwritten, in front of you. (below)
+- [ ] **One tab open** with the briefing, §1 and §2 — safety net, not reading material.
+
+---
+
+## The card — handwritten, on paper, in front of you
+
+Paper beats screen: a glance down reads as thinking, a scroll reads as improvising.
 
 ```
-1. De ce ACUM?  ...apoi TACI.
-2. NU. Dar: ImmoScout Iterable prod + RWE migrare.
-   Pivot: "hai să-ți spun cum aș ataca-o."
-3. Automation Studio SQL — cât din segmentare e acolo?
-4. Din 600, câte au trimis anul trecut? Realist 15-20, nu 3.
-5. Consimțământ: cel mai restrictiv câștigă. Warmup: fără big bang.
-6. Buget? → întoarce întrebarea. De DOUĂ ori.
+1. Why NOW?  ...then SHUT UP.
+2. NO. But: ImmoScout Iterable in prod + RWE migration.
+   Pivot: "let me tell you how I'd approach it."
+3. Automation Studio SQL — how much segmentation is in there?
+4. Of 600, how many sent last year? Realistically 15-20, not 3.
+5. Consent: most restrictive wins. Warmup: no big bang.
+6. Budget? → turn it back. TWICE.
 
-CTA: 20-30 sample-uri → evaluare de scope în 3 zile
+CTA: 20-30 samples → scope assessment in 3 days
 ```
 
 ---
 
-## Închiderea call-ului — nu o uita
+## Closing the call — don't forget it
 
-O spui **tu**, înainte să se termine. Nu aștepți să întrebe ei.
+**You** say it, before it winds down. You don't wait for them to ask.
 
-> „Ce mi-ar folosi cel mai mult ca pas următor: un sample de 20–30 de emailuri din cele 600, cât mai
-> diferite între ele. Mă uit peste ele și îți dau o evaluare de scope în trei zile — câte clustere
-> reale sunt acolo și ce înseamnă asta ca efort. Fără angajament de nicio parte."
-
----
-
-## Dacă în call rămâi fără ce să zici
-
-Trei ieșiri, toate te fac să pari mai serios, nu mai puțin:
-
-- **Nu știi ceva:** „Asta nu știu exact — o verific și îți confirm luni."
-- **Te presează pe SFMC:** „SFMC îl cunosc ca sistem-sursă, ce trebuie scos din el și în ce formă. Nu
-  l-am operat zilnic. La o migrare contează mai puțin decât pare, fiindcă tot ce iese de acolo se
-  rescrie oricum."
-- **Tăcere incomodă:** întoarce-te la ei. „Și la voi cum arată asta acum?"
-
-**Nu inventa nume de feature-uri Iterable.** Un feature inventat, prins de cineva care cunoaște
-platforma, anulează tot call-ul. „Verific și confirm" nu costă nimic.
+> "The most useful next step for me would be a sample of 20 to 30 emails out of the 600, as different
+> from each other as possible. I'll go through them and give you a scope assessment within three
+> days — how many real clusters are in there and what that means in effort. No commitment either way."
 
 ---
 
-## Criteriul de succes
+## If you run out of things to say mid-call
 
-Nu „am zis tot ce știam". Trei lucruri:
+Three exits, all of which make you look more serious, not less:
 
-1. **Ei au vorbit mai mult decât tine.**
-2. **Ai spus măcar o dată ceva ce nu știau** — cel mai probabil capcana A.
-3. **Ai plecat cu un pas următor concret**, nu cu „ne mai auzim".
+- **You don't know something:** "I don't know that off the top of my head — I'll check and confirm on
+  Monday."
+- **They press you on SFMC:** "I know SFMC as a source system — what needs to come out of it and in
+  what shape. I haven't operated it day to day. On a migration that matters less than it sounds,
+  because everything that comes out of it gets rewritten anyway."
+- **Awkward silence:** turn it back to them. "And how does that look on your side today?"
 
-Dacă ai bifat toate trei și ai zis „nu" fără ezitare la blocul 3, call-ul a mers bine — indiferent cum
-s-a simțit pe moment. Senzația de după un call bun și un call prost e aproape identică. Nu te lua
-după ea.
+**Don't invent Iterable feature names.** An invented feature, caught by someone who knows the
+platform, undoes the whole call. "I'll check and confirm" costs nothing.
 
 ---
 
-## După call — 30 de minute, cât e încă exact
+## What counts as success
 
-Completează tabelul *Conversation and Outcome* din
-[`razvan-iterable-migration.md`](razvan-iterable-migration.md): nume, volume, deadline, cine decide.
-Apoi `#nota` în `../../training/journal.md`. Peste două zile nu mai ții minte nimic util.
+Not "I said everything I knew". Three things:
+
+1. **They talked more than you did.**
+2. **You said at least one thing they didn't know** — most likely pitfall A.
+3. **You left with a concrete next step**, not with "let's stay in touch".
+
+If all three are ticked and you said "no" without hesitating in block 3, the call went well —
+regardless of how it felt at the time. The feeling after a good call and a bad one is nearly
+identical. Don't go by it.
+
+---
+
+## After the call — 30 minutes, while it's still accurate
+
+Fill in the *Conversation and Outcome* table in
+[`razvan-iterable-migration.md`](razvan-iterable-migration.md): names, volumes, deadline, who decides.
+Then a `#nota` entry in `../../training/journal.md`. Two days from now you won't remember anything
+useful.

@@ -62,16 +62,18 @@ client is confirmed.
 **Unknowns, in order of how much they change the engagement:**
 
 1. Source system on the marketing side. Everything else depends on this.
-2. Working language. The scope arrived in German; Calin has Romanian and English C1, no German.
-   Worked with German and Austrian teams before, presumably in English — needs confirming, because
-   a German-only requirement is a hard blocker, not a preference.
+2. ~~Working language.~~ **Resolved 2026-08-12: the call runs in English.** The scope arrived in
+   German, but the conversation does not. Whether the *project* would also run in English is still
+   open — worth confirming on the call, since documentation and stakeholder comms in German-only
+   would still be a blocker.
 3. Is Iterable already contracted, or still under evaluation? Changes urgency completely.
 4. How many distinct clusters actually sit inside the 600 emails.
 5. Budget, engagement form (B2B contract?), duration, deadline, remote arrangement.
 6. Where consent and unsubscribe state currently live, and in what format.
 7. Who owns content decisions on their side, and whether that person has capacity.
 
-**No disqualifier identified.** German-as-mandatory is the only candidate and is unverified.
+**No disqualifier identified.** German-as-mandatory was the only candidate; the call being in English
+weakens it considerably, though the project language remains unconfirmed.
 
 ## Entry Strategy
 
