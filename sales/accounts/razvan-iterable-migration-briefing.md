@@ -157,6 +157,30 @@ the norm in the DACH market and the proof is the part people forget to migrate.
 If the answer is vague or the person on the call doesn't know, the fallback question is just **"who
 would know that?"** — often it isn't them, and getting the name is itself a useful outcome.
 
+**"Most restrictive wins" — be ready to explain it.** It's the default the migration code applies when
+it hits an ambiguous state, not a case-by-case judgement. Where it fires:
+
+- **Sources disagree.** CRM says subscribed, SFMC says unsubscribed — someone opted out via the email
+  link and it never synced back. Treat as unsubscribed.
+- **Data missing.** No opt-in record at all, or a null field. The tempting default is "no unsubscribe
+  recorded means subscribed". **This is where migrations break** — the script reads an absent flag as
+  consent, because that's exactly what an absent flag looks like. No positive proof, no send.
+- **Granularity mismatch.** Three publication lists in SFMC, six message types designed in Iterable.
+  One old opt-out has to spread across several new types — opt them out of every type the old one
+  covered, not just the closest match.
+- **Send Classification abused.** In SFMC, transactional bypasses opt-outs, and people routinely mark
+  marketing content transactional to reach more inboxes. Don't carry the abuse across: if it's
+  marketing content, it goes on the marketing channel.
+
+The justification, and the line to use if they ask why: **the two errors aren't symmetric.** Too
+permissive means emailing someone who said no — a GDPR complaint, spam complaints, and on a fresh IP
+that damages deliverability for every other campaign. Too restrictive means losing some reachable
+contacts, which a re-permission campaign can recover later.
+
+One thing to raise but not decide: consent from years ago with no engagement since. It doesn't
+formally expire under GDPR, but it's weak, and German practice is stricter. That's a business
+decision for them, not a migration rule for you.
+
 ### Pitfall 4 — engagement history doesn't come with you *(backup)*
 
 Opens, clicks and sends stay in SFMC. On day 1 in Iterable, any segment like "opened in the last 90
