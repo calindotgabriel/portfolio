@@ -127,6 +127,36 @@ preference centre of a system you've switched off.
 > They only partly overlap. The rule I'd apply is: where it's ambiguous, the most restrictive
 > interpretation wins. With GDPR, getting this wrong isn't a bug, it's legal exposure."
 
+**The question that opens this up, and how to read the answer.** Ask:
+
+> "Where's the source of truth for marketing consent right now — SFMC, the CRM, or a separate consent
+> tool? And is it one opt-in flag per contact, or granular preferences per topic, with the opt-in
+> timestamp stored somewhere?"
+
+Two things are being asked at once. *Where it lives* = which system is authoritative for opt-in and
+opt-out. *What format* = a bare boolean, or a full trail — timestamp, source, double opt-in
+confirmation, and which purposes were consented to. GDPR wants provable consent, not a flag.
+
+It matters twice over. The Iterable message channel and message type structure has to mirror their
+consent granularity — five consent purposes in the CRM means five message types, and you can't design
+that block until you know. And if consent lives *only* in SFMC, switching SFMC off destroys the proof,
+which is a risk they have probably not costed.
+
+| Their answer | What it means |
+| --- | --- |
+| "It's in the CRM" | Best case. Simpler migration, SFMC can be switched off cleanly |
+| "It's in SFMC" | **Raise the flag:** switching it off destroys the audit trail. Export and archive is a separate scope item |
+| "In a consent tool" (OneTrust, Usercentrics — common in DACH) | Fine, but Iterable has to be fed from it. An integration, not just a mapping |
+| "Several places" / "not sure" | Most common answer, and the most valuable. A block of work nobody has estimated |
+| "Just a boolean" | Message types stay simple — but ask whether they *want* granular. 600 emails suggests they might |
+
+Follow-up if it flows, and it sounds like someone who has worked with German clients:
+*"Do you use double opt-in, and do you need to keep the proof after the migration?"* Double opt-in is
+the norm in the DACH market and the proof is the part people forget to migrate.
+
+If the answer is vague or the person on the call doesn't know, the fallback question is just **"who
+would know that?"** — often it isn't them, and getting the name is itself a useful outcome.
+
 ### Pitfall 4 — engagement history doesn't come with you *(backup)*
 
 Opens, clicks and sends stay in SFMC. On day 1 in Iterable, any segment like "opened in the last 90

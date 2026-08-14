@@ -59,7 +59,11 @@ is the order in which they land naturally.
 4. **How much of the segmentation sits in scheduled SQL query activities in Automation Studio, versus
    in Journey Builder itself?**
 5. **Of the ~600 emails, how many actually sent anything in the last 12 months?**
-6. **Where does consent live today, and in what format?**
+6. **Where's the source of truth for marketing consent right now — SFMC, the CRM, or a separate
+   consent tool?** And is it one opt-in flag per contact, or granular preferences per topic, with the
+   opt-in timestamp stored somewhere?
+   *Follow-up if it flows:* "Do you use double opt-in, and do you need to keep the proof after the
+   migration?"
 7. **What's your monthly send volume, and how many contacts?**
 8. **Who does marketing ops on your side, and do they have capacity for this?**
 9. **Do you have a deadline? Is the budget already allocated?** What happens if this slips by two months?

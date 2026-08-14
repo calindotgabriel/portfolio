@@ -108,7 +108,8 @@ weakens it considerably, though the project language remains unconfirmed.
 - What is making you migrate *now*? Budget, an expiring contract, or a technical limit?
 - How many journeys and automations are live? How many templates?
 - Monthly send volume, and how many contacts?
-- Where does consent live today, and in what format?
+- Where is the source of truth for marketing consent — SFMC, the CRM, or a separate consent tool? One
+  opt-in flag, or granular per topic, and is the opt-in timestamp and proof stored anywhere?
 - What happens if this slips by two months?
 - Who does marketing ops on your side, and do they have capacity?
 - Have you attempted this before? What happened?
