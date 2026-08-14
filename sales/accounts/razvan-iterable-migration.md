@@ -14,6 +14,8 @@
 **Call prep:** technical substance in [`razvan-iterable-migration-briefing.md`](razvan-iterable-migration-briefing.md)
 (SFMC→Iterable translation map, five named pitfalls, the 600-email method). What to rehearse, when,
 and why in [`razvan-iterable-migration-rehearsal.md`](razvan-iterable-migration-rehearsal.md).
+**On the day, open only [`razvan-iterable-migration-final-prep.md`](razvan-iterable-migration-final-prep.md)** —
+the self-contained 13:30–14:30 rehearsal hour, minute by minute.
 
 ## Score Breakdown
 
