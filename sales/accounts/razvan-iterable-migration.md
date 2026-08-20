@@ -4,18 +4,21 @@
 
 - Company URL: **unknown** — end client not yet named
 - Segment: Marketing-platform migration / Iterable implementation, German-speaking client
-- Pipeline status: `interviewing` — discovery call scheduled
+- Pipeline status: `interviewing` — discovery call done and went well; estimation call next
 - Fit score: 89/100 (contract track)
 - Assigned role chat: Lead Job Search
 - Last verified: 2026-08-10
 
-**Discovery call: Friday 2026-08-14, 15:00 Europe/Bucharest.**
+**Discovery call: Friday 2026-08-14, 15:00 — done, went well. Estimation call next, date TBC.**
 
 **Call prep:** technical substance in [`razvan-iterable-migration-briefing.md`](razvan-iterable-migration-briefing.md)
 (SFMC→Iterable translation map, five named pitfalls, the 600-email method). What to rehearse, when,
 and why in [`razvan-iterable-migration-rehearsal.md`](razvan-iterable-migration-rehearsal.md).
 **On the day, open only [`razvan-iterable-migration-final-prep.md`](razvan-iterable-migration-final-prep.md)** —
 the self-contained 13:30–14:30 rehearsal hour, minute by minute.
+
+**Estimation call (discovery went well):** [`razvan-iterable-migration-estimation.md`](razvan-iterable-migration-estimation.md)
+— bottom-up effort model, anchors, and the paid-scoping-phase play.
 
 ## Score Breakdown
 
@@ -156,6 +159,7 @@ own documentation, and with wording to use, in
 | --- | --- | --- | --- | --- |
 | 2026-08-10 | Inbound via LinkedIn; discovery call agreed for Friday 15:00 | One of four leads that replied the same day | Send the four pre-call questions | Calin |
 | 2026-08-10 | Razvan sent the written scope (German) | Four work blocks; ~600 emails named as the largest | Prep sessions Tue–Fri, see calendar | Calin |
+| 2026-08-14 | Discovery call held, in English | Went well. Details not yet captured here — fill in names, volumes, journey count, deadline and decision-maker | Estimation call agreed | Calin |
 
 ## After The Call
 
