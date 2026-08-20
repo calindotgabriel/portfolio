@@ -107,7 +107,12 @@ A mid-size SFMC account runs 20–40 journeys. For 30, mixed, with patterns esta
 few: **30–55 days, ≈ 6–11 weeks.**
 
 Add for each journey whose entry audience depends on an Automation Studio query: the job that computes
-and pushes that field. **2–5 days per distinct query**, and it lands on their engineering team.
+and pushes that field. **2–5 days per distinct query** for the modelling and validation — but note the
+infrastructure is built once, not per query. The right shape is one sync layer with N derived fields,
+not N jobs, so this doesn't multiply indefinitely. See briefing §2 for the triage: a good share of
+their queries become plain Iterable segments and cost nothing, and engagement-based ones disappear
+entirely because Iterable does that natively. **Ask whether they have a data warehouse** — with one,
+reverse ETL makes this block small; without one, it's a pipeline built from scratch.
 
 ### Blocks 3+4 — The 600 emails
 
@@ -198,6 +203,10 @@ not as objections.
 - **Training** their team on Iterable, which is not the same as handing it over
 - **Other channels** — if they use SFMC Mobile Studio for SMS or push, that's a whole block nobody
   has mentioned yet
+- **Downstream BI** — if their reporting queries SFMC data views (`_Open`, `_Click`, `_Sent`) directly,
+  it breaks at cutover
+- **Sync freshness** — a derived field pushed nightly is up to 24 hours stale; journeys that depend on
+  freshness constrain the cadence, which is a design decision with cost
 
 ---
 

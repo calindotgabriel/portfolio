@@ -107,6 +107,57 @@ almost every estimate, because nobody looks inside Automation Studio when counti
 Why it works: it's an engineer's perspective, not a marketing consultant's. And it's verifiably true —
 if they run SFMC seriously they'll confirm it immediately, possibly with relief.
 
+**How the SQL actually maps.** Worth knowing properly, since this is the block carrying the most
+estimate weight. SFMC query activities do six things: filter on subscriber attributes; join across
+data extensions; aggregate (`SUM`, `COUNT`, `MAX` per subscriber); rank or window ("latest order per
+customer"); query the data views (`_Open`, `_Click`, `_Sent`, `_Bounce`) for engagement; and chain —
+query A fills a DE, query B reads it.
+
+| SFMC SQL pattern | Iterable |
+| --- | --- |
+| `WHERE` on subscriber attributes | Segment on profile fields — **native** |
+| Date arithmetic (`lastPurchase > 90 days ago`) | Segment with relative date comparison — **native** |
+| Data views `_Open`, `_Click` | **Native, and simpler than SFMC.** Opens and clicks are system events |
+| "did / didn't do event X, N times, in last N days" | Segment on events with property filters — **native** |
+| Aggregation across rows (`SUM`, averages) | **Grey area.** Counts and property filters are native; beyond that, precompute |
+| `JOIN` across data extensions | **Doesn't exist.** Denormalise onto the profile, into events, or a catalog |
+| Window functions, ranking | **Doesn't exist.** Precompute → profile field |
+| Chained queries | **Doesn't exist.** The whole chain collapses into one job on their side |
+| Suppression lists built by SQL | Static Iterable list fed by API, or a segment if the criteria are expressible |
+
+On the grey area: the exact aggregation boundary isn't confirmed in the public docs. Treat anything
+past counts and property filters as precompute, and say so plainly if asked — it's the honest answer
+and it's also the safe estimate.
+
+**The triage rule**, which is the part that turns this into an estimating tool. For each query:
+*does the result depend only on data that is, or can be, on the profile or in events?*
+
+- **Yes, and the logic is expressible in the segment builder** → becomes a **segment**. No
+  infrastructure. Best case.
+- **Yes, but the logic isn't expressible** (joins, windows, real aggregation) → becomes a **computed
+  profile field**, pushed by a job on their side. Permanent infrastructure, and it needs an owner.
+- **No, the data isn't in Iterable at all** → the data has to land first, then one of the above.
+
+**Two things to say on the call.** First, **not all of it becomes work — some of it disappears.**
+Engagement segmentation needs SQL against data views in SFMC and is native in Iterable, so a decent
+share of their queries simply stop existing. Saying that stops this reading as a list of disasters and
+makes the rest of the estimate credible.
+
+Second, **it isn't one job per query.** The right shape is a single sync layer computing the derived
+fields and pushing them to Iterable — from their warehouse, if they have one. Twenty queries isn't
+twenty jobs, it's one pipeline with twenty derived fields. That moves the estimate *down*, and it's
+what an engineer would actually design. If they have Snowflake or BigQuery, reverse ETL (Hightouch,
+Census) is the standard answer and Iterable is a supported destination. Which is why **"do you have a
+data warehouse?" is an estimation question, not a curiosity** — it moves this block by an order of
+magnitude.
+
+**Freshness, which most people miss.** SFMC SQL runs on a schedule; a field pushed nightly is up to 24
+hours stale. If a journey depends on freshness — cart abandonment, behavioural thresholds — the sync
+cadence becomes a design constraint rather than an operational detail.
+
+**Hidden scope:** if their BI queries SFMC data views directly for reporting, that reporting breaks at
+cutover. It's in none of the four blocks and nobody has mentioned it.
+
 ### Pitfall 3 — consent and unsubscribe don't map 1:1
 
 SFMC has three coexisting levels of opt-out: **All Subscribers** (global), **list** level, and
