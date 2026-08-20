@@ -57,6 +57,13 @@ their team's capacity all stretch calendar without adding effort. **Always ask w
 **4. Content treated as cheap.** If their number assumes the 600 emails are copy-paste, everything
 downstream is wrong. Content is normally *half* the total effort on a migration like this.
 
+**4b. Blocks 2 and 3–4 estimated as if they were independent.** They aren't. Consolidating templates
+creates requirements on what each journey trigger has to carry, which creates requirements on the data
+model. See briefing §2b. Two corollaries worth stating out loud: going from 600 templates to 20 does
+*not* also shrink the journey count — those are separate exercises — and the consolidated templates
+can only render what the journey and the profile hand them, which is why this is a data-flow rebuild
+rather than a template translation.
+
 **5. Who does what.** The biggest scope risk isn't your work, it's the dependencies on theirs. Content
 decisions, brand approvals, event instrumentation in the product, the jobs replacing Automation Studio
 SQL. If those have no named owner with capacity, the timeline is fiction regardless of your estimate.
@@ -168,6 +175,10 @@ contradicting anyone, you're asking them to show their work.
    is wrong by a factor. If the answer is unclear, that's the finding.
 5. **"What happens to that number if the 600 turn out to be 40 clusters instead of 12?"** Forces the
    variance into the open without you having to claim a figure.
+5b. **"Of the 600, how many are used inside journeys versus sent as one-off blasts?"** Different work
+   entirely — journey templates move with their whole trigger-data chain, blast templates are far more
+   likely to be dead or replaceable. And if their estimate treats the 600 as one homogeneous pile, it
+   hasn't been derived from anything.
 6. **"What's in there for the parallel-running period?"** Two platforms live at once has cost —
    licences, double maintenance, and someone keeping them in sync.
 

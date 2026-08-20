@@ -203,6 +203,58 @@ the plan from day one, otherwise the deadline is fiction.
 
 ---
 
+## 2b. How journeys relate to templates — the mechanism behind the consolidation
+
+Worth being able to explain, because the whole 600 → 20 argument rests on it and nothing else in this
+file states it outright.
+
+They're two loosely coupled things. A **journey is orchestration** — who enters, when, in what order,
+what waits, what branches; it decides *whether and when* something sends. A **template is the
+message** — HTML, content, personalisation; it decides *what it looks like*. In Iterable a send node
+in a journey points at a template (wrapped in a triggered campaign behind the scenes). The relation is
+many-to-many: one journey uses several templates, one template can serve many journeys.
+
+**That many-to-many is the mechanism of consolidation.** Reducing 600 to 20 doesn't mean sending fewer
+emails. It means many journeys pointing at the same template, with the difference carried in data.
+
+```
+Today:                                  After:
+Journey "Welcome DE"  → welcome_de_A    Journey "Welcome DE"  ┐
+Journey "Welcome AT"  → welcome_at_A    Journey "Welcome AT"  ├→ one "welcome" template
+Journey "Welcome DE2" → welcome_de_B    Journey "Welcome DE2" ┘   {{locale}}, {{brand}} from profile
+   ... x12 near-identical templates                               products from catalog / data feed
+```
+
+The variation doesn't disappear, it **moves out of the template and into the data** — to the three
+destinations in the table in §3.
+
+**Two consequences for the estimate:**
+
+**Consolidating templates does not automatically reduce journeys.** You can land at 20 templates and
+still have 40 journeys. They're separate exercises with separate effort. Any estimate that assumes
+600 → 20 also shrinks block 2 is wrong.
+
+**But the blocks aren't independent either.** There's a dependency chain:
+
+> data model → what the journey trigger carries → what the template can render
+
+If a consolidated template needs `{{orderTotal}}`, that value has to be on the user profile or in the
+payload of the triggering event. So template consolidation creates requirements on the journeys and on
+the data model, and blocks 2 and 3–4 can't be estimated in isolation.
+
+**Why SFMC gets away with loose coupling and Iterable doesn't.** In SFMC, AMPscript can `Lookup()` any
+Data Extension at send time, so a journey can carry almost nothing and the template fetches what it
+needs. In Iterable the template only sees what it's given — profile, event payload, catalog, data
+feed. The migration forces all of that data forward into the model. That's why this is more work than
+it looks: you're not translating templates, you're rebuilding the data flow that fed them.
+
+**The question this opens:** of the 600, how many are used inside journeys versus sent as one-off
+blasts? Completely different work — journey templates have to move with their whole trigger-data
+chain, blast templates are far more likely to be dead or replaceable. The ratio changes the estimate
+of the largest block.
+
+---
+
 ## 3. The 600-email block — the method
 
 This is your ground. It's refactoring, not email marketing. Four steps, in order.
