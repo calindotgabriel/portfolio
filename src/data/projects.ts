@@ -33,15 +33,15 @@ export const projects: Project[] = [
     title: "ImmoScout24 Austria",
     homeTitle: "ImmoScout24 Austria",
     shortDescription:
-      "Search and listing work inside a tested distributed real-estate platform.",
+      "Iterable lifecycle integration plus search and listing work across React and Node, inside a tested distributed real-estate platform.",
     caseStudySummary:
-      "Shipped search/listing, SEO, and Iterable integration work inside a fully tested distributed platform where release quality and production safety mattered.",
-    tech: ["React", "Node.js", "AWS", "MongoDB"],
+      "Wired Iterable into lifecycle messaging and shipped search, listing and SEO work across React and Node.js, inside a fully tested distributed platform where release quality and production safety mattered.",
+    tech: ["React", "Node.js", "Iterable", "AWS", "MongoDB"],
     status: "LIVE",
     results: [
+      "Iterable integrated into lifecycle messaging",
       "Contributed to improved SEO performance",
       "Supported engagement gains in listing flows",
-      "Iterable integration shipped",
     ],
   },
   {

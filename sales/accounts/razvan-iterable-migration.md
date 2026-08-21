@@ -4,12 +4,21 @@
 
 - Company URL: **unknown** — end client not yet named
 - Segment: Marketing-platform migration / Iterable implementation, German-speaking client
-- Pipeline status: `interviewing` — discovery call scheduled
+- Pipeline status: `interviewing` — discovery call done and went well; estimation call next
 - Fit score: 89/100 (contract track)
 - Assigned role chat: Lead Job Search
 - Last verified: 2026-08-10
 
-**Discovery call: Friday 2026-08-14, 15:00 Europe/Bucharest.**
+**Discovery call: Friday 2026-08-14, 15:00 — done, went well. Estimation call next, date TBC.**
+
+**Call prep:** technical substance in [`razvan-iterable-migration-briefing.md`](razvan-iterable-migration-briefing.md)
+(SFMC→Iterable translation map, five named pitfalls, the 600-email method). What to rehearse, when,
+and why in [`razvan-iterable-migration-rehearsal.md`](razvan-iterable-migration-rehearsal.md).
+**On the day, open only [`razvan-iterable-migration-final-prep.md`](razvan-iterable-migration-final-prep.md)** —
+the self-contained 13:30–14:30 rehearsal hour, minute by minute.
+
+**Estimation call (discovery went well):** [`razvan-iterable-migration-estimation.md`](razvan-iterable-migration-estimation.md)
+— bottom-up effort model, anchors, and the paid-scoping-phase play.
 
 ## Score Breakdown
 
@@ -56,16 +65,18 @@ client is confirmed.
 **Unknowns, in order of how much they change the engagement:**
 
 1. Source system on the marketing side. Everything else depends on this.
-2. Working language. The scope arrived in German; Calin has Romanian and English C1, no German.
-   Worked with German and Austrian teams before, presumably in English — needs confirming, because
-   a German-only requirement is a hard blocker, not a preference.
+2. ~~Working language.~~ **Resolved 2026-08-12: the call runs in English.** The scope arrived in
+   German, but the conversation does not. Whether the *project* would also run in English is still
+   open — worth confirming on the call, since documentation and stakeholder comms in German-only
+   would still be a blocker.
 3. Is Iterable already contracted, or still under evaluation? Changes urgency completely.
 4. How many distinct clusters actually sit inside the 600 emails.
 5. Budget, engagement form (B2B contract?), duration, deadline, remote arrangement.
 6. Where consent and unsubscribe state currently live, and in what format.
 7. Who owns content decisions on their side, and whether that person has capacity.
 
-**No disqualifier identified.** German-as-mandatory is the only candidate and is unverified.
+**No disqualifier identified.** German-as-mandatory was the only candidate; the call being in English
+weakens it considerably, though the project language remains unconfirmed.
 
 ## Entry Strategy
 
@@ -91,13 +102,17 @@ client is confirmed.
 2. What varies across the 600 emails — language, brand, product, lifecycle stage? Can I see 20–30 samples?
 3. Is Iterable already contracted, or still under evaluation?
 4. What language does the call and the project run in?
+5. How much of the segmentation lives in scheduled SQL Query Activities in Automation Studio, versus
+   in Journey Builder itself? — the block most often missing from the estimate.
+6. Of the ~600 emails, how many actually sent anything in the last 12 months?
 
 **Ask on the call — they should be talking 70% of the time:**
 
 - What is making you migrate *now*? Budget, an expiring contract, or a technical limit?
 - How many journeys and automations are live? How many templates?
 - Monthly send volume, and how many contacts?
-- Where does consent live today, and in what format?
+- Where is the source of truth for marketing consent — SFMC, the CRM, or a separate consent tool? One
+  opt-in flag, or granular per topic, and is the opt-in timestamp and proof stored anywhere?
 - What happens if this slips by two months?
 - Who does marketing ops on your side, and do they have capacity?
 - Have you attempted this before? What happened?
@@ -125,7 +140,9 @@ Per `../core-proposal.md`: anchor €55–65/hour, long-term floor €35/hour ef
 
 ## Migration Risks Worth Naming On The Call
 
-Naming two or three of these signals real production experience:
+Naming two or three of these signals real production experience. Expanded, verified against Iterable's
+own documentation, and with wording to use, in
+[`razvan-iterable-migration-briefing.md`](razvan-iterable-migration-briefing.md) §2.
 
 1. **Consent and unsubscribe state** must migrate exactly. Getting it wrong is GDPR exposure, not a bug.
 2. **Deliverability** — a new sending domain and IP need warm-up, so cutover cannot happen overnight.
@@ -142,6 +159,7 @@ Naming two or three of these signals real production experience:
 | --- | --- | --- | --- | --- |
 | 2026-08-10 | Inbound via LinkedIn; discovery call agreed for Friday 15:00 | One of four leads that replied the same day | Send the four pre-call questions | Calin |
 | 2026-08-10 | Razvan sent the written scope (German) | Four work blocks; ~600 emails named as the largest | Prep sessions Tue–Fri, see calendar | Calin |
+| 2026-08-14 | Discovery call held, in English | Went well. Details not yet captured here — fill in names, volumes, journey count, deadline and decision-maker | Estimation call agreed | Calin |
 
 ## After The Call
 
