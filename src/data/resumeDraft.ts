@@ -52,7 +52,7 @@ export interface ResumeDraftData {
 
 export const resumeDraft: ResumeDraftData = {
   name: "Calin Gabriel",
-  title: "Senior Backend Engineer · Node.js / TypeScript · Regulated Fintech",
+  title: "Senior Fullstack Engineer · Node.js / TypeScript · Backend-heavy",
   location: "Cluj-Napoca, Romania",
   locationDetail: "Romania · Remote EU",
   email: "contact@calingabriel.com",
@@ -65,9 +65,9 @@ export const resumeDraft: ResumeDraftData = {
   githubDisplay: "github.com/calindotgabriel",
 
   summary:
-    "Senior backend engineer with around 7 years of commercial Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Most recently, I owned the crypto address-book backend for Bitpanda's bank-facing digital-asset custody platform, from API and data-model design through validation, testing, third-party integrations, and AWS production delivery. Additional work includes TypeScript payment and wallet flows, event-driven integrations, tested Java-to-NestJS microservice migration, and performance optimization for high-volume services.",
+    "Senior fullstack engineer, strongest on the backend, with around 7 years of commercial Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Most recently, I owned the crypto address-book backend for Bitpanda's bank-facing digital-asset custody platform, from API and data-model design through validation, testing, third-party integrations, and AWS production delivery. Earlier work spans React and Node.js product delivery at ImmoScout24 and Endava, third-party platform integrations including Iterable and payments, tested Java-to-NestJS microservice migration, and performance optimization for high-volume services.",
   onePageSummary:
-    "Senior backend engineer with around 7 years of Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Owned Bitpanda's bank-facing crypto address-book backend from design through AWS production. Earlier work includes payment and wallet flows, NestJS microservice migration, and high-volume Node.js optimization.",
+    "Senior fullstack engineer, backend-heavy, with around 7 years of Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Owned Bitpanda's bank-facing crypto address-book backend from design through AWS production. Earlier work spans React and Node product delivery, integrations including Iterable and payments, NestJS migration, and high-volume Node.js optimization.",
 
   proofs: [
     { value: "~7y", label: "Commercial Node.js" },
@@ -210,6 +210,10 @@ export const resumeDraft: ResumeDraftData = {
       ],
     },
     {
+      category: "Frontend",
+      items: ["React", "Redux", "TypeScript UI", "SEO-sensitive delivery"],
+    },
+    {
       category: "Data",
       items: ["MongoDB", "PostgreSQL", "MySQL", "Redis", "query profiling"],
     },
@@ -238,9 +242,7 @@ export const resumeDraft: ResumeDraftData = {
         "Iterable",
         "marketing automation",
         "third-party integrations",
-        "React",
-        "Redux",
-        "SEO-sensitive UI delivery",
+        "payment and checkout flows",
       ],
     },
     {
@@ -260,17 +262,26 @@ export const resumeDraft: ResumeDraftData = {
         "GraphQL",
         "REST APIs",
         "microservices",
-        "distributed systems",
         "event-driven systems",
       ],
     },
     {
-      category: "Data & performance",
-      items: ["PostgreSQL", "MongoDB", "Redis", "schema design", "indexing", "query profiling", "Worker Pools"],
+      category: "Frontend",
+      items: ["React", "Redux", "TypeScript UI", "SEO-sensitive delivery"],
     },
     {
-      category: "Cloud & delivery",
-      items: ["AWS", "Lambda", "serverless", "Docker", "CI/CD"],
+      category: "Data & cloud",
+      items: [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis",
+        "query profiling",
+        "Worker Pools",
+        "AWS",
+        "Lambda",
+        "Docker",
+        "CI/CD",
+      ],
     },
     {
       category: "Quality & domain",
@@ -289,7 +300,7 @@ export const resumeDraft: ResumeDraftData = {
     {
       degree: "BS in Computer Science",
       institution: "Babeș-Bolyai University",
-      period: "2017",
+      period: "2014 - 2018",
       location: "Cluj-Napoca, Romania",
     },
   ],

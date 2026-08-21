@@ -9,6 +9,31 @@ Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.m
 
 ---
 
+## 2026-08-21 #nota Audit al ofertei, făcut din exterior
+
+Un audit al ofertei publice, cu perspectiva cuiva care angajează fullstack TypeScript. Scriu aici doar
+ce e verificabil în repo și pe GitHub, ca să existe o dată de referință.
+
+**Ce e în regulă:** funnel-ul zice că ambalajul convertește — ~150 aplicări → 10 screens (6.7%) →
+5-6 tehnice (~55%). Ambele rate sunt sănătoase. Site-ul și CV-ul nu sunt problema.
+
+**Ce lipsește, în ordinea impactului:**
+
+1. Oferta era backend-only, deși majoritatea contractelor TS remote-EU sunt fullstack — iar singurul
+   inbound cald din luni (Iterable, 89/100) a venit prin linia cea mai puțin promovată din toată
+   oferta. Reparat azi: titlu, summary, skills, homepage, case file ImmoScout24, plus o variantă de
+   segment nouă în `sales/core-proposal.md` v1.2.
+2. Zero cod inspectabil. `energy-reporter` și `immobile-search` au doar `README.md` și poartă numele
+   a două studii de caz. Repo-ul worker-pool e ranked #3 la sell-factors din 07.08 și nu există.
+3. Etapa cu 0% conversie e tot neinstrumentată. La 14 zile de la EXP-002: o intrare aici (ziua 0),
+   `depth/` și `design/` doar cu README, `sales/interviews/` doar cu `_template.md`, zero checkpoint.
+   Toate commit-urile 10–20.08 sunt prep Iterable.
+
+**Regula curriculumului se aplică:** nu recuperez zilele pierdute, reiau de la data de azi. Doar redo
+list-ul se duce mai departe — acolo e Move Zeroes, scadent 14.08 (ratat) și 28.08.
+
+---
+
 ## 2026-08-07 · ziua 0 #log
 
 `LC 0/1 · adâncime — · design — · mock — · aplicări 0 · PM 3`
