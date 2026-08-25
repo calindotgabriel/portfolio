@@ -28,6 +28,11 @@ după ce ai văzut referința.
 
 **Sâmbăta:** doar redo. Fără material nou. Apoi checkpoint la 11:45.
 
+**Când un interviu real scoate la iveală un gol de fundamente JS/TS** (nu unul din cele 12
+topicuri de adâncime de mai jos — hoisting, scope, closures, `this`, referință vs valoare):
+intră ca `#problema` în jurnal, categoria `JS fundamentals`, și primește 20-30 de minute la
+cea mai apropiată sâmbătă. Nu restructurează ziua curentă.
+
 ## Când rămâi în urmă
 
 Nu recuperezi. **Sari peste ziua pierdută și continui de la data de azi.** Curriculumul e o direcție,
