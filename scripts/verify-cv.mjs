@@ -136,8 +136,17 @@ async function main() {
   assertContains(
     cvText,
     [
-      "Senior Backend Engineer",
-      "Regulated Fintech",
+      "Senior Fullstack Engineer",
+      "Backend-heavy",
+      "React",
+      "around 7 years",
+      "over 5 years",
+      "event-driven systems",
+      "PostgreSQL",
+      "payments",
+      "AWS",
+      "Docker",
+      "CI/CD",
       "Bitpanda",
       "ImmoScout24",
       "RWE",
@@ -155,7 +164,8 @@ async function main() {
   assertContains(
     dossierText,
     [
-      "Regulated Fintech",
+      "Senior Fullstack Engineer",
+      "React",
       "Independent",
       "Projects & Professional Development",
       "mentored two junior developers",
