@@ -9,6 +9,29 @@ Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.m
 
 ---
 
+## 2026-08-25 #nota Am trecut proba tehnică de la Cognizant
+
+1,5h foc continuu, cu goluri reale (hoisting, referință/valoare). Am avut un down puternic după.
+Dar am trecut. Primul semnal concret și confirmat: ce simt eu în timpul unui interviu nu e ce
+vede evaluatorul. 8 ani de livrare reală duc prin presiune, chiar cu goluri specifice.
+
+## 2026-08-25 #problema Hoisting — Cognizant
+
+- **Unde:** Cognizant · interviu tehnic, 1,5h foc continuu
+- **Enunț:** întrebare de fundamente JS despre hoisting
+- **Categorie:** JS fundamentals (categorie nouă — nu era în cele 12 topicuri de adâncime)
+- **Ce am făcut atunci:** am uitat complet. Nu blocaj de gândire — uitare pură sub presiune.
+- **Status:** ratat
+
+## 2026-08-25 #problema Pass by reference vs by value — Cognizant
+
+- **Unde:** Cognizant · același interviu
+- **Enunț:** cum se transmit valorile în JS/TS — prin referință sau prin valoare
+- **Categorie:** JS fundamentals
+- **Ce am făcut atunci:** m-am pierdut deși știam răspunsul, „era îngropat în memorie". Recall
+  sub presiune, nu gol de cunoștințe — aceeași familie cu Move Zeroes din ziua 0.
+- **Status:** ratat
+
 ## 2026-08-21 #nota Audit al ofertei, făcut din exterior
 
 Un audit al ofertei publice, cu perspectiva cuiva care angajează fullstack TypeScript. Scriu aici doar
@@ -31,8 +54,6 @@ ce e verificabil în repo și pe GitHub, ca să existe o dată de referință.
 
 **Regula curriculumului se aplică:** nu recuperez zilele pierdute, reiau de la data de azi. Doar redo
 list-ul se duce mai departe — acolo e Move Zeroes, scadent 14.08 (ratat) și 28.08.
-
----
 
 ## 2026-08-07 · ziua 0 #log
 

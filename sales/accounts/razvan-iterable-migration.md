@@ -47,24 +47,26 @@ client is confirmed.
    small number of dynamic emails.** — *"Voraussichtlich der grösste Block: ca. 600 Emails sollen
    migriert und dabei auf wenige dynamische E-Mails reduziert werden"*
 5. The scope was written in German.
+6. **The source system is Salesforce Marketing Cloud.** — Calin-confirmed on 2026-08-10, recalled from
+   the initial call. This resolves the largest open question: it is a marketing-automation migration,
+   SFMC → Iterable, not a CRM data-sync project. The CRM is a separate system that stays in place and
+   gets connected to Iterable.
 
 ## Hypotheses
 
-- **The CRM stays; Iterable replaces something else on the marketing side.** "Anbindung an unser CRM"
-  reads as an integration to a system that remains in place. Which marketing system is being replaced
-  is not stated anywhere. — medium confidence, and it is the single most consequential unknown.
-- **"Salesforce" may mean Sales Cloud (CRM), not Marketing Cloud.** If so, this is a data-sync and
-  integration project rather than a marketing-automation migration — a materially different job with
-  different risks. — medium confidence.
 - **The 600 emails are largely near-duplicates.** Nobody asks to reduce 600 to "a few" unless the
-  redundancy is visible. — medium-high confidence, unverified.
+  redundancy is already visible to them. — medium-high confidence, unverified.
 - **Scope is genuinely undefined on their side too.** "Wenige" is not a number. — high confidence.
+- **Journey Builder is where the hidden work sits.** SFMC journeys carry AMPscript, decision splits and
+  Automation Studio dependencies that have no direct Iterable equivalent. The client's scope treats
+  this as "Setup der bestehenden Journeys", which sounds like configuration and usually is not.
+  — medium confidence, worth probing on the call.
 
 ## Unknowns and Disqualifiers
 
 **Unknowns, in order of how much they change the engagement:**
 
-1. Source system on the marketing side. Everything else depends on this.
+1. ~~Source system on the marketing side.~~ **Resolved 2026-08-10: Salesforce Marketing Cloud.**
 2. ~~Working language.~~ **Resolved 2026-08-12: the call runs in English.** The scope arrived in
    German, but the conversation does not. Whether the *project* would also run in English is still
    open — worth confirming on the call, since documentation and stakeholder comms in German-only
@@ -159,6 +161,7 @@ own documentation, and with wording to use, in
 | --- | --- | --- | --- | --- |
 | 2026-08-10 | Inbound via LinkedIn; discovery call agreed for Friday 15:00 | One of four leads that replied the same day | Send the four pre-call questions | Calin |
 | 2026-08-10 | Razvan sent the written scope (German) | Four work blocks; ~600 emails named as the largest | Prep sessions Tue–Fri, see calendar | Calin |
+| 2026-08-10 | Source system confirmed as Salesforce Marketing Cloud | Calin-confirmed, recalled from the initial call | Wednesday's session narrows to SFMC → Iterable specifically | Calin |
 | 2026-08-14 | Discovery call held, in English | Went well. Details not yet captured here — fill in names, volumes, journey count, deadline and decision-maker | Estimation call agreed | Calin |
 
 ## After The Call
