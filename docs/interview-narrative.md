@@ -108,8 +108,32 @@ Use when asked about seniority, leadership, stakeholder communication, or team b
 
 ## CV Gap Answers (Decided In Advance — Do Not Improvise)
 
-- Mar 2015 – Jul 2018: "I was completing my Computer Science degree at Babeș-Bolyai full-time after starting my career early — I'd already been working professionally since 16." One sentence, calm, then move on.
+- Mar 2015 – Jul 2018: "I was completing my Computer Science degree at Babeș-Bolyai full-time after starting my career early — I'd already been working professionally since 16." One sentence, calm, then move on. **The CV now carries the study dates (2014 – 2018), so this should rarely be asked at all.**
 - Aug 2021 – Aug 2022: "I worked on independent software projects and professional development before returning to long-term product work at RWE." One sentence, calm, then redirect to the RWE results.
+
+## Tenure Answers (Decided In Advance — Do Not Improvise)
+
+The gap answers above cover the two holes. They do not cover the pattern a hiring manager actually
+reads off the CV: **10 months at Bitpanda, 11 at ImmoScout24, 22 at RWE.** Three short recent stints
+is the objection most likely to be sitting unspoken behind a technical round that goes well and
+produces no offer. It gets a decided answer, not an improvised one.
+
+- **Why Bitpanda ended after 10 months.** The engagement was through SII, a consultancy that placed
+  him at Bitpanda as the client. SII withdrew remote work and required on-site presence in Bucharest
+  from July 2026; he is based in Cluj and could not relocate. The work itself was going well — the
+  address book had shipped, the testing patterns had been adopted. Say it plainly, without the
+  employment dispute, and move to what was delivered. **Calin: confirm this wording is what you want
+  said out loud before using it.**
+- **Why ImmoScout24 was 11 months.** Answer honestly and briefly, then redirect to the Iterable
+  integration and the quality bar he had to meet. *(To be written by Calin — this one is not on
+  record anywhere and must not be improvised in the room.)*
+- **The pattern question, if asked directly** ("your last three roles are all under two years"):
+  name it before they have to press. Two of the three were client engagements whose end was decided
+  by the staffing arrangement rather than by him, and RWE — the one that was his own to keep — ran
+  nearly two years. Then offer the check: *"ask my last team what shipped."*
+
+> Rehearse these out loud once before the next round. A tenure answer that arrives hesitantly does
+> more damage than the tenure itself.
 
 ## Contract-Specific Answers
 

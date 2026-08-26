@@ -2,14 +2,14 @@
 
 ## Version
 
-- Canonical version: 1.1
-- Updated: 2026-08-07
+- Canonical version: 1.2
+- Updated: 2026-08-21
 - Owner: Calin Gabriel
 - Status: approved starting position
 
 ## Ideal Customer Profile
 
-Remote-EU product and platform teams that need a senior Node.js/TypeScript engineer for regulated fintech, payments, custody, DACH product delivery, migrations, performance, APIs, integrations, testing, or data-heavy backend work.
+Remote-EU product and platform teams that need a senior fullstack TypeScript engineer — backend-heavy, but comfortable across React and Node — for regulated fintech, payments, custody, DACH product delivery, migrations, performance, APIs, third-party platform integrations, testing, or data-heavy backend work.
 
 ## Core Promise
 
@@ -31,6 +31,20 @@ Senior Node.js/TypeScript engineer with recent institutional crypto-custody expe
 ### DACH Product Platforms
 
 Senior product engineer already proven with Austrian and German teams at Bitpanda, ImmoScout24, and RWE; EU citizen, Romania-based, remote-ready, and able to become useful inside established standards without a long runway.
+
+### Fullstack Product and Integrations
+
+Senior fullstack TypeScript engineer for product teams shipping React and Node against an existing
+codebase, strongest where a third-party platform sits in the middle — mapping somebody else's data
+model onto yours, feeding it the right events, and making the failure modes visible before the
+business finds them. Lead proof: the Iterable lifecycle integration at ImmoScout24. Supporting proof:
+React and Node product and payments delivery at Endava.
+
+**Why this variant exists (added 2026-08-21):** the offering was positioned backend-only while most
+remote-EU TypeScript contract work is fullstack, and the only warm inbound in months arrived through
+the least-promoted line in the whole offering — the Iterable integration. This variant is a widening
+of surface, not of seniority: the honest numbers stay ~7 years commercial Node.js and 5+ years
+TypeScript.
 
 ### Data-Heavy Modernization
 
@@ -123,4 +137,5 @@ and the 10 approved messages it required were never sent, so it produced no evid
 | Date | Version | Evidence | Decision | Change |
 | --- | --- | --- | --- | --- |
 | 2026-07-22 | 1.0 | Portfolio, CV, market-fit plan, interview narrative | Start | Seed Bitpanda-led positioning and commercial guardrails |
+| 2026-08-21 | 1.2 | Funnel unchanged at 0 offers; live Iterable lead (89/100) sourced through the least-promoted proof line; public GitHub carries no inspectable code | Change | Widen the public offer to fullstack TypeScript with regulated fintech kept as the premium variant; add the Fullstack Product and Integrations segment |
 | 2026-08-07 | 1.1 | Full-search funnel: ~150 applications → 10 screens → 5–6 technical interviews → 0 offers; batches 4–6 each activated zero of 20 | Change | Rediagnose as an interview-conversion failure. Lower contract floors to €35/h long-term and €25/h bridge; set permanent bands to unblock the track; supersede EXP-001 with EXP-002 |
