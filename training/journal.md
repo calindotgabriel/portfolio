@@ -8,6 +8,78 @@ Scriu aici tot. Cel mai nou sus. Adaug, nu rescriu.
 Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.md`](journal-manual.md).
 
 ---
+## 2026-08-31 · ziua 19 #log Multi-tenant SD + depth tranzacții + primer trees
+
+`LC —/— · adâncime 6 citit · design 5 · mock — · aplicări 0 · PM 0`
+
+Trei blocuri, toate începute, niciunul „terminat" în sensul strict — dar am mers pe ordine.
+
+**System design, promptul #5 (izolare multi-tenant).** Ghidat cu Claude (Sonnet 5). Am ajuns
+până la pasul 3 și m-am blocat — prea multe concepte noi deodată (control plane, connection
+pools, catalog de tenants). Cadrul a ținut, dar topicul cerea vocabularul citit înainte. Am
+oprit sesiunea și am cerut referința completă: `design/05-multi-tenant-isolation.reference.md`.
+Refac oarbă la **+7 (07.09)**, după ce citesc whitepaper-ul AWS „SaaS Tenant Isolation".
+Notițe brute în `study/sysdesign/isolation/`.
+
+**Depth, topicul 6 (tranzacții, isolation levels) — ziua 1 (citit + experimentat).** Am început
+DDIA cap. 7, notițe în `study/node/transactions/`. Am primit lista de citit (DDIA 7 → PG docs
+13.2–13.3 → brandur) și planul de experiment cu două sesiuni psql. Fișa + demo `.ts` rămân pe
+zilele 20–21.
+
+**Primer trees** (`study/algo/31.08.md`) — traversări pre/in/post-order de pe hellointerview,
+plus noțiunile de balanced / complete / heap. Pregătire pentru săptămâna 4.
+
+Goluri din sesiunea de design:
+1. **Vocabular înainte de sesiune** — la topicuri abstracte (multi-tenant), citesc referința
+   scurtă *înainte* de cele 40 min, nu după. Altfel cadrul se umple cu întrebări de definiție.
+2. **Connection-explosion gotcha** — am confundat noisy-neighbor (rezolvi cu rate limiting) cu
+   problema reală: pool per tenant × N tenants = mii de conexiuni. Fix: lazy pools + PgBouncer.
+3. Progres față de sesiunea 1: instinctul de model (DB-per-tenant) a fost corect **și** l-am
+   justificat din cerințe (chei per-tenant, residency, GDPR) — nu a mai trebuit scos cu cleștele.
+
+## 2026-08-28 · ziua 17 #log Prima sesiune de system design
+
+`LC —/— · adâncime — · design warm-up (url shortener) · mock — · aplicări 0 · PM 0`
+
+Prima sesiune de system design vreodată. Ghidată cu Claude (Sonnet 5), nu oarbă — pas cu pas pe
+cadrul de 7, cu coach care împinge la fiecare pas. Am ales url shortener ca warm-up ca să nu ard
+promptul #1 (webhook-uri idempotente), care rămâne pentru Runda 1.
+
+Am dus cadrul întreg până la capăt: cerințe, cifre, API, model de date, generare de cod (random
+7-char base62 + retry pe coliziune), 302 vs 301, cache Redis, moduri de eșec, trade-offs.
+Referința completă în `design/url-shortener.reference.md`. O refac oarbă la **+7 (04.09)**.
+
+Trei goluri:
+1. **Cerințe non-funcționale** — le-am sărit complet, a fost nevoie de un exemplu lucrat. Data
+   viitoare le numesc înainte să trec mai departe: latență / read:write / disponibilitate /
+   consistență / durabilitate.
+2. **Back-of-envelope** — știam inputurile, nu formatul de narat. Șablon: assumption → ÷10⁵ →
+   ratio → 3× peak → storage → **verdict**.
+3. **Trade-offs** — am descris alegerile dar n-am numit alternativa respinsă fără să fiu împins.
+   Propoziția e „X, nu Y, pentru că Z".
+## 2028-08-25 #log Viziune
+
+Cum ar fi in loc sa fac un calendar fix cum e acum planul de pregatire tehnica pt interviuri ca sa pot avea flexibilitate ce assignez la fiecare slot de exemplu acum a aparut un slot la 16 neplanificat ca am avut
+
+## 2026-08-26 #log Aplicări focusate · Clera și Flosum
+
+Am trimis și am confirmat două aplicări pentru roluri senior backend, alese pe direcția
+Node.js/TypeScript, remote Europa/România și prag de minimum 6.000 EUR/lună:
+
+- **Clera — Backend Engineer:** remote, Europa, interval public 116.000-146.000 EUR/an.
+  Ashby a confirmat: „Your application was successfully submitted.”
+- **Flosum — Senior Node.js Developer (Romania):** remote; am comunicat așteptarea de
+  72.000 EUR brut/an sau echivalent B2B/EOR. Workable a confirmat trimiterea și va expedia
+  o copie a aplicării pe email.
+
+Pentru ambele am folosit CV-ul actual și poziționarea factuală de senior backend. Dacă nu apare
+niciun răspuns până la **2026-09-02**, fac follow-up.
+
+## 2026-08-26 #interview #step 1
+
+Am avut interviu cu 3pillar. Rolul de Senior Dev e aproape inchis si mi-au propus sa incepem procesul pt pozitia de Tech Lead.
+Initial am fost cu dubii legat de capacitatea mea aici, dat fiind fails in interviurile tehnice si ca nu am ocupat o pozitie exacta pana atunci.
+Dar cred ca e o idee buna sa fac ramp up aici ca sa devin mai proactiv si champion ownership.
 
 ## 2026-08-26 #log
 
