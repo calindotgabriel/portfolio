@@ -8,6 +8,27 @@ Scriu aici tot. Cel mai nou sus. Adaug, nu rescriu.
 Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.md`](journal-manual.md).
 
 ---
+## 2026-09-02 · ziua 21 #log Depth topic 6 — tranzacții & isolation levels
+
+`LC —/— · adâncime 6 lab · design — · mock — · aplicări 0 · PM 0`
+
+Ultima zi din topic 6. Am construit lab-ul `study/node/transactions-isolation/` (docker Postgres
++ `scenarios.sql` + demo `transfer.ts` cu wrapper de retry pe 40001) și am rulat **toate cele 6
+scenarii** de mână în două sesiuni psql: dirty read, non-repeatable read, phantom, lost update
+(cu 4 fix-uri), write skew, deadlock.
+
+Prins solid, verificat prin Q&A:
+- PG „Repeatable Read" = snapshot isolation (blochează și phantoms, mai strict decât standardul);
+  „Serializable" = SSI, poate aborta cu `40001`.
+- La write skew pe Serializable, victima e **al doilea care face commit**, nu ține de rând.
+- Invariantul („≥1 doctor on call") nu e declarat nicăieri — trăiește în codul aplicației
+  (`if count >= 2`). Serializable garantează doar „rezultat = o ordine serială".
+- Fix fără retry: un singur `UPDATE ... WHERE guard` pe un rând contor; merge și la Read Committed.
+
+Deschis, sărit din lipsă de timp (nu se recuperează, merg mai departe la topic 7): fișa de ~200
+de cuvinte în cuvintele mele — notițele din `study/node/transactions/` sunt încă citate din DDIA.
+Corpul lui `transfer()` din demo rămâne TODO (scenariile SQL au acoperit terenul).
+
 ## 2026-08-31 · ziua 19 #log Multi-tenant SD + depth tranzacții + primer trees
 
 `LC —/— · adâncime 6 citit · design 5 · mock — · aplicări 0 · PM 0`

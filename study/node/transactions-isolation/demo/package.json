@@ -1,0 +1,16 @@
+{
+  "name": "transactions-isolation-demo",
+  "private": true,
+  "type": "module",
+  "description": "Concurrent bank transfer + retry-on-serialization-failure, for depth topic 6",
+  "scripts": {
+    "start": "tsx transfer.ts"
+  },
+  "dependencies": {
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "tsx": "^4.19.2"
+  }
+}

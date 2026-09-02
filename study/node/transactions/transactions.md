@@ -65,3 +65,26 @@ The ability to abort a transaction on error and have all writes from that transa
 discarded is the defining feature of ACID atomicity. Perhaps abortability would have
 been a better term than atomicity, but we will stick with atomicity since that’s the
 usual word.
+
+**Consistency**
+
+Atomicity, isolation, and durability are properties of the database, whereas consis‐
+tency (in the ACID sense) is a property of the application. The application may rely
+on the database’s atomicity and isolation properties in order to achieve consistency,
+but it’s not up to the database alone. Thus, the letter C doesn’t really belong in ACID.
+
+**Isolation**
+
+Most databases are accessed by several clients at the same time. That is no problem if
+they are reading and writing different parts of the database, but if they are accessing
+the same database records, you can run into concurrency problems (race conditions).
+
+Isolation in the sense of ACID means that concurrently executing transactions are isolated from each other: they cannot step on each other’s toes. The classic database textbooks formalize isolation as serializability, which means that each transaction can
+pretend that it is the only transaction running on the entire database. The database ensures that when the transactions have committed, the result is the same as if they had run serially (one after another), even though in reality they may have run con‐
+currently
+
+**Durability**
+
+The purpose of a database system is to provide a safe place where data can be stored without fear of losing it. Durability is the promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crashes.
+
+In a single-node database, durability typically means that the data has been written to nonvolatile storage such as a hard drive or SSD

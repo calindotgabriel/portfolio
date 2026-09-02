@@ -1,0 +1,19 @@
+# Throwaway Postgres for the transactions / isolation-levels lab.
+# Data lives in tmpfs -> wiped on `docker compose down`. On purpose: every lab
+# run should start from a known state.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: lab
+      POSTGRES_DB: lab
+    ports:
+      - "5433:5432" # host 5433 to dodge a local Postgres on 5432
+    tmpfs:
+      - /var/lib/postgresql/data
+    command:
+      - postgres
+      - -c
+      - deadlock_timeout=1s # default; kept visible for scenario 6
+      - -c
+      - log_lock_waits=on # log when a statement waits on a lock
