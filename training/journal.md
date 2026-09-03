@@ -8,6 +8,37 @@ Scriu aici tot. Cel mai nou sus. Adaug, nu rescriu.
 Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.md`](journal-manual.md).
 
 ---
+## 2026-09-03 · ziua 22 #log Arbori — LCA ratat, Level Order dus cu ajutor
+
+`LC 0/2 · adâncime — · design — · mock — · aplicări 0 · PM 0`
+
+Zi grea în afara antrenamentului (ieri, veste finală despre despărțire; mâine, interviu tehnic
+la care mă simțeam neîncrezător) — am făcut sesiunea oricum, pedalând până la Feleacu.
+
+**Lowest Common Ancestor of a BST** — 25 min, fără strategie. Am tratat-o ca arbore general
+(guess-uri pe relații directe părinte-copil) fără să folosesc `.val`, plus recursivitate fără
+`return` pe apelurile din stânga/dreapta. Nu am văzut proprietatea de BST: comparând `p.val`
+și `q.val` cu `root.val`, punctul de bifurcare — și cazul „nodul e propriul descendent" — ies
+singure din comparație, fără caz special.
+
+**Binary Tree Level Order Traversal** — blocat 5 min, știam conceptul (BFS, coadă) dar nu
+boilerplate-ul. Un indiciu (schelet cu `levelSize` fixat înainte de buclă) și am completat
+singur restul — inclusiv gărzi corecte pentru `null` pe care nu le cerusem, gândite de mine.
+Trecut pe LeetCode. Nu „rezolvat în timp" curat (indiciu la mijloc), dar dus la capăt singur.
+
+Două probleme de care îmi era frică, atacate într-o zi grea. Asta contează mai mult azi decât
+LC 0/2.
+
+## 2026-09-03 #redo Lowest Common Ancestor of a BST · trees
+
+Ratată **03.09** → refac la **10.09** și la **24.09**.
+
+Am mers pe arbore general (guess-uri pe relații directe părinte-copil), fără să folosesc
+proprietatea de BST. Soluția corectă compară `p.val`/`q.val` cu `root.val`: amândouă mai mici
+→ stânga, amândouă mai mari → dreapta, altfel `root` e punctul de bifurcare — inclusiv cazul
+„nodul e propriul descendent", care iese din comparație fără cod special. Bug secundar:
+apeluri recursive fără `return` — rezultatul lor se pierde.
+
 ## 2026-09-02 · ziua 21 #log Depth topic 6 — tranzacții & isolation levels
 
 `LC —/— · adâncime 6 lab · design — · mock — · aplicări 0 · PM 0`
