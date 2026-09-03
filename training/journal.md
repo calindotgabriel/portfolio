@@ -8,6 +8,27 @@ Scriu aici tot. Cel mai nou sus. Adaug, nu rescriu.
 Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.md`](journal-manual.md).
 
 ---
+## 2026-09-03 · ziua 22 #log System design — Job scheduler, slot de 25 min
+
+`LC —/— · adâncime — · design 6 (comprimat) · mock — · aplicări 0 · PM 0`
+
+Sesiune neplanificată, 25 min în loc de 90 — slot apărut, asignat pe loc. Promptul #7: job
+scheduler / delayed tasks, ghidat, coach împingând la fiecare pas.
+
+Cerințe și cifre bune din prima: 20M/zi → 230/sec avg, 700/sec peak, calculat corect. Toate cele
+trei goluri s-au strâns în jurul aceluiași fir — durabilitatea și claim-ul task-urilor scadente:
+
+1. Recovery-ul spus verbal ("îl pun într-un queue, e reluat când reapare procesul") suna corect,
+   dar n-avea niciun mecanism concret în spate — a ieșit abia la modelul de date.
+2. Am propus `processing` boolean + tranzacție SQL — direcție bună, dar incompletă: fără
+   `FOR UPDATE SKIP LOCKED` doi workeri pot încă claim-ui același rând, și fără `locked_until` cu
+   expirare, un worker căzut blochează task-ul la nesfârșit — contrazice chiar punctul 1 de mai sus.
+3. Storage: am sărit peste asumția de retenție (100GB/zi → 300GB total, fără să spun de ce 300).
+   Al doilea rând la fel — deja semnalat o dată la url shortener, deci e un tipar, nu un accident.
+
+Referință completă în `design/07-job-scheduler.md`. Refac oarbă la **+7 (10.09)**, de data asta
+90 min întregi.
+
 ## 2026-09-03 · ziua 22 #log Arbori — LCA ratat, Level Order dus cu ajutor
 
 `LC 0/2 · adâncime — · design — · mock — · aplicări 0 · PM 0`
