@@ -151,20 +151,24 @@ The topic list already exists at `interview-narrative.md:96-107`. Walk it one to
 
 Order, highest interview-frequency first:
 
-| # | Topic | Demo |
-| --- | --- | --- |
-| 1 | Event loop phases; microtasks vs macrotasks | Ordering puzzle with `setTimeout`, `setImmediate`, `process.nextTick`, promises |
-| 2 | libuv threadpool vs `worker_threads`; CPU-bound vs I/O-bound | Block the loop, then fix it with a worker pool — this *is* the RWE story |
-| 3 | Stream backpressure | Fast producer, slow consumer, memory growth, then `pipeline()` |
-| 4 | GC, memory leaks, heap snapshots | Leak a closure/`Map`, find it in a heap snapshot |
-| 5 | Mongo `explain()`, index selection, compound-index prefix rule | Same query with and without the right index |
-| 6 | Transactions, isolation levels, and what Mongo does not give you | Concurrent write anomaly |
-| 7 | GraphQL N+1 and DataLoader | Resolver firing N queries, then batched |
-| 8 | Idempotency keys and exactly-once delivery | Duplicate request, single effect |
-| 9 | Retries, exponential backoff, jitter, DLQ | Flaky dependency simulator |
-| 10 | Service-to-service auth, least privilege | Signed internal request — the Bitpanda story |
-| 11 | Fastify vs NestJS: encapsulation vs DI, JSON-schema vs class-validator | Same endpoint in both |
-| 12 | Node clustering, graceful shutdown, health checks | SIGTERM draining in-flight requests |
+| # | Topic | Demo | Sources |
+| --- | --- | --- | --- |
+| 1 | Event loop phases; microtasks vs macrotasks | Ordering puzzle with `setTimeout`, `setImmediate`, `process.nextTick`, promises | `nodejs.org/en/guides/event-loop-timers-and-nexttick` |
+| 2 | libuv threadpool vs `worker_threads`; CPU-bound vs I/O-bound | Block the loop, then fix it with a worker pool — this *is* the RWE story | `nodejs.org/en/docs/guides/dont-block-the-event-loop` · `nodejs.org/api/worker_threads.html` |
+| 3 | Stream backpressure | Fast producer, slow consumer, memory growth, then `pipeline()` | `nodejs.org/en/guides/backpressuring-in-streams` |
+| 4 | GC, memory leaks, heap snapshots | Leak a closure/`Map`, find it in a heap snapshot | `nodejs.org/en/learn/diagnostics/memory` — built-in `v8.writeHeapSnapshot()`, no DevTools install needed |
+| 5 | Mongo `explain()`, index selection, compound-index prefix rule | Same query with and without the right index | `mongodb.com/docs/manual/tutorial/analyze-query-plan` · `.../tutorial/equality-sort-range-rule` (the ESR rule) |
+| 6 | Transactions, isolation levels, and what Mongo does not give you | Concurrent write anomaly | DDIA ch. 7 · Postgres docs §13.2–13.3 (isolation levels) — see `study/node/transactions-isolation/` for the completed lab |
+| 7 | GraphQL N+1 and DataLoader | Resolver firing N queries, then batched | `graphql.org/learn/best-practices/#server-side-batching-caching` · `github.com/graphql/dataloader` README |
+| 8 | Idempotency keys and exactly-once delivery | Duplicate request, single effect | `stripe.com/docs/api/idempotent_requests` — the canonical real-world writeup |
+| 9 | Retries, exponential backoff, jitter, DLQ | Flaky dependency simulator | `aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter` — explains *why* jitter, not just backoff |
+| 10 | Service-to-service auth, least privilege | Signed internal request — the Bitpanda story | `owasp.org` microservices/service-to-service auth cheat sheet; the Bitpanda story is the primary source here |
+| 11 | Fastify vs NestJS: encapsulation vs DI, JSON-schema vs class-validator | Same endpoint in both | `fastify.dev/docs` (encapsulation/plugins) · `docs.nestjs.com` (modules/DI) |
+| 12 | Node clustering, graceful shutdown, health checks | SIGTERM draining in-flight requests | `nodejs.org/api/cluster.html` · `nodejs.org/en/learn` diagnostics section on graceful shutdown |
+
+Sources are a starting point, not a reading list — 20–30 minutes each, enough to speak three
+questions deep. `study/node/` and `training/depth/` hold what has actually been built so far;
+check there first in case a topic is already in progress before starting from the table above.
 
 Topics 2, 5, 9 and 10 map onto stories already in `interview-narrative.md`. Being able to go three
 questions deep on those turns a rehearsed story into a demonstrated one — which is exactly the
