@@ -8,7 +8,47 @@ Scriu aici tot. Cel mai nou sus. Adaug, nu rescriu.
 Exemple pentru fiecare tip și pentru ciclul complet de redo: [`journal-manual.md`](journal-manual.md).
 
 ---
-## 2026-09-03 · ziua 22 #log System design — Job scheduler, slot de 25 min
+## 2026-09-04 · ziua 23 #log Interviu 3pillar — system design PDF reports, goluri de reparat mâine
+
+`LC —/— · adâncime — · design — · mock — · aplicări 0 · PM 1`
+
+Interviu 3pillar (continuarea procesului de Tech Lead din 26.08), 11:00-13:00, 2h. Înainte de
+partea de design: întrebări de adâncime Node, concurrency, DB, microservicii, cloud, behavioral,
+testing, strategii de scale și compunere de microservicii în tranzacții/retry — blocaje minore/
+medii, nimic dramatic. **La system design chiar am pierdut-o** — asta a fost punctul de rupere al
+interviului, nu partea de dinainte. Detalii verbatim de completat într-un post-mortem separat
+dacă apuc.
+
+**System design — sistem de generare rapoarte PDF, organization-scoped, async, dedup, retry,
+bursts de sute de cereri.** Am făcut designul (poză atașată în conversație), instincte corecte
+(procesare async, worker pool pentru CPU-bound, retry cu cap), dar șapte conexiuni nefăcute live:
+
+1. **Multi-tenant ("organizations have different DBs") listat ca NFR, absent din design.** Exact
+   promptul #5 de pe 31.08 (`design/05-multi-tenant-isolation.reference.md`) — cunoștința există,
+   n-am făcut legătura sub presiune.
+2. **`GET` pentru o acțiune care pornește un job** (generarea raportului) — nu e safe/idempotent
+   implicit, trebuia `POST`. Plus query string cu params întregi — limită de lungime, exact ce
+   scrisesem cu o zi înainte în notele de GraphQL despre persisted queries.
+3. **`reportKey` include `user.id`** — cerința zicea dedup pe org+tip+dată+parametri; cu userul
+   inclus în hash, doi useri din același org care cer identic același raport nu se dedupează.
+   Bug din citirea cerinței, nu din arhitectură.
+4. **Nicio decuplare API/compute** — worker pool pe aceeași instanță care servește API-ul,
+   amestecă ingestia cu 250-750 sec de calcul greu. Lipsea o coadă (SQS) între API și workeri.
+5. **Storage-ul PDF-ului nespecificat** — răspunsul zicea "PDF blob" fără să spună unde stă
+   fizic. Postgres nu ține fișiere binare mari; S3 + pointer era răspunsul așteptat.
+6. **Autorizare la download — doar JWT, fără check explicit `org` pe resursă** — IDOR clasic,
+   cerința zicea explicit "authorized users". Topicul 10 din curriculum, neaplicat.
+7. **Polling la 1s pe un proces de până la 750 sec** — dacă e clientul, sute de cereri inutile
+   per raport, chiar pe fondul cerinței de bursts.
+
+De aici a pornit și decizia de azi: mai multă practică de tip build-and-break, nu doar whiteboard
+— exact aceste 7 puncte devin materialul concret pentru sesiunile practice viitoare, nu scenarii
+generice inventate.
+
+**Refac promptul ăsta mâine, 05.09**, oarbă, cronometrat, înainte de orice altceva — nu +7, e prea
+proaspăt și prea relevant ca să aștept o săptămână.
+
+## 2026-09-04 · ziua 23 #log System design — Job scheduler, slot de 25 min
 
 `LC —/— · adâncime — · design 6 (comprimat) · mock — · aplicări 0 · PM 0`
 
@@ -26,7 +66,7 @@ trei goluri s-au strâns în jurul aceluiași fir — durabilitatea și claim-ul
 3. Storage: am sărit peste asumția de retenție (100GB/zi → 300GB total, fără să spun de ce 300).
    Al doilea rând la fel — deja semnalat o dată la url shortener, deci e un tipar, nu un accident.
 
-Referință completă în `design/07-job-scheduler.md`. Refac oarbă la **+7 (10.09)**, de data asta
+Referință completă în `design/07-job-scheduler.md`. Refac oarbă la **+7 (11.09)**, de data asta
 90 min întregi.
 
 ## 2026-09-03 · ziua 22 #log Arbori — LCA ratat, Level Order dus cu ajutor

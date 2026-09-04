@@ -1,7 +1,7 @@
 # Prompt #7 — Job scheduler / delayed-task system · REFERINȚĂ
 
 > **Nu citi asta înainte de a reface promptul oarbă.** Sesiunea originală a fost comprimată la
-> 25 min (din 90 obișnuit) — un slot neplanificat, asignat pe loc. Refă-l singur la **+7 (10.09)**,
+> 25 min (din 90 obișnuit) — un slot neplanificat, asignat pe loc. Refă-l singur la **+7 (11.09)**,
 > de data asta cei 90 min întregi, cadrul de 7 pași, apoi compară cu fișierul ăsta.
 
 Promptul: *„Design a system that lets clients schedule a task to run at a specific time in the
@@ -195,9 +195,9 @@ nevoie de LISTEN/NOTIFY sau de un broker dedicat. Costul e o latență de dispat
 
 ## Legături
 
-- Sesiunea: ghidată, comprimată la 25 min (din 90 obișnuit), 2026-09-03. Vezi `journal.md`.
+- Sesiunea: ghidată, comprimată la 25 min (din 90 obișnuit), 2026-09-04. Vezi `journal.md`.
 - Index-ul reia ESR-ul din topicul 5 depth (`study/node/mongo-explain-indexes/`).
 - Idempotency-ul la execuție dublă reia povestea Iterable/Newxel din `interview-narrative.md` și
   pattern-ul din `01-idempotent-webhooks.reference.md`.
 - Cadrul de 7 pași: `../../docs/training-plan.md`, Block 2.
-- Refă oarbă la **+7 (2026-09-10)**.
+- Refă oarbă la **+7 (2026-09-11)**.
