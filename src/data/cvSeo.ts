@@ -1,12 +1,12 @@
 import { resumeDraft } from "./resumeDraft";
 
-export const runtimeDossierTitle =
+export const cvTitle =
   `${resumeDraft.title} | ${resumeDraft.name}`;
 
-export const runtimeDossierDescription =
+export const cvDescription =
   "Calin Gabriel is a Romania-based senior backend engineer focused on Node.js and TypeScript for regulated fintech, Iterable integrations, marketing automation, legacy-to-microservices migrations, and performance-sensitive APIs. Open to permanent roles or long-term B2B contracts across the EU or hybrid in Cluj-Napoca.";
 
-export const runtimeDossierPersonJsonLd = {
+export const cvPersonJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: resumeDraft.name,

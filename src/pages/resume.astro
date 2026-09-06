@@ -1,17 +1,17 @@
 ---
 import RuntimeResumeDocument from "../components/RuntimeResumeDocument.astro";
-import RuntimeDossierLayout from "../layouts/RuntimeDossierLayout.astro";
+import CvLayout from "../layouts/CvLayout.astro";
 import {
-  runtimeDossierDescription,
-  runtimeDossierPersonJsonLd,
-  runtimeDossierTitle,
-} from "../data/runtimeDossierSeo";
+  cvDescription,
+  cvPersonJsonLd,
+  cvTitle,
+} from "../data/cvSeo";
 ---
 
-<RuntimeDossierLayout
-  title={runtimeDossierTitle}
-  description={runtimeDossierDescription}
-  personJsonLd={runtimeDossierPersonJsonLd}
+<CvLayout
+  title={cvTitle}
+  description={cvDescription}
+  personJsonLd={cvPersonJsonLd}
   canonicalUrl="https://calingabriel.com/resume"
 >
   <RuntimeResumeDocument
@@ -20,4 +20,4 @@ import {
     downloadName="Calin_Gabriel_CV.pdf"
     downloadLabel="Download PDF"
   />
-</RuntimeDossierLayout>
+</CvLayout>

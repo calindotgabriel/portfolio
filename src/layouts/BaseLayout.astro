@@ -28,7 +28,7 @@ import "../styles/global.css";
       name="description"
       content={metaDescription}
     />
-    <meta name="theme-color" content="#f4f7fa" />
+    <meta name="theme-color" content="#f5f4fa" />
     <script is:inline>
       (() => {
         const storageKey = "cgdev-theme";
@@ -52,7 +52,7 @@ import "../styles/global.css";
         root.style.colorScheme = theme;
 
         if (themeMeta) {
-          themeMeta.content = theme === "dark" ? "#111923" : "#f4f7fa";
+          themeMeta.content = theme === "dark" ? "#151123" : "#f5f4fa";
         }
       })();
     </script>

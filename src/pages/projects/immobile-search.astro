@@ -3,7 +3,7 @@ import ProjectLayout from "../../components/ProjectLayout.astro";
 
 const sections = [
   {
-    no: "§ 01",
+    no: "",
     title: "The problem",
     body: [
       "ImmoScout24 is one of the most-used real-estate platforms in Austria and part of the wider Scout24 group. The work sat inside a mature distributed system: search and listing flows, SEO-sensitive pages, marketing automation, and integration points that had to keep working under normal product-delivery pressure.",
@@ -11,7 +11,7 @@ const sections = [
     ],
   },
   {
-    no: "§ 02",
+    no: "",
     title: "My biggest challenge",
     body: [
       "The steepest learning curve was adapting to the quality expectations of a DAX-listed engineering organization. The codebase was tested at every layer across distributed services, with SSO federated from Scout24's German platform. Small changes still required clear reasoning, good coverage, and careful review.",
@@ -27,12 +27,6 @@ const delivered = [
   { n: "04", h: "Enricher task upgrades", p: "Upgraded the functional-style enricher tasks that process and transform property data — improving reliability and maintainability of the data pipeline." },
 ];
 
-const metrics = [
-  { v: "Iterable", k: "Lifecycle messaging integrated end to end" },
-  { v: "React + Node", k: "Search and listing improvements shipped" },
-  { v: "SEO", k: "Release-sensitive delivery" },
-];
-
 const stack = ["React", "Hapi.js", "Node.js", "MongoDB", "AWS", "Iterable"];
 ---
 
@@ -43,9 +37,7 @@ const stack = ["React", "Hapi.js", "Node.js", "MongoDB", "AWS", "Iterable"];
   <div class="ed-wrap">
     <section class="ed-hero">
       <p class="ed-kicker">
-        <a href="/projects">← Case files</a>
-        <span>·</span>
-        <span>Case file 02</span>
+        <a href="/projects">← Projects</a>
       </p>
       <h1>ImmoScout24 Austria</h1>
       <p class="ed-hero-lead">Iterable lifecycle integration, plus search, listing and SEO work across React and Node, inside a tested distributed real-estate platform.</p>
@@ -68,7 +60,7 @@ const stack = ["React", "Hapi.js", "Node.js", "MongoDB", "AWS", "Iterable"];
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 03</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">What I delivered</h2>
           <div class="ed-cards">
@@ -86,34 +78,28 @@ const stack = ["React", "Hapi.js", "Node.js", "MongoDB", "AWS", "Iterable"];
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 04</span>
+        <span class="ed-section-no"></span>
         <div>
-          <h2 class="ed-h2">Business impact</h2>
-          <dl class="ed-ledger">
-            {metrics.map((m) => (
-              <div class="ed-metric"><dt>{m.v}</dt><dd>{m.k}</dd></div>
-            ))}
-          </dl>
+          <h2 class="ed-h2">What changed</h2>
           <p class="ed-body">The impact was practical: targeted search, listing, and SEO changes shipped inside a mature production platform, while the Iterable integration reduced the engineering dependency for campaign setup. Exact commercial metrics aren't mine to disclose, so the public proof stays with the systems and delivery scope I can substantiate.</p>
-          <p class="ed-body">For a contract buyer, the useful signal isn't a greenfield demo. It's evidence that I can enter a mature system, respect the quality bar, and ship targeted product / integration changes without increasing release risk.</p>
         </div>
       </div>
     </section>
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 05</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">What I took away</h2>
-          <p class="ed-body">This project reset my default expectations for test coverage and review quality. A fully tested distributed system doesn't remove the need for judgment — it gives good engineers the confidence to make smaller, better-scoped changes.</p>
-          <p class="ed-body">On the human side, I learned when to reach out to a mentor and when to push through on my own. That calibration — knowing when to sync and when to execute — is now a core part of how I operate in any team.</p>
+          <p class="ed-body">This project reset my default expectations for test coverage and review quality. Having tests at every layer did not remove the need for judgment, but it did make smaller, better-scoped changes easier to justify.</p>
+          <p class="ed-body">On the human side, I learned when to reach out to a mentor and when to push through on my own. I still use that calibration when I join a team.</p>
         </div>
       </div>
     </section>
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 06</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">Stack</h2>
           <div class="ed-stack">

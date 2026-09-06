@@ -4,35 +4,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import portrait from "../assets/calin-gabriel-portrait.jpg";
 import { projects } from "../data/projects";
-import { resumeDraft } from "../data/resumeDraft";
+import { siteRole } from "../data/site";
 
 const email = "contact@calingabriel.com";
-const mailto = `mailto:${email}?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20contract%20or%20permanent`;
+const mailto = `mailto:${email}?subject=Backend%20work%20(Node%2FTS)`;
 
 const approach = [
   {
     n: "BACKEND",
-    title: "Regulated, security-critical backend",
-    body: "Bank-facing services where a wrong answer costs somebody real money. I owned the crypto address book at Bitpanda, and in custody a bad address quietly accepted means funds nobody gets back. So I built it backwards from what must never happen.",
-    evidence: "Bitpanda — institutional crypto-custody for banks.",
+    title: "Backend work in regulated systems",
+    body: "At Bitpanda I owned the crypto address book: the API, the data model, the validation rules, the tests and the release. In custody, an address accepted by mistake can mean funds nobody gets back, so most of the work sat in the validation and the failure cases rather than the happy path.",
+    evidence: "Bitpanda — institutional crypto custody for banks.",
   },
   {
     n: "MIGRATION",
-    title: "Legacy into Node / NestJS",
-    body: "Old service, small team, no appetite for a rewrite that stops everything. At RWE we moved it across in slices with tests around each one, so delivery kept going while the ground shifted underneath.",
+    title: "Legacy Java into Node and NestJS",
+    body: "At RWE we moved legacy Java components to NestJS in slices, with integration and E2E tests around each slice, so day-to-day delivery could keep going while the migration ran underneath it. Small team, live production system, no appetite for a full rewrite.",
     evidence: "RWE — Java to NestJS on an energy-market platform.",
   },
   {
     n: "PERFORMANCE",
-    title: "APIs, data access, and things that got slow",
-    body: "I measure before I touch anything. Most slow systems turn out to be slow in one place nobody has looked at yet, and a week spent guessing is a week gone. The export figure below came from profiling first and fixing what the profile actually showed.",
-    evidence: "About 65% faster APIs. Exports from 45 minutes down to 12.",
+    title: "APIs and data access that got slow",
+    body: "I profile before changing anything. At RWE that meant finding the real bottleneck in MongoDB aggregations serving about 15,000 queries a day, then moving CPU-heavy exports onto Node worker pools so they stopped blocking normal API work.",
+    evidence: "RWE — around 65% faster API responses; exports from 45 minutes to 12.",
   },
   {
     n: "PRODUCT",
-    title: "Fullstack product work and third-party integrations",
-    body: "React and Node in the same week, usually with somebody else's platform in the middle. At ImmoScout24 that was Iterable wired into lifecycle messaging — most of that job is mapping their data model onto yours and making the failure modes visible before marketing finds them. I join a team that already has conventions and become useful inside them. No rewrite proposals in week one.",
-    evidence: "ImmoScout24 — Iterable lifecycle integration, search, listing and SEO across React and Node.",
+    title: "Product work across React and Node",
+    body: "React and Node in the same week, usually with somebody else's platform in the middle. At ImmoScout24 that was Iterable wired into lifecycle messaging — mostly mapping their data model onto ours and making the failure modes visible. The platform was tested at every layer and matching that bar took me a while.",
+    evidence: "ImmoScout24 — Iterable lifecycle integration, plus search, listing and SEO across React and Node.",
   },
 ];
 
@@ -41,28 +41,23 @@ const ledger = [
   { v: "≈ 65%", k: "faster API responses after migration" },
   { v: "15,000+/day", k: "energy-market queries served" },
   { v: "2,000+/day", k: "documents through a React + Node pipeline (Endava)" },
-  { v: "AT + DE", k: "recent React + Node product teams in Austria and Germany" },
-  { v: "Contract or permanent", k: "remote EU or Cluj, free now" },
 ];
 
 const trajectory = [
   {
-    label: "Origin",
-    note: "// first production role",
-    title: "Started by shipping, formalised it later.",
-    body: "At 16 I won an internship contest in Galați and turned it into my first software job, doing Linux and web work on things people actually used. Computer Science at Babeș-Bolyai came after, and mostly it put names to habits I'd picked up by breaking things in production and having to fix them.",
+    label: "Start",
+    title: "First job at 16.",
+    body: "I won an internship contest in Galați and turned it into my first software job, doing Linux and web work on things people actually used. Computer Science at Babeș-Bolyai came after, and mostly it put names to things I had already been doing.",
   },
   {
-    label: "Present",
-    note: "// measured, not guessed",
-    title: "The one who takes the difficult piece.",
-    body: "Fintech and custody, energy, real estate, publishing. A DAX-listed energy company, a custody platform for banks, one of Austria's biggest property portals. The pattern is usually the same. I get handed the part everyone has been working around, and I stay on it until it's genuinely done rather than technically closed.",
+    label: "Since",
+    title: "Backend, mostly in data-heavy or regulated products.",
+    body: "DeverSoft, WIP Romania, Endava, RWE, ImmoScout24, Bitpanda. Restaurant systems, a wallet, scientific publishing, payments, energy-market data, property listings, and most recently crypto custody. Node and TypeScript throughout, with enough React that I can work on both sides of a product.",
   },
   {
     label: "Next",
-    note: "// long-term, high-context",
-    title: "Somewhere the problems are genuinely hard.",
-    body: "Remote EU or Cluj, contract or permanent. The shape matters less than whether the problems are hard enough to be worth doing properly. What I want is a product or platform team with real domain complexity, where people talk to each other and own what they build.",
+    title: "What I am looking for.",
+    body: "Remote in the EU or hybrid in Cluj, contract or permanent. I would like to stay somewhere long enough to actually learn the domain, on a team that owns what it builds.",
   },
 ];
 
@@ -75,8 +70,8 @@ const statusLabel = {
 ---
 
 <BaseLayout
-  title={`Calin Gabriel - ${resumeDraft.title}`}
-  description="Senior Node.js/TypeScript engineer in Cluj-Napoca. Backend-heavy work in fintech, regulated systems, migrations and performance. Open to permanent roles or long-term B2B contracts, remote EU or Cluj."
+  title={`Calin Gabriel - ${siteRole}`}
+  description="Backend developer in Cluj-Napoca, working in Node.js and TypeScript. Most recently on Bitpanda's crypto custody platform for banks; before that ImmoScout24 and RWE. Open to remote EU or Cluj, contract or permanent."
 >
   <!-- MASTHEAD -->
   <header class="masthead" id="top">
@@ -84,13 +79,13 @@ const statusLabel = {
     <div class="masthead-inner">
       <a class="mast-id" href="#top">
         <span class="mast-name">Calin Gabriel</span>
-        <span class="mast-role">{resumeDraft.title}</span>
+        <span class="mast-role">{siteRole}</span>
       </a>
 
       <nav class="mast-nav" aria-label="Sections">
-        <a href="#approach">System fit</a>
-        <a href="#trajectory">Career trace</a>
-        <a href="#casefiles">Case files</a>
+        <a href="#approach">Work</a>
+        <a href="#trajectory">Background</a>
+        <a href="#casefiles">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -125,37 +120,36 @@ const statusLabel = {
       </div>
 
       <h1 class="lede-title" id="lede-title">
-        Give me the part of the<br />
-        system nobody wants<br />
-        to <span>touch</span>.
+        Backend developer,<br />
+        Cluj-Napoca.<br />
+        Node and <span>TypeScript</span>.
       </h1>
 
       <div class="lede-columns">
         <p class="lede-body">
-          Usually that's a migration nobody can afford to let stall, or an API that got
-          slow and nobody's sure where. Sometimes it's a regulated backend where the edge
-          cases are the actual product. Most recently that was an
-          <strong>institutional crypto-custody platform for banks</strong> at Bitpanda, and
-          before it ImmoScout24, RWE, and a run of systems that had to keep working while
-          they were rebuilt underneath. Backend is where I'm strongest, but I've shipped the
-          React side of the same products, and the integrations sitting between them.
+          Most recently I worked on the
+          <strong>crypto custody platform Bitpanda builds for banks</strong>, where I owned
+          the address book — the part that checks an address is valid before a customer's
+          funds can be sent to it. Before that, ImmoScout24 in Austria and RWE in Germany,
+          both long-running platforms that had to keep working while they changed. Backend
+          is where I'm strongest, but I've shipped the React side of the same products and
+          the integrations sitting between them.
         </p>
         <p class="lede-sub">
-          I ask a lot of questions in the first week and considerably fewer after that.
-          Then I take the difficult thing off your plate, and it ships tested.
+          I ask a lot of questions when I join something new.
         </p>
       </div>
 
       <div class="lede-cta">
-        <a href={mailto} class="btn btn-ink">Book a 20-minute fit call</a>
-        <a href="#approach" class="btn btn-line">What I take on</a>
-        <a href="/resume" class="btn btn-line">Read the CV</a>
+        <a href={mailto} class="btn btn-ink">Email me</a>
+        <a href="#approach" class="btn btn-line">What I work on</a>
+        <a href="/resume" class="btn btn-line">CV</a>
       </div>
     </section>
 
     <!-- LEDGER / METRICS -->
-    <section class="ledger" aria-label="Track record in numbers">
-      <span class="ledger-tag">Track record, abbreviated</span>
+    <section class="ledger" aria-label="Numbers from past projects">
+      <span class="ledger-tag">A few numbers</span>
       <dl class="ledger-grid">
         {ledger.map((item) => (
           <div class="ledger-row">
@@ -169,12 +163,10 @@ const statusLabel = {
     <!-- APPROACH -->
     <section class="approach" id="approach" aria-labelledby="approach-title">
       <div class="section-head">
-        <span class="section-no">Operating scope</span>
-        <h2 id="approach-title">Hire me for the work where the risk actually lives.</h2>
+        <span class="section-no">Work</span>
+        <h2 id="approach-title">What I work on.</h2>
         <p class="section-lede">
-          The best fit is usually a problem that's been sitting on the board a while:
-          awkward, a little risky, never quite this quarter's priority. That's the work
-          I want.
+          Roughly four areas, with the project each one comes from.
         </p>
       </div>
 
@@ -185,7 +177,7 @@ const statusLabel = {
             <div class="approach-body">
               <h3>{item.title}</h3>
               <p>{item.body}</p>
-              <p class="approach-evidence"><span>Evidence</span> {item.evidence}</p>
+              <p class="approach-evidence"><span>Project</span> {item.evidence}</p>
             </div>
           </li>
         ))}
@@ -195,8 +187,8 @@ const statusLabel = {
     <!-- TRAJECTORY -->
     <section class="trajectory" id="trajectory" aria-labelledby="trajectory-title">
       <div class="section-head">
-        <span class="section-no">Career trace</span>
-        <h2 id="trajectory-title">A path built by shipping things.</h2>
+        <span class="section-no">Background</span>
+        <h2 id="trajectory-title">How I got here.</h2>
       </div>
 
       <div class="traj-list">
@@ -204,7 +196,6 @@ const statusLabel = {
           <article class="traj-item">
             <div class="traj-meta">
               <span class="traj-label">{phase.label}</span>
-              <span class="traj-note">{phase.note}</span>
             </div>
             <div class="traj-content">
               <h3>{phase.title}</h3>
@@ -215,12 +206,12 @@ const statusLabel = {
       </div>
     </section>
 
-    <!-- CASE FILES -->
+    <!-- PROJECTS -->
     <section class="casefiles" id="casefiles" aria-labelledby="casefiles-title">
       <div class="section-head">
-        <span class="section-no">Selected systems</span>
-        <h2 id="casefiles-title">Case files.</h2>
-        <p class="section-lede">Four systems, what was actually wrong with each, and what changed.</p>
+        <span class="section-no">Projects</span>
+        <h2 id="casefiles-title">Projects.</h2>
+        <p class="section-lede">Four of them, with what I actually did on each.</p>
       </div>
 
       <div class="case-list">
@@ -253,18 +244,18 @@ const statusLabel = {
       <div class="colophon-rule"></div>
       <div class="colophon-grid">
         <div class="colophon-lead">
-          <h2>Tell me about the thing that's been sitting on your board.</h2>
-          <a href={mailto} class="btn btn-ink">Book a 20-minute fit call</a>
+          <h2>Get in touch.</h2>
+          <a href={mailto} class="btn btn-ink">Email me</a>
         </div>
         <dl class="colophon-meta">
           <div><dt>Email</dt><dd><a href={mailto}>{email}</a></dd></div>
-          <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">github.com/calindotgabriel</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/calindotgabriel" rel="me">/calindotgabriel</a></dd></div>
           <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me">/calingabriel-ts-dev</a></dd></div>
           <div><dt>Engagement</dt><dd>Permanent or B2B · remote EU or Cluj · available now</dd></div>
         </dl>
       </div>
       <p class="colophon-sign">
-        Runtime Dossier system · Geologica, Atkinson &amp; Martian Mono.
+        Set in Geologica, Atkinson &amp; Martian Mono.
         © {new Date().getFullYear()} Calin Gabriel.
       </p>
     </footer>
@@ -315,7 +306,7 @@ const statusLabel = {
 
     /* ---------- Lede / hero ---------- */
     .lede { padding: clamp(4rem, 9vw, 7.5rem) 0 clamp(3rem, 6vw, 5rem); }
-    .lede-identity { display: flex; align-items: center; gap: 0.95rem; margin-bottom: 1.8rem; }
+    .lede-identity { display: flex; align-items: center; gap: 0.95rem; margin-bottom: 1.35rem; }
     .portrait-seal {
       display: block;
       flex: 0 0 76px;
@@ -381,7 +372,11 @@ const statusLabel = {
     .section-lede { font-size: 1.12rem; line-height: 1.6; color: var(--text-muted); }
 
     section { padding-block: clamp(3rem, 7vw, 6rem); }
-    .lede, .ledger { padding-block: revert; }
+    /* The hero and ledger carry their own vertical rhythm. This used to read
+       `padding-block: revert`, which has the same specificity as .lede's own
+       padding rule above and therefore zeroed it out. */
+    .lede { padding-block: clamp(1.5rem, 3vw, 2.75rem) clamp(3rem, 6vw, 5rem); }
+    .ledger { padding-block: 2.2rem 2.4rem; }
 
     /* ---------- Approach ---------- */
     .approach-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
@@ -401,12 +396,11 @@ const statusLabel = {
     .traj-item:first-child { border-top: 1px solid var(--border-strong); }
     .traj-meta { display: flex; flex-direction: column; gap: 0.4rem; }
     .traj-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); }
-    .traj-note { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-subtle); font-style: normal; }
     .traj-content { border-left: 2px solid var(--border-strong); padding-left: clamp(1.2rem, 3vw, 2rem); }
     .traj-content h3 { font-family: var(--font-display); font-weight: 630; font-size: clamp(1.4rem, 3vw, 2.05rem); line-height: 1.12; letter-spacing: -0.03em; margin-bottom: 0.8rem; color: var(--text); }
     .traj-content p { font-size: 1.08rem; line-height: 1.68; color: var(--text-muted); max-width: 62ch; }
 
-    /* ---------- Case files ---------- */
+    /* ---------- Projects ---------- */
     .case-list { display: grid; gap: 0; }
     .case {
       display: grid;

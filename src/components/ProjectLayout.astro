@@ -7,9 +7,9 @@ export interface Props {
 const { title, description } = Astro.props;
 
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteRole } from "../data/site";
 import ThemeToggle from "./ThemeToggle.astro";
 import ContactFooter from "./ContactFooter.astro";
-import { resumeDraft } from "../data/resumeDraft";
 import "../styles/global.css";
 ---
 
@@ -19,11 +19,11 @@ import "../styles/global.css";
     <div class="masthead-inner">
       <a class="mast-id" href="/">
         <span class="mast-name">Calin Gabriel</span>
-        <span class="mast-role">{resumeDraft.title}</span>
+        <span class="mast-role">{siteRole}</span>
       </a>
       <nav class="mast-nav" aria-label="Sections">
         <a href="/">Home</a>
-        <a href="/projects">Case files</a>
+        <a href="/projects">Projects</a>
         <a href="https://github.com/calindotgabriel" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/calingabriel-ts-dev/" target="_blank" rel="noopener">LinkedIn</a>
       </nav>

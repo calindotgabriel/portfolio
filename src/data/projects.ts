@@ -19,13 +19,13 @@ export const projects: Project[] = [
     shortDescription:
       "Backend of an institutional crypto-custody platform for banks — Fastify, GraphQL, AWS serverless.",
     caseStudySummary:
-      "Owned the crypto address-book backend end-to-end in a regulated custody platform for banks, strengthened auth across services, and introduced testing patterns the team adopted.",
+      "Owned the crypto address book end to end in a custody platform for banks, built and expanded authentication across services, and added backend test coverage.",
     tech: ["Fastify", "GraphQL", "TypeScript", "AWS"],
     status: "FINTECH",
     results: [
-      "Address-book owned design → production",
-      "Auth strengthened across services",
-      "Testing patterns adopted by team",
+      "Address book owned design → production",
+      "Auth built and expanded across services",
+      "Backend test coverage added",
     ],
   },
   {
@@ -40,8 +40,7 @@ export const projects: Project[] = [
     status: "LIVE",
     results: [
       "Iterable integrated into lifecycle messaging",
-      "Contributed to improved SEO performance",
-      "Supported engagement gains in listing flows",
+      "Search, listing and SEO work shipped",
     ],
   },
   {

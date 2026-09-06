@@ -5,10 +5,7 @@ import { resolve, join, extname, dirname } from "node:path";
 import { homedir } from "node:os";
 
 const DIST = resolve("dist");
-const PDF_TARGETS = [
-  { route: "/resume/", filename: "cv.pdf" },
-  { route: "/resume-dossier/", filename: "cv-runtime-dossier.pdf" },
-];
+const PDF_TARGETS = [{ route: "/resume/", filename: "cv.pdf" }];
 
 const cvSyncConfig = JSON.parse(readFileSync(resolve("cv-sync.config.json"), "utf8"));
 const CV_SYNC_PATH = cvSyncConfig.syncPath.replace(/^~/, homedir());
@@ -54,7 +51,7 @@ function serve() {
 async function assertNoPageOverflow(page, route) {
   const pageChecks = await page.evaluate(() => {
     const pageElements = [
-      ...document.querySelectorAll(".runtime-page, .draft-page"),
+      ...document.querySelectorAll(".runtime-page"),
     ];
 
     return pageElements.map((pageElement, index) => {

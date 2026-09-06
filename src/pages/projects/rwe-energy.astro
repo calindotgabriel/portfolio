@@ -3,7 +3,7 @@ import ProjectLayout from "../../components/ProjectLayout.astro";
 
 const sections = [
   {
-    no: "§ 01",
+    no: "",
     title: "The problem",
     body: [
       "RWE's energy-services platform depended on legacy Java components that were difficult for the team to extend. Energy-market data had to be queried, filtered, and exported daily. Large dataset exports took 45 minutes, and response times were slow enough to affect day-to-day analyst workflows.",
@@ -11,12 +11,12 @@ const sections = [
     ],
   },
   {
-    no: "§ 02",
+    no: "",
     title: "How I approached it",
     body: [
       "We moved replacement work into Node.js with NestJS and MongoDB. Energy projects have dynamic properties, so the filtering system needed to generate columns from each project's characteristics. I built and tuned this path with MongoDB aggregations, using profiling to find the expensive parts before changing them.",
       "The biggest technical constraint was heavy processing on the main thread. I implemented <strong>worker pools</strong> to move large dataset operations into parallel work, which brought export time from 45 minutes down to 12. The profiler helped separate real bottlenecks from guesses.",
-      "I also introduced <strong>TDD early</strong> for the features I owned. On a migration project, tests are not ceremony; they are how you avoid replacing known behaviour with subtle regressions. That discipline became a useful bridge into later teams where high coverage was already expected.",
+      "I also introduced <strong>TDD early</strong> for the features I owned. On a migration the risk is replacing working behaviour with something subtly different, and the tests are what catch that.",
     ],
   },
 ];
@@ -44,9 +44,7 @@ const stack = ["NestJS", "MongoDB", "TypeScript", "Docker", "Node.js", "Worker t
   <div class="ed-wrap">
     <section class="ed-hero">
       <p class="ed-kicker">
-        <a href="/projects">← Case files</a>
-        <span>·</span>
-        <span>Case file 03</span>
+        <a href="/projects">← Projects</a>
       </p>
       <h1>RWE Energy Platform</h1>
       <p class="ed-hero-lead">Migration and performance work on an energy-market data platform for one of Germany's largest energy companies.</p>
@@ -69,7 +67,7 @@ const stack = ["NestJS", "MongoDB", "TypeScript", "Docker", "Node.js", "Worker t
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 03</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">Key technical decisions</h2>
           <div class="ed-cards">
@@ -87,7 +85,7 @@ const stack = ["NestJS", "MongoDB", "TypeScript", "Docker", "Node.js", "Worker t
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 04</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">Business impact</h2>
           <dl class="ed-ledger">
@@ -96,25 +94,24 @@ const stack = ["NestJS", "MongoDB", "TypeScript", "Docker", "Node.js", "Worker t
             ))}
           </dl>
           <p class="ed-body">The 65% API improvement made market-data workflows faster for users who queried the system daily. The export-time reduction turned exports from an overnight-style task into something analysts could run during the workday. The NestJS structure also gave the 4-person team a clearer path for follow-up work.</p>
-          <p class="ed-body">For a contract buyer, the relevance is direct: this is the kind of messy, high-context backend work where a senior engineer has to improve the system without stopping day-to-day delivery.</p>
         </div>
       </div>
     </section>
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 05</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">What I took away</h2>
-          <p class="ed-body">This project taught me the value of <strong>consistency in delivery</strong>. On a small team replacing a production system, there's no room for erratic output — every week had to move the migration forward predictably. I learned to scope work tightly, ship reliably, and communicate progress clearly.</p>
-          <p class="ed-body">Technically, it deepened my conviction that performance work starts with measurement. The profiler-first approach — finding the real bottleneck before writing a single optimization — saved weeks of wasted effort and became a permanent part of how I work.</p>
+          <p class="ed-body">On a small team replacing a production system, every week had to move the migration forward by a predictable amount, which meant scoping work tightly and saying where it had got to.</p>
+          <p class="ed-body">The performance work is where I learned to profile first. The bottleneck was not where I assumed it was, and checking before changing anything saved a lot of time.</p>
         </div>
       </div>
     </section>
 
     <section class="ed-section">
       <div class="ed-section-grid">
-        <span class="ed-section-no">§ 06</span>
+        <span class="ed-section-no"></span>
         <div>
           <h2 class="ed-h2">Stack</h2>
           <div class="ed-stack">

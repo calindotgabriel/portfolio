@@ -4,14 +4,20 @@ import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 
 const DIST = resolve("dist");
 const CV_PATH = join(DIST, "cv.pdf");
-const DOSSIER_PATH = join(DIST, "cv-runtime-dossier.pdf");
 
+// Claims that were removed on purpose. If one reappears in a build, something
+// regenerated old copy - fix the source rather than relaxing this list.
 const forbiddenPhrases = [
   "more than 10 years",
   "nearly three years",
   "since 2013",
   "20% higher user engagement",
   "ath seo",
+  "Projects & Professional Development",
+  "contract buyer",
+  "Runtime Dossier",
+  "Case file",
+  "End-to-end feature ownership",
 ];
 
 function normalizeText(value) {
@@ -120,24 +126,15 @@ async function verifyLinks(pdf) {
 
 async function main() {
   const cv = await loadPdf(CV_PATH);
-  const dossier = await loadPdf(DOSSIER_PATH);
 
   assert(cv.numPages === 1, `cv.pdf must have 1 page, found ${cv.numPages}`);
-  assert(
-    dossier.numPages === 2,
-    `cv-runtime-dossier.pdf must have 2 pages, found ${dossier.numPages}`,
-  );
-
   const cvPages = await extractPdfText(cv);
-  const dossierPages = await extractPdfText(dossier);
   const cvText = cvPages.join(" ");
-  const dossierText = dossierPages.join(" ");
 
   assertContains(
     cvText,
     [
-      "Senior Fullstack Engineer",
-      "Backend-heavy",
+      "Senior Backend Developer",
       "React",
       "around 7 years",
       "over 5 years",
@@ -150,8 +147,7 @@ async function main() {
       "Bitpanda",
       "ImmoScout24",
       "RWE",
-      "Independent",
-      "Projects & Professional Development",
+      "Freelance",
       "15,000+",
       "65%",
       "45 to 12 minutes",
@@ -161,17 +157,6 @@ async function main() {
     ],
     "cv.pdf",
   );
-  assertContains(
-    dossierText,
-    [
-      "Senior Fullstack Engineer",
-      "React",
-      "Independent",
-      "Projects & Professional Development",
-      "mentored two junior developers",
-    ],
-    "cv-runtime-dossier.pdf",
-  );
   assertOrdered(
     cvText,
     [
@@ -180,14 +165,13 @@ async function main() {
       "ImmoScout24",
       "RWE",
       "Earlier experience",
-      "Independent",
+      "Freelance",
       "Technical skills",
       "Education",
     ],
     "cv.pdf",
   );
   assertAbsent(cvText, forbiddenPhrases, "cv.pdf");
-  assertAbsent(dossierText, forbiddenPhrases, "cv-runtime-dossier.pdf");
   await verifyLinks(cv);
 
   const builtHtml = collectHtmlFiles(DIST)

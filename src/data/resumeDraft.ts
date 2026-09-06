@@ -52,7 +52,7 @@ export interface ResumeDraftData {
 
 export const resumeDraft: ResumeDraftData = {
   name: "Calin Gabriel",
-  title: "Senior Fullstack Engineer · Node.js / TypeScript · Backend-heavy",
+  title: "Senior Backend Developer · Node.js / TypeScript",
   location: "Cluj-Napoca, Romania",
   locationDetail: "Romania · Remote EU",
   email: "contact@calingabriel.com",
@@ -65,9 +65,9 @@ export const resumeDraft: ResumeDraftData = {
   githubDisplay: "github.com/calindotgabriel",
 
   summary:
-    "Senior fullstack engineer, strongest on the backend, with around 7 years of commercial Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Most recently, I owned the crypto address-book backend for Bitpanda's bank-facing digital-asset custody platform, from API and data-model design through validation, testing, third-party integrations, and AWS production delivery. Earlier work spans React and Node.js product delivery at ImmoScout24 and Endava, third-party platform integrations including Iterable and payments, tested Java-to-NestJS microservice migration, and performance optimization for high-volume services.",
+    "Backend developer with around 7 years of commercial Node.js and over 5 years of TypeScript, mostly on regulated or data-heavy products. Most recently at Bitpanda, on the digital-asset custody platform built for banks, where I owned the crypto address book, built and expanded service authentication, designed APIs, and added test coverage. Earlier work covers React and Node.js product delivery at ImmoScout24 and Endava, third-party integrations including Iterable and payments, a Java-to-NestJS migration at RWE, and performance work on high-volume services.",
   onePageSummary:
-    "Senior fullstack engineer, backend-heavy, with around 7 years of Node.js and over 5 years of TypeScript across regulated fintech and data-heavy products. Owned Bitpanda's bank-facing crypto address-book backend from design through AWS production. Earlier work spans React and Node product delivery, integrations including Iterable and payments, NestJS migration, and high-volume Node.js optimization.",
+    "Backend developer with around 7 years of Node.js and over 5 years of TypeScript, mostly on regulated or data-heavy products. At Bitpanda I owned the crypto address book on a bank-facing custody platform, built and expanded service authentication, designed APIs, and added test coverage. Earlier: React and Node product delivery, Iterable and payments integrations, a Java-to-NestJS migration, and performance work on high-volume services.",
 
   proofs: [
     { value: "~7y", label: "Commercial Node.js" },
@@ -85,13 +85,14 @@ export const resumeDraft: ResumeDraftData = {
       end: "2026-06",
       countsTowardProfessionalExperience: true,
       highlights: [
-        "Built backend services for an institutional digital-asset custody platform used by banks with Fastify, GraphQL, TypeScript, and AWS serverless.",
-        "Owned the crypto address-book backend from API and data-model design through validation, tests, and production delivery.",
-        "Strengthened service authentication and introduced backend testing patterns adopted by the team.",
+        "Built backend services for a digital-asset custody platform used by banks, with Fastify, GraphQL, TypeScript, and AWS serverless.",
+        "Owned the crypto address book from API and data-model design through validation, tests, and production delivery.",
+        "Built and expanded service-to-service authentication across the platform.",
+        "Designed APIs and added backend test coverage for the services I worked on.",
       ],
       onePageHighlights: [
-        "Owned the crypto address-book backend for bank-facing digital-asset custody: API and data-model design, validation, integrations, tests, and AWS production delivery.",
-        "Strengthened service authentication and introduced backend test patterns adopted by the team, using Fastify, GraphQL, TypeScript, and AWS serverless.",
+        "Owned the crypto address book for a bank-facing digital-asset custody platform: API and data-model design, validation, integrations, tests, and AWS production delivery.",
+        "Built and expanded service-to-service authentication and added backend test coverage, using Fastify, GraphQL, TypeScript, and AWS serverless.",
       ],
     },
     {
@@ -132,18 +133,18 @@ export const resumeDraft: ResumeDraftData = {
       ],
     },
     {
-      company: "Independent",
+      company: "Freelance",
       location: "RO",
-      role: "Projects & Professional Development",
+      role: "Contract projects",
       period: "Aug 2021 - Aug 2022",
       start: "2021-08",
       end: "2022-08",
-      countsTowardProfessionalExperience: false,
+      countsTowardProfessionalExperience: true,
       highlights: [
-        "Worked on independent software projects and professional development before returning to long-term product work at RWE.",
+        "Short freelance client projects, typically two to five months each, between long-term roles.",
       ],
       compactSummary:
-        "Worked on independent software projects and professional development before returning to long-term product work at RWE.",
+        "Short freelance client projects, typically two to five months each, between long-term roles.",
     },
     {
       company: "Endava",

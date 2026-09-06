@@ -4,16 +4,16 @@
 :root {
   color-scheme: light;
 
-  /* Runtime Dossier palette */
-  --primary: #18222d;
-  --primary-dark: #273645;
-  --secondary: #2d5bff;
-  --accent: #2d5bff;
-  --dark: #18222d;
-  --gray: #647384;
-  --light-gray: #f4f7fa;
+  /* Palette: violet accent on violet-cast neutrals */
+  --primary: #1c182d;
+  --primary-dark: #2d2745;
+  --secondary: #6d2ec7;
+  --accent: #6d2ec7;
+  --dark: #1c182d;
+  --gray: #6a6484;
+  --light-gray: #f5f4fa;
   --white: #ffffff;
-  --theme-color: #f4f7fa;
+  --theme-color: #f5f4fa;
 
   /* Typography system — structural display + readable body + runtime metadata */
   --font-display: 'Geologica', 'Arial Narrow', sans-serif;
@@ -21,29 +21,29 @@
   --font-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
   /* Theme tokens */
-  --page-bg: #f4f7fa;
+  --page-bg: #f5f4fa;
   --surface: #ffffff;
-  --surface-soft: #edf2f6;
+  --surface-soft: #efedf6;
   --surface-raised: #ffffff;
-  --text: #18222d;
-  --text-muted: #647384;
-  --text-subtle: #8795a5;
-  --border: rgba(100, 115, 132, 0.16);
-  --border-strong: #cbd4de;
-  --hero-bg: #18222d;
-  --hero-bg-elevated: #273645;
+  --text: #1c182d;
+  --text-muted: #6a6484;
+  --text-subtle: #8d87a5;
+  --border: rgba(106, 100, 132, 0.16);
+  --border-strong: #cfcbde;
+  --hero-bg: #1c182d;
+  --hero-bg-elevated: #2d2745;
   --card-bg: #ffffff;
-  --card-soft-bg: rgba(45, 91, 255, 0.035);
-  --pill-bg: rgba(45, 91, 255, 0.05);
-  --pill-border: rgba(45, 91, 255, 0.18);
+  --card-soft-bg: rgba(109, 46, 199, 0.035);
+  --pill-bg: rgba(109, 46, 199, 0.05);
+  --pill-border: rgba(109, 46, 199, 0.18);
   --nav-bg: rgba(244, 247, 250, 0.9);
   --nav-bg-solid: rgba(244, 247, 250, 0.98);
   --nav-shadow: none;
   
   /* Gradients */
-  --gradient-primary: #2d5bff;
+  --gradient-primary: #6d2ec7;
   --gradient-card: var(--card-bg);
-  --gradient-hero: #18222d;
+  --gradient-hero: #1c182d;
   
   /* Shadows */
   --shadow-sm: none;
@@ -54,28 +54,28 @@
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --primary: #f4f7fa;
-  --primary-dark: #dce5ed;
-  --secondary: #6f8aff;
-  --accent: #6f8aff;
-  --gray: #9aabba;
-  --light-gray: #18222d;
-  --theme-color: #111923;
-  --page-bg: #111923;
-  --surface: #18222d;
-  --surface-soft: #202c38;
-  --surface-raised: #202c38;
-  --text: #f4f7fa;
-  --text-muted: #a7b5c3;
-  --text-subtle: #7e8e9d;
-  --border: rgba(203, 212, 222, 0.12);
-  --border-strong: #3a4856;
-  --hero-bg: #111923;
-  --hero-bg-elevated: #18222d;
-  --card-bg: #18222d;
-  --card-soft-bg: rgba(111, 138, 255, 0.06);
-  --pill-bg: rgba(111, 138, 255, 0.08);
-  --pill-border: rgba(111, 138, 255, 0.22);
+  --primary: #f5f4fa;
+  --primary-dark: #dfdced;
+  --secondary: #ab8bff;
+  --accent: #ab8bff;
+  --gray: #a09aba;
+  --light-gray: #1c182d;
+  --theme-color: #151123;
+  --page-bg: #151123;
+  --surface: #1c182d;
+  --surface-soft: #252038;
+  --surface-raised: #252038;
+  --text: #f5f4fa;
+  --text-muted: #ada7c3;
+  --text-subtle: #847e9d;
+  --border: rgba(207, 203, 222, 0.12);
+  --border-strong: #403a56;
+  --hero-bg: #151123;
+  --hero-bg-elevated: #1c182d;
+  --card-bg: #1c182d;
+  --card-soft-bg: rgba(171, 139, 255, 0.06);
+  --pill-bg: rgba(171, 139, 255, 0.08);
+  --pill-border: rgba(171, 139, 255, 0.22);
   --nav-bg: rgba(17, 25, 35, 0.9);
   --nav-bg-solid: rgba(17, 25, 35, 0.98);
   --nav-shadow: none;
@@ -361,7 +361,28 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
+
+/* Keyboard focus. Previously only the theme toggle had a visible ring.
+   :where() keeps specificity at 0 so component styles still win. */
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Tactile press feedback on the shared button classes. */
+.btn:active { transform: translateY(1px); }
+
+.colophon-meta dd a { overflow-wrap: anywhere; }
 
 
 /* Existing CSS + new classes */
@@ -489,7 +510,7 @@ html {
 }
 
 .badge-live {
-  background: #10b981;
+  background: #1f9d6b;
 }
 
 .badge-enterprise {

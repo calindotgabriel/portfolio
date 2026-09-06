@@ -41,20 +41,30 @@ Theme is user-toggleable and persists in `localStorage` (`cgdev-theme`).
 
 | Role            | Light       | Dark        |
 |-----------------|-------------|-------------|
-| Page background | `#fdfbf7` (warm paper) | `#020617` (deep ink) |
-| Surface         | `#ffffff`   | `#0f172a`   |
-| Text            | `#0f172a`   | `#f8fafc`   |
-| Text muted      | `#475569`   | `#94a3b8`   |
-| Text subtle     | `#94a3b8`   | `#64748b`   |
-| Hairline        | `rgba(15,23,42,0.08)` | `rgba(248,250,252,0.10)` |
-| Hairline strong | `rgba(15,23,42,0.12)` | `rgba(248,250,252,0.15)` |
-| **Accent (copper)** | `--secondary: #9a3412` | `#ea580c` |
-| Accent 2        | `--accent: #b45309` | `#f59e0b` |
+| Page background | `#f5f4fa`   | `#151123`   |
+| Surface         | `#ffffff`   | `#1c182d`   |
+| Text            | `#1c182d`   | `#f5f4fa`   |
+| Text muted      | `#6a6484`   | `#ada7c3`   |
+| Text subtle     | `#8d87a5`   | `#847e9d`   |
+| Hairline        | `rgba(106,100,132,0.16)` | `rgba(207,203,222,0.12)` |
+| Hairline strong | `#cfcbde`   | `#403a56`   |
+| **Accent (violet)** | `--secondary: #6d2ec7` | `#ab8bff` |
 | Live (status)   | `#1f9d6b` (both) | |
 
-**Copper is used sparingly** — section numbers, the `EVIDENCE` label, one italic
-word, hover rules, link underlines, the availability dot. It is an accent, not a
-fill. Most of the page is ink-on-paper with hairlines.
+**One accent, used sparingly** - section labels, hover rules, link underlines,
+the primary button, the availability dot. It is an accent, not a fill. Most of
+the page is ink-on-paper with hairlines.
+
+The neutrals are not grey: they carry the same violet hue (252) as the accent at
+low saturation, so the page reads as one palette. If you change the accent hue,
+rotate the neutrals with it or the greys will fight the accent.
+
+`#6d2ec7` was chosen over the obvious `#7c3aed`: it leans red, which reads as ink
+rather than SaaS-gradient. It clears WCAG AA both as text on the page background
+(6.8:1) and as a button fill under white text (7.3:1). Check both before swapping.
+
+The CV at `/resume` shares these tokens. It used to carry its own Apple-grey
+palette; do not reintroduce a second one.
 
 ---
 
@@ -111,17 +121,37 @@ Spacing is generous; rules are hairline; corners are sharp (≤2px).
 
 ## 5. Voice
 
-Plain, senior, confident, evidence-led. Short editorial sentences. Every claim
-is paired with a mono `EVIDENCE` line tying it to a real engagement (RWE,
-ImmoScout24, Bitpanda, Endava). Outcomes over adjectives — "45 → 12 min",
-"~65% faster", not "blazing fast".
+Plain and specific. Say what was done and where. The reader draws the conclusion.
+
+The previous version of this section said "every claim is paired with a mono
+`EVIDENCE` line tying it to a real engagement". That rule is what turned the site
+into a sales deck, so it is gone. Outcomes over adjectives still holds: "45 to 12
+min", "~65% faster", not "blazing fast".
+
+Six patterns to keep out. These are the ones that actually got written here:
+
+1. **No closing epigram.** A paragraph ends on a fact or it stops. Not
+   "adoption by the team is the difference between habit and policy."
+2. **No words in number slots.** A metrics block gets real numbers or it gets
+   deleted. `End-to-end / Bank-grade / Adopted` were once in one.
+3. **Do not address the reader as a buyer.** "For a contract buyer, the relevance
+   is direct" appeared in three of four case studies.
+4. **No character claims about yourself.** Not "the one who takes the difficult
+   piece". State the work; other people get to say what kind of engineer that is.
+5. **No costume vocabulary.** No "dossier", "case file", "operating scope",
+   section numbering, or `EVIDENCE:` labels. Call things what they are.
+6. **No hedged filler.** "Contributed to improved SEO performance" asserts
+   nothing. If you cannot say what changed, cut the bullet.
+
+Read it out loud before shipping. If a sentence would be embarrassing to say to a
+stranger's face, it goes.
 
 ---
 
 ## 6. Avoid
 
 Inter / Roboto / Arial / system fonts · rounded cards · box-shadows ·
-purple/blue gradients · glassmorphism · emoji-as-decoration · centered hero with
+gradients of any kind · glassmorphism · emoji-as-decoration · centered hero with
 one big CTA button · generic SaaS card grids · filled pill-shaped tags.
 
 ---
@@ -175,9 +205,9 @@ one big CTA button · generic SaaS card grids · filled pill-shaped tags.
 > below the fold via IntersectionObserver; copper accent-rules grow on hover;
 > all `prefers-reduced-motion` safe.
 >
-> **Voice:** plain, senior, confident, evidence-led — short editorial sentences,
-> every claim paired with a mono `EVIDENCE` line citing a real project.
+> **Voice:** plain and specific - short sentences, concrete outcomes, no
+> sales framing and no closing aphorisms. See section 5.
 >
-> **Avoid:** Inter/Roboto/Arial, rounded cards, box-shadows, purple/blue
-> gradients, glassmorphism, emoji decoration, centered hero with one big CTA
+> **Avoid:** Inter/Roboto/Arial, rounded cards, box-shadows, gradients,
+> glassmorphism, emoji decoration, centered hero with one big CTA
 > button, generic SaaS card grids, filled pill tags.
