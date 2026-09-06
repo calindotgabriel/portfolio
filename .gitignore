@@ -29,3 +29,7 @@ pnpm-debug.log*
 
 # obsidian vault config
 .obsidian/
+
+# job-search material lives outside the public repo (~/job-search)
+sales/
+docs/

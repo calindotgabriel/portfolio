@@ -135,9 +135,6 @@ const statusLabel = {
           is where I'm strongest, but I've shipped the React side of the same products and
           the integrations sitting between them.
         </p>
-        <p class="lede-sub">
-          I ask a lot of questions when I join something new.
-        </p>
       </div>
 
       <div class="lede-cta">
@@ -335,15 +332,11 @@ const statusLabel = {
     .lede-title span { color: var(--secondary); }
 
     .lede-columns {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: clamp(1.5rem, 4vw, 3.5rem);
-      max-width: 920px;
+      max-width: 62ch;
       margin-bottom: 2.6rem;
     }
     .lede-body { font-size: 1.18rem; line-height: 1.6; color: var(--text); max-width: none; }
     .lede-body strong { font-weight: 700; border-bottom: 2px solid color-mix(in srgb, var(--secondary) 45%, transparent); }
-    .lede-sub { font-size: 1.02rem; line-height: 1.65; color: var(--text-muted); border-left: 2px solid var(--secondary); padding-left: 1.1rem; max-width: none; }
 
     .lede-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
 
@@ -451,7 +444,6 @@ const statusLabel = {
     /* ---------- Responsive ---------- */
     @media (max-width: 900px) {
       .mast-nav { display: none; }
-      .lede-columns { grid-template-columns: 1fr; }
       .ledger-grid { grid-template-columns: 1fr; }
       .traj-item { grid-template-columns: 1fr; gap: 0.6rem; }
       .traj-meta { flex-direction: row; gap: 0.9rem; align-items: baseline; }
