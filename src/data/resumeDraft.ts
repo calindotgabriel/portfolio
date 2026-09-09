@@ -70,7 +70,6 @@ export const resumeDraft: ResumeDraftData = {
     "Backend developer with around 7 years of Node.js and over 5 years of TypeScript, mostly on regulated or data-heavy products. At Bitpanda I owned the crypto address book on a bank-facing custody platform, built and expanded service authentication, designed APIs, and added test coverage. Earlier: React and Node product delivery, Iterable and payments integrations, a Java-to-NestJS migration, and performance work on high-volume services.",
 
   proofs: [
-    { value: "~7y", label: "Commercial Node.js" },
     { value: "65%", label: "API response improvement" },
     { value: "45→12m", label: "RWE export pipeline" },
   ],
@@ -104,12 +103,12 @@ export const resumeDraft: ResumeDraftData = {
       end: "2025-06",
       countsTowardProfessionalExperience: true,
       highlights: [
-        "Integrated Iterable marketing automation into React and Node.js product flows for targeted lifecycle messaging, within SEO, test-coverage, and release constraints.",
+        "Integrated the Iterable marketing-automation platform into React, Node.js, and TypeScript product flows, mapping platform data onto Iterable's event model to power targeted lifecycle-messaging campaigns, within SEO, test-coverage, and release constraints.",
         "Shipped search, listing, and SEO improvements across React and Node.js in a mature AWS and MongoDB real-estate platform.",
         "Matched the platform's review and production-safety standards while contributing inside an established distributed system.",
       ],
       onePageHighlights: [
-        "Integrated Iterable into Node.js lifecycle messaging within established release and production-safety constraints.",
+        "Integrated Iterable marketing automation into Node.js lifecycle messaging, within release and production-safety constraints.",
         "Shipped search, listing, and SEO improvements across a mature AWS and MongoDB platform with unit, integration, and E2E coverage.",
       ],
     },
