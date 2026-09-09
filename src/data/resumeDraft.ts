@@ -108,7 +108,7 @@ export const resumeDraft: ResumeDraftData = {
         "Matched the platform's review and production-safety standards while contributing inside an established distributed system.",
       ],
       onePageHighlights: [
-        "Integrated Iterable marketing automation into Node.js lifecycle messaging, within release and production-safety constraints.",
+        "Integrated Iterable marketing automation with Node.js for lifecycle messaging, within release and production-safety constraints.",
         "Shipped search, listing, and SEO improvements across a mature AWS and MongoDB platform with unit, integration, and E2E coverage.",
       ],
     },
