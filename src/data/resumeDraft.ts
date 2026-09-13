@@ -79,9 +79,9 @@ export const resumeDraft: ResumeDraftData = {
       company: "Bitpanda",
       location: "AT",
       role: "Senior Backend Developer",
-      period: "Sep 2025 - Jun 2026",
+      period: "Sep 2025 - Jul 2026",
       start: "2025-09",
-      end: "2026-06",
+      end: "2026-07",
       countsTowardProfessionalExperience: true,
       highlights: [
         "Built backend services for a digital-asset custody platform used by banks, with Fastify, GraphQL, TypeScript, and AWS serverless.",

@@ -84,7 +84,7 @@ I am a senior backend engineer with around 7 years of commercial Node.js and 5+ 
 ## Work experience
 
 ### Bitpanda — Senior Backend Developer
-**Sep 2025 – Present** · Remote (Austria-based client)
+**Sep 2025 – Jul 2026** · Remote (Austria-based client)
 
 Backend feature ownership on a bank-facing digital-asset custody platform. Cross-functional Agile Scrum team; introduced backend testing patterns adopted by the team.
 **Tech:** Fastify, GraphQL, TypeScript, Node.js, PostgreSQL, AWS (Lambda, serverless), GitHub Actions.
