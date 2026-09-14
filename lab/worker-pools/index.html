@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Worker pools, measured - Calin Gabriel</title><meta name="description" content="Run a CPU-heavy database export in your own browser, the naive way and the streamed worker-pool way, and compare the numbers."><meta name="theme-color" content="#f5f4fa"><script>
+      (() => {
+        const storageKey = "cgdev-theme";
+        const root = document.documentElement;
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+        const getStoredTheme = () => {
+          try {
+            const stored = window.localStorage.getItem(storageKey);
+            return stored === "dark" || stored === "light" ? stored : null;
+          } catch {
+            return null;
+          }
+        };
+
+        const theme =
+          getStoredTheme() ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+
+        if (themeMeta) {
+          themeMeta.content = theme === "dark" ? "#151123" : "#f5f4fa";
+        }
+      })();
+    </script><link rel="canonical" href="https://calingabriel.com/lab/worker-pools/"><meta property="og:type" content="website"><meta property="og:title" content="Worker pools, measured - Calin Gabriel"><meta property="og:description" content="Run a CPU-heavy database export in your own browser, the naive way and the streamed worker-pool way, and compare the numbers."><meta property="og:url" content="https://calingabriel.com/lab/worker-pools/"><meta property="og:site_name" content="Calin Gabriel"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Worker pools, measured - Calin Gabriel"><meta name="twitter:description" content="Run a CPU-heavy database export in your own browser, the naive way and the streamed worker-pool way, and compare the numbers."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Geologica:CRSV,SHRP,slnt,wght@0,0,-12..0,100..900&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet"><!-- Standard Favicon --><link rel="icon" type="image/x-icon" href="/favicon.ico"><!-- Modern Browsers --><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><!-- Apple Touch Icon (iOS Safari, Mac Safari) --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><!-- Android Chrome --><link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png"><link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><!-- Web App Manifest (PWA Support) --><link rel="manifest" href="/site.webmanifest"><!-- Microsoft Tiles (Windows) --><meta name="msapplication-TileColor" content="#1c182d"><meta name="msapplication-config" content="/browserconfig.xml"><meta name="apple-mobile-web-app-status-bar-style" content="default"><!-- Preload for performance --><link rel="preload" href="/favicon-32x32.png" as="image" type="image/png"><!-- Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-RBDYFTF35Q"></script> <script type="module">(function(t,s,n,h,j,e){t.hj=t.hj||function(){(t.hj.q=t.hj.q||[]).push(arguments)},t._hjSettings={hjid:6502127,hjsv:6},j=s.getElementsByTagName("head")[0],e=s.createElement("script"),e.async=1,e.src=n+t._hjSettings.hjid+h+t._hjSettings.hjsv,j.appendChild(e)})(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv=");</script> <!-- Hotjar Tracking Code for https://calingabriel.com --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","G-RBDYFTF35Q");</script><link rel="stylesheet" href="/assets/worker-pools.98HIqTJi.css">
+<link rel="stylesheet" href="/assets/index.CqUktyTo.css">
+<link rel="stylesheet" href="/assets/index.C3fGVW1s.css"></head> <body>  <header class="masthead" data-astro-cid-nkq5zs7f> <div class="masthead-rule" data-astro-cid-nkq5zs7f></div> <div class="masthead-inner" data-astro-cid-nkq5zs7f> <a class="mast-id" href="/" data-astro-cid-nkq5zs7f> <span class="mast-name" data-astro-cid-nkq5zs7f>Calin Gabriel</span> <span class="mast-role" data-astro-cid-nkq5zs7f>Backend Developer · Node.js / TypeScript</span> </a> <nav class="mast-nav" aria-label="Sections" data-astro-cid-nkq5zs7f> <a href="/" data-astro-cid-nkq5zs7f>Home</a> <a href="/projects" data-astro-cid-nkq5zs7f>Projects</a> <a href="/lab" data-astro-cid-nkq5zs7f>Lab</a> <a href="https://github.com/calindotgabriel" target="_blank" rel="noopener" data-astro-cid-nkq5zs7f>GitHub</a> <a href="https://www.linkedin.com/in/calingabriel-ts-dev/" target="_blank" rel="noopener" data-astro-cid-nkq5zs7f>LinkedIn</a> </nav> <div class="mast-actions" data-astro-cid-nkq5zs7f> <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"> <span class="theme-toggle-track" aria-hidden="true"> <span class="theme-toggle-thumb"> <span class="theme-toggle-icon theme-toggle-icon-sun">☀</span> <span class="theme-toggle-icon theme-toggle-icon-moon">☾</span> </span> </span> </button> <script type="module">const d="cgdev-theme",c=window.matchMedia("(prefers-color-scheme: dark)"),s=document.querySelectorAll("[data-theme-toggle]"),o=document.querySelector('meta[name="theme-color"]'),l=()=>{try{const e=window.localStorage.getItem(d);return e==="dark"||e==="light"?e:null}catch{return null}},m=e=>{try{window.localStorage.setItem(d,e)}catch{}},h=()=>l()??(c.matches?"dark":"light"),i=e=>{const t=e==="dark";s.forEach(a=>{a.setAttribute("aria-pressed",String(t)),a.setAttribute("aria-label",`Switch to ${t?"light":"dark"} theme`)})},n=e=>{document.documentElement.dataset.theme=e,document.documentElement.style.colorScheme=e,o&&(o.content=e==="dark"?"#151123":"#f5f4fa"),i(e)};n(h());s.forEach(e=>{e.addEventListener("click",()=>{const t=document.documentElement.dataset.theme==="dark"?"light":"dark";m(t),n(t)})});const r=()=>{l()||n(c.matches?"dark":"light")};"addEventListener"in c?c.addEventListener("change",r):c.addListener(r);</script> </div> </div> <div class="masthead-rule thin" data-astro-cid-nkq5zs7f></div> </header> <main data-astro-cid-nkq5zs7f>  <div class="ed-wrap"> <section class="ed-hero"> <p class="ed-kicker"> <a href="/lab">← Lab</a> <span>Runs in your browser</span> </p> <h1>The export that froze the page</h1> <p class="ed-hero-lead">
+On an energy-market platform, a daily export took 45 minutes and pinned the
+        thread that was supposed to be serving everyone else. Moving it into a worker
+        pool brought it to 12. This page does the same thing to this tab, so you can
+        watch it happen and read the numbers yourself.
+</p> <div class="ed-hero-meta"> <span class="ed-status is-enterprise">Live demo</span> <span class="mono-pill">Web Workers</span> <a class="mono-pill" href="https://github.com/calindotgabriel/node-worker-pool-bench" target="_blank" rel="noopener">node-worker-pool-bench ↗</a> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">One thread</h2> <p class="ed-body">
+Node runs your JavaScript on one thread. While that thread is hashing
+            200,000 rows, it is doing only that. It cannot answer a request, or a health
+            check, or anything else, until the loop ends.
+</p> <p class="ed-body">
+So a slow export is not only slow. For as long as it runs, the service is
+            deaf. That is the part the <strong>45 minutes</strong> does not tell you.
+</p> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">The fix, and the catch</h2> <p class="ed-body">
+Hand the heavy work to worker threads and the main thread stays free to
+            answer everyone else. But <strong>how</strong> you hand it over decides
+            whether that actually helps.
+</p> <p class="ed-body">
+Send the rows themselves, and they have to be copied into the worker — and
+            that copy is made on the main thread. You moved the hashing off and added
+            copying on. Send a <strong>range</strong> instead, two numbers, and the
+            worker builds its own slice while the main thread does nearly nothing.
+</p> <p class="ed-body">
+Both finish faster than doing the work inline. Only one of them keeps
+            answering.
+</p> </div> </div> </section> <section class="ed-section" id="run"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div class="wp-demo" id="wp-demo" data-base="/demos/worker-pool/"> <h2 class="ed-h2">Run it</h2> <p class="ed-body">
+A browser tab is built the same way: one thread for your code, Web Workers
+            for everything else. So when the naive version runs, this page freezes — and
+            that freeze is the same event as an API going quiet, except you can feel it.
+</p> <p class="ed-body">
+Both buttons export the same rows and print the same fingerprint. One of them
+            stops this page from responding while it does.
+</p> <noscript> <p class="wp-note-block">
+The demo needs JavaScript. The measured numbers from the Node version are
+              further down the page, and the source is in <a href="https://github.com/calindotgabriel/node-worker-pool-bench">the repository</a>.
+</p> </noscript> <fieldset class="wp-sizes" id="wp-sizes"> <legend>Export size</legend> </fieldset> <div class="wp-actions"> <button id="wp-run-naive" class="wp-btn is-primary" type="button">Run the naive version</button> <button id="wp-run-stream" class="wp-btn is-primary" type="button">Run the fixed version</button> <button id="wp-reset" class="wp-btn is-quiet" type="button" title="Clears the results. It cannot stop a naive run already in progress — that is the point of the demo.">Reset</button> </div> <button id="wp-confirm" class="wp-btn is-warn" type="button" hidden></button> <p class="wp-note-block" id="wp-unsupported" hidden>
+This browser does not support module workers, so the pooled runs are
+            disabled. The naive run still works — and the fact that only the slow path
+            is available is itself the situation this page is about.
+</p> <div class="wp-live"> <div class="wp-canary" aria-hidden="true"> <div class="wp-canary-cell"> <div class="wp-canary-dial"><span class="wp-canary-hand" id="wp-hand"></span></div> <p class="wp-canary-label">Main thread</p> <p class="wp-note">Moved by JavaScript, one step per frame. <span id="wp-counter">0</span> frames</p> </div> <div class="wp-canary-cell"> <div class="wp-canary-dial"><span class="wp-canary-hand is-ref"></span></div> <p class="wp-canary-label">Compositor</p> <p class="wp-note">A CSS animation. It keeps going regardless — which is why it is here.</p> </div> </div> <div class="wp-heartbeat" aria-hidden="true"> <p class="wp-canary-label">Health checks · one every 10 ms</p> <div class="wp-ticker" id="wp-ticker"></div> <p class="wp-note" id="wp-ratio"></p> </div> </div> <p class="wp-status" id="wp-status" role="status" aria-live="polite">Loading the demo…</p> <div class="wp-results" id="wp-results" aria-live="polite" aria-atomic="true"></div> <p class="wp-verdict" id="wp-verdict"></p> <p class="wp-note" id="wp-pool-info"></p> <details class="wp-advanced"> <summary>Show the middle case — copying rows into the pool</summary> <p class="ed-body">
+There is a third version, and it is the one worth knowing about. It still
+              loads every row into memory, then hands each chunk to a worker. The
+              hashing moves off the main thread; the cost of copying the rows there does
+              not. In the Node benchmark that version finished 3.5× faster than inline
+              and answered <strong>fewer</strong> health checks on time — 43.8% against
+              69.1%. Faster and less responsive, at the same time.
+</p> <div class="wp-actions"> <button id="wp-run-copy" class="wp-btn" type="button">Run the copying version</button> </div> <label class="wp-check"> <input type="checkbox" id="wp-yield"> <span>Let the naive version pause between chunks, as the Node benchmark does. This
+                is the first fix most people reach for, and it is what makes the copying
+                result above visible.</span> </label> </details> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">The whole difference</h2> <pre class="astro-code css-variables wp-code" style="background-color:var(--astro-code-background);color:var(--astro-code-foreground); overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-comment)">/**</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> * Either the main thread paid to build and copy `rows` over, or it sent two</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> * numbers and the worker builds its own slice. That is the entire difference</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> * between the two pooled runs on this page.</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> *</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> * In a real export the second branch is a cursor, a file offset, or a</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> * LIMIT/OFFSET query: the worker does its own reading.</span></span>
+<span class="line"><span style="color:var(--astro-code-token-comment)"> */</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">function</span><span style="color:var(--astro-code-token-function)"> resolveRows</span><span style="color:var(--astro-code-foreground)">({ rows</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-foreground)"> range }) {</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  if</span><span style="color:var(--astro-code-foreground)"> (rows) </span><span style="color:var(--astro-code-token-keyword)">return</span><span style="color:var(--astro-code-foreground)"> rows;</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">  return</span><span style="color:var(--astro-code-token-function)"> makeRows</span><span style="color:var(--astro-code-foreground)">(</span><span style="color:var(--astro-code-token-constant)">range</span><span style="color:var(--astro-code-foreground)">.count</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> range</span><span style="color:var(--astro-code-foreground)">.start);</span></span>
+<span class="line"><span style="color:var(--astro-code-foreground)">}</span></span></code></pre> <div class="ed-cards"> <div class="ed-card"> <span class="ed-card-no">01</span> <h3>The copy is not free</h3> <p>Sending rows to a worker means copying them, and the copy is made on the main thread — the exact thread you were trying to protect. Move the work off and you can find you have only changed which part of it blocks you.</p> </div><div class="ed-card"> <span class="ed-card-no">02</span> <h3>A range is two numbers</h3> <p>Sending a start and a count costs nothing to hand over. The worker does its own reading: a cursor, a file offset, a LIMIT/OFFSET query. The rows never pass through the main thread at all.</p> </div> </div> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">The same numbers in Node</h2> <p class="ed-body">
+The browser demo is a port. The original is a Node benchmark with
+<code>worker_threads</code>, a test suite, and no dependencies. Its published
+            run: 200,000 rows, 9 workers, median of three, on a MacBook.
+</p> <dl class="ed-ledger"> <div class="ed-metric"><dt>555 ms</dt><dd>Inline, main thread — 69.1% on time</dd></div><div class="ed-metric"><dt>159 ms</dt><dd>Pool, rows copied — 43.8% on time</dd></div><div class="ed-metric"><dt>133 ms</dt><dd>Pool, range sent — 71.4% on time</dd></div> </dl> <p class="ed-body">
+Both run the same <code>task.js</code>. Building this page on Node
+ v24.7.0 over 20,000 rows produced
+ <strong>20000:10142346</strong>, and your browser prints its own
+            fingerprint on every run above. They have to match — and if they ever don't,
+            the demo refuses to report a speedup rather than showing you a number it
+            can't stand behind.
+</p> <div class="ed-stack"> <a class="mono-pill" href="https://github.com/calindotgabriel/node-worker-pool-bench" target="_blank" rel="noopener">Read the benchmark ↗</a> <a class="mono-pill" href="/demos/worker-pool/scenarios.js">Read this page's code ↗</a> </div> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">What this does not prove</h2> <p class="ed-body">
+The work is synthetic — a hash iterated enough times to cost something, chosen
+            because it cannot be made to pause. It is not your workload, and something
+            dominated by waiting on I/O rather than by CPU would not behave like this.
+</p> <p class="ed-body">
+It is also one machine, once, with whatever else your laptop is doing. Your
+            numbers will not match mine. The ratios should.
+</p> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">Where this came from</h2> <div class="ed-stack"> <a class="mono-pill" href="/projects/rwe-energy">RWE Energy case study →</a> <a class="mono-pill" href="https://github.com/calindotgabriel/node-worker-pool-bench" target="_blank" rel="noopener">node-worker-pool-bench ↗</a> </div> </div> </div> </section> </div>  </main> <footer class="colophon" id="contact" data-astro-cid-wrgrz243> <div class="colophon-wrap" data-astro-cid-wrgrz243> <div class="colophon-rule" data-astro-cid-wrgrz243></div> <div class="colophon-grid" data-astro-cid-wrgrz243> <div class="colophon-lead" data-astro-cid-wrgrz243> <h2 data-astro-cid-wrgrz243>Get in touch.</h2> <a href="mailto:contact@calingabriel.com?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20permanent%20or%20B2B" class="btn-ink" data-astro-cid-wrgrz243>Email me</a> </div> <dl class="colophon-meta" data-astro-cid-wrgrz243> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>Email</dt><dd data-astro-cid-wrgrz243><a href="mailto:contact@calingabriel.com?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20permanent%20or%20B2B" data-astro-cid-wrgrz243>contact@calingabriel.com</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>Phone</dt><dd data-astro-cid-wrgrz243><a href="tel:+40759407066" data-astro-cid-wrgrz243>+40 759 407 066</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>GitHub</dt><dd data-astro-cid-wrgrz243><a href="https://github.com/calindotgabriel" rel="me" data-astro-cid-wrgrz243>/calindotgabriel</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>LinkedIn</dt><dd data-astro-cid-wrgrz243><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me" data-astro-cid-wrgrz243>/calingabriel-ts-dev</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>Engagement</dt><dd data-astro-cid-wrgrz243>Permanent or B2B · remote EU or Cluj · available now</dd></div> </dl> </div> <p class="colophon-sign" data-astro-cid-wrgrz243>Set in Geologica, Atkinson &amp; Martian Mono. © 2026 Calin Gabriel.</p> </div> </footer>   </body></html>  <script type="module">const e=document.getElementById("wp-demo");e&&import(new URL(`${e.dataset.base}demo.js?v=2`,location.origin).href).catch(o=>{const t=document.getElementById("wp-status");t&&(t.textContent=`The demo failed to load: ${o.message}`)});</script>
