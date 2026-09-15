@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Transactions, and what they cost - Calin Gabriel</title><meta name="description" content="Run concurrent bank transfers in your own browser without transactions and watch the total stop adding up — then run the fixes, and see what each one costs."><meta name="theme-color" content="#f5f4fa"><script>
+      (() => {
+        const storageKey = "cgdev-theme";
+        const root = document.documentElement;
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+        const getStoredTheme = () => {
+          try {
+            const stored = window.localStorage.getItem(storageKey);
+            return stored === "dark" || stored === "light" ? stored : null;
+          } catch {
+            return null;
+          }
+        };
+
+        const theme =
+          getStoredTheme() ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+        root.dataset.theme = theme;
+        root.style.colorScheme = theme;
+
+        if (themeMeta) {
+          themeMeta.content = theme === "dark" ? "#151123" : "#f5f4fa";
+        }
+      })();
+    </script><link rel="canonical" href="https://calingabriel.com/lab/transactions/"><meta property="og:type" content="website"><meta property="og:title" content="Transactions, and what they cost - Calin Gabriel"><meta property="og:description" content="Run concurrent bank transfers in your own browser without transactions and watch the total stop adding up — then run the fixes, and see what each one costs."><meta property="og:url" content="https://calingabriel.com/lab/transactions/"><meta property="og:site_name" content="Calin Gabriel"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Transactions, and what they cost - Calin Gabriel"><meta name="twitter:description" content="Run concurrent bank transfers in your own browser without transactions and watch the total stop adding up — then run the fixes, and see what each one costs."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&family=Geologica:CRSV,SHRP,slnt,wght@0,0,-12..0,100..900&family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet"><!-- Standard Favicon --><link rel="icon" type="image/x-icon" href="/favicon.ico"><!-- Modern Browsers --><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><!-- Apple Touch Icon (iOS Safari, Mac Safari) --><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><!-- Android Chrome --><link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png"><link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png"><!-- Web App Manifest (PWA Support) --><link rel="manifest" href="/site.webmanifest"><!-- Microsoft Tiles (Windows) --><meta name="msapplication-TileColor" content="#1c182d"><meta name="msapplication-config" content="/browserconfig.xml"><meta name="apple-mobile-web-app-status-bar-style" content="default"><!-- Preload for performance --><link rel="preload" href="/favicon-32x32.png" as="image" type="image/png"><!-- Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-RBDYFTF35Q"></script> <script type="module">(function(t,s,n,h,j,e){t.hj=t.hj||function(){(t.hj.q=t.hj.q||[]).push(arguments)},t._hjSettings={hjid:6502127,hjsv:6},j=s.getElementsByTagName("head")[0],e=s.createElement("script"),e.async=1,e.src=n+t._hjSettings.hjid+h+t._hjSettings.hjsv,j.appendChild(e)})(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv=");</script> <!-- Hotjar Tracking Code for https://calingabriel.com --><script type="module">window.dataLayer=window.dataLayer||[];function a(){dataLayer.push(arguments)}a("js",new Date);a("config","G-RBDYFTF35Q");</script><link rel="stylesheet" href="/assets/transactions.BgJeCChR.css">
+<link rel="stylesheet" href="/assets/index.kSsDNAL8.css">
+<link rel="stylesheet" href="/assets/index.CqUktyTo.css"></head> <body>  <header class="masthead" data-astro-cid-nkq5zs7f> <div class="masthead-rule" data-astro-cid-nkq5zs7f></div> <div class="masthead-inner" data-astro-cid-nkq5zs7f> <a class="mast-id" href="/" data-astro-cid-nkq5zs7f> <span class="mast-name" data-astro-cid-nkq5zs7f>Calin Gabriel</span> <span class="mast-role" data-astro-cid-nkq5zs7f>Backend Developer · Node.js / TypeScript</span> </a> <nav class="mast-nav" aria-label="Sections" data-astro-cid-nkq5zs7f> <a href="/" data-astro-cid-nkq5zs7f>Home</a> <a href="/projects" data-astro-cid-nkq5zs7f>Projects</a> <a href="/lab" data-astro-cid-nkq5zs7f>Lab</a> <a href="https://github.com/calindotgabriel" target="_blank" rel="noopener" data-astro-cid-nkq5zs7f>GitHub</a> <a href="https://www.linkedin.com/in/calingabriel-ts-dev/" target="_blank" rel="noopener" data-astro-cid-nkq5zs7f>LinkedIn</a> </nav> <div class="mast-actions" data-astro-cid-nkq5zs7f> <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false"> <span class="theme-toggle-track" aria-hidden="true"> <span class="theme-toggle-thumb"> <span class="theme-toggle-icon theme-toggle-icon-sun">☀</span> <span class="theme-toggle-icon theme-toggle-icon-moon">☾</span> </span> </span> </button> <script type="module">const d="cgdev-theme",c=window.matchMedia("(prefers-color-scheme: dark)"),s=document.querySelectorAll("[data-theme-toggle]"),o=document.querySelector('meta[name="theme-color"]'),l=()=>{try{const e=window.localStorage.getItem(d);return e==="dark"||e==="light"?e:null}catch{return null}},m=e=>{try{window.localStorage.setItem(d,e)}catch{}},h=()=>l()??(c.matches?"dark":"light"),i=e=>{const t=e==="dark";s.forEach(a=>{a.setAttribute("aria-pressed",String(t)),a.setAttribute("aria-label",`Switch to ${t?"light":"dark"} theme`)})},n=e=>{document.documentElement.dataset.theme=e,document.documentElement.style.colorScheme=e,o&&(o.content=e==="dark"?"#151123":"#f5f4fa"),i(e)};n(h());s.forEach(e=>{e.addEventListener("click",()=>{const t=document.documentElement.dataset.theme==="dark"?"light":"dark";m(t),n(t)})});const r=()=>{l()||n(c.matches?"dark":"light")};"addEventListener"in c?c.addEventListener("change",r):c.addListener(r);</script> </div> </div> <div class="masthead-rule thin" data-astro-cid-nkq5zs7f></div> </header> <main data-astro-cid-nkq5zs7f>  <div class="ed-wrap"> <section class="ed-hero"> <p class="ed-kicker"> <a href="/lab">← Lab</a> <span>Runs in your browser</span> </p> <h1>Two hundred transfers, none of them failed</h1> <p class="ed-hero-lead">
+Three accounts holding 1,000 each. Two hundred transfers between them, all
+        running at once. Every transfer reports success, nothing raises an error, and
+        at the end the three accounts hold 3,296 instead of 3,000. This page runs that
+        in your browser, then runs the versions that get it right and shows what each
+        one costs.
+</p> <div class="ed-hero-meta"> <span class="ed-status is-enterprise">Live demo</span> <span class="mono-pill">PostgreSQL</span> <span class="mono-pill">Isolation levels</span> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">What goes wrong</h2> <p class="ed-body">
+Moving money from one account to another is four steps: read the sender's
+            balance, check there is enough, take the amount off one account, add it to
+            the other.
+</p> <p class="ed-body">
+Run two transfers at the same time and those steps overlap. The first reads a
+            balance of 1,000. Before it writes anything back, the second reads the same
+            1,000. Both then write a new balance they worked out from it. The second
+            write lands on top of the first, and the money the first transfer took out is
+            back where it started — having already been delivered to the other account.
+</p> <p class="ed-body">
+Nothing here is an error. Each write is a valid statement setting a column to
+            a number, and a database has no way to know you worked that number out from
+            something already out of date. What is wrong is the relationship between two
+            writes, and no single statement can see that.
+</p> <p class="ed-body">
+So it does not arrive as an incident. It arrives weeks later as an account
+            that is short, in a log full of successful transfers with no error anywhere
+            to explain it.
+</p> <details class="tx-advanced"> <summary>Show the six lines that do it</summary> <pre class="astro-code css-variables tx-code" style="background-color:var(--astro-code-background);color:var(--astro-code-foreground); overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> from</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-constant)"> db</span><span style="color:var(--astro-code-token-function)">.read</span><span style="color:var(--astro-code-foreground)">(</span><span style="color:var(--astro-code-token-constant)">t</span><span style="color:var(--astro-code-foreground)">.from);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">const</span><span style="color:var(--astro-code-token-constant)"> to</span><span style="color:var(--astro-code-token-keyword)"> =</span><span style="color:var(--astro-code-token-keyword)"> await</span><span style="color:var(--astro-code-token-constant)"> db</span><span style="color:var(--astro-code-token-function)">.read</span><span style="color:var(--astro-code-foreground)">(</span><span style="color:var(--astro-code-token-constant)">t</span><span style="color:var(--astro-code-foreground)">.to);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">if</span><span style="color:var(--astro-code-foreground)"> (</span><span style="color:var(--astro-code-token-constant)">from</span><span style="color:var(--astro-code-foreground)">.balance </span><span style="color:var(--astro-code-token-keyword)">&#x3C;</span><span style="color:var(--astro-code-token-constant)"> t</span><span style="color:var(--astro-code-foreground)">.amount) </span><span style="color:var(--astro-code-token-keyword)">throw</span><span style="color:var(--astro-code-token-keyword)"> new</span><span style="color:var(--astro-code-token-function)"> Error</span><span style="color:var(--astro-code-foreground)">(</span><span style="color:var(--astro-code-token-string-expression)">"insufficient funds"</span><span style="color:var(--astro-code-foreground)">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">await</span><span style="color:var(--astro-code-token-constant)"> db</span><span style="color:var(--astro-code-token-function)">.write</span><span style="color:var(--astro-code-foreground)">(</span><span style="color:var(--astro-code-token-constant)">t</span><span style="color:var(--astro-code-foreground)">.from</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> from</span><span style="color:var(--astro-code-foreground)">.balance </span><span style="color:var(--astro-code-token-keyword)">-</span><span style="color:var(--astro-code-token-constant)"> t</span><span style="color:var(--astro-code-foreground)">.amount</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> from</span><span style="color:var(--astro-code-foreground)">.version);</span></span>
+<span class="line"><span style="color:var(--astro-code-token-keyword)">await</span><span style="color:var(--astro-code-token-constant)"> db</span><span style="color:var(--astro-code-token-function)">.write</span><span style="color:var(--astro-code-foreground)">(</span><span style="color:var(--astro-code-token-constant)">t</span><span style="color:var(--astro-code-foreground)">.to</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> to</span><span style="color:var(--astro-code-foreground)">.balance </span><span style="color:var(--astro-code-token-keyword)">+</span><span style="color:var(--astro-code-token-constant)"> t</span><span style="color:var(--astro-code-foreground)">.amount</span><span style="color:var(--astro-code-token-punctuation)">,</span><span style="color:var(--astro-code-token-constant)"> to</span><span style="color:var(--astro-code-foreground)">.version);</span></span></code></pre> <p class="ed-body">
+Every line is correct. The bug is in the gaps between them — four separate
+              trips to the database, with other transfers running in between.
+</p> </details> </div> </div> </section> <section class="ed-section" id="run"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div class="tx-demo" id="tx-demo" data-base="/demos/transactions/"> <h2 class="ed-h2">Run it</h2> <p class="ed-body">
+The accounts below are plain JavaScript objects, and every read and write
+            waits a real turn of the event loop before it takes effect. That is all it
+            takes: twenty transfers in flight at once genuinely interleave, so the lost
+            updates here are lost the same way they are lost against a real server.
+</p> <p class="ed-body">
+Both buttons run the same list of transfers. Only one of them ends with the
+            money still adding up.
+</p> <noscript> <p class="tx-note-block">
+The demo needs JavaScript. The measured numbers from the PostgreSQL version
+              are further down the page, and the demo's source is
+<a href="/demos/transactions/scenarios.js">readable here</a>.
+</p> </noscript> <fieldset class="tx-sizes" id="tx-sizes"> <legend>How many concurrent transfers</legend> </fieldset> <div class="tx-actions"> <button id="tx-run-naive" class="tx-btn is-primary" type="button">Run it without transactions</button> <button id="tx-run-locked" class="tx-btn is-primary" type="button">Run it with row locks</button> <button id="tx-reset" class="tx-btn is-quiet" type="button">Reset</button> </div> <div class="tx-ledger" id="tx-ledger"></div> <p class="tx-status" id="tx-status" role="status" aria-live="polite">Loading the demo…</p> <div class="tx-results" id="tx-results" aria-live="polite" aria-atomic="true"></div> <p class="tx-verdict" id="tx-verdict"></p> <details class="tx-advanced"> <summary>The third fix — serializable, and the retries it costs</summary> <p class="ed-body">
+Instead of locking anything, the database lets every transaction read
+              freely and then checks at commit time whether a row it read has changed
+              since. If one has, the transaction saw a version of the world that never
+              existed and is thrown out with <code>40001</code>. Nothing is wrong with
+              your code; the contract is that you run the whole thing again.
+</p> <div class="tx-actions"> <button id="tx-run-serial" class="tx-btn" type="button">Run at serializable, with retry</button> </div> </details> <details class="tx-advanced"> <summary>Two transactions that are each correct and together wrong</summary> <p class="ed-body">
+Two doctors are on call. Either may go off call, provided somebody else is
+              still on. Both check at the same moment, both see two doctors on call, both
+              conclude it is fine, and each writes their own row. Nobody overwrote
+              anybody. There is no doctor on call.
+</p> <p class="ed-body">
+This is write skew, and it survives the fixes above: neither transaction
+              touched a row the other touched, so watching for overwritten rows catches
+              nothing. They only <strong>read</strong> what the other then changed.
+              Serializable catches it because it tracks what a transaction read, not only
+              what it wrote.
+</p> <div class="tx-actions"> <button id="tx-run-skew" class="tx-btn" type="button">Both decide at once</button> <button id="tx-run-skew-fixed" class="tx-btn" type="button">The same, at serializable</button> </div> <p class="tx-skew-out" id="tx-skew-out" role="status" aria-live="polite"></p> </details> <details class="tx-advanced"> <summary>Deadlock, and the one line that fixes it</summary> <p class="ed-body">
+Locking only works if everyone agrees on an order. A transfer from account 1
+              to account 2 locks 1 then 2. One going the other way locks 2 then 1. Run
+              both at once and each holds what the other is waiting for, so the database
+              kills one with <code>40P01</code>. The fix is to sort the accounts before
+              locking them — any order, as long as everything uses the same one.
+</p> <p class="ed-body">
+On Postgres that <code>sort()</code> was worth more than it sounds: the same
+              40 transfers took <strong>70,504 ms</strong> with 142 deadlocks and 18 of
+              them abandoned, against <strong>96 ms</strong> and none. Postgres does not
+              look for a deadlock cycle until a lock has waited a full second, and 142
+              of those seconds is where the 70 went.
+</p> <div class="tx-actions"> <button id="tx-run-deadlock" class="tx-btn" type="button">Locks in the order named</button> <button id="tx-run-ordered" class="tx-btn" type="button">Locks in ascending id</button> </div> </details> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">The fixes</h2> <p class="ed-body">
+Three of them, in the order I would reach for them. They are not
+            interchangeable, and the first is both the cheapest and the most limited.
+</p> <div class="ed-cards"> <div class="ed-card"> <span class="ed-card-no">01</span> <h3>Let the database do the arithmetic</h3> <p>UPDATE accounts SET balance = balance - $1 never sends a balance through the application, so there is no number that can go stale on the way. It was the cheapest fix measured here and the fastest. It only works when the new value is a function of the old one.</p> </div><div class="ed-card"> <span class="ed-card-no">02</span> <h3>Lock the rows before reading them</h3> <p>SELECT … FOR UPDATE takes the locks up front and holds them until the end, so there is no gap left for anyone to write into. This is the one to reach for when the decision genuinely needs a read first. The cost is waiting.</p> </div><div class="ed-card"> <span class="ed-card-no">03</span> <h3>Serializable, and retry</h3> <p>The database checks at commit whether the transaction could have run in some serial order, and throws it out if not. Correctness moves into the database; the job of running the whole thing again moves into your code. Skip the retry and most of the work never happens.</p> </div> </div> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">What the fixes cost</h2> <p class="ed-body">
+The browser demo is a model. These are measurements: PostgreSQL 16.15 in
+            Docker, three accounts opening at 1,000 each, 200 concurrent transfers over a
+            pool of 20 connections, each row one run of the same file at a different
+            setting.
+</p> <div class="tx-table-wrap"> <table class="tx-table"> <thead> <tr> <th>Version</th> <th>Wall</th> <th>Committed</th> <th>Thrown out by the DB</th> <th>Total after</th> </tr> </thead> <tbody> <tr> <td>Arithmetic in the app</td> <td>176 ms</td> <td>200 / 200</td> <td>0</td> <td class="is-bad">3,011</td> </tr><tr> <td>balance = balance - $1</td> <td>170 ms</td> <td>200 / 200</td> <td>0</td> <td class="is-ok">3,000</td> </tr><tr> <td>SELECT … FOR UPDATE</td> <td>254 ms</td> <td>200 / 200</td> <td>0</td> <td class="is-ok">3,000</td> </tr><tr> <td>Serializable, with retry</td> <td>398 ms</td> <td>137 / 200</td> <td>659</td> <td class="is-ok">3,000</td> </tr><tr> <td>Serializable, no retry</td> <td>83 ms</td> <td>26 / 200</td> <td>174</td> <td class="is-ok">3,000</td> </tr> </tbody> </table> </div> <p class="ed-body">
+The first row is the bug: fastest, no errors, wrong answer. The second is the
+            one worth knowing — letting the database do the arithmetic was correct and
+<strong>as fast as the broken version</strong>, 170 ms against 176. When it
+            fits, it costs nothing.
+</p> <p class="ed-body">
+Serializable is the row worth sitting with. It produced the right total by
+            throwing out <strong>659 transactions</strong> to get 200 transfers done, and
+            63 of those transfers never happened at all — they ran out of attempts.
+            Without the retry wrapper it commits 26 of 200. The money is correct in every
+            case; whether the work got done is a separate question, and the isolation
+            level does not answer it for you.
+</p> <p class="ed-body">
+This is a deliberately cruel workload — every transfer touches two of only
+            three rows, so almost everything conflicts with almost everything. Spread the
+            same transfers over ten thousand accounts and the retry rate falls close to
+            nothing.
+</p> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">What this does not prove</h2> <p class="ed-body">
+The thing in your browser is not Postgres. It has no snapshots, no
+            write-ahead log, no planner and no disk. It models the interleaving of reads
+            and writes, and one commit-time rule, because that is the part the page is
+            about.
+</p> <p class="ed-body">
+It also overstates the damage. Postgres locks a row for the duration of an
+<code>UPDATE</code> even with no transaction around it, which leaves a narrow
+            window; the model locks nothing, so its window is the whole gap between a read
+            and a write. That is the difference between the browser losing about 300 out
+            of 3,000 and Postgres losing 11.
+</p> <p class="ed-body">
+And the browser is reproducible in a way the database is not. Its ordering
+            comes out the same every run, because nothing in it waits on anything real.
+            Five consecutive runs of the identical 200 transfers against Postgres finished
+            at 3,005, 3,008, 3,009, 3,013, 3,019 — same code, same input, a different wrong answer
+            each time. That is what makes this kind of bug hard to reproduce from a
+            ticket.
+</p> </div> </div> </section> <section class="ed-section"> <div class="ed-section-grid"> <span class="ed-section-no"></span> <div> <h2 class="ed-h2">Where this came from</h2> <p class="ed-body">
+This is interview preparation, published. I wrote the SQL scenarios and the
+            Node lab to answer isolation-level questions properly rather than from
+            memory, and turning them into something runnable was the part that made them
+            stick.
+</p> <p class="ed-body">
+The interest is not abstract: my last role was backend work on an
+            institutional crypto-custody platform for banks, where concurrent access to
+            balances is the kind of thing the product is judged on. I did not build the
+            ledger there — I owned the address book, worked on authentication between
+            services, and wrote tests — so nothing on this page is a description of that
+            work. It is what I went and learned afterwards.
+</p> <div class="ed-stack"> <a class="mono-pill" href="/projects/bitpanda-custody">Bitpanda case study →</a> <a class="mono-pill" href="/lab/worker-pools">Worker pools, measured →</a> <a class="mono-pill" href="/demos/transactions/scenarios.js">Read this page's code ↗</a> </div> </div> </div> </section> </div>  </main> <footer class="colophon" id="contact" data-astro-cid-wrgrz243> <div class="colophon-wrap" data-astro-cid-wrgrz243> <div class="colophon-rule" data-astro-cid-wrgrz243></div> <div class="colophon-grid" data-astro-cid-wrgrz243> <div class="colophon-lead" data-astro-cid-wrgrz243> <h2 data-astro-cid-wrgrz243>Get in touch.</h2> <a href="mailto:contact@calingabriel.com?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20permanent%20or%20B2B" class="btn-ink" data-astro-cid-wrgrz243>Email me</a> </div> <dl class="colophon-meta" data-astro-cid-wrgrz243> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>Email</dt><dd data-astro-cid-wrgrz243><a href="mailto:contact@calingabriel.com?subject=Senior%20Backend%20(Node%2FTS)%20%E2%80%94%20permanent%20or%20B2B" data-astro-cid-wrgrz243>contact@calingabriel.com</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>Phone</dt><dd data-astro-cid-wrgrz243><a href="tel:+40759407066" data-astro-cid-wrgrz243>+40 759 407 066</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>GitHub</dt><dd data-astro-cid-wrgrz243><a href="https://github.com/calindotgabriel" rel="me" data-astro-cid-wrgrz243>/calindotgabriel</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>LinkedIn</dt><dd data-astro-cid-wrgrz243><a href="https://www.linkedin.com/in/calingabriel-ts-dev/" rel="me" data-astro-cid-wrgrz243>/calingabriel-ts-dev</a></dd></div> <div data-astro-cid-wrgrz243><dt data-astro-cid-wrgrz243>Engagement</dt><dd data-astro-cid-wrgrz243>Permanent or B2B · remote EU or Cluj · available now</dd></div> </dl> </div> <p class="colophon-sign" data-astro-cid-wrgrz243>Set in Geologica, Atkinson &amp; Martian Mono. © 2026 Calin Gabriel.</p> </div> </footer>   </body></html>  <script type="module">const e=document.getElementById("tx-demo");e&&import(new URL(`${e.dataset.base}demo.js?v=1`,location.origin).href).catch(o=>{const t=document.getElementById("tx-status");t&&(t.textContent=`The demo failed to load: ${o.message}`)});</script>
